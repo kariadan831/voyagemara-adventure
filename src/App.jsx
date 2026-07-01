@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import MapEmbed from "./components/MapEmbed";
+import FAQ from "./components/FAQ";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Itineraries from "./components/Itineraries";
 import Tours from "./components/Tours";
 import Gallery from "./components/Gallery";
-import Itineraries from "./components/Itineraries";
 import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import MapEmbed from "./components/MapEmbed";
 import ProSafariMap from "./components/ProSafariMap";
+import Footer from "./components/Footer";
+
 import { initScrollAnimations } from "./animations/scrollAnimations";
 
 export default function App() {
@@ -23,60 +25,151 @@ export default function App() {
 
   return (
     <>
-      <Helmet>
-        {/* ================= SEO ================= */}
-        <title>VoyageMara Safaris | Maasai Mara & Kenya Wildlife Tours</title>
+     <Helmet>
+  {/* ================= PRIMARY SEO ================= */}
+  <title>
+    VoyageMara Safaris | Kenya Luxury Safaris, Maasai Mara & Wildlife Tours
+  </title>
 
-        <meta
-          name="description"
-          content="Explore Maasai Mara, Amboseli, Nakuru & Kenya safari tours with VoyageMara. Book affordable and luxury wildlife experiences with expert guides."
-        />
+  <meta
+    name="description"
+    content="Explore Kenya with VoyageMara Safaris. Book luxury and affordable safari tours to Maasai Mara, Amboseli, Lake Nakuru, Samburu, Tsavo, Diani Beach and more."
+  />
 
-        <meta
-          name="keywords"
-          content="Maasai Mara safari, Kenya safari tours, wildlife safari Kenya, Amboseli, Nakuru flamingos, safari booking Kenya"
-        />
+  <meta
+    name="keywords"
+    content="Kenya Safari, Maasai Mara Safari, Amboseli Safari, Diani Beach Tours, Lake Nakuru Safari, Samburu Safari, Tsavo Safari, Luxury Safari Kenya, Wildlife Tours Kenya, VoyageMara"
+  />
 
-        <meta name="author" content="VoyageMara Safaris" />
+  <meta name="author" content="VoyageMara Safaris" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="theme-color" content="#0b3d2e" />
 
-        {/* ================= GEO TAGS ================= */}
-        <meta name="geo.region" content="KE" />
-        <meta name="geo.placename" content="Maasai Mara, Kenya" />
-        <meta name="geo.position" content="-1.4061;35.0081" />
-        <meta name="ICBM" content="-1.4061, 35.0081" />
+  {/* ================= CANONICAL ================= */}
+  <link
+    rel="canonical"
+    href="https://voyagemara-adventure.vercel.app/"
+  />
 
-        {/* ================= OPEN GRAPH ================= */}
-        <meta property="og:title" content="VoyageMara Safaris - Kenya Wildlife Tours" />
-        <meta
-          property="og:description"
-          content="Book unforgettable safari experiences in Kenya with expert guides."
-        />
-        <meta property="og:image" content="/images/masai-mara.jpg" />
-        <meta property="og:type" content="website" />
+  {/* ================= GEO ================= */}
+  <meta name="geo.region" content="KE" />
+  <meta name="geo.placename" content="Nairobi, Kenya" />
+  <meta name="geo.position" content="-1.286389;36.817223" />
+  <meta name="ICBM" content="-1.286389,36.817223" />
 
-        {/* ================= TWITTER ================= */}
-        <meta name="twitter:card" content="summary_large_image" />
+  {/* ================= OPEN GRAPH ================= */}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="VoyageMara Safaris" />
 
-        {/* ================= STRUCTURED DATA (SEO BOOST) ================= */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "TravelAgency",
-            name: "VoyageMara Safaris",
-            url: "https://voyagemara.com",
+  <meta
+    property="og:title"
+    content="VoyageMara Safaris | Kenya Luxury Safari Tours"
+  />
+
+  <meta
+    property="og:description"
+    content="Experience unforgettable safari adventures across Kenya with VoyageMara Safaris."
+  />
+
+  <meta
+    property="og:url"
+    content="https://voyagemara-adventure.vercel.app/"
+  />
+
+  <meta
+    property="og:image"
+    content="https://voyagemara-adventure.vercel.app/logo.png"
+  />
+
+  <meta property="og:locale" content="en_US" />
+
+  {/* ================= TWITTER ================= */}
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta
+    name="twitter:title"
+    content="VoyageMara Safaris | Kenya Luxury Safari Tours"
+  />
+
+  <meta
+    name="twitter:description"
+    content="Luxury and affordable safari experiences across Kenya."
+  />
+
+  <meta
+    name="twitter:image"
+    content="https://voyagemara-adventure.vercel.app/logo.png"
+  />
+
+  {/* ================= STRUCTURED DATA ================= */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://voyagemara-adventure.vercel.app/#organization",
+          name: "VoyageMara Safaris",
+          url: "https://voyagemara-adventure.vercel.app/",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://voyagemara-adventure.vercel.app/logo.png",
+          },
+          email: "info@voyagemara.com",
+          telephone: "+254705814181",
+          inLanguage: "en",
+          foundingLocation: {
+            "@type": "Place",
+            name: "Nairobi, Kenya",
+          },
+          contactPoint: {
+            "@type": "ContactPoint",
             telephone: "+254705814181",
-            address: {
-              "@type": "PostalAddress",
-              addressCountry: "KE",
-              addressLocality: "Maasai Mara",
-            },
-            description:
-              "Safari tours in Kenya including Maasai Mara, Amboseli, and Nakuru.",
-          })}
-        </script>
-      </Helmet>
+            contactType: "Customer Service",
+            areaServed: "KE",
+            availableLanguage: ["English"],
+          },
+          sameAs: [],
+        },
 
-      {/* ================= SITE ================= */}
+        {
+          "@type": "TravelAgency",
+          "@id": "https://voyagemara-adventure.vercel.app/#travelagency",
+          name: "VoyageMara Safaris",
+          url: "https://voyagemara-adventure.vercel.app/",
+          logo: "https://voyagemara-adventure.vercel.app/logo.png",
+          image: "https://voyagemara-adventure.vercel.app/logo.png",
+          description:
+            "Luxury and affordable safari tours across Kenya including Maasai Mara, Amboseli, Lake Nakuru, Samburu, Tsavo and Diani Beach.",
+          telephone: "+254705814181",
+          email: "info@voyagemara.com",
+          areaServed: "Kenya",
+          priceRange: "$$",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Nairobi",
+            addressCountry: "KE",
+          },
+        },
+
+        {
+          "@type": "WebSite",
+          "@id": "https://voyagemara-adventure.vercel.app/#website",
+          url: "https://voyagemara-adventure.vercel.app/",
+          name: "VoyageMara Safaris",
+          publisher: {
+            "@id":
+              "https://voyagemara-adventure.vercel.app/#organization",
+          },
+          inLanguage: "en",
+        }
+      ]
+    })}
+  </script>
+</Helmet>
+
+      {/* ================= WEBSITE ================= */}
+
       <Navbar />
 
       <main>
@@ -84,31 +177,38 @@ export default function App() {
           <Hero />
         </section>
 
-        <section className="story-section" id="about">
+        <section id="about" className="story-section">
           <About />
         </section>
 
-        <section className="story-section" id="itineraries">
+        <section id="itineraries" className="story-section">
           <Itineraries />
         </section>
 
-        <section className="story-section" id="tours">
+        <section id="tours" className="story-section">
           <Tours />
         </section>
 
-        <section className="story-section" id="gallery">
-          <Gallery />
-        </section>
-
-        <section className="story-section" id="contact">
-          <Contact />
-        </section>
-        <section className="story-section" id="map">
-  <MapEmbed />
+       <section id="gallery" className="story-section">
+  <Gallery />
 </section>
+
+<section id="faq" className="story-section">
+  <FAQ />
+</section>
+
+<section id="contact" className="story-section">
+  <Contact />
+</section>
+
+        <section id="map" className="story-section">
+          <MapEmbed />
+        </section>
       </main>
-<ProSafariMap />
+
+      <ProSafariMap />
+
       <Footer />
     </>
   );
-}
+} 

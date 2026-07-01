@@ -1,69 +1,156 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+  <meta charset="UTF-8" />
 
-    <!-- GOOGLE SEARCH CONSOLE VERIFICATION -->
-    <meta name="google-site-verification" content="NIS2W2hseD2aIcA3nse5Th2HDsurIK1vOvUn_Hll_WQ" />
+  <!-- Mobile Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
+  <!-- Google Search Console -->
+  <meta
+    name="google-site-verification"
+    content="NIS2W2hseD2aIcA3nse5Th2HDsurIK1vOvUn_Hll_WQ"
+  />
 
-    <!-- MOBILE RESPONSIVE -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary SEO -->
+  <title>
+    VoyageMara Safaris | Luxury Kenya Safaris, Maasai Mara, Amboseli & Diani Beach
+  </title>
 
-    <!-- TITLE (SEO POWER KEYWORD STYLE) -->
-    <title>VoyageMara Safaris | Maasai Mara & Kenya Luxury Safari Tours</title>
+  <meta
+    name="description"
+    content="Book unforgettable Kenya safari adventures with VoyageMara Safaris. Explore Maasai Mara, Amboseli, Lake Nakuru, Samburu, Tsavo, Diani Beach and custom luxury safari packages."
+  />
 
-    <!-- META DESCRIPTION -->
-    <meta
-      name="description"
-      content="Book luxury and affordable safari tours in Maasai Mara, Amboseli, Tsavo, Nakuru & Diani Beach with VoyageMara Safaris."
-    />
+  <meta
+    name="keywords"
+    content="Kenya Safari, Maasai Mara Safari, Amboseli Safari, Diani Beach Tours, Lake Nakuru Safari, Samburu Safari, Luxury Safari Kenya, Affordable Safari Kenya, Wildlife Tours Kenya, VoyageMara"
+  />
 
-    <!-- KEY SEO TAGS -->
-    <meta name="keywords" content="Kenya safari, Maasai Mara safari, luxury safari Kenya, Amboseli tours, safari booking Kenya" />
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="VoyageMara Safaris" />
-    <meta name="theme-color" content="#0b3d2e" />
+  <meta name="author" content="VoyageMara Safaris" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0b3d2e" />
 
-    <!-- CANONICAL -->
-    <link rel="canonical" href="https://voyagemara.com" />
+  <!-- Canonical -->
+  <link
+    rel="canonical"
+    href="https://voyagemara-adventure.vercel.app/"
+  />
 
-    <!-- OPEN GRAPH -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="VoyageMara Safaris | Kenya Luxury Safari Tours" />
-    <meta property="og:description" content="Explore Maasai Mara, Amboseli, Tsavo & more with expert safari guides in Kenya." />
-    <meta property="og:image" content="/logo.png" />
-    <meta property="og:url" content="https://voyagemara.com" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
 
-    <!-- TWITTER CARD -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="VoyageMara Safaris" />
-    <meta name="twitter:description" content="Luxury safari experiences in Kenya's top wildlife destinations." />
-    <meta name="twitter:image" content="/logo.png" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="VoyageMara Safaris" />
+  <meta property="og:locale" content="en_US" />
 
-    <!-- STRUCTURED DATA -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "TravelAgency",
-        "name": "VoyageMara Safaris",
-        "url": "https://voyagemara.com",
-        "logo": "https://voyagemara.com/logo.png",
-        "telephone": "+254705814181",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "KE",
-          "addressLocality": "Maasai Mara"
-        }
-      }
-    </script>
-  </head>
+  <meta
+    property="og:title"
+    content="VoyageMara Safaris | Luxury Kenya Safari Experiences"
+  />
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <meta
+    property="og:description"
+    content="Discover Maasai Mara, Amboseli, Samburu, Tsavo, Lake Nakuru and Diani Beach with expert safari guides."
+  />
+
+  <meta
+    property="og:url"
+    content="https://voyagemara-adventure.vercel.app/"
+  />
+
+  <meta
+    property="og:image"
+    content="https://voyagemara-adventure.vercel.app/logo.png"
+  />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta
+    name="twitter:title"
+    content="VoyageMara Safaris | Kenya Luxury Safari Tours"
+  />
+
+  <meta
+    name="twitter:description"
+    content="Experience unforgettable wildlife adventures across Kenya with VoyageMara Safaris."
+  />
+
+  <meta
+    name="twitter:image"
+    content="https://voyagemara-adventure.vercel.app/logo.png"
+  />
+
+  <!-- =========================
+       TRAVEL AGENCY SCHEMA
+  ========================== -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TravelAgency",
+    "name":"VoyageMara Safaris",
+    "url":"https://voyagemara-adventure.vercel.app/",
+    "logo":"https://voyagemara-adventure.vercel.app/logo.png",
+    "image":"https://voyagemara-adventure.vercel.app/logo.png",
+    "description":"Luxury and affordable safari tours across Kenya including Maasai Mara, Amboseli, Samburu, Tsavo, Lake Nakuru and Diani Beach.",
+    "telephone":"+254705814181",
+    "email":"info@voyagemara.com",
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"Nairobi",
+      "addressCountry":"KE"
+    },
+    "areaServed":"Kenya",
+    "priceRange":"$$",
+    "sameAs":[]
+  }
+  </script>
+
+  <!-- =========================
+       ORGANIZATION SCHEMA
+  ========================== -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"VoyageMara Safaris",
+    "url":"https://voyagemara-adventure.vercel.app/",
+    "logo":"https://voyagemara-adventure.vercel.app/logo.png",
+    "email":"info@voyagemara.com",
+    "telephone":"+254705814181"
+  }
+  </script>
+
+  <!-- =========================
+       LOCAL BUSINESS SCHEMA
+  ========================== -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"VoyageMara Safaris",
+    "image":"https://voyagemara-adventure.vercel.app/logo.png",
+    "url":"https://voyagemara-adventure.vercel.app/",
+    "telephone":"+254705814181",
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"Nairobi",
+      "addressCountry":"Kenya"
+    },
+    "priceRange":"$$"
+  }
+  </script>
+
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script type="module" src="/src/main.jsx"></script>
+
+</body>
 </html>
