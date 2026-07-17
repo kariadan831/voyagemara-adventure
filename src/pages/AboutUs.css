@@ -1,0 +1,469 @@
+/* ===========================
+   VOYAGEMARA ABOUT PAGE
+   Luxury Safari Design
+=========================== */
+
+
+.about-page {
+  background: #0b1a13;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+
+/* HERO SECTION */
+
+.about-hero {
+
+  height: 85vh;
+  background:
+  linear-gradient(
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.75)
+  ),
+  url("/images/masai-mara.webp");
+
+  background-size: cover;
+  background-position: center;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+}
+
+
+.about-overlay {
+
+  max-width:900px;
+  padding:40px;
+
+}
+
+
+.about-overlay span {
+
+  color:#d4af37;
+  letter-spacing:4px;
+  font-size:14px;
+  font-weight:600;
+
+}
+
+
+.about-overlay h1 {
+
+  font-size:clamp(2.2rem,5vw,4rem);
+  margin:20px 0;
+
+  font-family:
+  "Playfair Display",
+  serif;
+
+}
+
+
+.about-overlay p {
+
+  font-size:1.2rem;
+  line-height:1.8;
+
+  color:#ddd;
+
+}
+
+
+
+
+
+/* GENERAL SECTIONS */
+
+
+.about-intro-section,
+.story-section,
+.founder-section,
+.values-section,
+.why-section,
+.destination-section,
+.contact-section {
+
+  max-width:1200px;
+  margin:auto;
+
+  padding:90px 30px;
+
+}
+
+
+
+h2 {
+
+ font-size:2.4rem;
+ margin-bottom:30px;
+
+ font-family:
+ "Playfair Display",
+ serif;
+
+ color:#d4af37;
+
+}
+
+
+
+p {
+
+ line-height:1.9;
+ color:#ddd;
+
+ font-size:1.05rem;
+
+}
+
+
+
+/* INTRO */
+
+
+.about-content {
+
+ max-width:900px;
+ margin:auto;
+
+}
+
+
+
+
+
+/* STORY */
+
+
+.story-section {
+
+ display:grid;
+
+ grid-template-columns:
+ repeat(2,1fr);
+
+ gap:50px;
+
+ align-items:center;
+
+}
+
+
+.section-image img {
+
+ width:100%;
+ height:500px;
+
+ object-fit:cover;
+
+ border-radius:20px;
+
+}
+
+
+
+.section-text {
+
+ padding:20px;
+
+}
+
+
+
+
+
+/* FOUNDER */
+
+
+.founder-card {
+
+ display:flex;
+
+ gap:30px;
+
+ background:
+ rgba(255,255,255,.05);
+
+ padding:40px;
+
+ border-radius:20px;
+
+ border:
+ 1px solid rgba(212,175,55,.3);
+
+ backdrop-filter:blur(10px);
+
+}
+
+
+
+.founder-icon {
+
+ font-size:60px;
+
+}
+
+
+
+
+
+/* MISSION */
+
+
+.mission-grid {
+
+ max-width:1200px;
+
+ margin:auto;
+
+ padding:50px 30px;
+
+ display:grid;
+
+ grid-template-columns:
+ repeat(2,1fr);
+
+ gap:30px;
+
+}
+
+
+
+.mission-card {
+
+ background:#12261b;
+
+ padding:40px;
+
+ border-radius:20px;
+
+ border-left:
+ 4px solid #d4af37;
+
+}
+
+
+
+
+
+/* VALUES */
+
+
+.values-grid {
+
+ display:grid;
+
+ grid-template-columns:
+ repeat(4,1fr);
+
+ gap:20px;
+
+}
+
+
+
+.value-card {
+
+ background:#12261b;
+
+ padding:25px;
+
+ border-radius:15px;
+
+ text-align:center;
+
+ transition:.3s;
+
+}
+
+
+
+.value-card:hover {
+
+ transform:translateY(-8px);
+
+ border:
+ 1px solid #d4af37;
+
+}
+
+
+
+
+
+/* WHY */
+
+
+.why-grid {
+
+ display:grid;
+
+ grid-template-columns:
+ repeat(4,1fr);
+
+ gap:20px;
+
+}
+
+
+
+.why-card {
+
+ background:
+ linear-gradient(
+ 135deg,
+ #162c20,
+ #0e1b14
+ );
+
+ padding:30px;
+
+ border-radius:18px;
+
+ text-align:center;
+
+ transition:.3s;
+
+}
+
+
+.why-card:hover {
+
+ transform:scale(1.05);
+
+}
+
+
+
+
+
+/* DESTINATIONS */
+
+
+.destination-list {
+
+ margin-top:30px;
+
+ font-size:1.2rem;
+
+ color:#d4af37;
+
+ line-height:2;
+
+}
+
+
+
+
+
+/* CONTACT */
+
+
+.contact-section {
+
+ text-align:center;
+
+ padding-bottom:120px;
+
+}
+
+
+
+
+/* RESPONSIVE DESIGN */
+
+
+@media(max-width:900px){
+
+
+.story-section {
+
+ grid-template-columns:1fr;
+
+}
+
+
+
+.mission-grid {
+
+ grid-template-columns:1fr;
+
+}
+
+
+
+.values-grid,
+.why-grid {
+
+ grid-template-columns:
+ repeat(2,1fr);
+
+}
+
+
+.founder-card {
+
+ flex-direction:column;
+
+}
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+.about-overlay {
+
+ padding:20px;
+
+}
+
+
+.about-overlay h1 {
+
+ font-size:2.2rem;
+
+}
+
+
+
+.about-intro-section,
+.story-section,
+.founder-section,
+.values-section,
+.why-section,
+.destination-section,
+.contact-section {
+
+ padding:60px 20px;
+
+}
+
+
+
+.values-grid,
+.why-grid {
+
+ grid-template-columns:1fr;
+
+}
+
+
+
+.section-image img {
+
+ height:350px;
+
+}
+
+
+}

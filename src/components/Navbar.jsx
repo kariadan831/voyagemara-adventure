@@ -25,7 +25,7 @@ export default function Navbar() {
       {/* NAV LINKS */}
       <div className={`nav-links ${open ? "active" : ""}`}>
         <a href="#home" onClick={handleClick}>Home</a>
-        <a href="#about" onClick={handleClick}>About</a>
+        <a href="/about" onClick={handleClick}>About</a>
         <a href="#itineraries" onClick={handleClick}>Itineraries</a>
         <a href="#tours" onClick={handleClick}>Tours</a>
         <a href="#gallery" onClick={handleClick}>Gallery</a>
