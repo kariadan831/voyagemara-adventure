@@ -1,469 +1,492 @@
-/* ===========================
-   VOYAGEMARA ABOUT PAGE
-   Luxury Safari Design
-=========================== */
+  /* ==========================
+    VOYAGEMARA ABOUT PAGE
+    Luxury Safari Theme
+  ========================== */
 
 
-.about-page {
-  background: #0b1a13;
-  color: #ffffff;
-  overflow: hidden;
-}
+  .about-page {
+    background: #07140f;
+    color: #ffffff;
+    min-height: 100vh;
+  }
 
 
-/* HERO SECTION */
+  /* HERO */
 
-.about-hero {
+  .about-hero {
 
-  height: 85vh;
-  background:
-  linear-gradient(
-    rgba(0,0,0,.55),
-    rgba(0,0,0,.75)
-  ),
-  url("/images/masai-mara.webp");
+    min-height: 85vh;
 
-  background-size: cover;
-  background-position: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    text-align:center;
 
-  text-align:center;
+    background:
+    linear-gradient(
+      rgba(0,0,0,.55),
+      rgba(0,0,0,.75)
+    ),
+    url("/images/masai-mara.webp");
 
-}
+    background-size:cover;
+    background-position:center;
 
+  }
 
-.about-overlay {
 
-  max-width:900px;
-  padding:40px;
 
-}
+  .about-hero-content {
 
+    max-width:900px;
+    padding:40px;
 
-.about-overlay span {
+  }
 
-  color:#d4af37;
-  letter-spacing:4px;
-  font-size:14px;
-  font-weight:600;
 
-}
 
+  .about-hero-content span {
 
-.about-overlay h1 {
+    color:#d4af37;
 
-  font-size:clamp(2.2rem,5vw,4rem);
-  margin:20px 0;
+    letter-spacing:5px;
 
-  font-family:
-  "Playfair Display",
-  serif;
+    font-size:14px;
 
-}
+    font-weight:600;
 
+  }
 
-.about-overlay p {
 
-  font-size:1.2rem;
-  line-height:1.8;
 
-  color:#ddd;
+  .about-hero-content h1 {
 
-}
+    font-size:clamp(2.3rem,5vw,4rem);
 
+    line-height:1.2;
 
+    margin:25px 0;
 
+    font-family:
+    "Playfair Display",
+    serif;
 
+  }
 
-/* GENERAL SECTIONS */
 
 
-.about-intro-section,
-.story-section,
-.founder-section,
-.values-section,
-.why-section,
-.destination-section,
-.contact-section {
+  .about-hero-content p {
 
-  max-width:1200px;
-  margin:auto;
+    font-size:1.2rem;
 
-  padding:90px 30px;
+    color:#ddd;
 
-}
+    line-height:1.8;
 
+  }
 
 
-h2 {
 
- font-size:2.4rem;
- margin-bottom:30px;
 
- font-family:
- "Playfair Display",
- serif;
 
- color:#d4af37;
+  /* GENERAL SECTION */
 
-}
+  .about-section {
 
+    max-width:1100px;
 
+    margin:auto;
 
-p {
+    padding:90px 30px;
 
- line-height:1.9;
- color:#ddd;
+  }
 
- font-size:1.05rem;
 
-}
 
+  .about-section h2,
+  .about-grid h2,
+  .contact-box h2 {
 
+    color:#d4af37;
 
-/* INTRO */
+    font-size:2.4rem;
 
+    margin-bottom:30px;
 
-.about-content {
+    font-family:
+    "Playfair Display",
+    serif;
 
- max-width:900px;
- margin:auto;
+  }
 
-}
 
 
+  .about-section p,
+  .about-text p {
 
+    color:#ddd;
 
+    font-size:1.05rem;
 
-/* STORY */
+    line-height:1.9;
 
+  }
 
-.story-section {
 
- display:grid;
 
- grid-template-columns:
- repeat(2,1fr);
 
- gap:50px;
 
- align-items:center;
+  /* STORY GRID */
 
-}
 
+  .about-grid {
 
-.section-image img {
+    max-width:1200px;
 
- width:100%;
- height:500px;
+    margin:auto;
 
- object-fit:cover;
+    padding:80px 30px;
 
- border-radius:20px;
+    display:grid;
 
-}
+    grid-template-columns:
+    repeat(2,1fr);
 
+    gap:50px;
 
+    align-items:center;
 
-.section-text {
+  }
 
- padding:20px;
 
-}
 
+  .about-image img {
 
+    width:100%;
 
+    height:520px;
 
+    object-fit:cover;
 
-/* FOUNDER */
+    border-radius:25px;
 
+  }
 
-.founder-card {
 
- display:flex;
 
- gap:30px;
+  .about-text {
 
- background:
- rgba(255,255,255,.05);
+    padding:20px;
 
- padding:40px;
+  }
 
- border-radius:20px;
 
- border:
- 1px solid rgba(212,175,55,.3);
 
- backdrop-filter:blur(10px);
 
-}
 
+  /* FOUNDER */
 
 
-.founder-icon {
+  .founder-card {
 
- font-size:60px;
+    background:
+    rgba(255,255,255,.06);
 
-}
+    border:
 
+    1px solid rgba(212,175,55,.35);
 
 
+    padding:40px;
 
+    border-radius:20px;
 
-/* MISSION */
+    backdrop-filter:blur(10px);
 
+  }
 
-.mission-grid {
 
- max-width:1200px;
 
- margin:auto;
+  .founder-card h3 {
 
- padding:50px 30px;
+    font-size:2rem;
 
- display:grid;
+    color:#d4af37;
 
- grid-template-columns:
- repeat(2,1fr);
+    margin-bottom:20px;
 
- gap:30px;
+  }
 
-}
 
 
 
-.mission-card {
 
- background:#12261b;
+  /* MISSION VISION */
 
- padding:40px;
 
- border-radius:20px;
+  .cards-grid {
 
- border-left:
- 4px solid #d4af37;
+    max-width:1200px;
 
-}
+    margin:auto;
 
+    padding:40px 30px;
 
+    display:grid;
 
+    grid-template-columns:
+    repeat(2,1fr);
 
+    gap:30px;
 
-/* VALUES */
+  }
 
 
-.values-grid {
 
- display:grid;
+  .info-card {
 
- grid-template-columns:
- repeat(4,1fr);
+    background:#10251a;
 
- gap:20px;
+    padding:40px;
 
-}
+    border-radius:20px;
 
+    border-left:
 
+    5px solid #d4af37;
 
-.value-card {
+  }
 
- background:#12261b;
 
- padding:25px;
 
- border-radius:15px;
+  .info-card h3 {
 
- text-align:center;
+    color:#d4af37;
 
- transition:.3s;
+    font-size:1.5rem;
 
-}
+  }
 
 
 
-.value-card:hover {
 
- transform:translateY(-8px);
 
- border:
- 1px solid #d4af37;
+  /* VALUES */
 
-}
 
+  .list-grid {
 
+    display:grid;
 
+    grid-template-columns:
+    repeat(4,1fr);
 
+    gap:20px;
 
-/* WHY */
+  }
 
 
-.why-grid {
 
- display:grid;
+  .list-card {
 
- grid-template-columns:
- repeat(4,1fr);
+    background:#10251a;
 
- gap:20px;
+    padding:25px;
 
-}
+    text-align:center;
 
+    border-radius:15px;
 
+    transition:.3s;
 
-.why-card {
+  }
 
- background:
- linear-gradient(
- 135deg,
- #162c20,
- #0e1b14
- );
 
- padding:30px;
 
- border-radius:18px;
+  .list-card:hover {
 
- text-align:center;
+    transform:translateY(-8px);
 
- transition:.3s;
+    border:
 
-}
+    1px solid #d4af37;
 
+  }
 
-.why-card:hover {
 
- transform:scale(1.05);
 
-}
 
 
+  /* CONTACT */
 
 
+  .contact-box {
 
-/* DESTINATIONS */
+    text-align:center;
 
+    max-width:900px;
 
-.destination-list {
+    margin:auto;
 
- margin-top:30px;
+    padding:90px 30px;
 
- font-size:1.2rem;
+  }
 
- color:#d4af37;
 
- line-height:2;
 
-}
+  .contact-box p {
 
+    color:#ddd;
 
+    font-size:1.1rem;
 
+  }
 
 
-/* CONTACT */
 
 
-.contact-section {
 
- text-align:center;
+  /* RESPONSIVE */
 
- padding-bottom:120px;
 
-}
+  @media(max-width:900px){
 
 
+  .about-grid {
 
+    grid-template-columns:1fr;
 
-/* RESPONSIVE DESIGN */
+  }
 
 
-@media(max-width:900px){
 
+  .cards-grid {
 
-.story-section {
+    grid-template-columns:1fr;
 
- grid-template-columns:1fr;
+  }
 
-}
 
 
+  .list-grid {
 
-.mission-grid {
+    grid-template-columns:
+    repeat(2,1fr);
 
- grid-template-columns:1fr;
+  }
 
-}
 
 
+  .about-image img {
 
-.values-grid,
-.why-grid {
+  height:400px;
 
- grid-template-columns:
- repeat(2,1fr);
+  }
 
-}
 
+  }
 
-.founder-card {
 
- flex-direction:column;
 
-}
 
 
-}
+  @media(max-width:600px){
 
 
+  .about-section,
+  .about-grid,
+  .cards-grid {
 
-@media(max-width:600px){
+  padding-left:20px;
 
+  padding-right:20px;
 
-.about-overlay {
+  }
 
- padding:20px;
 
-}
 
+  .about-hero-content {
 
-.about-overlay h1 {
+  padding:20px;
 
- font-size:2.2rem;
+  }
 
-}
 
 
+  .about-hero-content h1 {
 
-.about-intro-section,
-.story-section,
-.founder-section,
-.values-section,
-.why-section,
-.destination-section,
-.contact-section {
+  font-size:2.2rem;
 
- padding:60px 20px;
+  }
 
-}
 
 
+  .list-grid {
 
-.values-grid,
-.why-grid {
+  grid-template-columns:1fr;
 
- grid-template-columns:1fr;
+  }
+
+
+
+  .about-image img {
+
+  height:320px;
+
+  }
+
+
+
+  }
+  .about-faq{
+
+max-width:1100px;
+
+margin:auto;
+
+padding:80px 30px;
 
 }
 
 
+.about-faq h2{
 
-.section-image img {
+color:#d4af37;
 
- height:350px;
+font-size:2.5rem;
+
+margin-bottom:40px;
 
 }
 
+
+.faq-item{
+
+background:#10251a;
+
+padding:25px;
+
+margin-bottom:20px;
+
+border-radius:15px;
+
+}
+
+
+.faq-item h3{
+
+color:#ffffff;
+
+margin-bottom:15px;
+
+}
+
+
+.faq-item p{
+
+color:#ddd;
+
+line-height:1.8;
 
 }
