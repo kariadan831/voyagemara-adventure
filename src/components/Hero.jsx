@@ -7,91 +7,91 @@ const slides = [
     tag: "ADVENTURE",
     title: "Maasai Mara Experience",
     subtitle: "Witness the Great Migration in Kenya’s iconic reserve.",
-    image: "/images/masai mara.jpg",
+    image: "/images/masai mara.webp",
   },
   {
     tag: "WILDLIFE",
     title: "Lion Encounters",
     subtitle: "Experience lions in their natural savannah habitat.",
-    image: "/images/lions.jpg",
+    image: "/images/lions.webp",
   },
   {
     tag: "DISCOVERY",
     title: "Cheetah Speed Chase",
     subtitle: "Watch Africa’s fastest predator in action.",
-    image: "/images/cheetah.jpg",
+    image: "/images/cheetah.webp",
   },
   {
     tag: "SAFARI",
     title: "Elephant Herds",
     subtitle: "Majestic giants roaming across Amboseli plains.",
-    image: "/images/elephant.jpg",
+    image: "/images/elephant.webp",
   },
   {
     tag: "WILDLIFE",
     title: "Elephant Close View",
     subtitle: "Up close safari encounters with elephants.",
-    image: "/images/eleph1.jpg",
+    image: "/images/eleph1.webp",
   },
   {
     tag: "WILDLIFE",
     title: "Elephant Trails",
     subtitle: "Follow the movement of herds across savannah.",
-    image: "/images/eleph2.jpg",
+    image: "/images/eleph2.webp",
   },
   {
     tag: "NATURE",
     title: "Hippo River Life",
     subtitle: "Hippos relaxing in Kenya’s rivers and lakes.",
-    image: "/images/hippo.jpg",
+    image: "/images/hippo.webp",
   },
   {
     tag: "FARM LIFE",
     title: "Kilimo Experience",
     subtitle: "Discover local farming culture in Kenya.",
-    image: "/images/kilimo.jpg",
+    image: "/images/kilimo.webp",
   },
   {
     tag: "NATURE",
     title: "Savannah Zebras",
     subtitle: "Beautiful zebra herds across open plains.",
-    image: "/images/zebras.jpg",
+    image: "/images/zebras.webp",
   },
   {
     tag: "ROMANCE",
     title: "Hot Air Balloon Safari",
     subtitle: "Sunrise over Maasai Mara skies.",
-    image: "/images/ballon.jpg",
+    image: "/images/ballon.webp",
   },
   {
     tag: "LUXURY",
     title: "Luxury Safari Camp",
     subtitle: "Comfort meets wilderness in premium camps.",
-    image: "/images/camp.jpg",
+    image: "/images/camp.webp",
   },
   {
     tag: "CULTURE",
     title: "Maasai Culture",
     subtitle: "Authentic traditions of the Maasai people.",
-    image: "/images/maasai.jpg",
+    image: "/images/maasai.webp",
   },
   {
     tag: "CULTURE",
     title: "Maasai Warriors",
     subtitle: "Traditional Maasai life and heritage.",
-    image: "/images/maasai 1.jpg",
+    image: "/images/maasai 1.webp",
   },
   {
     tag: "ICONIC",
     title: "Rhino Sanctuary",
     subtitle: "Rare rhino sightings in protected reserves.",
-    image: "/images/rhino.jpg",
+    image: "/images/rhino.webp",
   },
   {
     tag: "WILDLIFE",
     title: "Wildebeest Migration",
     subtitle: "The great migration across Maasai Mara.",
-    image: "/images/masai mara.jpg",
+    image: "/images/masai mara.webp",
   },
 ];
 
@@ -173,13 +173,18 @@ export default function Hero() {
         <div ref={cardRef} className="hero-card landscape">
 
           <div className="hero-image">
-            <img
-              src={current.image}
-              alt={current.title}
-              onError={(e) => {
-                e.target.src = "/images/camp.jpg";
-              }}
-            />
+           <img
+  src={current.image}
+  alt={current.title}
+  width="700"
+  height="500"
+  fetchPriority="high"
+  decoding="async"
+  draggable="false"
+  onError={(e) => {
+    e.currentTarget.src = "/images/camp.webp";
+  }}
+/>
           </div>
 
           <div className="hero-text">
@@ -212,13 +217,18 @@ export default function Hero() {
       {/* THUMB STRIP */}
       <div className="thumb-strip">
         {slides.map((slide, i) => (
-          <img
-            key={i}
-            src={slide.image}
-            alt={slide.title}
-            className={i === index ? "active-thumb" : ""}
-            onClick={() => changeSlide(i)}
-          />
+         <img
+  key={i}
+  src={slide.image}
+  alt={slide.title}
+  className={i === index ? "active-thumb" : ""}
+  loading="lazy"
+  decoding="async"
+  width="120"
+  height="80"
+  draggable="false"
+  onClick={() => changeSlide(i)}
+/>
         ))}
       </div>
 
