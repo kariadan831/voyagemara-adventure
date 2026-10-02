@@ -27,8 +27,9 @@ export default function ProSafariMap() {
     <>
       {/* FLOATING BUTTON */}
       <button
-        className="floating-map-btn"
+        className="floating-map-btn safari-map-button"
         onClick={() => setOpen(true)}
+        aria-label="Open Maasai Mara explorer map"
       >
         🗺️ Map
       </button>
