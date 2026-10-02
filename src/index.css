@@ -1,111 +1,349 @@
+/* =========================================
+   VOYAGEMARA ADVENTURE
+   Global Design System
+   Premium Kenya Safari Experience
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Brand */
+  --vm-green-950: #06140f;
+  --vm-green-900: #0a1f17;
+  --vm-green-800: #10382a;
+  --vm-green-700: #14533d;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --vm-gold: #d4af37;
+  --vm-gold-light: #f1d77a;
+  --vm-gold-dark: #a9871f;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
+  /* Neutral */
+  --vm-white: #ffffff;
+  --vm-cream: #f8f5ed;
+  --vm-light: #f3f1e9;
+  --vm-text: #26332d;
+  --vm-muted: #68736d;
+
+  /* Borders */
+  --vm-border: rgba(10, 31, 23, 0.12);
+  --vm-border-light: rgba(255, 255, 255, 0.14);
+
+  /* Effects */
+  --vm-shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --vm-shadow-md: 0 18px 45px rgba(0, 0, 0, 0.12);
+  --vm-shadow-lg: 0 30px 80px rgba(0, 0, 0, 0.18);
+
+  /* Typography */
+  --font-body: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  --font-display: "Playfair Display", Georgia, serif;
+
+  /* Layout */
+  --container: 1240px;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color: var(--vm-text);
+  background: var(--vm-white);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+/* =========================================
+   RESET
+========================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
   margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  font-family: var(--font-body);
+  color: var(--vm-text);
+  background: var(--vm-white);
+
+  overflow-x: hidden;
 }
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  border: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+
+/* =========================================
+   ROOT
+========================================= */
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
+
+/* =========================================
+   TYPOGRAPHY
+========================================= */
+
 h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  font-family: var(--font-display);
+  color: var(--vm-green-950);
+
+  line-height: 1.15;
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
 }
+
 h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+  font-size: clamp(2rem, 4vw, 3.5rem);
 }
+
+h3 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
 p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+button,
+a {
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.vm-container {
+  width: min(100% - 40px, var(--container));
+  margin-inline: auto;
+}
+
+
+/* =========================================
+   SECTION DEFAULTS
+========================================= */
+
+section {
+  width: 100%;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 16px;
+
+  color: var(--vm-gold-dark);
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section-label::before {
+  content: "";
+
+  width: 28px;
+  height: 1px;
+
+  background: currentColor;
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+:focus-visible {
+  outline: 3px solid var(--vm-gold);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--vm-gold);
+  color: var(--vm-green-950);
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--vm-green-950);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vm-gold);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vm-gold-light);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+  .vm-container {
+    width: min(100% - 28px, var(--container));
+  }
+
+  html {
+    scroll-padding-top: 76px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vm-container {
+    width: min(100% - 24px, var(--container));
+  }
+
+  body {
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* =========================================
+   LIGHT / DARK THEME
+========================================= */
+
+:root {
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --vm-white: #0b1712;
+  --vm-cream: #101f18;
+  --vm-light: #142820;
+
+  --vm-text: #edf3ef;
+  --vm-muted: #aebdb5;
+
+  --vm-green-950: #f3f7f4;
+  --vm-green-900: #dfeae4;
+  --vm-green-800: #c6d9cf;
+  --vm-green-700: #a8c2b5;
+
+  --vm-border: rgba(255, 255, 255, 0.12);
+  --vm-border-light: rgba(255, 255, 255, 0.15);
+
+  --vm-shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --vm-shadow-md: 0 18px 45px rgba(0, 0, 0, 0.35);
+  --vm-shadow-lg: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] body {
+  background: var(--vm-white);
+  color: var(--vm-text);
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--vm-green-950);
 }

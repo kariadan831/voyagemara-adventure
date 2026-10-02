@@ -1,0 +1,220 @@
+.safari-detail-page {
+  min-height: 70vh;
+  padding: calc(var(--navbar-height, 78px) + 26px) 20px 72px;
+  background: var(--bg-light, #f5f2e9);
+  color: var(--text-dark, #26372f);
+}
+
+.safari-detail-container {
+  width: min(100%, 1120px);
+  margin-inline: auto;
+}
+
+.safari-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 28px;
+  color: #788179;
+  font-size: 0.8rem;
+}
+
+.safari-breadcrumbs a { color: var(--primary-color); text-decoration: none; }
+.safari-breadcrumbs a:hover { color: var(--accent-dark); text-decoration: underline; }
+.safari-breadcrumbs [aria-current="page"] { color: var(--text-dark); }
+
+.safari-detail-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.88fr);
+  align-items: center;
+  gap: clamp(26px, 5vw, 62px);
+  padding: clamp(26px, 5vw, 56px);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--card-bg);
+  box-shadow: 0 20px 55px rgba(24, 48, 36, 0.08);
+}
+
+.safari-detail-kicker,
+.safari-section-heading > span,
+.safari-detail-footer > div > span {
+  color: var(--accent-dark);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.safari-detail-copy h1 {
+  margin: 14px 0;
+  color: var(--primary-dark);
+  font-size: clamp(2rem, 4.5vw, 3.55rem);
+  line-height: 1.06;
+}
+
+.safari-detail-copy > p:not(.safari-price-note) {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.safari-detail-facts {
+  display: grid;
+  gap: 10px;
+  margin: 22px 0;
+}
+
+.safari-detail-facts span,
+.safari-detail-facts a {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #43574b;
+  font-size: 0.87rem;
+  font-weight: 650;
+}
+
+.safari-detail-facts a { text-decoration: none; }
+.safari-detail-facts a:hover { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 3px; }
+
+.safari-detail-facts svg { flex: 0 0 auto; margin-top: 3px; color: var(--accent-dark); }
+
+.safari-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.safari-primary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 19px;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.safari-primary-action:hover { transform: translateY(-2px); background: var(--primary-dark); }
+.safari-starting-price { color: var(--text-muted); font-size: 0.82rem; }
+.safari-starting-price strong { display: block; color: var(--primary-dark); font-size: 1.28rem; }
+.safari-price-note { margin-top: 10px; color: #788179; font-size: 0.72rem; line-height: 1.5; }
+
+.safari-feature-image {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  background: #e5e5db;
+}
+
+.safari-feature-image img,
+.safari-photo-grid img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.safari-feature-image figcaption {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  width: fit-content;
+  max-width: calc(100% - 24px);
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(16, 37, 29, 0.82);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+.safari-detail-section { padding: clamp(48px, 7vw, 78px) 4px 0; }
+.safari-section-heading { max-width: 710px; margin: 0 auto 28px; text-align: center; }
+.safari-section-heading h2,
+.safari-detail-footer h2 { margin: 9px 0 10px; color: var(--primary-dark); font-size: clamp(1.65rem, 3.5vw, 2.5rem); line-height: 1.14; }
+.safari-section-heading p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; }
+
+.safari-highlight-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.safari-highlight-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 62px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: var(--card-bg);
+  color: #405449;
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.safari-highlight-list li::before {
+  content: "✓";
+  display: grid;
+  flex: 0 0 23px;
+  width: 23px;
+  height: 23px;
+  place-items: center;
+  border-radius: 50%;
+  background: #e8eee5;
+  color: #315d43;
+  font-size: 0.77rem;
+  font-weight: 800;
+}
+
+.safari-itinerary-section { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: start; gap: clamp(24px, 5vw, 64px); }
+.safari-itinerary-section .safari-section-heading { position: sticky; top: 110px; margin: 0; text-align: left; }
+
+.safari-itinerary-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.safari-itinerary-list li { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 14px; padding: 0 0 22px; }
+.safari-day-number { display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid #d6c9a9; border-radius: 50%; color: var(--accent-dark); font-size: 0.72rem; font-weight: 800; }
+.safari-day-label { color: var(--accent-dark); font-size: 0.67rem; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase; }
+.safari-itinerary-list h3 { margin: 3px 0 5px; color: var(--primary-dark); font-family: var(--font-body); font-size: 0.98rem; }
+.safari-itinerary-list p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.65; }
+
+.safari-photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 14px; }
+.safari-photo-grid figure { overflow: hidden; aspect-ratio: 4 / 3; margin: 0; border: 1px solid var(--border); border-radius: 17px; background: #e5e5db; }
+.safari-photo-grid figure:first-child { grid-column: span 2; aspect-ratio: 16 / 8; }
+
+.safari-faq-list { display: grid; gap: 10px; max-width: 850px; margin-inline: auto; }
+.safari-faq-list details { padding: 18px 20px; border: 1px solid var(--border); border-radius: 14px; background: var(--card-bg); }
+.safari-faq-list summary { color: var(--primary-dark); font-size: 0.91rem; font-weight: 750; cursor: pointer; }
+.safari-faq-list details p { padding-top: 11px; color: var(--text-muted); font-size: 0.86rem; line-height: 1.7; }
+
+.safari-detail-footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 72px; padding: clamp(24px, 4vw, 40px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 22px; background: #17372b; }
+.safari-detail-footer h2 { color: #fffdf6; }
+.safari-detail-footer p { color: #d2dcd3; font-size: 0.88rem; }
+.safari-detail-footer .safari-primary-action { flex: 0 0 auto; background: var(--accent-color); color: #172a20; }
+.safari-detail-footer .safari-primary-action:hover { background: var(--accent-light); }
+
+@media (max-width: 760px) {
+  .safari-detail-page { padding: calc(72px + 18px) 14px 52px; }
+  .safari-detail-hero { grid-template-columns: minmax(0, 1fr); padding: 22px; border-radius: 21px; }
+  .safari-feature-image { grid-row: 1; }
+  .safari-itinerary-section { grid-template-columns: minmax(0, 1fr); }
+  .safari-itinerary-section .safari-section-heading { position: static; text-align: center; }
+  .safari-photo-grid figure:first-child { grid-column: auto; aspect-ratio: 4 / 3; }
+  .safari-detail-footer { align-items: stretch; flex-direction: column; margin-top: 50px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .safari-primary-action { transition: none; }
+}

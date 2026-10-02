@@ -10,7 +10,6 @@
     min-height: 100vh;
   }
 
-
   /* HERO */
 
   .about-hero {
@@ -489,4 +488,71 @@ color:#ddd;
 
 line-height:1.8;
 
+}
+
+/* Keep every About page surface legible in both saved theme preferences. */
+.about-page {
+  background: var(--bg-light, #f5f2e9);
+  color: var(--text-dark, #26372f);
+}
+
+.about-page .about-hero-content h1 {
+  color: #fffdf6;
+  text-shadow: 0 3px 24px rgba(0, 0, 0, 0.45);
+}
+
+.about-page .about-hero-content span {
+  color: var(--accent-light, #ddc99b);
+}
+
+.about-page .about-hero-content p {
+  color: #f2f2ed;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.about-page .about-section h2,
+.about-page .about-grid h2,
+.about-page .about-faq h2 {
+  color: var(--primary-dark, #15382d);
+}
+
+.about-page .about-section p,
+.about-page .about-text p,
+.about-page .about-faq .faq-item p {
+  color: var(--text-muted, #59695f);
+}
+
+.about-page .founder-card,
+.about-page .info-card,
+.about-page .list-card,
+.about-page .about-faq .faq-item {
+  background: var(--card-bg, #fffefa);
+  border: 1px solid var(--border, rgba(28, 55, 43, 0.13));
+  box-shadow: 0 12px 34px rgba(24, 48, 36, 0.06);
+}
+
+.about-page .founder-card h3,
+.about-page .info-card h3,
+.about-page .about-faq .faq-item h3 {
+  color: var(--primary-dark, #15382d);
+}
+
+.about-page .list-card {
+  color: var(--text-dark, #26372f);
+}
+
+.about-page .list-card:hover {
+  border-color: var(--accent-color, #b89a63);
+}
+
+.about-page > .contact-box {
+  color: var(--text-dark, #26372f);
+}
+
+.about-page > .contact-box h2 {
+  color: var(--primary-dark, #15382d);
+}
+
+.about-page > .contact-box p {
+  color: var(--text-muted, #59695f);
 }

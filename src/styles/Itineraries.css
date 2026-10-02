@@ -3,15 +3,10 @@
 ================================ */
 
 .itinerary-section {
-  padding: 120px 6%;
-  background: linear-gradient(
-    135deg,
-    #0f172a,
-    #1e293b,
-    #0f172a
-  );
-  color: white;
-  font-family: "Poppins", sans-serif;
+  padding: clamp(72px, 9vw, 120px) 6%;
+  background: #f2efe6;
+  color: #26372f;
+  font-family: var(--font-body, "DM Sans", sans-serif);
 }
 /* ===================
    HEADER FIX (CENTERED PROPERLY)
@@ -32,7 +27,7 @@
 .itinerary-header h2 {
   font-size: 36px;
   font-weight: 800;
-  color: #ffd700;
+  color: #183c30;
   line-height: 1.2;
   max-width: 900px;
 }
@@ -40,7 +35,7 @@
 /* SUBTITLE */
 .itinerary-header p {
   font-size: 15px;
-  color: #cbd5e1;
+  color: #68766c;
   max-width: 650px;
   line-height: 1.6;
 }
@@ -54,9 +49,8 @@
 
 /* CARD */
 .itinerary-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #fffefa;
+  border: 1px solid rgba(28, 55, 43, 0.13);
   border-radius: 20px;
   padding: 26px;
   transition: 0.4s ease;
@@ -66,20 +60,20 @@
 /* HOVER EFFECT */
 .itinerary-card:hover {
   transform: translateY(-12px);
-  background: rgba(255, 255, 255, 0.12);
+  background: #faf8f2;
 }
 
 /* FEATURED CARD */
 .itinerary-card.featured {
-  border: 1px solid #ffd700;
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
+  border: 1px solid #c7ad76;
+  box-shadow: 0 12px 35px rgba(28, 55, 43, 0.1);
 }
 
 /* LOCATION */
 .card-top .location {
   font-size: 12px;
-  background: rgba(255, 215, 0, 0.15);
-  color: #ffd700;
+  background: #f1ead8;
+  color: #806a40;
   padding: 5px 10px;
   border-radius: 20px;
 }
@@ -90,8 +84,8 @@
   align-items: center;
   justify-content: center;
   font-size: 11px;
-  background: #ffd700;
-  color: #000;
+  background: #b89a63;
+  color: #172a20;
   padding: 4px 10px;
   border-radius: 999px;
   font-weight: 600;
@@ -109,7 +103,7 @@
 /* INFO */
 .info {
   font-size: 13px;
-  color: #cbd5e1;
+  color: #68766c;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -125,7 +119,7 @@
 
 /* PRICE */
 .bottom h4 {
-  color: #ffd700;
+  color: #806a40;
   font-size: 18px;
 }
 
@@ -134,8 +128,8 @@
 =================== */
 
 .bottom button {
-  background: #ffd700;
-  color: #000;
+  background: #b89a63;
+  color: #172a20;
   border: none;
   padding: 10px 16px;
   border-radius: 25px;
@@ -155,7 +149,7 @@
 
 /* HOVER */
 .bottom button:hover {
-  background: #ffcc00;
+  background: #d0b77e;
   transform: translateY(-3px);
 }
 
@@ -173,6 +167,14 @@
 }
 /* MOBILE */
 @media (max-width: 768px) {
+  .itinerary-section {
+    padding: 68px 18px;
+  }
+
+  .itinerary-header h2 {
+    font-size: 26px;
+  }
+
   .bottom {
     flex-direction: column;
     gap: 10px;
@@ -188,6 +190,3 @@
     font-size: 11px;
   }
 }
-  .itinerary-header h2 {
-    font-size: 26px;
-  }

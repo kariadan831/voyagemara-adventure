@@ -4,42 +4,56 @@
 
   <url>
     <loc>https://voyagemara-adventure.vercel.app/</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://voyagemara-adventure.vercel.app/#about</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://voyagemara-adventure.vercel.app/about</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/lake-nakuru</loc>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://voyagemara-adventure.vercel.app/#itineraries</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/lake-naivasha</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://voyagemara-adventure.vercel.app/#tours</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://voyagemara-adventure.vercel.app/#gallery</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/nairobi-national-park</loc>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://voyagemara-adventure.vercel.app/#contact</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/maasai-mara</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/amboseli</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/samburu</loc>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

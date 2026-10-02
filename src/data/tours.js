@@ -7,6 +7,7 @@
         rating: 5,
         duration: "1 Day",
         price: 180,
+        location: "Nairobi National Park, Nairobi, Kenya",
 
       cover: "/tours/nairobi/cover.webp",
 
@@ -27,6 +28,11 @@
           "Big Four wildlife",
           "Hotel pickup and drop-off",
         ],
+        itinerary: [
+          { day: "Morning", title: "Nairobi pickup", description: "Meet your safari guide at your Nairobi hotel and travel to the park entrance." },
+          { day: "Game drive", title: "Explore the park", description: "Enjoy a guided game drive with time to look for wildlife across the open plains." },
+          { day: "Afternoon", title: "Return to Nairobi", description: "Exit the park and return to your hotel. Exact timing depends on traffic and wildlife sightings." },
+        ],
       },
 
       {
@@ -37,6 +43,7 @@
         rating: 5,
         duration: "3 Days / 2 Nights",
         price: 620,
+        location: "Maasai Mara National Reserve, Kenya",
 
       cover: "/tours/maasai-mara/cover.webp",
 
@@ -58,6 +65,11 @@
           "Great Migration",
           "Sunrise game drives",
         ],
+        itinerary: [
+          { day: "Day 1", title: "Nairobi to Maasai Mara", description: "Travel to the reserve, check in at your camp or lodge, then head out for an afternoon game drive." },
+          { day: "Day 2", title: "Full day in the Mara", description: "Spend the day exploring wildlife areas with your guide, with a picnic break in the reserve." },
+          { day: "Day 3", title: "Morning drive and return", description: "Enjoy an early game drive before beginning the return journey to Nairobi." },
+        ],
       },
 
       {
@@ -68,6 +80,7 @@
   rating: 5,
   duration: "2 Days / 1 Night",
   price: 520,
+  location: "Amboseli National Park, Kenya",
 
   cover: "/tours/amboseli/cover.webp",
 
@@ -89,6 +102,10 @@
     "Luxury accommodation",
     "Excellent photography",
   ],
+  itinerary: [
+    { day: "Day 1", title: "Nairobi to Amboseli", description: "Drive to Amboseli, settle in at your accommodation and enjoy an afternoon game drive." },
+    { day: "Day 2", title: "Amboseli and return", description: "Set out for an early game drive with views of Kilimanjaro when weather allows, then return to Nairobi." },
+  ],
 },
 
       {
@@ -99,16 +116,19 @@
         rating: 4,
         duration: "1 Day",
         price: 450,
+        location: "Lake Nakuru National Park, Nakuru County, Kenya",
+        geo: { latitude: -0.3667, longitude: 36.0833 },
+        seoTitle: "Lake Nakuru Flamingo Safari | 1-Day Kenya Tour | VoyageMara",
+        seoDescription: "Explore Lake Nakuru National Park on a day safari from Nairobi. Look for rhinos, giraffes and seasonal flamingos with a local guide. Starting from US$450 per person; confirm dates and inclusions with VoyageMara.",
 
       
     cover: "/tours/lake-nakuru/cover.webp",
 
-    gallery: [
-      "/tours/lake-nakuru/lake-nakuru1.webp",
-      "/tours/lake-nakuru/lake-nakuru2.webp",
-      "/tours/lake-nakuru/lake-nakuru3.webp",
-      "/tours/lake-nakuru/lake-nakuru4.webp",
-    ],
+    gallery: ["/tours/lake-naivasha/lake-naivasha-3.webp"],
+    imageAlts: {
+      "/tours/lake-nakuru/cover.webp": "White rhino at the edge of a lake in Kenya",
+      "/tours/lake-naivasha/lake-naivasha-3.webp": "Flock of flamingos wading in a Kenyan lake",
+    },
 
 
         description:
@@ -120,6 +140,16 @@
           "Bird watching",
           "Game drive",
         ],
+        faqs: [
+          { question: "What can I see on a Lake Nakuru safari?", answer: "Lake Nakuru National Park is known for rhinos, giraffes and abundant birdlife. Flamingo numbers vary with season and lake conditions, so sightings cannot be guaranteed." },
+          { question: "How long is the Lake Nakuru tour?", answer: "This is a one-day safari. The itinerary includes travel to the park, a guided game drive and a return to Nairobi; exact timings depend on traffic and park conditions." },
+          { question: "What is the starting price?", answer: "The listed starting price is US$450 per person. Ask VoyageMara to confirm current availability, inclusions and a final quote for your dates and group." },
+        ],
+        itinerary: [
+          { day: "Morning", title: "Journey to Lake Nakuru", description: "Meet your guide in Nairobi and travel to Lake Nakuru National Park." },
+          { day: "Midday", title: "Park game drive", description: "Explore the park and its habitats, looking out for birdlife, rhinos and other wildlife." },
+          { day: "Afternoon", title: "Return to Nairobi", description: "Leave the park and travel back to Nairobi." },
+        ],
       },
 
       {
@@ -130,6 +160,7 @@
         rating: 5,
         duration: "3 Days / 2 Nights",
         price: 750,
+        location: "Samburu National Reserve, Kenya",
 
       cover: "/tours/samburu/cover.webp",
 
@@ -150,6 +181,11 @@
           "Luxury Camp",
           "River Safari",
         ],
+        itinerary: [
+          { day: "Day 1", title: "Travel to Samburu", description: "Journey north to Samburu, check in to your camp and enjoy an afternoon game drive." },
+          { day: "Day 2", title: "Discover the reserve", description: "Explore Samburu's riverine and savannah habitats with your guide." },
+          { day: "Day 3", title: "Morning drive and return", description: "Enjoy a final morning drive before returning to Nairobi." },
+        ],
       },
 
       {
@@ -160,14 +196,22 @@
         rating: 4,
         duration: "1 Day",
         price: 300,
+        location: "Lake Naivasha and Crescent Island, Nakuru County, Kenya",
+        geo: { latitude: -0.7667, longitude: 36.3667 },
+        seoTitle: "Lake Naivasha Boat Safari & Crescent Island | VoyageMara",
+        seoDescription: "Spend a day on Lake Naivasha with a boat trip and a guided Crescent Island walk. Look for hippos and lake birdlife. Starting from US$300 per person; confirm access, dates and inclusions with VoyageMara.",
 
           cover: "/tours/lake-naivasha/cover.webp",
 
     gallery: [
-      "/tours/lake-naivasha/lake-naivasha1.webp",
-      "/tours/lake-naivasha/lake-naivasha2.webp",
-      "/tours/lake-naivasha/lake-naivasha3.webp",
+      "/tours/lake-naivasha/lake-naivasha-1.webp",
+      "/tours/lake-naivasha/lake-naivasha-2.webp",
     ],
+    imageAlts: {
+      "/tours/lake-naivasha/cover.webp": "Hippo and calf at the water's edge at Lake Naivasha",
+      "/tours/lake-naivasha/lake-naivasha-1.webp": "Visitors on a guided boat trip on Lake Naivasha",
+      "/tours/lake-naivasha/lake-naivasha-2.webp": "Acacia-lined shore and hills around Lake Naivasha",
+    },
         description:
           "Enjoy a relaxing boat ride, hippo sightings, birdlife, and a walking safari on Crescent Island.",
 
@@ -176,6 +220,16 @@
           "Hippos",
           "Walking safari",
           "Bird watching",
+        ],
+        faqs: [
+          { question: "What is included in the Lake Naivasha experience?", answer: "The listed day itinerary features a boat ride on Lake Naivasha and a guided Crescent Island walk. Confirm transport, entry fees and other inclusions with VoyageMara when requesting your quote." },
+          { question: "Can we see hippos on the boat ride?", answer: "Hippos live in Lake Naivasha and may be seen from the boat, but wildlife sightings are not guaranteed and depend on conditions on the day." },
+          { question: "How long is the Lake Naivasha tour?", answer: "This is a one-day experience with a morning lake visit, a midday Crescent Island walk subject to access, and a return to Nairobi in the afternoon." },
+        ],
+        itinerary: [
+          { day: "Morning", title: "Arrive at Lake Naivasha", description: "Travel from Nairobi to Lake Naivasha and board a guided boat ride, subject to lake conditions." },
+          { day: "Midday", title: "Crescent Island walk", description: "Take a guided walk on Crescent Island, subject to access and local conditions." },
+          { day: "Afternoon", title: "Return to Nairobi", description: "Enjoy the lakeside views before travelling back to Nairobi." },
         ],
       },
     ];

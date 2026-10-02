@@ -13,8 +13,8 @@ export default function Tours() {
         <h2>Featured Tours & Safari Experiences</h2>
 
         <p>
-          Handcrafted luxury safari packages across Kenya's most iconic
-          destinations.
+          Discover day trips and multi-day journeys across Kenya, from Maasai
+          Mara game drives to Lake Nakuru birdlife and Lake Naivasha boat trips.
         </p>
       </div>
 
@@ -30,6 +30,7 @@ export default function Tours() {
 
       {selectedTour && (
         <TourModal
+          key={selectedTour.id}
           tour={selectedTour}
           onClose={() => setSelectedTour(null)}
         />

@@ -1,4 +1,5 @@
 import "./TourCard.css";
+import { Link } from "react-router-dom";
 
 export default function TourCard({ tour, onOpen }) {
   return (
@@ -28,7 +29,8 @@ export default function TourCard({ tour, onOpen }) {
         <p>{tour.description}</p>
 
         <div className="tour-meta">
-          📅 {tour.duration}
+          <span>📅 {tour.duration}</span>
+          {tour.location && <span className="tour-location">⌖ {tour.location}</span>}
         </div>
 
         <div className="price">
@@ -38,6 +40,9 @@ export default function TourCard({ tour, onOpen }) {
         <button onClick={onOpen}>
           View Safari
         </button>
+        <Link className="tour-details-link" to={`/safaris/${tour.slug}`}>
+          Full itinerary &amp; travel details <span aria-hidden="true">→</span>
+        </Link>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 # VoyageMara Safaris
 
 Website:
-https://voyagemara.com
+https://voyagemara-adventure.vercel.app/
 
 Description:
 VoyageMara Safaris provides luxury and affordable safari tours across Kenya.
@@ -14,6 +14,16 @@ Destinations
 - Lake Naivasha
 - Samburu
 - Nairobi National Park
+
+Safari detail pages
+
+- Lake Nakuru Flamingo Safari: https://voyagemara-adventure.vercel.app/safaris/lake-nakuru
+- Lake Naivasha Boat & Crescent Island: https://voyagemara-adventure.vercel.app/safaris/lake-naivasha
+
+Safari detail pages
+
+- Lake Nakuru Flamingo Safari: https://voyagemara-adventure.vercel.app/safaris/lake-nakuru
+- Lake Naivasha Boat & Crescent Island: https://voyagemara-adventure.vercel.app/safaris/lake-naivasha
 
 Services
 

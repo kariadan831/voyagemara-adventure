@@ -16,18 +16,6 @@
 
   <!-- ================= SEO ================= -->
 
-  <title>Luxury Kenya Safaris | VoyageMara</title>
-
-  <meta
-    name="description"
-    content="Book Kenya safaris with VoyageMara. Explore Maasai Mara, Amboseli, Samburu, Lake Nakuru and more with expert local guides."
-  />
-
-  <meta
-    name="keywords"
-    content="Kenya Safari, Maasai Mara Safari, Amboseli Safari, Samburu Safari, Lake Nakuru Safari, Tsavo Safari, Luxury Kenya Safari"
-  />
-
   <meta
     name="robots"
     content="index,follow,max-image-preview:large"
@@ -41,11 +29,6 @@
   <meta
     name="theme-color"
     content="#0b3d2e"
-  />
-
-  <link
-    rel="canonical"
-    href="https://voyagemara-adventure.vercel.app/"
   />
 
   <!-- ================= PWA ================= -->
@@ -97,98 +80,6 @@
     crossorigin
   />
 
-  <!-- ================= GEO ================= -->
-
-  <meta name="geo.region" content="KE" />
-  <meta name="geo.placename" content="Nairobi" />
-  <meta name="geo.position" content="-1.286389;36.817223" />
-  <meta name="ICBM" content="-1.286389,36.817223" />
-
- <!-- Open Graph -->
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="VoyageMara Safaris" />
-<meta property="og:locale" content="en_US" />
-
-<meta
-  property="og:title"
-  content="Luxury Kenya Safaris | VoyageMara Safaris"
-/>
-
-<meta
-  property="og:description"
-  content="Book unforgettable Kenya safaris with expert local guides."
-/>
-
-<meta
-  property="og:url"
-  content="https://voyagemara-adventure.vercel.app/"
-/>
-
-<meta
-  property="og:image"
-  content="https://voyagemara-adventure.vercel.app/og-image.png"
-/>
-
-<meta
-  property="og:image:width"
-  content="1200"
-/>
-
-<meta
-  property="og:image:height"
-  content="630"
-/>
-
-<meta
-  property="og:image:type"
-  content="image/png"
-/>
-
-<meta
-  property="og:image:alt"
-  content="VoyageMara Safaris - Luxury Kenya Safari Tours"
-/>
-
-<meta
-  name="twitter:card"
-  content="summary_large_image"
-/>
-
-<meta
-  name="twitter:image"
-  content="https://voyagemara-adventure.vercel.app/og-image.png"
-/>
-
-<meta
-  name="twitter:image:alt"
-  content="VoyageMara Safaris - Luxury Kenya Safari Tours"
-/>
-  <!-- ================= TWITTER ================= -->
-
-<meta
-  name="twitter:card"
-  content="summary_large_image"
-/>
-
-<meta
-  name="twitter:title"
-  content="Luxury Kenya Safaris | VoyageMara"
-/>
-
-<meta
-  name="twitter:description"
-  content="Book unforgettable Kenya safari holidays."
-/>
-
-<meta
-  name="twitter:image"
-  content="https://voyagemara-adventure.vercel.app/og-image.jpg"
-/>
-
-<meta
-  name="twitter:image:alt"
-  content="Luxury Kenya Safari Tours by VoyageMara Safaris"
-/>
   <!-- ================= SCHEMA ================= -->
 
   <script type="application/ld+json">
@@ -197,81 +88,29 @@
  "@graph":[
 
 {
-"@type":"Organization",
+"@type":["Organization","TravelAgency","LocalBusiness"],
+"@id":"https://voyagemara-adventure.vercel.app/#organization",
 "name":"VoyageMara Safaris",
 "url":"https://voyagemara-adventure.vercel.app/",
 "logo":"https://voyagemara-adventure.vercel.app/logo.png",
+"image":"https://voyagemara-adventure.vercel.app/og-image.png",
+"description":"Kenyan safari company offering private and tailor-made wildlife journeys across Kenya.",
+"areaServed":{"@type":"Country","name":"Kenya"},
+"priceRange":"$$",
 "telephone":"+254705814181",
-"email":"info@voyagemara.com"
-},
-
-{
-"@type":"TravelAgency",
-"name":"VoyageMara Safaris",
-"url":"https://voyagemara-adventure.vercel.app/",
-"image":"https://voyagemara-adventure.vercel.app/logo.png",
-"description":"Luxury Kenya safari tours.",
-"areaServed":"Kenya",
-"priceRange":"$$"
-},
-
-{
-"@type":"LocalBusiness",
-"name":"VoyageMara Safaris",
-"url":"https://voyagemara-adventure.vercel.app/",
-"telephone":"+254705814181",
-"address":{
-"@type":"PostalAddress",
-"addressLocality":"Nairobi",
-"addressCountry":"KE"
-}
+"email":"info@voyagemara.com",
+"address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressCountry":"KE"},
+"contactPoint":{"@type":"ContactPoint","telephone":"+254705814181","email":"info@voyagemara.com","contactType":"customer service"},
+"knowsAbout":["Kenya safaris","Maasai Mara","Amboseli National Park","Samburu National Reserve","Lake Nakuru","Lake Naivasha"]
 },
 
 {
 "@type":"WebSite",
+"@id":"https://voyagemara-adventure.vercel.app/#website",
 "name":"VoyageMara Safaris",
 "url":"https://voyagemara-adventure.vercel.app/",
-"potentialAction":{
-"@type":"SearchAction",
-"target":"https://voyagemara-adventure.vercel.app/?search={search_term_string}",
-"query-input":"required name=search_term_string"
-}
-},
-
-{
-"@type":"BreadcrumbList",
-"itemListElement":[
-
-{
-"@type":"ListItem",
-"position":1,
-"name":"Home",
-"item":"https://voyagemara-adventure.vercel.app/"
-},
-
-{
-"@type":"ListItem",
-"position":2,
-"name":"Tours",
-"item":"https://voyagemara-adventure.vercel.app/#tours"
-},
-
-{
-"@type":"ListItem",
-"position":3,
-"name":"Gallery",
-"item":"https://voyagemara-adventure.vercel.app/#gallery"
-},
-
-{
-"@type":"ListItem",
-"position":4,
-"name":"Contact",
-"item":"https://voyagemara-adventure.vercel.app/#contact"
-}
-
-]
-
+"publisher":{"@id":"https://voyagemara-adventure.vercel.app/#organization"},
+"inLanguage":"en-KE"
 }
 
 ]

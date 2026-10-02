@@ -6,14 +6,8 @@ const slides = [
   {
     tag: "ADVENTURE",
     title: "Maasai Mara Experience",
-    subtitle: "Witness the Great Migration in Kenya’s iconic reserve.",
-    image: "/images/masai mara.webp",
-  },
-  {
-    tag: "WILDLIFE",
-    title: "Lion Encounters",
-    subtitle: "Experience lions in their natural savannah habitat.",
-    image: "/images/lions.webp",
+    subtitle: "Discover Kenya’s iconic savannah with a locally guided safari, tailored to your pace.",
+    image: "/images/masai-mara.webp",
   },
   {
     tag: "DISCOVERY",
@@ -28,70 +22,16 @@ const slides = [
     image: "/images/elephant.webp",
   },
   {
-    tag: "WILDLIFE",
-    title: "Elephant Close View",
-    subtitle: "Up close safari encounters with elephants.",
-    image: "/images/eleph1.webp",
-  },
-  {
-    tag: "WILDLIFE",
-    title: "Elephant Trails",
-    subtitle: "Follow the movement of herds across savannah.",
-    image: "/images/eleph2.webp",
-  },
-  {
     tag: "NATURE",
     title: "Hippo River Life",
     subtitle: "Hippos relaxing in Kenya’s rivers and lakes.",
     image: "/images/hippo.webp",
   },
   {
-    tag: "FARM LIFE",
-    title: "Kilimo Experience",
-    subtitle: "Discover local farming culture in Kenya.",
-    image: "/images/kilimo.webp",
-  },
-  {
-    tag: "NATURE",
-    title: "Savannah Zebras",
-    subtitle: "Beautiful zebra herds across open plains.",
-    image: "/images/zebras.webp",
-  },
-  {
-    tag: "ROMANCE",
-    title: "Hot Air Balloon Safari",
-    subtitle: "Sunrise over Maasai Mara skies.",
-    image: "/images/ballon.webp",
-  },
-  {
     tag: "LUXURY",
     title: "Luxury Safari Camp",
     subtitle: "Comfort meets wilderness in premium camps.",
     image: "/images/camp.webp",
-  },
-  {
-    tag: "CULTURE",
-    title: "Maasai Culture",
-    subtitle: "Authentic traditions of the Maasai people.",
-    image: "/images/maasai.webp",
-  },
-  {
-    tag: "CULTURE",
-    title: "Maasai Warriors",
-    subtitle: "Traditional Maasai life and heritage.",
-    image: "/images/maasai 1.webp",
-  },
-  {
-    tag: "ICONIC",
-    title: "Rhino Sanctuary",
-    subtitle: "Rare rhino sightings in protected reserves.",
-    image: "/images/rhino.webp",
-  },
-  {
-    tag: "WILDLIFE",
-    title: "Wildebeest Migration",
-    subtitle: "The great migration across Maasai Mara.",
-    image: "/images/masai mara.webp",
   },
 ];
 
@@ -163,33 +103,27 @@ export default function Hero() {
       <div
         ref={bgRef}
         className="hero-bg"
-        style={{ backgroundImage: `url(${current.image})` }}
-      />
+      >
+        <img
+          src={current.image}
+          alt={current.title}
+          width="1920"
+          height="1280"
+          fetchPriority={index === 0 ? "high" : "auto"}
+          decoding="async"
+          draggable="false"
+        />
+      </div>
 
       <div className="hero-overlay" />
 
       {/* CARD */}
       <div className="hero-center">
         <div ref={cardRef} className="hero-card landscape">
-
-          <div className="hero-image">
-           <img
-  src={current.image}
-  alt={current.title}
-  width="700"
-  height="500"
-  fetchPriority="high"
-  decoding="async"
-  draggable="false"
-  onError={(e) => {
-    e.currentTarget.src = "/images/camp.webp";
-  }}
-/>
-          </div>
-
           <div className="hero-text">
             <div className="hero-tag">{current.tag}</div>
 
+            <h1>Kenya safaris, thoughtfully planned</h1>
             <h2 ref={titleRef}>{current.title}</h2>
 
             <p ref={textRef}>{current.subtitle}</p>
@@ -211,24 +145,30 @@ export default function Hero() {
       </div>
 
       {/* ARROWS */}
-      <button className="arrow arrow-left" onClick={prevSlide}>‹</button>
-      <button className="arrow arrow-right" onClick={nextSlide}>›</button>
+      <button className="arrow arrow-left" onClick={prevSlide} aria-label="Previous safari highlight">‹</button>
+      <button className="arrow arrow-right" onClick={nextSlide} aria-label="Next safari highlight">›</button>
 
       {/* THUMB STRIP */}
       <div className="thumb-strip">
         {slides.map((slide, i) => (
-         <img
-  key={i}
-  src={slide.image}
-  alt={slide.title}
-  className={i === index ? "active-thumb" : ""}
-  loading="lazy"
-  decoding="async"
-  width="120"
-  height="80"
-  draggable="false"
-  onClick={() => changeSlide(i)}
-/>
+          <button
+            key={slide.image}
+            type="button"
+            className={i === index ? "active-thumb" : ""}
+            onClick={() => changeSlide(i)}
+            aria-label={`Show ${slide.title}`}
+            aria-current={i === index ? "true" : undefined}
+          >
+            <img
+              src={slide.image}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              width="120"
+              height="80"
+              draggable="false"
+            />
+          </button>
         ))}
       </div>
 

@@ -1,8 +1,10 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 
 import AboutUs from "./pages/AboutUs";
+import SafariDetail from "./pages/SafariDetail";
+import tours from "./data/tours";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -22,7 +24,30 @@ import { initScrollAnimations } from "./animations/scrollAnimations";
 export default function App() {
 
 
+  const { pathname, hash } = useLocation();
+  const isAboutPage = pathname === "/about";
+  const requestedTourSlug = pathname.startsWith("/safaris/")
+    ? pathname.split("/").filter(Boolean)[1]
+    : null;
+  const activeTour = tours.find((tour) => tour.slug === requestedTourSlug);
+  const isSafariPage = Boolean(activeTour);
+  const pageUrl = `https://voyagemara-adventure.vercel.app${isAboutPage ? "/about" : isSafariPage ? `/safaris/${activeTour.slug}` : "/"}`;
+  const pageTitle = isSafariPage
+    ? activeTour.seoTitle ?? `${activeTour.title} | VoyageMara Safaris`
+    : isAboutPage
+    ? "About VoyageMara Safaris | Kenya Safari Experts"
+    : "Kenya Safaris & Maasai Mara Tours | VoyageMara Safaris";
+  const pageDescription = isSafariPage
+    ? activeTour.seoDescription ?? activeTour.description
+    : isAboutPage
+    ? "Meet the Nairobi-based team planning locally guided, tailor-made wildlife journeys across Kenya."
+    : "Plan a Kenya safari with VoyageMara Safaris. Explore Maasai Mara, Amboseli, Samburu and more with local guides, private trips and custom itineraries.";
+  const pageImage = isSafariPage
+    ? `https://voyagemara-adventure.vercel.app${activeTour.cover}`
+    : "https://voyagemara-adventure.vercel.app/og-image.png";
+
   useEffect(() => {
+    if (pathname !== "/") return undefined;
 
     const timer = setTimeout(() => {
 
@@ -33,7 +58,26 @@ export default function App() {
 
     return () => clearTimeout(timer);
 
-  },[]);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (pathname !== "/" || !hash) return undefined;
+
+    let secondFrame = 0;
+    const frame = requestAnimationFrame(() => {
+      secondFrame = requestAnimationFrame(() => {
+        document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame(frame);
+      cancelAnimationFrame(secondFrame);
+    };
+  }, [pathname, hash]);
 
 
 
@@ -51,16 +95,27 @@ export default function App() {
 
       <html lang="en" />
 
-      <title>
-        VoyageMara Safaris | Luxury Kenya Safaris,
-        Maasai Mara Tours & Wildlife Adventures
-      </title>
+      <title>{pageTitle}</title>
 
+      <meta name="description" content={pageDescription} />
 
-      <meta
-      name="description"
-      content="VoyageMara Safaris offers luxury Kenya safari experiences including Maasai Mara, Amboseli, Samburu, Lake Nakuru, Tsavo and Diani Beach."
-      />
+      <link rel="canonical" href={pageUrl} />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_KE" />
+      <meta property="og:site_name" content="VoyageMara Safaris" />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={pageDescription} />
+      <meta property="og:url" content={pageUrl} />
+      <meta property="og:image" content={pageImage} />
+      <meta property="og:image:alt" content={isSafariPage ? `${activeTour.title} safari in ${activeTour.location}` : "Kenya safari experiences with VoyageMara Safaris"} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={pageDescription} />
+      <meta name="twitter:image" content={pageImage} />
+      <meta name="geo.region" content="KE" />
+      <meta name="geo.placename" content={isSafariPage ? activeTour.location : "Nairobi, Kenya"} />
+      <meta name="geo.position" content={isSafariPage && activeTour.geo ? `${activeTour.geo.latitude};${activeTour.geo.longitude}` : "-1.286389;36.817223"} />
+      <meta name="ICBM" content={isSafariPage && activeTour.geo ? `${activeTour.geo.latitude},${activeTour.geo.longitude}` : "-1.286389,36.817223"} />
 
 
     </Helmet>
@@ -88,94 +143,73 @@ export default function App() {
           <>
 
 
-          <section id="home">
+          <div className="story-section">
 
             <Hero />
 
-          </section>
+          </div>
 
 
 
-          <section 
-          id="about"
-          className="story-section"
-          >
+          <div className="story-section">
 
             <About />
 
-          </section>
+          </div>
 
 
 
 
-          <section 
-          id="itineraries"
-          className="story-section"
-          >
+          <div className="story-section">
 
             <Itineraries />
 
-          </section>
+          </div>
 
 
 
 
-          <section 
-          id="tours"
-          className="story-section"
-          >
+          <div className="story-section">
 
             <Tours />
 
-          </section>
+          </div>
 
 
 
 
-          <section 
-          id="gallery"
-          className="story-section"
-          >
+          <div className="story-section">
 
             <Gallery />
 
-          </section>
+          </div>
 
 
 
 
-          <section 
-          id="faq"
-          className="story-section"
-          >
+          <div className="story-section">
 
             <FAQ />
 
-          </section>
+          </div>
 
 
 
 
-          <section 
-          id="contact"
-          className="story-section"
-          >
+          <div className="story-section">
 
             <Contact />
 
-          </section>
+          </div>
 
 
 
 
-          <section 
-          id="map"
-          className="story-section"
-          >
+          <div className="story-section">
 
             <MapEmbed />
 
-          </section>
+          </div>
 
 
           </>
@@ -191,16 +225,20 @@ export default function App() {
         {/* ================= ABOUT PAGE ================= */}
 
 
+        <Route path="/about" element={<AboutUs />} />
+
         <Route
-
-        path="/about"
-
-        element={
-
-          <AboutUs />
-
-        }
-
+          path="/safaris/:slug"
+          element={
+            activeTour ? (
+              <SafariDetail tour={activeTour} />
+            ) : (
+              <main className="safari-not-found">
+                <h1>Safari not found</h1>
+                <a href="/#tours">Browse our safari tours</a>
+              </main>
+            )
+          }
         />
 
 

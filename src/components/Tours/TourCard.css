@@ -72,6 +72,15 @@
   font-weight: 600;
 }
 
+.tour-meta .tour-location {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted, #6d786f);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
 .price {
   font-size: 1.4rem;
   color: #0b8457;
@@ -92,4 +101,21 @@
 
 .tour-content button:hover {
   background: #086944;
+}
+
+.tour-details-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
+  color: var(--primary-color, #21483a);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.tour-details-link:hover {
+  color: var(--accent-dark, #806a40);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }

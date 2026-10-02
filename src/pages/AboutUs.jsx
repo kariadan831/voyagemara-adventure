@@ -29,7 +29,7 @@
       "VoyageMara Safaris",
 
       "url":
-      "https://voyagemara-adventure.vercel.app/about",
+      "https://voyagemara-adventure.vercel.app/",
 
       "logo":
       "https://voyagemara-adventure.vercel.app/logo.png",
@@ -43,7 +43,7 @@
 
       "@type":"Person",
 
-      "name":"Dancun Karia",
+      "name":"Duncan Karia",
 
       "jobTitle":"Founder"
 
@@ -85,7 +85,7 @@
 
 
       "url":
-      "https://voyagemara-adventure.vercel.app/about",
+      "https://voyagemara-adventure.vercel.app/",
 
 
       "areaServed":
@@ -155,20 +155,6 @@
       })
       }
       </script>
-                <title>
-                  About VoyageMara Safaris | Kenya Safari Experts
-                </title>
-
-                <meta
-                  name="description"
-                  content="Learn about VoyageMara Safaris, a Kenyan safari company offering authentic wildlife adventures, Maasai Mara tours, cultural experiences and sustainable travel."
-                />
-
-                <link
-                  rel="canonical"
-                  href="https://voyagemara-adventure.vercel.app/about"
-                />
-
               </Helmet>
 
 
