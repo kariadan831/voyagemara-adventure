@@ -11,6 +11,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Itineraries from "./components/Itineraries";
 import Tours from "./components/Tours/Tours";
+import BestTourGuide from "./components/BestTourGuide";
 import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
@@ -36,15 +37,16 @@ export default function App() {
     ? activeTour.seoTitle ?? `${activeTour.title} | VoyageMara Safaris`
     : isAboutPage
     ? "About VoyageMara Safaris | Kenya Safari Experts"
-    : "Book Maasai Mara Safaris & Kenya Tours | VoyageMara Safaris";
+    : "Best Tours to Book in Kenya & Maasai Mara Safaris | VoyageMara";
   const pageDescription = isSafariPage
     ? activeTour.seoDescription ?? activeTour.description
     : isAboutPage
     ? "Meet the Nairobi-based team planning locally guided, tailor-made wildlife journeys across Kenya."
-    : "Book your Maasai Mara safari with VoyageMara Safaris. Handcrafted 3-day Big Five wildlife game drives, Great Migration safaris, luxury tented camps, and custom Kenya safari packages. Reserve your safari today.";
+    : "Find out which tour is best to book in Kenya. Compare 3-day Maasai Mara Big Five safaris, Amboseli elephant tours, and custom packages with VoyageMara Safaris.";
   const pageKeywords = isSafariPage
-    ? `book ${activeTour.title.toLowerCase()}, ${activeTour.title.toLowerCase()}, ${activeTour.slug.replace(/-/g, " ")}, kenya safari booking, voyagemara safaris`
-    : "book my maasai mara, book maasai mara safari, maasai mara safari booking, masai mara tour packages, 3 days maasai mara safari, kenya safari booking, voyagemara safaris, best maasai mara tours";
+    ? `book ${activeTour.title.toLowerCase()}, which tour is best to book, best tour operator to book for tours, ${activeTour.slug.replace(/-/g, " ")}, voyagemara contact, voyagemara safaris`
+    : "which tour is best to book for tours, best tour operation to book for tours, best tour operator to book for tours, book my maasai mara, book maasai mara safari, voyagemara contact, voyagemara safaris phone, best kenya safari tour operator";
+
   const pageImage = isSafariPage
     ? `https://voyagemara-adventure.vercel.app${activeTour.cover}`
     : "https://voyagemara-adventure.vercel.app/og-image.png";
@@ -176,6 +178,15 @@ export default function App() {
           <div className="story-section">
 
             <Tours />
+
+          </div>
+
+
+
+
+          <div className="story-section">
+
+            <BestTourGuide />
 
           </div>
 
