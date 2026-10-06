@@ -1,10 +1,12 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 
-import AboutUs from "./pages/AboutUs";
-import SafariDetail from "./pages/SafariDetail";
 import tours from "./data/tours";
+
+// Lazy-load heavy pages so the initial JS bundle stays small
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const SafariDetail = lazy(() => import("./pages/SafariDetail"));
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -240,13 +242,13 @@ export default function App() {
         {/* ================= ABOUT PAGE ================= */}
 
 
-        <Route path="/about" element={<AboutUs />} />
+        <Route path="/about" element={<Suspense fallback={null}><AboutUs /></Suspense>} />
 
         <Route
           path="/safaris/:slug"
           element={
             activeTour ? (
-              <SafariDetail tour={activeTour} />
+              <Suspense fallback={null}><SafariDetail tour={activeTour} /></Suspense>
             ) : (
               <main className="safari-not-found">
                 <h1>Safari not found</h1>
@@ -259,9 +261,11 @@ export default function App() {
         <Route
           path="/booking"
           element={
-            <SafariDetail
-              tour={tours.find((tour) => tour.slug === "maasai-mara") || tours[0]}
-            />
+            <Suspense fallback={null}>
+              <SafariDetail
+                tour={tours.find((tour) => tour.slug === "maasai-mara") || tours[0]}
+              />
+            </Suspense>
           }
         />
 

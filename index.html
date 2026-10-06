@@ -107,18 +107,32 @@
     href="/logo.png"
   />
 
-  <!-- ================= PRECONNECT ================= -->
+  <!-- ================= PRECONNECT & PRELOAD ================= -->
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Preload critical hero image for fastest LCP -->
   <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
+    rel="preload"
+    as="image"
+    href="/images/masai-mara.webp"
+    fetchpriority="high"
   />
 
+  <!-- Preload Google Fonts stylesheet -->
   <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
   />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap"
+    />
+  </noscript>
 
   <!-- ================= SCHEMA (RICH SNIPPETS FOR GOOGLE SEARCH) ================= -->
 
@@ -294,6 +308,172 @@
 </head>
 
 <body>
+
+<!-- ================= SAFARI PAGE LOADER ================= -->
+<div id="vm-loader" role="status" aria-live="polite" aria-label="VoyageMara is loading">
+  <div class="vm-loader-inner">
+    <!-- Animated paw print / safari logo -->
+    <div class="vm-loader-logo">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Globe / Earth circle -->
+        <circle cx="32" cy="32" r="28" stroke="#b89a63" stroke-width="2.5" opacity="0.35"/>
+        <!-- Paw pad -->
+        <ellipse cx="32" cy="38" rx="9" ry="7" fill="#b89a63"/>
+        <!-- Toe beans -->
+        <ellipse cx="21" cy="28" rx="4" ry="4.5" fill="#b89a63"/>
+        <ellipse cx="31" cy="24" rx="4" ry="4.5" fill="#b89a63"/>
+        <ellipse cx="41" cy="28" rx="4" ry="4.5" fill="#b89a63"/>
+        <ellipse cx="26" cy="26" rx="3.5" ry="4" fill="#b89a63"/>
+      </svg>
+    </div>
+
+    <!-- Brand name -->
+    <div class="vm-loader-brand">
+      <span class="vm-brand-voyage">Voyage</span><span class="vm-brand-mara">Mara</span>
+    </div>
+
+    <!-- Animated progress bar -->
+    <div class="vm-loader-bar">
+      <div class="vm-loader-bar-fill"></div>
+    </div>
+
+    <p class="vm-loader-text">Preparing your safari&hellip;</p>
+  </div>
+</div>
+
+<!-- ================= LOADER STYLES ================= -->
+<style>
+  #vm-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #0b1712 0%, #142820 50%, #0b3d2e 100%);
+    transition: opacity 0.55s ease, visibility 0.55s ease;
+  }
+
+  #vm-loader.vm-loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .vm-loader-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    animation: vm-fade-in 0.6s ease forwards;
+  }
+
+  @keyframes vm-fade-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .vm-loader-logo {
+    width: 80px;
+    height: 80px;
+    background: rgba(184,154,99,0.1);
+    border: 2px solid rgba(184,154,99,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: vm-pulse 1.8s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(184,154,99,0.4);
+  }
+
+  @keyframes vm-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(184,154,99,0.4); transform: scale(1); }
+    50%  { box-shadow: 0 0 0 16px rgba(184,154,99,0); transform: scale(1.05); }
+    100% { box-shadow: 0 0 0 0 rgba(184,154,99,0); transform: scale(1); }
+  }
+
+  .vm-loader-brand {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #fff;
+  }
+
+  .vm-brand-voyage { color: #ffffff; }
+  .vm-brand-mara   { color: #b89a63; }
+
+  .vm-loader-bar {
+    width: 200px;
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .vm-loader-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #b89a63, #ddc99b, #b89a63);
+    background-size: 200% 100%;
+    border-radius: 99px;
+    animation: vm-progress 2.2s ease-in-out forwards, vm-shimmer 1.4s linear infinite;
+  }
+
+  @keyframes vm-progress {
+    0%   { width: 0%; }
+    40%  { width: 55%; }
+    70%  { width: 80%; }
+    100% { width: 100%; }
+  }
+
+  @keyframes vm-shimmer {
+    0%   { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  .vm-loader-text {
+    font-family: system-ui, sans-serif;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+    animation: vm-blink 1.6s ease-in-out infinite;
+  }
+
+  @keyframes vm-blink {
+    0%, 100% { opacity: 0.45; }
+    50%       { opacity: 0.9; }
+  }
+</style>
+
+<!-- ================= LOADER DISMISS SCRIPT ================= -->
+<script>
+  (function() {
+    var loader = document.getElementById('vm-loader');
+    // Hide loader once React has painted the first frame
+    var observer = new MutationObserver(function() {
+      var root = document.getElementById('root');
+      if (root && root.firstElementChild) {
+        // Small delay to let React fully render
+        setTimeout(function() {
+          loader.classList.add('vm-loader-hidden');
+          setTimeout(function() {
+            if (loader.parentNode) loader.parentNode.removeChild(loader);
+          }, 600);
+        }, 300);
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.getElementById('root'), { childList: true, subtree: true });
+
+    // Safety fallback: hide after 6 seconds no matter what
+    setTimeout(function() {
+      loader.classList.add('vm-loader-hidden');
+    }, 6000);
+  })();
+</script>
 
 <div id="root"></div>
 
