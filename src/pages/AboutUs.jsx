@@ -67,9 +67,7 @@
 
       "telephone":"+254705814181",
 
-      "contactType":"customer service",
-
-      "email":"info@voyagemara.com"
+      "contactType":"customer service"
 
       }
 
@@ -480,11 +478,6 @@
 
                   <p>
                     Phone: +254 705 814 181
-                  </p>
-
-
-                  <p>
-                    Email: info@voyagemara.com
                   </p>
 
 

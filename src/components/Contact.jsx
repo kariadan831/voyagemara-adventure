@@ -81,7 +81,6 @@ export default function Contact() {
 
       <a className="info-item" href="https://maps.google.com/?q=Nairobi,Kenya"><span className="contact-icon" aria-hidden="true">⌖</span><span><strong>Based in Nairobi</strong><small>Planning safaris across Kenya</small></span></a>
       <a className="info-item" href="tel:+254705814181"><span className="contact-icon" aria-hidden="true">↗</span><span><strong>+254 705 814 181</strong><small>Call our safari team</small></span></a>
-      <a className="info-item" href="mailto:info@voyagemara.com"><span className="contact-icon" aria-hidden="true">✉</span><span><strong>info@voyagemara.com</strong><small>We usually reply within a day</small></span></a>
       <div className="info-item"><span className="contact-icon" aria-hidden="true">◷</span><span><strong>Daily, 8:00 am – 8:00 pm</strong><small>East Africa Time</small></span></div>
 
         <a

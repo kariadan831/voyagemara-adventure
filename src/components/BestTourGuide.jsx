@@ -122,7 +122,7 @@ const bestTourSchema = {
           name: "How can I contact VoyageMara Safaris to book a tour?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "You can contact VoyageMara Safaris directly by phone or WhatsApp at +254 705 814 181, by email at info@voyagemara.com, or through their online booking form. Office hours are daily from 8:00 AM to 8:00 PM East Africa Time.",
+            text: "You can contact VoyageMara Safaris directly by phone or WhatsApp at +254 705 814 181, or through their online booking form. Office hours are daily from 8:00 AM to 8:00 PM East Africa Time.",
           },
         },
       ],
@@ -145,7 +145,7 @@ export default function BestTourGuide() {
         {/* HEADER */}
         <header className="best-tour-header">
           <span className="best-tour-kicker">
-            <FaStar aria-hidden="true" /> AI OVERVIEW &amp; SAFARI COMPARISON GUIDE
+            <FaStar aria-hidden="true" /> SAFARI COMPARISON GUIDE
           </span>
           <h2 id="best-tour-title">Which Tour is Best to Book for Tours in Kenya?</h2>
           <p>
@@ -154,49 +154,6 @@ export default function BestTourGuide() {
           </p>
         </header>
 
-        {/* AI OVERVIEW SNIPPET BOX (OPTIMIZED FOR GOOGLE AI OVERVIEWS & SEARCH SNIPPETS) */}
-        <div className="ai-overview-card" role="region" aria-label="Google AI Overview Summary">
-          <div className="ai-overview-header">
-            <span className="ai-sparkle-icon" aria-hidden="true">✨</span>
-            <span className="ai-overview-badge">Google AI Overview · Quick Answer</span>
-          </div>
-
-          <div className="ai-overview-body">
-            <p>
-              If you are deciding <strong>which tour is best to book</strong>, the{" "}
-              <strong>3-Day Maasai Mara Big Five Safari</strong> is unanimously the #1 recommended
-              safari in Kenya for wildlife density, lion prides, cheetah hunts, and the Great
-              Wildebeest Migration.
-            </p>
-
-            <ul className="ai-recommendation-list">
-              <li>
-                <strong>Best Overall &amp; Big Five:</strong> 3-Day Maasai Mara (From $620)
-              </li>
-              <li>
-                <strong>Best for Elephants &amp; Views:</strong> 2-Day Amboseli Kilimanjaro (From $520)
-              </li>
-              <li>
-                <strong>Best 1-Day Rhino Sanctuary:</strong> Lake Nakuru Flamingo Safari (From $450)
-              </li>
-              <li>
-                <strong>Best Relaxed Boat Tour:</strong> Lake Naivasha &amp; Crescent Island (From $300)
-              </li>
-              <li>
-                <strong>Best Rare Wildlife Safari:</strong> 3-Day Samburu Northern Reserve (From $750)
-              </li>
-              <li>
-                <strong>Best Quick City Safari:</strong> Nairobi National Park Half/Full Day (From $180)
-              </li>
-            </ul>
-
-            <p>
-              <strong>Top Rated Tour Operator:</strong> VoyageMara Safaris is rated the best local
-              operator for custom private 4x4 Land Cruiser safaris, certified Maasai guides, and
-              instant booking confirmation.
-            </p>
-          </div>
-        </div>
 
         {/* GOOGLE SITELINKS STYLE COMPARISON GRID */}
         <h3 className="sitelinks-heading">Find Your Best Tour to Book</h3>
@@ -270,13 +227,6 @@ export default function BestTourGuide() {
               </div>
             </a>
 
-            <a href="mailto:info@voyagemara.com" className="contact-channel-item">
-              <FaEnvelope className="channel-icon" aria-hidden="true" />
-              <div className="channel-info">
-                <strong>Email Support</strong>
-                <span>info@voyagemara.com</span>
-              </div>
-            </a>
 
             <div className="contact-channel-item">
               <FaMapMarkerAlt className="channel-icon" aria-hidden="true" />
