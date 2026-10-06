@@ -17,16 +17,16 @@ Destinations
 
 Safari detail pages
 
+- Maasai Mara Big Five Safari (Book 3-Day Tour): https://voyagemara-adventure.vercel.app/safaris/maasai-mara
+- Amboseli Elephant Safari (Book 2-Day Tour): https://voyagemara-adventure.vercel.app/safaris/amboseli
 - Lake Nakuru Flamingo Safari: https://voyagemara-adventure.vercel.app/safaris/lake-nakuru
 - Lake Naivasha Boat & Crescent Island: https://voyagemara-adventure.vercel.app/safaris/lake-naivasha
-
-Safari detail pages
-
-- Lake Nakuru Flamingo Safari: https://voyagemara-adventure.vercel.app/safaris/lake-nakuru
-- Lake Naivasha Boat & Crescent Island: https://voyagemara-adventure.vercel.app/safaris/lake-naivasha
+- Samburu Special Five Safari: https://voyagemara-adventure.vercel.app/safaris/samburu
+- Nairobi National Park Day Safari: https://voyagemara-adventure.vercel.app/safaris/nairobi-national-park
 
 Services
 
+- Book Maasai Mara Safaris
 - Luxury Safari
 - Budget Safari
 - Photography Safari

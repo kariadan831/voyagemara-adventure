@@ -38,10 +38,10 @@ export default function TourCard({ tour, onOpen }) {
         </div>
 
         <button onClick={onOpen}>
-          View Safari
+          {tour.slug === "maasai-mara" ? "Book / Quick View" : "View Safari"}
         </button>
         <Link className="tour-details-link" to={`/safaris/${tour.slug}`}>
-          Full itinerary &amp; travel details <span aria-hidden="true">→</span>
+          {tour.slug === "maasai-mara" ? "Book Maasai Mara Safari details" : "Full itinerary & travel details"} <span aria-hidden="true">→</span>
         </Link>
       </div>
     </div>

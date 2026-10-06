@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import "../styles/styles.css";
 
 const slides = [
   {
-    tag: "ADVENTURE",
-    title: "Maasai Mara Experience",
-    subtitle: "Discover Kenya’s iconic savannah with a locally guided safari, tailored to your pace.",
+    tag: "BOOK MAASAI MARA",
+    title: "Book Maasai Mara Safari",
+    subtitle: "Experience Kenya’s iconic Big Five savannah with expert local Maasai guides and luxury tented camps.",
     image: "/images/masai-mara.webp",
   },
   {
@@ -123,22 +124,32 @@ export default function Hero() {
           <div className="hero-text">
             <div className="hero-tag">{current.tag}</div>
 
-            <h1>Kenya safaris, thoughtfully planned</h1>
+            <h1>Book Kenya Safaris &amp; Maasai Mara Tours</h1>
             <h2 ref={titleRef}>{current.title}</h2>
 
             <p ref={textRef}>{current.subtitle}</p>
 
-           <button
-  className="hero-btn"
-  onClick={() => {
-    document.getElementById("about")?.scrollIntoView({
-      behavior: "smooth",
-    });
-  }}
->
-  <span>Explore Safari</span>
-  <i className="btn-ripple" />
-</button>
+            <div className="hero-actions">
+              <Link
+                to="/safaris/maasai-mara"
+                className="hero-btn"
+                aria-label="Book Maasai Mara Safari"
+              >
+                <span>Book Maasai Mara Safari</span>
+                <i className="btn-ripple" />
+              </Link>
+              <button
+                type="button"
+                className="hero-btn hero-btn-outline"
+                onClick={() => {
+                  document.getElementById("tours")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                <span>Explore All Safaris</span>
+              </button>
+            </div>
           </div>
 
         </div>

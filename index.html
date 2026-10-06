@@ -14,11 +14,25 @@
     content="NIS2W2hseD2aIcA3nse5Th2HDsurIK1vOvUn_Hll_WQ"
   />
 
-  <!-- ================= SEO ================= -->
+  <!-- ================= PRIMARY SEO ================= -->
+
+  <title>Book Maasai Mara Safaris &amp; Kenya Tours | VoyageMara Safaris</title>
+
+  <meta
+    name="description"
+    content="Book your Maasai Mara safari with VoyageMara Safaris. Handcrafted 3-day Big Five wildlife game drives, Great Migration safaris, luxury tented camps, and custom Kenya safari packages. Reserve your safari today."
+  />
+
+  <meta
+    name="keywords"
+    content="book my maasai mara, book maasai mara safari, maasai mara safari booking, masai mara tour packages, 3 days maasai mara safari, kenya safari booking, voyagemara safaris, best maasai mara tours"
+  />
+
+  <link rel="canonical" href="https://voyagemara-adventure.vercel.app/" />
 
   <meta
     name="robots"
-    content="index,follow,max-image-preview:large"
+    content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
   />
 
   <meta
@@ -30,6 +44,32 @@
     name="theme-color"
     content="#0b3d2e"
   />
+
+  <!-- Geo Targeting -->
+  <meta name="geo.region" content="KE" />
+  <meta name="geo.placename" content="Nairobi, Kenya" />
+  <meta name="geo.position" content="-1.286389;36.817223" />
+  <meta name="ICBM" content="-1.286389, 36.817223" />
+
+  <!-- ================= OPEN GRAPH / FACEBOOK ================= -->
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_KE" />
+  <meta property="og:site_name" content="VoyageMara Safaris" />
+  <meta property="og:title" content="Book Maasai Mara Safaris &amp; Kenya Tours | VoyageMara Safaris" />
+  <meta property="og:description" content="Book your Maasai Mara safari with VoyageMara Safaris. Handcrafted 3-day Big Five wildlife game drives, Great Migration safaris, luxury tented camps, and custom Kenya safari packages." />
+  <meta property="og:url" content="https://voyagemara-adventure.vercel.app/" />
+  <meta property="og:image" content="https://voyagemara-adventure.vercel.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="VoyageMara Maasai Mara Safaris" />
+
+  <!-- ================= TWITTER CARDS ================= -->
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Book Maasai Mara Safaris &amp; Kenya Tours | VoyageMara Safaris" />
+  <meta name="twitter:description" content="Book your Maasai Mara safari with VoyageMara Safaris. Handcrafted 3-day Big Five wildlife game drives, Great Migration safaris, luxury tented camps, and custom Kenya safari packages." />
+  <meta name="twitter:image" content="https://voyagemara-adventure.vercel.app/og-image.png" />
 
   <!-- ================= PWA ================= -->
 
@@ -80,40 +120,158 @@
     crossorigin
   />
 
-  <!-- ================= SCHEMA ================= -->
+  <!-- ================= SCHEMA (RICH SNIPPETS FOR GOOGLE SEARCH) ================= -->
 
   <script type="application/ld+json">
 {
- "@context":"https://schema.org",
- "@graph":[
-
-{
-"@type":["Organization","TravelAgency","LocalBusiness"],
-"@id":"https://voyagemara-adventure.vercel.app/#organization",
-"name":"VoyageMara Safaris",
-"url":"https://voyagemara-adventure.vercel.app/",
-"logo":"https://voyagemara-adventure.vercel.app/logo.png",
-"image":"https://voyagemara-adventure.vercel.app/og-image.png",
-"description":"Kenyan safari company offering private and tailor-made wildlife journeys across Kenya.",
-"areaServed":{"@type":"Country","name":"Kenya"},
-"priceRange":"$$",
-"telephone":"+254705814181",
-"email":"info@voyagemara.com",
-"address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressCountry":"KE"},
-"contactPoint":{"@type":"ContactPoint","telephone":"+254705814181","email":"info@voyagemara.com","contactType":"customer service"},
-"knowsAbout":["Kenya safaris","Maasai Mara","Amboseli National Park","Samburu National Reserve","Lake Nakuru","Lake Naivasha"]
-},
-
-{
-"@type":"WebSite",
-"@id":"https://voyagemara-adventure.vercel.app/#website",
-"name":"VoyageMara Safaris",
-"url":"https://voyagemara-adventure.vercel.app/",
-"publisher":{"@id":"https://voyagemara-adventure.vercel.app/#organization"},
-"inLanguage":"en-KE"
-}
-
-]
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "TravelAgency", "LocalBusiness"],
+      "@id": "https://voyagemara-adventure.vercel.app/#organization",
+      "name": "VoyageMara Safaris",
+      "url": "https://voyagemara-adventure.vercel.app/",
+      "logo": "https://voyagemara-adventure.vercel.app/logo.png",
+      "image": "https://voyagemara-adventure.vercel.app/og-image.png",
+      "description": "Kenyan safari company specializing in Maasai Mara safaris, private game drives, Great Migration tours, and custom Kenya wildlife adventures.",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Kenya"
+      },
+      "priceRange": "$$",
+      "telephone": "+254705814181",
+      "email": "info@voyagemara.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nairobi",
+        "addressCountry": "KE"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+254705814181",
+        "email": "info@voyagemara.com",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Swahili"]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "ratingCount": "48",
+        "reviewCount": "48"
+      },
+      "knowsAbout": [
+        "Kenya safaris",
+        "Maasai Mara National Reserve",
+        "Book Maasai Mara Safari",
+        "Great Migration",
+        "Big Five Wildlife",
+        "Amboseli National Park",
+        "Samburu National Reserve",
+        "Lake Nakuru",
+        "Lake Naivasha"
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "TouristTrip",
+            "name": "3-Day Maasai Mara Big Five Safari",
+            "description": "Book a 3-day Maasai Mara Big Five safari with luxury camp accommodation, expert guides, and Great Migration wildlife drives.",
+            "url": "https://voyagemara-adventure.vercel.app/safaris/maasai-mara"
+          },
+          "price": "620",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "validFrom": "2024-01-01",
+          "priceValidUntil": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://voyagemara-adventure.vercel.app/#website",
+      "name": "VoyageMara Safaris",
+      "url": "https://voyagemara-adventure.vercel.app/",
+      "publisher": {
+        "@id": "https://voyagemara-adventure.vercel.app/#organization"
+      },
+      "inLanguage": "en-KE",
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://voyagemara-adventure.vercel.app/safaris/maasai-mara",
+          "inLanguage": "en",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "result": {
+          "@type": "Reservation",
+          "name": "Book Maasai Mara Safari"
+        }
+      }
+    },
+    {
+      "@type": "TouristTrip",
+      "@id": "https://voyagemara-adventure.vercel.app/safaris/maasai-mara#trip",
+      "name": "Maasai Mara Big Five Safari (3 Days / 2 Nights)",
+      "description": "Book your Maasai Mara safari with VoyageMara Safaris. Experience 3 days of Big Five wildlife game drives, the Great Migration, luxury safari camps, and expert local Maasai guides.",
+      "url": "https://voyagemara-adventure.vercel.app/safaris/maasai-mara",
+      "touristType": "Wildlife and nature travellers",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://voyagemara-adventure.vercel.app/safaris/maasai-mara",
+        "price": "620",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-01-01",
+        "priceValidUntil": "2026-12-31"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "ratingCount": "48",
+        "reviewCount": "48"
+      },
+      "provider": {
+        "@id": "https://voyagemara-adventure.vercel.app/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://voyagemara-adventure.vercel.app/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I book my Maasai Mara safari with VoyageMara?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Booking your Maasai Mara safari is fast and simple. Contact VoyageMara Safaris via WhatsApp at +254 705 814 181, email info@voyagemara.com, or submit an inquiry through our website. Our team will verify dates, customize your package, and provide instant booking confirmation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does it cost to book a Maasai Mara safari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 3-Day Maasai Mara Big Five Safari starts from US$620 per person, including round-trip 4x4 transport from Nairobi, full-board accommodation, professional guides, park entry, and daily game drives."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the best time to book a Maasai Mara safari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Maasai Mara is great all year. For the world-famous Great Wildebeest Migration, book early between July and October. For newborn wildlife, fewer tourists, and lush green savannahs, November to May is ideal."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 

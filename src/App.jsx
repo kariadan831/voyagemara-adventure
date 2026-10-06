@@ -36,12 +36,15 @@ export default function App() {
     ? activeTour.seoTitle ?? `${activeTour.title} | VoyageMara Safaris`
     : isAboutPage
     ? "About VoyageMara Safaris | Kenya Safari Experts"
-    : "Kenya Safaris & Maasai Mara Tours | VoyageMara Safaris";
+    : "Book Maasai Mara Safaris & Kenya Tours | VoyageMara Safaris";
   const pageDescription = isSafariPage
     ? activeTour.seoDescription ?? activeTour.description
     : isAboutPage
     ? "Meet the Nairobi-based team planning locally guided, tailor-made wildlife journeys across Kenya."
-    : "Plan a Kenya safari with VoyageMara Safaris. Explore Maasai Mara, Amboseli, Samburu and more with local guides, private trips and custom itineraries.";
+    : "Book your Maasai Mara safari with VoyageMara Safaris. Handcrafted 3-day Big Five wildlife game drives, Great Migration safaris, luxury tented camps, and custom Kenya safari packages. Reserve your safari today.";
+  const pageKeywords = isSafariPage
+    ? `book ${activeTour.title.toLowerCase()}, ${activeTour.title.toLowerCase()}, ${activeTour.slug.replace(/-/g, " ")}, kenya safari booking, voyagemara safaris`
+    : "book my maasai mara, book maasai mara safari, maasai mara safari booking, masai mara tour packages, 3 days maasai mara safari, kenya safari booking, voyagemara safaris, best maasai mara tours";
   const pageImage = isSafariPage
     ? `https://voyagemara-adventure.vercel.app${activeTour.cover}`
     : "https://voyagemara-adventure.vercel.app/og-image.png";
@@ -98,6 +101,7 @@ export default function App() {
       <title>{pageTitle}</title>
 
       <meta name="description" content={pageDescription} />
+      <meta name="keywords" content={pageKeywords} />
 
       <link rel="canonical" href={pageUrl} />
       <meta property="og:type" content="website" />
@@ -238,6 +242,15 @@ export default function App() {
                 <a href="/#tours">Browse our safari tours</a>
               </main>
             )
+          }
+        />
+
+        <Route
+          path="/booking"
+          element={
+            <SafariDetail
+              tour={tours.find((tour) => tour.slug === "maasai-mara") || tours[0]}
+            />
           }
         />
 

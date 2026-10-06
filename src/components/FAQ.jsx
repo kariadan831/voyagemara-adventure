@@ -3,6 +3,16 @@ import "../styles/FAQ.css";
 
 const faqs = [
   {
+    question: "How do I book my Maasai Mara safari with VoyageMara?",
+    answer:
+      "Booking your Maasai Mara safari is fast and easy. You can book directly via WhatsApp (+254 705 814 181), email us at info@voyagemara.com, or submit our website booking form. We assist with choosing your travel dates, luxury tented camps or lodges, 4x4 Land Cruiser transport, and immediate booking confirmation."
+  },
+  {
+    question: "How much does it cost to book a Maasai Mara safari?",
+    answer:
+      "Our 3-Day Maasai Mara Big Five Safari package starts from US$620 per person. The price includes round-trip transport from Nairobi in a 4x4 safari vehicle, full-board accommodation, professional Maasai guides, and daily game drives."
+  },
+  {
     question: "What safari destinations do you offer?",
     answer:
       "VoyageMara offers unforgettable safari tours across Kenya including Maasai Mara National Reserve, Amboseli National Park, Lake Nakuru National Park, Samburu National Reserve, Lake Naivasha, Tsavo East, Tsavo West, Nairobi National Park, Hell's Gate National Park and Diani Beach."

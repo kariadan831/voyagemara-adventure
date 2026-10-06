@@ -218,3 +218,27 @@
 @media (prefers-reduced-motion: reduce) {
   .safari-primary-action { transition: none; }
 }
+
+.safari-trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.safari-trust-badges span {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(33, 72, 58, 0.08);
+  color: var(--primary-color);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+[data-theme="dark"] .safari-trust-badges span {
+  background: rgba(184, 154, 99, 0.15);
+  color: var(--accent-light);
+}

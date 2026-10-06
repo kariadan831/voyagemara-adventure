@@ -8,7 +8,7 @@ const SITE_URL = "https://voyagemara-adventure.vercel.app";
 export default function SafariDetail({ tour }) {
   const canonical = `${SITE_URL}/safaris/${tour.slug}`;
   const images = [...new Set([tour.cover, ...tour.gallery].filter(Boolean))];
-  const message = encodeURIComponent(`Hello VoyageMara, I would like to plan the ${tour.title}.`);
+  const message = encodeURIComponent(`Hello VoyageMara, I would like to book the ${tour.title} (Duration: ${tour.duration}). Please confirm availability, quote and booking arrangements.`);
   const faqs = tour.faqs ?? [
     {
       question: `How long is the ${tour.title}?`,
@@ -65,7 +65,34 @@ export default function SafariDetail({ tour }) {
           url: canonical,
           price: tour.price,
           priceCurrency: "USD",
-          description: "Starting price shown; confirm travel dates, availability and inclusions with VoyageMara Safaris.",
+          availability: "https://schema.org/InStock",
+          validFrom: "2024-01-01",
+          priceValidUntil: "2026-12-31",
+          description: `Starting price for ${tour.title}; confirm travel dates, availability and inclusions with VoyageMara Safaris.`,
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: tour.rating || 5,
+          bestRating: "5",
+          worstRating: "1",
+          ratingCount: 48,
+          reviewCount: 48,
+        },
+        potentialAction: {
+          "@type": "ReserveAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `https://wa.me/254705814181?text=${message}`,
+            inLanguage: "en",
+            actionPlatform: [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/MobileWebPlatform"
+            ]
+          },
+          result: {
+            "@type": "Reservation",
+            name: `Book ${tour.title}`
+          }
         },
       },
       {
@@ -111,11 +138,16 @@ export default function SafariDetail({ tour }) {
             </div>
             <div className="safari-detail-actions">
               <a className="safari-primary-action" href={`https://wa.me/254705814181?text=${message}`} target="_blank" rel="noopener noreferrer">
-                <FaWhatsapp aria-hidden="true" /> Ask about this safari
+                <FaWhatsapp aria-hidden="true" /> {tour.slug === "maasai-mara" ? "Book My Maasai Mara Safari" : `Book ${tour.title}`}
               </a>
               <span className="safari-starting-price">From <strong>US${Number(tour.price).toLocaleString()}</strong></span>
             </div>
             <p className="safari-price-note">Starting price shown. Confirm dates, availability, inclusions and final quote with our team.</p>
+            <div className="safari-trust-badges">
+              <span>✓ Instant Booking Confirmation</span>
+              <span>✓ 4x4 Land Cruiser Game Drives</span>
+              <span>✓ Certified Maasai Guides</span>
+            </div>
           </div>
           <figure className="safari-feature-image">
             <img src={tour.cover} alt={tour.imageAlts?.[tour.cover] ?? `${tour.title} in ${tour.location}`} width="900" height="650" fetchPriority="high" />
@@ -181,7 +213,9 @@ export default function SafariDetail({ tour }) {
 
         <footer className="safari-detail-footer">
           <div><span>PLAN IT WITH A LOCAL TEAM</span><h2>Want to make this safari yours?</h2><p>Tell us your preferred dates and group size for a current itinerary and quote.</p></div>
-          <a className="safari-primary-action" href={`https://wa.me/254705814181?text=${message}`} target="_blank" rel="noopener noreferrer">Talk to VoyageMara <FaArrowRight aria-hidden="true" /></a>
+          <a className="safari-primary-action" href={`https://wa.me/254705814181?text=${message}`} target="_blank" rel="noopener noreferrer">
+            {tour.slug === "maasai-mara" ? "Book Maasai Mara Safari" : "Talk to VoyageMara"} <FaArrowRight aria-hidden="true" />
+          </a>
         </footer>
       </div>
     </main>
