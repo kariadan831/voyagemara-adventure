@@ -351,7 +351,7 @@
     align-items: center;
     justify-content: center;
     background: linear-gradient(145deg, #0b1712 0%, #142820 50%, #0b3d2e 100%);
-    transition: opacity 0.55s ease, visibility 0.55s ease;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
   }
 
   #vm-loader.vm-loader-hidden {
@@ -417,7 +417,7 @@
     background: linear-gradient(90deg, #b89a63, #ddc99b, #b89a63);
     background-size: 200% 100%;
     border-radius: 99px;
-    animation: vm-progress 2.2s ease-in-out forwards, vm-shimmer 1.4s linear infinite;
+    animation: vm-progress 1.2s ease-in-out forwards, vm-shimmer 1.4s linear infinite;
   }
 
   @keyframes vm-progress {
@@ -452,26 +452,26 @@
 <script>
   (function() {
     var loader = document.getElementById('vm-loader');
-    // Hide loader once React has painted the first frame
+
+    function hide() {
+      loader.classList.add('vm-loader-hidden');
+      setTimeout(function() {
+        if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+      }, 400);
+    }
+
+    // Hide loader the moment React inserts anything into #root
     var observer = new MutationObserver(function() {
       var root = document.getElementById('root');
       if (root && root.firstElementChild) {
-        // Small delay to let React fully render
-        setTimeout(function() {
-          loader.classList.add('vm-loader-hidden');
-          setTimeout(function() {
-            if (loader.parentNode) loader.parentNode.removeChild(loader);
-          }, 600);
-        }, 300);
         observer.disconnect();
+        hide();
       }
     });
     observer.observe(document.getElementById('root'), { childList: true, subtree: true });
 
-    // Safety fallback: hide after 6 seconds no matter what
-    setTimeout(function() {
-      loader.classList.add('vm-loader-hidden');
-    }, 6000);
+    // Safety fallback: hide after 2.5 seconds no matter what
+    setTimeout(hide, 2500);
   })();
 </script>
 
