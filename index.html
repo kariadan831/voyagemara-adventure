@@ -448,36 +448,42 @@
   }
 </style>
 
+<div id="root"></div>
+
+<script type="module" src="/src/main.jsx"></script>
+
 <!-- ================= LOADER DISMISS SCRIPT ================= -->
+<!-- Must be AFTER #root so getElementById('root') is not null -->
 <script>
   (function() {
     var loader = document.getElementById('vm-loader');
 
     function hide() {
+      if (!loader) return;
       loader.classList.add('vm-loader-hidden');
       setTimeout(function() {
         if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
       }, 400);
     }
 
+    var root = document.getElementById('root');
+
     // Hide loader the moment React inserts anything into #root
     var observer = new MutationObserver(function() {
-      var root = document.getElementById('root');
       if (root && root.firstElementChild) {
         observer.disconnect();
         hide();
       }
     });
-    observer.observe(document.getElementById('root'), { childList: true, subtree: true });
+
+    if (root) {
+      observer.observe(root, { childList: true, subtree: true });
+    }
 
     // Safety fallback: hide after 2.5 seconds no matter what
     setTimeout(hide, 2500);
   })();
 </script>
-
-<div id="root"></div>
-
-<script type="module" src="/src/main.jsx"></script>
 
 </body>
 
