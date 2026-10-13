@@ -77,7 +77,7 @@ export default function Footer() {
 
           <div className="footer-box footer-contact">
             <h3>Get in touch</h3>
-            <a href="mailto:info@voyagemara.com">info@voyagemara.com</a>
+            <a href="mailto:kariadan831@gmail.com.">kariadan831@gmail.com</a>
             <a href="tel:+254705814181">+254 705 814 181</a>
             <a href="https://wa.me/254705814181" target="_blank" rel="noopener noreferrer">WhatsApp our team <span aria-hidden="true">↗</span></a>
             <span>Daily, 8:00 am – 8:00 pm EAT</span>

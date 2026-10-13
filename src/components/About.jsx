@@ -157,6 +157,20 @@ export default function About() {
         <Counter end={100} label="Local Guides %" />
       </div>
 
+      {/* FOUNDER QUOTE BANNER */}
+      <div className="founder-quote-banner reveal">
+        <div className="founder-quote-inner">
+          <span className="founder-quote-mark" aria-hidden="true">“</span>
+          <blockquote>
+            Our mission is to share the real Kenya with you—not from behind a script, but through the eyes of guides who were born tracking these savannahs and plains. Every journey is handcrafted with deep respect for wildlife, local Maasai communities, and your lifelong memories.
+          </blockquote>
+          <div className="founder-quote-author">
+            <strong>Duncan Ronkorua</strong>
+            <span>Founder &amp; Safari Director · VoyageMara Safaris</span>
+          </div>
+        </div>
+      </div>
+
       {/* WHY */}
       <div className="why-section reveal">
         <h2>Why Travel With VoyageMara</h2>

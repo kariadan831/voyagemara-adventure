@@ -1,9 +1,17 @@
 import "./TourCard.css";
 import { Link } from "react-router-dom";
+import { FaCalendarAlt, FaCheck, FaArrowRight, FaWhatsapp } from "react-icons/fa";
 
-export default function TourCard({ tour, onOpen }) {
+export default function TourCard({ tour, onOpen, onOpenBooking }) {
+  const defaultInclusions = [
+    "Custom 4x4 pop-up roof Land Cruiser",
+    "Professional native Maasai driver-guide",
+    "Full-board lodge or luxury tented camp",
+    "All national park & reserve entrance fees",
+  ];
+
   return (
-    <div className="tour-card">
+    <article className="tour-card" aria-label={`Safari package: ${tour.title}`}>
       <div className="tour-image">
         <img
           src={tour.cover}
@@ -16,10 +24,13 @@ export default function TourCard({ tour, onOpen }) {
         />
 
         <span className="badge">{tour.category}</span>
+        <span className="tour-duration-badge">
+          <FaCalendarAlt /> {tour.duration}
+        </span>
       </div>
 
       <div className="tour-content">
-        <div className="rating">
+        <div className="rating" aria-label={`${tour.rating} out of 5 stars`}>
           {"★".repeat(tour.rating)}
           {"☆".repeat(5 - tour.rating)}
         </div>
@@ -28,22 +39,51 @@ export default function TourCard({ tour, onOpen }) {
 
         <p>{tour.description}</p>
 
-        <div className="tour-meta">
-          <span>📅 {tour.duration}</span>
-          {tour.location && <span className="tour-location">⌖ {tour.location}</span>}
+        {/* INCLUSIONS LIST */}
+        <ul className="tour-card-inclusions">
+          {defaultInclusions.slice(0, 3).map((inc, i) => (
+            <li key={i}>
+              <FaCheck className="inc-icon" /> {inc}
+            </li>
+          ))}
+        </ul>
+
+        {/* PRICING */}
+        <div className="tour-card-pricing">
+          <span className="price-kicker">Starting from</span>
+          <div className="price-value">
+            ${tour.price} <small>/ person</small>
+          </div>
         </div>
 
-        <div className="price">
-          From ${tour.price}
+        {/* ACTION BUTTONS */}
+        <div className="tour-card-actions">
+          <button
+            type="button"
+            className="tour-book-btn"
+            onClick={() =>
+              onOpenBooking
+                ? onOpenBooking({ tour: tour.title })
+                : onOpen()
+            }
+          >
+            <span>Book / Enquire</span>
+            <FaArrowRight />
+          </button>
+
+          <button
+            type="button"
+            className="tour-view-btn"
+            onClick={onOpen}
+          >
+            Quick View
+          </button>
         </div>
 
-        <button onClick={onOpen}>
-          {tour.slug === "maasai-mara" ? "Book / Quick View" : "View Safari"}
-        </button>
         <Link className="tour-details-link" to={`/safaris/${tour.slug}`}>
-          {tour.slug === "maasai-mara" ? "Book Maasai Mara Safari details" : "Full itinerary & travel details"} <span aria-hidden="true">→</span>
+          Detailed Itinerary &amp; FAQs <span aria-hidden="true">→</span>
         </Link>
       </div>
-    </div>
+    </article>
   );
 }

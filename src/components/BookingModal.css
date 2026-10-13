@@ -1,0 +1,328 @@
+/* =========================================================
+   VOYAGEMARA UNIVERSAL BOOKING MODAL
+   Inspired by premium East African safari aesthetics
+========================================================= */
+
+.vm-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(10, 20, 15, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+  animation: vmFadeIn 0.25s ease forwards;
+}
+
+@keyframes vmFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.vm-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 660px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(184, 154, 99, 0.25);
+  padding: 32px 30px 28px;
+  max-height: 92vh;
+  overflow-y: auto;
+  color: #1e2d24;
+  animation: vmSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-theme="dark"] .vm-modal-card {
+  background: #14221b;
+  color: #e6ede8;
+  border-color: rgba(184, 154, 99, 0.35);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65);
+}
+
+@keyframes vmSlideUp {
+  from {
+    transform: translateY(24px) scale(0.97);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.vm-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+  color: #334e3f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .vm-modal-close {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e0d5be;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.vm-modal-close:hover {
+  background: #b89a63;
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+.vm-modal-header {
+  margin-bottom: 22px;
+  padding-right: 32px;
+}
+
+.vm-modal-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b89a63;
+  margin-bottom: 6px;
+}
+
+.vm-modal-header h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.65rem;
+  line-height: 1.25;
+  color: #15382d;
+  margin: 0 0 8px;
+}
+
+[data-theme="dark"] .vm-modal-header h2 {
+  color: #f7f4ee;
+}
+
+.vm-modal-header p {
+  font-size: 0.92rem;
+  color: #5c6c62;
+  margin: 0;
+  line-height: 1.45;
+}
+
+[data-theme="dark"] .vm-modal-header p {
+  color: #a7b7ad;
+}
+
+.vm-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 16px;
+}
+
+.vm-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.vm-form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.vm-form-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #2b4537;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+[data-theme="dark"] .vm-form-group label {
+  color: #c9dbcf;
+}
+
+.vm-form-group input,
+.vm-form-group select,
+.vm-form-group textarea {
+  width: 100%;
+  padding: 10px 13px;
+  border-radius: 9px;
+  border: 1px solid rgba(21, 56, 45, 0.18);
+  background: #fbfaf7;
+  color: #1e2d24;
+  font-family: inherit;
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .vm-form-group input,
+[data-theme="dark"] .vm-form-group select,
+[data-theme="dark"] .vm-form-group textarea {
+  background: #0f1c15;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #f0f5f2;
+}
+
+.vm-form-group input:focus,
+.vm-form-group select:focus,
+.vm-form-group textarea:focus {
+  outline: none;
+  border-color: #b89a63;
+  box-shadow: 0 0 0 3px rgba(184, 154, 99, 0.18);
+  background: #ffffff;
+}
+
+[data-theme="dark"] .vm-form-group input:focus,
+[data-theme="dark"] .vm-form-group select:focus,
+[data-theme="dark"] .vm-form-group textarea:focus {
+  background: #17271e;
+}
+
+.vm-form-group textarea {
+  resize: vertical;
+}
+
+.vm-modal-status {
+  margin: 14px 0 6px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.vm-modal-status.success {
+  background: rgba(33, 72, 58, 0.1);
+  color: #15382d;
+  border-left: 4px solid #21483a;
+}
+
+.vm-modal-status.notice {
+  background: rgba(184, 154, 99, 0.15);
+  color: #856424;
+  border-left: 4px solid #b89a63;
+}
+
+.vm-modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.vm-modal-actions.single {
+  grid-template-columns: 1fr;
+}
+
+.vm-btn-whatsapp,
+.vm-btn-email {
+  padding: 13px 18px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.vm-btn-whatsapp {
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.28);
+}
+
+.vm-btn-whatsapp:hover {
+  background: #20bd5a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(37, 211, 102, 0.38);
+}
+
+.vm-btn-email {
+  background: linear-gradient(135deg, #21483a 0%, #15382d 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(21, 56, 45, 0.25);
+}
+
+.vm-btn-email:hover:not(:disabled) {
+  background: linear-gradient(135deg, #b89a63 0%, #a4854c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(184, 154, 99, 0.35);
+}
+
+.vm-btn-email:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.vm-modal-guarantee {
+  margin: 14px 0 0;
+  font-size: 0.78rem;
+  color: #75857b;
+  text-align: center;
+}
+
+[data-theme="dark"] .vm-modal-guarantee {
+  color: #8c9d92;
+}
+
+.vm-modal-success {
+  text-align: center;
+  padding: 30px 10px 10px;
+}
+
+.vm-success-icon {
+  font-size: 3.2rem;
+  color: #21483a;
+  margin-bottom: 12px;
+}
+
+[data-theme="dark"] .vm-success-icon {
+  color: #b89a63;
+}
+
+.vm-modal-success h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.5rem;
+  margin: 0 0 8px;
+}
+
+.vm-modal-success p {
+  font-size: 0.95rem;
+  color: #5c6c62;
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+[data-theme="dark"] .vm-modal-success p {
+  color: #a7b7ad;
+}
+
+@media (max-width: 600px) {
+  .vm-modal-card {
+    padding: 24px 18px 20px;
+  }
+  .vm-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .vm-modal-actions {
+    grid-template-columns: 1fr;
+  }
+}

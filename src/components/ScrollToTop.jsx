@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaArrowUp } from "react-icons/fa";
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
@@ -8,7 +9,7 @@ export default function ScrollToTop() {
       setVisible(window.scrollY > 300);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -17,8 +18,10 @@ export default function ScrollToTop() {
       <button
         className="scroll-top"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Scroll back to top"
+        type="button"
       >
-        ⬆
+        <FaArrowUp aria-hidden="true" />
       </button>
     )
   );

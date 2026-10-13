@@ -1,0 +1,107 @@
+/* =========================================================
+   VOYAGEMARA TRUST & CREDENTIALS STRIP
+========================================================= */
+
+.vm-trust-strip {
+  background: linear-gradient(180deg, #15382d 0%, #1e4537 100%);
+  color: #f7f4ee;
+  padding: 34px 20px;
+  border-top: 1px solid rgba(184, 154, 99, 0.3);
+  border-bottom: 1px solid rgba(184, 154, 99, 0.2);
+  position: relative;
+  z-index: 10;
+}
+
+[data-theme="dark"] .vm-trust-strip {
+  background: linear-gradient(180deg, #0e1e17 0%, #142820 100%);
+}
+
+.vm-trust-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.vm-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.vm-trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.25s ease;
+}
+
+.vm-trust-item:hover {
+  background: rgba(184, 154, 99, 0.12);
+  border-color: rgba(184, 154, 99, 0.35);
+  transform: translateY(-2px);
+}
+
+.vm-trust-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 10px;
+  background: rgba(184, 154, 99, 0.2);
+  border: 1px solid rgba(184, 154, 99, 0.4);
+  color: #ddc99b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.vm-trust-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.vm-trust-value {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ddc99b;
+}
+
+.vm-trust-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.05rem;
+  color: #ffffff;
+  margin: 2px 0 4px;
+  font-weight: 600;
+}
+
+.vm-trust-desc {
+  font-size: 0.8rem;
+  color: rgba(240, 245, 242, 0.72);
+  margin: 0;
+  line-height: 1.35;
+}
+
+@media (max-width: 1024px) {
+  .vm-trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .vm-trust-strip {
+    padding: 24px 14px;
+  }
+  .vm-trust-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .vm-trust-item {
+    padding: 12px 14px;
+  }
+}

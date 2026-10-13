@@ -13,7 +13,7 @@ import "./Tours.css";
 
 const categories = ["All Safaris", "Popular", "Wildlife", "Day Trip", "Nature", "Adventure"];
 
-export default function Tours() {
+export default function Tours({ onOpenBooking }) {
   const [selectedTour, setSelectedTour] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All Safaris");
 
@@ -95,7 +95,11 @@ export default function Tours() {
         >
           {filteredTours.map((tour) => (
             <SwiperSlide key={tour.id} className="owl-item">
-              <TourCard tour={tour} onOpen={() => setSelectedTour(tour)} />
+              <TourCard
+                tour={tour}
+                onOpen={() => setSelectedTour(tour)}
+                onOpenBooking={onOpenBooking}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

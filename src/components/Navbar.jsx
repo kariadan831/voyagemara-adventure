@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { FaPhoneAlt } from "react-icons/fa";
 
-export default function Navbar() {
+export default function Navbar({ onOpenBooking }) {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
   const [activeSection, setActiveSection] = useState(() =>
@@ -27,7 +28,7 @@ export default function Navbar() {
     if (pathname !== "/") return undefined;
 
     let frame = 0;
-    const sectionIds = ["home", "about", "itineraries", "tours", "gallery", "faq", "contact"];
+    const sectionIds = ["home", "destinations", "tours", "about", "itineraries", "gallery", "faq", "contact"];
 
     const updateActiveSection = () => {
       cancelAnimationFrame(frame);
@@ -74,6 +75,15 @@ export default function Navbar() {
     );
   };
 
+  const handleBookingClick = () => {
+    setOpen(false);
+    if (onOpenBooking) {
+      onOpenBooking();
+    } else {
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="navbar">
       <Link className="logo" to="/#home" onClick={handleClick}>
@@ -85,6 +95,14 @@ export default function Navbar() {
           Home
         </Link>
 
+        <Link to="/#destinations" onClick={handleClick} aria-current={isActive("destinations") ? "location" : undefined}>
+          Destinations
+        </Link>
+
+        <Link to="/#tours" onClick={handleClick} aria-current={isActive("tours") ? "location" : undefined}>
+          Safaris
+        </Link>
+
         <Link to="/about" onClick={handleClick} aria-current={pathname === "/about" ? "page" : undefined}>
           About Us
         </Link>
@@ -93,12 +111,12 @@ export default function Navbar() {
           Itineraries
         </Link>
 
-        <Link to="/#tours" onClick={handleClick} aria-current={isActive("tours") ? "location" : undefined}>
-          Tours
-        </Link>
-
         <Link to="/#gallery" onClick={handleClick} aria-current={isActive("gallery") ? "location" : undefined}>
           Gallery
+        </Link>
+
+        <Link to="/#contact" onClick={handleClick} aria-current={isActive("contact") ? "location" : undefined}>
+          Contact
         </Link>
 
         <button
@@ -115,9 +133,13 @@ export default function Navbar() {
           </span>
         </button>
 
-        <Link to="/#contact" className="btn" onClick={handleClick}>
-          Booking
-        </Link>
+        <a href="tel:+254705814181" className="nav-phone-link" aria-label="Call VoyageMara Safaris">
+          <FaPhoneAlt /> +254 705 814 181
+        </a>
+
+        <button type="button" className="btn nav-plan-btn" onClick={handleBookingClick}>
+          Plan My Safari
+        </button>
       </div>
 
       <button
