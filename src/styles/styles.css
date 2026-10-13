@@ -1074,6 +1074,26 @@ p {
   margin-bottom: 2px;
 }
 
+/* Primary SEO h1 — keyword-rich, visible to both users and crawlers */
+.hero-h1-seo {
+  font-size: clamp(1.6rem, 3.5vw, 2.75rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #ffffff;
+  margin: 10px 0 6px;
+  letter-spacing: -0.01em;
+}
+
+/* Brand tagline under the h1 */
+.hero-tagline {
+  font-size: clamp(0.78rem, 1.5vw, 0.95rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.03em;
+  margin: 0 0 12px;
+}
+
+
 .hero-btn-gold {
   background: linear-gradient(135deg, #b89a63 0%, #a0824b 100%);
   color: #ffffff !important;

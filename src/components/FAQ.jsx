@@ -1,98 +1,134 @@
 import { Helmet } from "react-helmet-async";
 import "../styles/FAQ.css";
 
-const faqs = [
+const faqCategories = [
   {
-    question: "How do I book my Maasai Mara safari with VoyageMara?",
-    answer:
-      "Booking your Maasai Mara safari is fast and easy. You can book directly via WhatsApp (+254 705 814 181), email us at info@voyagemara.com, or submit our website booking form. We assist with choosing your travel dates, luxury tented camps or lodges, 4x4 Land Cruiser transport, and immediate booking confirmation."
+    category: "Booking & Pricing",
+    items: [
+      {
+        question: "How do I book a Maasai Mara safari with VoyageMara?",
+        answer:
+          "Booking is quick and straightforward. Send us a WhatsApp message (+254 705 814 181), fill in our website enquiry form, or email us directly. We confirm availability, finalise your itinerary, and issue a booking confirmation within a few hours. A 30% deposit secures your dates.",
+      },
+      {
+        question: "How much does a 3-day Maasai Mara safari cost from Nairobi?",
+        answer:
+          "Our 3-Day Maasai Mara Big Five Safari starts from US$620 per person. The price includes a private 4×4 Land Cruiser with a pop-up roof, professional Maasai driver-guide, full-board accommodation (meals as per itinerary), all park and conservancy entrance fees, bottled water, and Nairobi hotel pickup and drop-off. International flights, Kenya e-Visa, travel insurance and gratuities are excluded.",
+      },
+      {
+        question: "What is your booking deposit and cancellation policy?",
+        answer:
+          "A 30% deposit confirms your safari reservation. The remaining balance is due 14 days before your departure date. Cancellations 30 or more days before departure receive a full deposit refund. Cancellations 14–29 days before departure forfeit 50% of the deposit. Cancellations within 14 days of departure are non-refundable. Rescheduling is available at no penalty, subject to availability.",
+      },
+      {
+        question: "Can I pay in Kenyan shillings (KES)?",
+        answer:
+          "Yes. We accept payment in USD, EUR, GBP, and Kenyan Shillings (KES). Payments can be made via bank transfer, M-Pesa, or cash on arrival at our Nairobi office. Confirm the exact exchange rate at the time of booking.",
+      },
+      {
+        question: "Can I customise my safari itinerary?",
+        answer:
+          "Absolutely. Every VoyageMara safari can be tailored to your travel dates, group size, accommodation preference, budget, and special interests — from wildlife photography and birding to honeymoon safaris and family adventures. Contact our team and we'll build an itinerary around you.",
+      },
+    ],
   },
   {
-    question: "How much does it cost to book a Maasai Mara safari?",
-    answer:
-      "Our 3-Day Maasai Mara Big Five Safari package starts from US$620 per person. The price includes round-trip transport from Nairobi in a 4x4 safari vehicle, full-board accommodation, professional Maasai guides, and daily game drives."
+    category: "Park Fees & What's Included",
+    items: [
+      {
+        question: "Are Maasai Mara park entrance fees included in the package price?",
+        answer:
+          "Yes. All VoyageMara safari packages include Maasai Mara National Reserve and conservancy entrance fees. For 2026/2027, the Maasai Mara National Reserve fee for non-resident adults is approximately US$200 per person per day (subject to KNWS revision). Conservancy fees (Mara Triangle, Olare Motorogi, Naboisho) vary by area and are confirmed at the time of booking.",
+      },
+      {
+        question: "What does the safari package include?",
+        answer:
+          "Our standard packages include: private custom Toyota 4×4 Land Cruiser with pop-up roof, all park and conservancy entrance fees, professional native Maasai KWS-certified driver-guide, full-board accommodation (meals as specified), daily morning and afternoon game drives, bottled drinking water, and Nairobi hotel pickup and drop-off. International flights, Kenya e-Visa, travel insurance, laundry, alcohol, optional balloon safaris and gratuities are excluded.",
+      },
+      {
+        question: "What type of vehicle is used on game drives?",
+        answer:
+          "All VoyageMara game drives use a custom Toyota Land Cruiser 4×4 fitted with a full-length pop-up roof for 360° wildlife photography, UHF radio communication, USB charging sockets, a first-aid kit, and a cooler box. We seat a maximum of 6 guests per vehicle to ensure space and comfort.",
+      },
+    ],
   },
   {
-    question: "What safari destinations do you offer?",
-    answer:
-      "VoyageMara offers unforgettable safari tours across Kenya including Maasai Mara National Reserve, Amboseli National Park, Lake Nakuru National Park, Samburu National Reserve, Lake Naivasha, Tsavo East, Tsavo West, Nairobi National Park, Hell's Gate National Park and Diani Beach."
+    category: "Wildlife & Best Time to Visit",
+    items: [
+      {
+        question: "When is the best time to visit Maasai Mara?",
+        answer:
+          "The Maasai Mara is exceptional year-round. The Great Wildebeest Migration — when 1.5 million wildebeest cross from Tanzania's Serengeti — peaks between July and October, with dramatic Mara River crossings typically occurring August to September. January and February offer great Big Five sightings with fewer crowds. The long rains (April–May) bring lush landscapes and excellent birdwatching.",
+      },
+      {
+        question: "What is the Great Wildebeest Migration and when does it happen?",
+        answer:
+          "The Great Migration is the largest overland wildlife movement on Earth: roughly 1.5 million wildebeest, 500,000 zebras, and 200,000 gazelles travel in a continuous clockwise circuit between Tanzania's Serengeti and Kenya's Maasai Mara. In Kenya, the herds typically arrive in July–August, with the famous Mara River crossings peaking in August–September. By November, the herds return south to the Serengeti calving grounds.",
+      },
+      {
+        question: "What animals can I expect to see on a Kenya safari?",
+        answer:
+          "The Maasai Mara offers reliable sightings of the Big Five: lion, elephant, leopard, buffalo, and black rhino. You may also encounter cheetah, hippo, crocodile, giraffe, zebra, hyena, wild dog, and over 450 bird species. Amboseli is famous for large elephant herds against Mount Kilimanjaro. Samburu hosts the rare 'Northern Special Five': Grevy's zebra, reticulated giraffe, Somali ostrich, Gerenuk, and Beisa oryx.",
+      },
+      {
+        question: "Is a 4x4 Land Cruiser better than a safari van?",
+        answer:
+          "Yes — for serious wildlife viewing. A custom 4×4 Land Cruiser with a full pop-up roof offers 360° unobstructed views and superior photography angles compared to a minivan with hatches. Land Cruisers also have greater ground clearance for off-road driving deep into the park, independent suspension for a smoother ride on rough tracks, and more space per guest. VoyageMara uses exclusively 4×4 Land Cruisers.",
+      },
+    ],
   },
   {
-    question: "How do I book a safari with VoyageMara?",
-    answer:
-      "Booking is simple. You can contact us through WhatsApp, our website contact form or email. We'll help you customize your itinerary, select accommodation and arrange transport."
+    category: "Safety & Travel Practical",
+    items: [
+      {
+        question: "Is Kenya safe for international safari tourists?",
+        answer:
+          "Yes. Kenya is one of Africa's leading and most visited safari destinations. The Maasai Mara, Amboseli, Samburu and Naivasha are well-established tourist circuits with experienced guides and safe roads. VoyageMara works exclusively with KWS-licensed guides, reputable lodges, and carefully vetted accommodation partners. We recommend standard travel insurance for all guests.",
+      },
+      {
+        question: "Do I need a visa to visit Kenya?",
+        answer:
+          "Kenya operates an e-Visa system (evisa.go.ke). Most nationalities can apply online for a single-entry tourist visa at approximately US$51. Some nationalities enjoy visa-free access under bilateral agreements. Confirm your country's status before travel and apply at least 3–5 business days before arrival.",
+      },
+      {
+        question: "What should I pack for a Kenya safari?",
+        answer:
+          "Pack neutral-coloured lightweight clothing (khaki, beige, olive — avoid bright colours), a warm fleece or jacket for early morning game drives (it can be cold at dawn), a wide-brimmed hat, sunscreen (SPF 50+), insect repellent, comfortable walking shoes, binoculars, a camera with zoom lens, and any personal medications. Safari camps provide laundry services for longer stays.",
+      },
+      {
+        question: "Do you provide airport transfers?",
+        answer:
+          "Yes. VoyageMara can arrange pickup and drop-off at Jomo Kenyatta International Airport (NBO) and Wilson Airport (WIL) in Nairobi as part of your safari package. Domestic flight transfers (Nairobi to Maasai Mara / Amboseli) can also be arranged on request.",
+      },
+      {
+        question: "Do you organise private safaris for families, couples and groups?",
+        answer:
+          "Yes. We specialise in private, customised safaris for couples (including honeymoon safaris), families with children, solo travellers, wildlife photographers, corporate groups, and large group expeditions. Every itinerary is built around your travel dates, interests and budget.",
+      },
+    ],
   },
-  {
-    question: "How much does a Kenya safari cost?",
-    answer:
-      "Safari prices depend on the destination, number of days, travel season, accommodation type and group size. Our packages range from affordable budget safaris to luxury safari experiences."
-  },
-  {
-    question: "Are park entrance fees included?",
-    answer:
-      "Yes. Most of our safari packages include park entrance fees, professional safari guides, transport, accommodation, meals and game drives. Package details are clearly provided before booking."
-  },
-  {
-    question: "Can I customize my safari itinerary?",
-    answer:
-      "Absolutely. Every safari can be customized to match your travel dates, budget, preferred destinations, accommodation style and special interests such as wildlife photography, bird watching or honeymoon safaris."
-  },
-  {
-    question: "When is the best time to visit Maasai Mara?",
-    answer:
-      "The Maasai Mara offers excellent wildlife viewing throughout the year. The Great Wildebeest Migration usually takes place between July and October, making it one of the world's most spectacular wildlife events."
-  },
-  {
-    question: "What animals can I expect to see?",
-    answer:
-      "Depending on the destination and season, you may see lions, elephants, leopards, buffaloes, rhinos, cheetahs, giraffes, zebras, hippos, crocodiles, hyenas and hundreds of bird species."
-  },
-  {
-    question: "What should I pack for a Kenya safari?",
-    answer:
-      "Pack lightweight clothing, comfortable walking shoes, a warm jacket for early morning game drives, sunscreen, sunglasses, a hat, binoculars, insect repellent and a camera."
-  },
-  {
-    question: "Is Kenya safe for safari tourists?",
-    answer:
-      "Yes. Kenya is one of Africa's leading safari destinations. VoyageMara works with experienced guides, licensed drivers and trusted accommodation partners to provide safe and enjoyable safari experiences."
-  },
-  {
-    question: "Do you provide airport transfers?",
-    answer:
-      "Yes. Airport pickup and drop-off services can be arranged for both domestic and international travelers as part of your safari package."
-  },
-  {
-    question: "Do you organize private safaris?",
-    answer:
-      "Yes. We organize private safaris for couples, families, photographers, honeymooners, solo travelers and corporate groups."
-  },
-  {
-    question: "Do you offer luxury safari packages?",
-    answer:
-      "Yes. VoyageMara offers luxury safari experiences featuring premium lodges, luxury tented camps, private guides and customized itineraries throughout Kenya."
-  }
 ];
+
+const allFaqs = faqCategories.flatMap((cat) => cat.items);
 
 export default function FAQ() {
   return (
     <>
       <Helmet>
-
         {/* FAQ Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
             "@id": "https://voyagemara-adventure.vercel.app/#faq",
-            mainEntity: faqs.map((faq) => ({
+            mainEntity: allFaqs.map((faq) => ({
               "@type": "Question",
               name: faq.question,
               acceptedAnswer: {
                 "@type": "Answer",
-                text: faq.answer
-              }
-            }))
+                text: faq.answer,
+              },
+            })),
           })}
         </script>
 
@@ -101,55 +137,75 @@ export default function FAQ() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            name: "VoyageMara Safari FAQ",
+            name: "Kenya Safari FAQ — VoyageMara",
             speakable: {
               "@type": "SpeakableSpecification",
-              cssSelector: [
-                ".faq-header",
-                ".faq-container"
-              ]
-            }
+              cssSelector: [".faq-header", ".faq-container"],
+            },
           })}
         </script>
-
       </Helmet>
 
-      <section
-        className="faq-section"
-        id="faq"
-        aria-labelledby="faq-heading"
-      >
+      <section className="faq-section" id="faq" aria-labelledby="faq-heading">
         <div className="faq-header">
-
-          <h2 id="faq-heading">
-            Frequently Asked Questions About Kenya Safaris
-          </h2>
-
+          <span className="faq-eyebrow">FREQUENTLY ASKED QUESTIONS</span>
+          <h2 id="faq-heading">Kenya Safari Questions Answered</h2>
           <p>
-            Find answers to common questions about Kenya safari tours,
-            Maasai Mara holidays, wildlife experiences, accommodation,
-            park fees, transport, customized safari packages and luxury
-            safari adventures with VoyageMara.
+            Everything you need to know about Maasai Mara safaris, park fees, vehicle types,
+            the Great Migration, booking deposits and cancellation policy — answered by our
+            Nairobi-based safari team.
           </p>
-
         </div>
 
         <div className="faq-container">
-
-          {faqs.map((faq, index) => (
-            <details
-              key={index}
-              className="faq-item"
-            >
-              <summary>{faq.question}</summary>
-
-              <p>{faq.answer}</p>
-
-            </details>
+          {faqCategories.map((cat) => (
+            <div key={cat.category} className="faq-category">
+              <h3 className="faq-category-title">{cat.category}</h3>
+              <div className="faq-group">
+                {cat.items.map((faq, i) => (
+                  <details key={i} className="faq-item">
+                    <summary>{faq.question}</summary>
+                    <p>{faq.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
           ))}
-
         </div>
 
+        {/* BOOKING & CANCELLATION POLICY SUMMARY */}
+        <div className="faq-policy-box" aria-label="Booking and cancellation policy summary">
+          <div className="faq-policy-header">
+            <span>BOOKING &amp; CANCELLATION POLICY</span>
+            <h3>Transparent, fair terms — no surprises</h3>
+          </div>
+          <div className="faq-policy-grid">
+            <div className="faq-policy-item faq-policy-item--green">
+              <strong>30% Deposit</strong>
+              <p>Secures your safari dates immediately upon confirmation.</p>
+            </div>
+            <div className="faq-policy-item faq-policy-item--green">
+              <strong>Balance Due 14 Days Before</strong>
+              <p>Remaining 70% is due 14 days before your departure.</p>
+            </div>
+            <div className="faq-policy-item faq-policy-item--amber">
+              <strong>Cancel 30+ Days Out</strong>
+              <p>Full deposit refund — no penalty.</p>
+            </div>
+            <div className="faq-policy-item faq-policy-item--amber">
+              <strong>Cancel 14–29 Days Out</strong>
+              <p>50% of deposit is forfeited.</p>
+            </div>
+            <div className="faq-policy-item faq-policy-item--red">
+              <strong>Cancel Within 14 Days</strong>
+              <p>Deposit is non-refundable.</p>
+            </div>
+            <div className="faq-policy-item faq-policy-item--green">
+              <strong>Free Rescheduling</strong>
+              <p>Change your dates at no extra cost, subject to availability.</p>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

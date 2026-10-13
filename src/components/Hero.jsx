@@ -143,7 +143,10 @@ export default function Hero({ onOpenBooking }) {
               <FaCompass /> NAIROBI, KENYA · LICENSED LOCAL TOUR OPERATOR
             </span>
 
-            <h1>Your Africa Story Starts Here.</h1>
+            <h1 className="hero-h1-seo">
+              Kenya Safari Packages &amp; Maasai Mara Tours
+            </h1>
+            <p className="hero-tagline">Your Africa Story Starts Here · Handcrafted Journeys with Native Maasai Guides</p>
             <h2 ref={titleRef}>{current.title}</h2>
             <p ref={textRef}>{current.subtitle}</p>
 

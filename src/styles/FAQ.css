@@ -1,44 +1,262 @@
-.faq-section{
-    padding:80px 8%;
-    background:#fff;
+/* =========================================================
+   FAQ SECTION — Premium Redesign
+   VoyageMara Safaris · Dark Green & Warm Gold Design System
+========================================================= */
+
+.faq-section {
+  padding: clamp(72px, 10vw, 100px) clamp(16px, 5vw, 8%);
+  background: var(--bg-light, #f5f2e9);
+  position: relative;
+  overflow: hidden;
 }
 
-.faq-header{
-    text-align:center;
-    margin-bottom:40px;
+/* Subtle background accent */
+.faq-section::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184, 154, 99, 0.07) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.faq-header h2{
-    font-size:2.5rem;
-    color:#0b3d2e;
+/* ─── HEADER ─────────────────────────────────────────── */
+.faq-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto clamp(42px, 6vw, 64px);
 }
 
-.faq-header p{
-    color:#666;
+.faq-eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--accent-dark, #8a6f3b);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
 }
 
-.faq-container{
-    max-width:900px;
-    margin:auto;
+.faq-header h2 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--primary-dark, #142820);
+  margin: 0 0 14px;
+  letter-spacing: -0.02em;
 }
 
-.faq-item{
-    border:1px solid #ddd;
-    border-radius:10px;
-    margin-bottom:15px;
-    padding:18px;
-    background:#fafafa;
+.faq-header p {
+  color: var(--text-muted, #5a6e62);
+  font-size: clamp(0.92rem, 1.5vw, 1.02rem);
+  line-height: 1.75;
+  margin: 0;
 }
 
-.faq-item summary{
-    font-size:18px;
-    font-weight:600;
-    cursor:pointer;
-    color:#0b3d2e;
+/* ─── CATEGORY LAYOUT ─────────────────────────────────── */
+.faq-container {
+  max-width: 920px;
+  margin: 0 auto;
+  display: grid;
+  gap: 42px;
 }
 
-.faq-item p{
-    margin-top:15px;
-    color:#555;
-    line-height:1.7;
+.faq-category-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  color: var(--primary-color, #21483a);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.faq-category-title::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent-dark, #8a6f3b);
+  flex: 0 0 auto;
+}
+
+.faq-group {
+  display: grid;
+  gap: 10px;
+}
+
+/* ─── INDIVIDUAL FAQ ITEM ─────────────────────────────── */
+.faq-item {
+  border: 1px solid var(--border, #d9d5c8);
+  border-radius: 14px;
+  background: var(--card-bg, #fff);
+  overflow: hidden;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(33, 72, 58, 0.3);
+  box-shadow: 0 6px 24px rgba(33, 72, 58, 0.07);
+}
+
+.faq-item[open] {
+  border-color: var(--primary-color, #21483a);
+  box-shadow: 0 8px 28px rgba(33, 72, 58, 0.1);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 22px;
+  color: var(--primary-dark, #142820);
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  line-height: 1.45;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+/* Animated expand/collapse chevron */
+.faq-item summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(33, 72, 58, 0.07);
+  color: var(--primary-color, #21483a);
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: transform 220ms ease, background 220ms ease;
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+  background: var(--primary-color, #21483a);
+  color: #fff;
+}
+
+.faq-item p {
+  padding: 0 22px 20px;
+  color: var(--text-muted, #5a6e62);
+  font-size: 0.9rem;
+  line-height: 1.78;
+  margin: 0;
+  border-top: 1px solid var(--border, #d9d5c8);
+  padding-top: 14px;
+}
+
+/* ─── BOOKING & CANCELLATION POLICY BOX ──────────────── */
+.faq-policy-box {
+  max-width: 920px;
+  margin: 52px auto 0;
+  padding: clamp(28px, 4vw, 48px);
+  border: 1px solid rgba(184, 154, 99, 0.4);
+  border-radius: 24px;
+  background: linear-gradient(135deg, #17372b 0%, #21483a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-policy-box::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184, 154, 99, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.faq-policy-header {
+  margin-bottom: 28px;
+}
+
+.faq-policy-header span {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--accent-color, #b89a63);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.faq-policy-header h3 {
+  color: #fffdf6;
+  font-size: clamp(1.3rem, 3vw, 1.85rem);
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.faq-policy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.faq-policy-item {
+  padding: 18px 20px;
+  border-radius: 14px;
+  border-left: 4px solid transparent;
+}
+
+.faq-policy-item strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.faq-policy-item p {
+  font-size: 0.83rem;
+  line-height: 1.55;
+  margin: 0;
+  opacity: 0.88;
+}
+
+.faq-policy-item--green {
+  background: rgba(58, 158, 111, 0.12);
+  border-left-color: #3a9e6f;
+  color: #c8f0de;
+}
+
+.faq-policy-item--amber {
+  background: rgba(184, 154, 99, 0.15);
+  border-left-color: var(--accent-color, #b89a63);
+  color: #f0e0b8;
+}
+
+.faq-policy-item--red {
+  background: rgba(192, 57, 43, 0.12);
+  border-left-color: #e07060;
+  color: #f5c8c0;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 640px) {
+  .faq-item summary { padding: 15px 16px; }
+  .faq-item p { padding: 12px 16px 16px; }
+  .faq-policy-grid { grid-template-columns: 1fr; }
+  .faq-policy-box { padding: 24px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-item,
+  .faq-item summary::after { transition: none; }
 }
