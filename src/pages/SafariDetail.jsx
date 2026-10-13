@@ -46,7 +46,7 @@ export default function SafariDetail({ tour }) {
           name: "VoyageMara Safaris",
           url: `${SITE_URL}/`,
           telephone: "+254705814181",
-          email: "info@voyagemara.com",
+          email: "kariadan831@gmail.com",
         },
         location: {
           "@type": "Place",
@@ -67,16 +67,8 @@ export default function SafariDetail({ tour }) {
           priceCurrency: "USD",
           availability: "https://schema.org/InStock",
           validFrom: "2024-01-01",
-          priceValidUntil: "2026-12-31",
+          priceValidUntil: "2027-12-31",
           description: `Starting price for ${tour.title}; confirm travel dates, availability and inclusions with VoyageMara Safaris.`,
-        },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: tour.rating || 5,
-          bestRating: "5",
-          worstRating: "1",
-          ratingCount: 48,
-          reviewCount: 48,
         },
         potentialAction: {
           "@type": "ReserveAction",
@@ -86,14 +78,37 @@ export default function SafariDetail({ tour }) {
             inLanguage: "en",
             actionPlatform: [
               "http://schema.org/DesktopWebPlatform",
-              "http://schema.org/MobileWebPlatform"
-            ]
+              "http://schema.org/MobileWebPlatform",
+            ],
           },
           result: {
             "@type": "Reservation",
-            name: `Book ${tour.title}`
-          }
+            name: `Book ${tour.title}`,
+          },
         },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: SITE_URL,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Safaris",
+            item: `${SITE_URL}/#tours`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: tour.title,
+            item: canonical,
+          },
+        ],
       },
       {
         "@type": "FAQPage",

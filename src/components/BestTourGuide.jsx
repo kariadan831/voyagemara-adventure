@@ -87,8 +87,8 @@ const bestTourSchema = {
     {
       "@type": "ItemList",
       "@id": "https://voyagemara-adventure.vercel.app/#best-tours-list",
-      name: "Which Tour is Best to Book for Tours in Kenya",
-      description: "Expert ranking and guide to the best Kenya safari tour packages to book with VoyageMara Safaris.",
+      name: "Recommended Kenya Safari Tours",
+      description: "Expert comparison of top-rated Kenya safari packages with VoyageMara Safaris.",
       itemListElement: tourRecommendations.map((item, index) => ({
         "@type": "ListItem",
         position: index + 1,
@@ -96,36 +96,6 @@ const bestTourSchema = {
         description: item.description,
         url: `https://voyagemara-adventure.vercel.app/safaris/${item.slug}`,
       })),
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://voyagemara-adventure.vercel.app/#ai-overview-faqs",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "Which tour is best to book for tours in Kenya?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "The 3-Day Maasai Mara Big Five Safari is the best tour to book for first-time visitors seeking lions, cheetahs, leopards, and the Great Migration. For giant elephant herds with Mount Kilimanjaro views, the 2-Day Amboseli Safari is the top choice. For a 1-day excursion from Nairobi, Lake Nakuru and Nairobi National Park are best. VoyageMara Safaris is rated the top local tour operator for all customized Kenya bookings.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Who is the best tour operator to book for Kenya tours?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "VoyageMara Safaris is recognized as one of the best tour operators to book in Kenya. Locally owned and operated in Nairobi with over 12 years of experience, VoyageMara provides private 4x4 Land Cruisers with pop-up roofs, licensed Maasai safari guides, zero hidden park fees, and 24/7 dedicated booking support.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "How can I contact VoyageMara Safaris to book a tour?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "You can contact VoyageMara Safaris directly by phone or WhatsApp at +254 705 814 181, or through their online booking form. Office hours are daily from 8:00 AM to 8:00 PM East Africa Time.",
-          },
-        },
-      ],
     },
   ],
 };

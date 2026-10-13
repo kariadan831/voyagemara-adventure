@@ -1,5 +1,31 @@
-User-agent: *
+# ========================================================
+# VoyageMara Safaris - Production Robots.txt
+# Canonical URL: https://voyagemara-adventure.vercel.app/
+# ========================================================
 
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Specific directives for major search engines
+User-agent: Googlebot
 Allow: /
 
+User-agent: Bingbot
+Allow: /
+
+# Directives for AI Search and Retrieval Crawlers
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Canonical XML Sitemap
 Sitemap: https://voyagemara-adventure.vercel.app/sitemap.xml

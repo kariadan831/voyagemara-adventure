@@ -43,9 +43,9 @@
 
       "@type":"Person",
 
-      "name":"Duncan Karia",
+      "name":"Duncan Ronkorua",
 
-      "jobTitle":"Founder"
+      "jobTitle":"Founder & Safari Director"
 
       },
 

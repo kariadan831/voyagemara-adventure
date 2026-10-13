@@ -42,16 +42,16 @@ export default function App() {
   const pageTitle = isSafariPage
     ? activeTour.seoTitle ?? `${activeTour.title} | VoyageMara Safaris`
     : isAboutPage
-    ? "About VoyageMara Safaris | Kenya Safari Experts"
-    : "Best Tours to Book in Kenya & Maasai Mara Safaris | VoyageMara";
+    ? "About VoyageMara Safaris | Local Kenya Safari Specialists"
+    : "Kenya Safari Packages & Maasai Mara Tours | VoyageMara Safaris";
   const pageDescription = isSafariPage
     ? activeTour.seoDescription ?? activeTour.description
     : isAboutPage
-    ? "Meet the Nairobi-based team planning locally guided, tailor-made wildlife journeys across Kenya."
-    : "Find out which tour is best to book in Kenya. Compare 3-day Maasai Mara Big Five safaris, Amboseli elephant tours, and custom packages with VoyageMara Safaris.";
+    ? "Meet Duncan Ronkorua and the Nairobi-based team planning locally guided, custom 4x4 wildlife safaris across Kenya."
+    : "Book custom Kenya safaris with VoyageMara Safaris Nairobi. 3-day Maasai Mara Big Five game drives, Amboseli elephant tours, certified Maasai guides, and private 4x4 Land Cruisers. Inquire for 2026/2027.";
   const pageKeywords = isSafariPage
-    ? `book ${activeTour.title.toLowerCase()}, which tour is best to book, best tour operator to book for tours, ${activeTour.slug.replace(/-/g, " ")}, voyagemara contact, voyagemara safaris`
-    : "which tour is best to book for tours, best tour operation to book for tours, best tour operator to book for tours, book my maasai mara, book maasai mara safari, voyagemara contact, voyagemara safaris phone, best kenya safari tour operator";
+    ? `book ${activeTour.title.toLowerCase()}, kenya safari packages, ${activeTour.slug.replace(/-/g, " ")}, voyagemara contact, voyagemara safaris`
+    : "kenya safari packages, maasai mara safari, book maasai mara safari, amboseli elephant tour, kenya tour operators, nairobi safari packages 2027, affordable maasai mara safari, samburu safari, voyagemara safaris";
 
   const pageImage = isSafariPage
     ? `https://voyagemara-adventure.vercel.app${activeTour.cover}`

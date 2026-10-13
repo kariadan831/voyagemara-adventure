@@ -1,61 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+  <!-- Homepage -->
   <url>
     <loc>https://voyagemara-adventure.vercel.app/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/images/masai-mara.webp</image:loc>
+      <image:title>Maasai Mara Big Five Kenya Safari</image:title>
+    </image:image>
   </url>
 
+  <!-- 3-Day Maasai Mara Big Five Safari -->
   <url>
     <loc>https://voyagemara-adventure.vercel.app/safaris/maasai-mara</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <url>
-    <loc>https://voyagemara-adventure.vercel.app/about</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/tours/maasai-mara/cover.webp</image:loc>
+      <image:title>Maasai Mara Safari Tour Package</image:title>
+    </image:image>
   </url>
 
+  <!-- 2-Day Amboseli Elephant Safari -->
   <url>
     <loc>https://voyagemara-adventure.vercel.app/safaris/amboseli</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/tours/amboseli/cover.webp</image:loc>
+      <image:title>Amboseli Elephant Safari with Mount Kilimanjaro Views</image:title>
+    </image:image>
   </url>
 
-  <url>
-    <loc>https://voyagemara-adventure.vercel.app/safaris/lake-nakuru</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://voyagemara-adventure.vercel.app/safaris/lake-naivasha</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
+  <!-- 3-Day Samburu Special Five Safari -->
   <url>
     <loc>https://voyagemara-adventure.vercel.app/safaris/samburu</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/tours/samburu/cover.webp</image:loc>
+      <image:title>Samburu Northern Special Five Wildlife Safari</image:title>
+    </image:image>
   </url>
 
+  <!-- 1-Day Lake Nakuru Rhino & Flamingo Safari -->
   <url>
-    <loc>https://voyagemara-adventure.vercel.app/safaris/nairobi-national-park</loc>
-    <lastmod>2026-10-06</lastmod>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/lake-nakuru</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/tours/lake-nakuru/cover.webp</image:loc>
+      <image:title>Lake Nakuru Rhino Sanctuary Day Tour</image:title>
+    </image:image>
+  </url>
+
+  <!-- 1-Day Lake Naivasha Boat & Crescent Island Walking Safari -->
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/lake-naivasha</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/tours/lake-naivasha/cover.webp</image:loc>
+      <image:title>Lake Naivasha Boat Safari and Crescent Island</image:title>
+    </image:image>
+  </url>
+
+  <!-- 1-Day Nairobi National Park Day Safari -->
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/nairobi-national-park</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/tours/nairobi/cover.webp</image:loc>
+      <image:title>Nairobi National Park City Day Safari</image:title>
+    </image:image>
+  </url>
+
+  <!-- About Us & Safari Team -->
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/about</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Direct Booking Page -->
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/booking</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

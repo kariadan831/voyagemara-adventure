@@ -84,6 +84,7 @@ export default function FAQ() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
+            "@id": "https://voyagemara-adventure.vercel.app/#faq",
             mainEntity: faqs.map((faq) => ({
               "@type": "Question",
               name: faq.question,

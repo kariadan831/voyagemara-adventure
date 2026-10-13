@@ -22,7 +22,7 @@
 
   {
   q:"Who founded VoyageMara Safaris?",
-  a:"VoyageMara Safaris was founded by Duncan Karia with a vision of creating authentic and memorable Kenyan safari experiences."
+  a:"VoyageMara Safaris was founded by Duncan Ronkorua with a vision of creating authentic, locally guided, and memorable Kenyan safari experiences."
   }
 
   ];
