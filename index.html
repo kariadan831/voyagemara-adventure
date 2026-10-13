@@ -95,36 +95,101 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["Organization", "TravelAgency"],
+      "@type": ["Organization", "TravelAgency", "LocalBusiness"],
       "@id": "https://voyagemara-adventure.vercel.app/#organization",
       "name": "VoyageMara Safaris",
+      "alternateName": "VoyageMara",
       "url": "https://voyagemara-adventure.vercel.app/",
-      "logo": "https://voyagemara-adventure.vercel.app/logo.png",
-      "image": "https://voyagemara-adventure.vercel.app/og-image.png",
-      "description": "Premier Kenyan safari company offering tailor-made wildlife game drives, Great Migration tours, and private 4x4 Land Cruiser safaris across Maasai Mara, Amboseli, Samburu, Lake Nakuru, and Lake Naivasha.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://voyagemara-adventure.vercel.app/logo.png",
+        "width": 512,
+        "height": 512,
+        "caption": "VoyageMara Safaris logo"
+      },
+      "image": [
+        {
+          "@type": "ImageObject",
+          "url": "https://voyagemara-adventure.vercel.app/og-image.png",
+          "width": 1200,
+          "height": 630,
+          "caption": "VoyageMara Safaris — Kenya safari and wildlife tour operator"
+        },
+        {
+          "@type": "ImageObject",
+          "url": "https://voyagemara-adventure.vercel.app/images/masai-mara.webp",
+          "caption": "Maasai Mara National Reserve game drive — VoyageMara Safaris"
+        }
+      ],
+      "description": "Premier locally owned Kenyan safari company offering tailor-made wildlife game drives, Great Migration tours, and private 4×4 Land Cruiser safaris across Maasai Mara, Amboseli, Samburu, Lake Nakuru, and Lake Naivasha. Founded and guided by native Maasai safari specialist Duncan Ronkorua.",
       "founder": {
         "@type": "Person",
         "name": "Duncan Ronkorua",
-        "jobTitle": "Founder & Safari Director"
+        "jobTitle": "Founder & Safari Director",
+        "nationality": "Kenyan"
       },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Kenya"
-      },
-      "priceRange": "$$$",
-      "telephone": "+254705814181",
-      "email": "kariadan831@gmail.com",
+      "foundingDate": "2018",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Nairobi CBD",
         "addressLocality": "Nairobi",
-        "addressCountry": "KE"
+        "addressRegion": "Nairobi County",
+        "addressCountry": "KE",
+        "postalCode": "00100"
       },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+254705814181",
-        "contactType": "customer service",
-        "availableLanguage": ["English", "Swahili"]
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -1.286389,
+        "longitude": 36.817223
       },
+      "hasMap": "https://maps.google.com/?q=VoyageMara+Safaris+Nairobi+Kenya",
+      "telephone": "+254705814181",
+      "email": "kariadan831@gmail.com",
+      "priceRange": "$$–$$$",
+      "currenciesAccepted": "USD, EUR, GBP, KES",
+      "paymentAccepted": "Cash, Bank Transfer, M-Pesa, Credit Card",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
+          ],
+          "opens": "07:00",
+          "closes": "21:00"
+        }
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+254705814181",
+          "contactType": "customer support",
+          "contactOption": "TollFree",
+          "availableLanguage": ["English", "Swahili"],
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
+            ],
+            "opens": "07:00",
+            "closes": "21:00"
+          }
+        },
+        {
+          "@type": "ContactPoint",
+          "email": "kariadan831@gmail.com",
+          "contactType": "reservations",
+          "availableLanguage": ["English"]
+        }
+      ],
+      "areaServed": [
+        { "@type": "Country",  "name": "Kenya" },
+        { "@type": "Place", "name": "Maasai Mara National Reserve" },
+        { "@type": "Place", "name": "Amboseli National Park" },
+        { "@type": "Place", "name": "Samburu National Reserve" },
+        { "@type": "Place", "name": "Lake Nakuru National Park" },
+        { "@type": "Place", "name": "Lake Naivasha" },
+        { "@type": "Place", "name": "Nairobi National Park" }
+      ],
       "knowsAbout": [
         "Kenya Safaris",
         "Maasai Mara National Reserve",
@@ -136,6 +201,11 @@
         "Lake Nakuru Rhino Sanctuary",
         "Lake Naivasha Boat Safari",
         "Private 4x4 Safari Land Cruisers"
+      ],
+      "sameAs": [
+        "https://voyagemara-adventure.vercel.app/",
+        "https://wa.me/254705814181",
+        "https://www.tripadvisor.com"
       ]
     },
     {
@@ -146,7 +216,15 @@
       "publisher": {
         "@id": "https://voyagemara-adventure.vercel.app/#organization"
       },
-      "inLanguage": "en-KE"
+      "inLanguage": "en-KE",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://voyagemara-adventure.vercel.app/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -173,39 +251,92 @@
       ]
     },
     {
+      "@type": "ItemList",
+      "@id": "https://voyagemara-adventure.vercel.app/#safari-packages",
+      "name": "Kenya Safari Packages — VoyageMara Safaris",
+      "description": "Handcrafted Kenya safari tours for 2026 and 2027 including Maasai Mara, Amboseli, Samburu, Lake Nakuru and Lake Naivasha.",
+      "numberOfItems": 6,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://voyagemara-adventure.vercel.app/safaris/maasai-mara",
+          "name": "3-Day Maasai Mara Big Five Safari"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://voyagemara-adventure.vercel.app/safaris/amboseli",
+          "name": "2-Day Amboseli Elephant & Kilimanjaro Safari"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://voyagemara-adventure.vercel.app/safaris/samburu",
+          "name": "3-Day Samburu Northern Special Five Safari"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "url": "https://voyagemara-adventure.vercel.app/safaris/lake-nakuru",
+          "name": "1-Day Lake Nakuru Rhino & Flamingo Safari"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "url": "https://voyagemara-adventure.vercel.app/safaris/lake-naivasha",
+          "name": "1-Day Lake Naivasha Boat & Crescent Island Tour"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "url": "https://voyagemara-adventure.vercel.app/safaris/nairobi",
+          "name": "1-Day Nairobi National Park Safari"
+        }
+      ]
+    },
+    {
       "@type": "FAQPage",
       "@id": "https://voyagemara-adventure.vercel.app/#faq",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How much does a Maasai Mara safari cost in Kenya?",
+          "name": "How much does a 3-day Maasai Mara safari cost from Nairobi?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The 3-Day Maasai Mara Big Five Safari package with VoyageMara Safaris starts from US$620 per person sharing. Rates include round-trip 4x4 Land Cruiser transport from Nairobi, full-board accommodation, professional certified Maasai driver-guides, park entrance fees, and daily game drives. Custom quotes vary based on season and luxury tented camp tier."
+            "text": "VoyageMara's 3-Day Maasai Mara Big Five Safari starts from US$620 per person sharing. This includes round-trip 4×4 Land Cruiser transport from Nairobi, full-board accommodation in a safari lodge or tented camp, certified Maasai driver-guide, all park and conservancy entrance fees, and daily game drives. Prices vary by season and accommodation tier."
           }
         },
         {
           "@type": "Question",
-          "name": "When is the best time to visit Maasai Mara for the Great Migration?",
+          "name": "When is the best time to visit Maasai Mara for the Great Wildebeest Migration?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The world-famous Great Wildebeest Migration river crossings in Maasai Mara typically peak between July and October. However, Maasai Mara offers exceptional Big Five wildlife viewing year-round, with the December to March dry season also being outstanding for big cat sightings."
+            "text": "The Great Wildebeest Migration river crossings in Maasai Mara peak between July and October, with the most dramatic Mara River crossings typically occurring August to September. However, Maasai Mara offers excellent Big Five wildlife viewing year-round. The dry season (January–February) is also outstanding for big cat sightings with fewer visitors."
           }
         },
         {
           "@type": "Question",
-          "name": "What destinations does VoyageMara Safaris cover in Kenya?",
+          "name": "What is included in a VoyageMara safari package?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "VoyageMara Safaris provides guided private and small-group tours across Kenya's top national parks: Maasai Mara National Reserve, Amboseli National Park, Samburu National Reserve, Lake Nakuru National Park, Lake Naivasha & Crescent Island, and Nairobi National Park."
+            "text": "VoyageMara safari packages include: private custom Toyota 4×4 Land Cruiser with pop-up roof, all national park and conservancy entrance fees, professional native Maasai KWS-certified driver-guide, full-board accommodation, daily game drives, bottled drinking water, and Nairobi hotel pickup and drop-off. International flights, Kenya e-Visa, travel insurance and gratuities are excluded."
           }
         },
         {
           "@type": "Question",
-          "name": "How do I book a Kenya safari with VoyageMara Safaris?",
+          "name": "How do I book a Kenya safari with VoyageMara?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You can book directly by contacting our Nairobi planning team on WhatsApp or phone at +254 705 814 181, or by submitting an inquiry form on our website. We confirm dates, accommodation tiers, and customized itineraries with transparent itemized quotes."
+            "text": "You can book directly via WhatsApp or phone at +254 705 814 181, or by submitting an enquiry form on our website. We confirm your safari dates, accommodation preferences, and customised itinerary with a transparent itemised quote. A 30% deposit secures your booking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the park entrance fees for Maasai Mara in 2026 and 2027?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For 2026/2027, the Maasai Mara National Reserve entrance fee for non-resident adults is approximately US$200 per person per day (subject to annual Kenya Wildlife Service revision). All VoyageMara packages include these park fees in the quoted price. Conservancy fees for Mara Triangle and private conservancies are confirmed at time of booking."
           }
         }
       ]
@@ -214,7 +345,9 @@
 }
   </script>
 
+
 </head>
+
 
 <body>
 
