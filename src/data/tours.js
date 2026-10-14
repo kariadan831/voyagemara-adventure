@@ -61,7 +61,7 @@
         location: "Maasai Mara National Reserve, Kenya",
         geo: { latitude: -1.4917, longitude: 35.1439 },
         seoTitle: "Book Maasai Mara Safari | 3-Day Big Five Tour | VoyageMara Safaris",
-        seoDescription: "Book your Maasai Mara safari with VoyageMara Safaris. Experience 3 days of Big Five wildlife game drives, the Great Migration, luxury safari camps, and expert local Maasai guides. Reserve online or via WhatsApp today.",
+        seoDescription: "Book a 3-day Maasai Mara Big Five safari with VoyageMara Safaris. See the Great Migration, luxury camps & certified Maasai guides. Reserve your dates now.",
 
       cover: "/tours/maasai-mara/cover.webp",
 
@@ -183,7 +183,7 @@
         location: "Lake Nakuru National Park, Nakuru County, Kenya",
         geo: { latitude: -0.3667, longitude: 36.0833 },
         seoTitle: "Lake Nakuru Flamingo Safari | 1-Day Kenya Tour | VoyageMara",
-        seoDescription: "Explore Lake Nakuru National Park on a day safari from Nairobi. Look for rhinos, giraffes and seasonal flamingos with a local guide. Starting from US$450 per person; confirm dates and inclusions with VoyageMara.",
+        seoDescription: "Explore Lake Nakuru National Park on a day safari from Nairobi. Spot rhinos, giraffes and flamingos with local guides. From US$450 per person. Book today.",
 
       
     cover: "/tours/lake-nakuru/cover.webp",
@@ -278,7 +278,7 @@
         location: "Lake Naivasha and Crescent Island, Nakuru County, Kenya",
         geo: { latitude: -0.7667, longitude: 36.3667 },
         seoTitle: "Lake Naivasha Boat Safari & Crescent Island | VoyageMara",
-        seoDescription: "Spend a day on Lake Naivasha with a boat trip and a guided Crescent Island walk. Look for hippos and lake birdlife. Starting from US$300 per person; confirm access, dates and inclusions with VoyageMara.",
+        seoDescription: "Experience Lake Naivasha boat safaris and Crescent Island walking tours from Nairobi. Spot hippos and rare birdlife with expert guides. From US$300/person.",
 
           cover: "/tours/lake-naivasha/cover.webp",
 

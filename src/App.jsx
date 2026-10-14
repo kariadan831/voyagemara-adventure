@@ -48,7 +48,7 @@ export default function App() {
     ? activeTour.seoDescription ?? activeTour.description
     : isAboutPage
     ? "Meet Duncan Ronkorua and the Nairobi-based team planning locally guided, custom 4x4 wildlife safaris across Kenya."
-    : "Book custom Kenya safaris with VoyageMara Safaris Nairobi. 3-day Maasai Mara Big Five game drives, Amboseli elephant tours, certified Maasai guides, and private 4x4 Land Cruisers. Inquire for 2026/2027.";
+    : "Book custom Kenya safaris with VoyageMara Safaris Nairobi. Maasai Mara Big Five game drives, Amboseli tours, Maasai guides & 4x4 Land Cruisers. Inquire now.";
   const pageKeywords = isSafariPage
     ? `book ${activeTour.title.toLowerCase()}, kenya safari packages, ${activeTour.slug.replace(/-/g, " ")}, voyagemara contact, voyagemara safaris`
     : "kenya safari packages, maasai mara safari, book maasai mara safari, amboseli elephant tour, kenya tour operators, nairobi safari packages 2027, affordable maasai mara safari, samburu safari, voyagemara safaris";
