@@ -1,10 +1,4 @@
-import { useState, useMemo, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-
-import "swiper/css";
-import "swiper/css/pagination";
-
+import { useState, useMemo } from "react";
 import tours from "../../data/tours";
 import TourCard from "./TourCard";
 import TourModal from "./TourModal";
@@ -15,7 +9,6 @@ const categories = ["All Safaris", "Popular", "Wildlife", "Day Trip", "Nature", 
 export default function Tours({ onOpenBooking }) {
   const [selectedTour, setSelectedTour] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All Safaris");
-  const swiperRef = useRef(null);
 
   const filteredTours = useMemo(() => {
     if (activeCategory === "All Safaris") return tours;
@@ -28,8 +21,7 @@ export default function Tours({ onOpenBooking }) {
         <span className="tours-eyebrow">HANDCRAFTED KENYA SAFARIS</span>
         <h2 id="tours-heading">Featured Tours &amp; Safari Experiences</h2>
         <p>
-          Swipe through our award-winning journeys across Kenya. From thrilling Maasai Mara Big Five
-          game drives to Amboseli elephant herds and scenic Rift Valley lakes.
+          Explore our handcrafted private and small-group wildlife journeys across Kenya. From thrilling Maasai Mara Big Five game drives to Amboseli elephant herds and scenic Great Rift Valley lakes.
         </p>
       </div>
 
@@ -49,86 +41,18 @@ export default function Tours({ onOpenBooking }) {
         ))}
       </div>
 
-      {/* OWL CAROUSEL CONTAINER */}
-      <div className="owl-carousel-wrapper owl-theme">
-        <Swiper
-          key={activeCategory}
-          modules={[Autoplay, Pagination]}
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          spaceBetween={24}
-          grabCursor={true}
-          simulateTouch={true}
-          observer={true}
-          observeParents={true}
-          loop={filteredTours.length > 2}
-          autoplay={{
-            delay: 4500,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          pagination={{
-            el: ".owl-dots",
-            clickable: true,
-            bulletClass: "owl-dot",
-            bulletActiveClass: "active",
-            renderBullet: (index, className) =>
-              `<button type="button" class="${className}" aria-label="Go to slide ${index + 1}"><span></span></button>`,
-          }}
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 16,
-            },
-            640: {
-              slidesPerView: 1.4,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 22,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 26,
-            },
-          }}
-          className="owl-carousel owl-loaded"
-        >
+      {/* LUXURY TOURS GRID (NON-SWIPER, INSTANT DISPLAY) */}
+      <div className="tours-grid-container">
+        <div className="tours-grid">
           {filteredTours.map((tour) => (
-            <SwiperSlide key={tour.id} className="owl-item">
+            <div key={tour.id} className="tours-grid-item">
               <TourCard
                 tour={tour}
                 onOpen={() => setSelectedTour(tour)}
                 onOpenBooking={onOpenBooking}
               />
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
-
-        {/* OWL CONTROLS (NAV ARROWS & DOTS) */}
-        <div className="owl-controls">
-          <div className="owl-dots" aria-label="Carousel pagination dots" />
-
-          <div className="owl-nav" aria-label="Carousel navigation">
-            <button
-              type="button"
-              className="owl-prev"
-              onClick={() => swiperRef.current?.slidePrev()}
-              aria-label="Previous tour"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              className="owl-next"
-              onClick={() => swiperRef.current?.slideNext()}
-              aria-label="Next tour"
-            >
-              ›
-            </button>
-          </div>
         </div>
       </div>
 

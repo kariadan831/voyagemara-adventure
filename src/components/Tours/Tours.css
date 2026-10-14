@@ -104,112 +104,47 @@
 }
 
 /* =========================================================
-   OWL CAROUSEL THEME
+   LUXURY TOURS GRID SHOWCASE (NON-CAROUSEL)
 ========================================================= */
 
-.owl-carousel-wrapper {
-  position: relative;
+.tours-grid-container {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 10px;
 }
 
-.owl-carousel-wrapper .swiper {
-  overflow: visible;
-  padding-bottom: 24px;
+.tours-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  align-items: stretch;
 }
 
-.owl-carousel-wrapper .swiper-slide {
-  height: auto;
+.tours-grid-item {
   display: flex;
+  height: 100%;
 }
 
-.owl-carousel-wrapper .swiper-slide .tour-card {
+.tours-grid-item .tour-card {
   width: 100%;
-}
-
-/* OWL CONTROLS (NAV & DOTS) */
-.owl-controls {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 24px;
-  padding: 0 8px;
+  flex-direction: column;
 }
 
-.owl-nav {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+@media (max-width: 1080px) {
+  .tours-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
 }
 
-.owl-prev,
-.owl-next {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--primary-color, #21483a);
-  color: #ffffff;
-  border: none;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
-  transition: all 0.25s ease;
-  user-select: none;
-}
-
-.owl-prev:hover,
-.owl-next:hover {
-  background: var(--accent-color, #b89a63);
-  color: #10231a;
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 10px 24px rgba(184, 154, 99, 0.35);
-}
-
-.owl-dots {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.owl-dot {
-  background: transparent;
-  border: none;
-  padding: 6px 3px;
-  cursor: pointer;
-}
-
-.owl-dot span {
-  display: block;
-  width: 10px;
-  height: 10px;
-  background: rgba(33, 72, 58, 0.25);
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-[data-theme="dark"] .owl-dot span {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.owl-dot.active span {
-  width: 26px;
-  border-radius: 12px;
-  background: var(--accent-color, #b89a63);
-}
-
-@media (max-width: 768px) {
+@media (max-width: 680px) {
   .tours-section {
     padding: 60px 14px;
   }
 
-  .owl-controls {
-    flex-direction: column-reverse;
-    gap: 16px;
+  .tours-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
