@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   FaCalendarAlt,
   FaUsers,
@@ -8,11 +9,14 @@ import {
   FaCheck,
   FaSearch,
 } from "react-icons/fa";
+import { preloadSafariDetail, preloadImage } from "../utils/preload";
 import "../styles/styles.css";
 
 const destinationsList = [
   {
     id: "mara",
+    slug: "maasai-mara",
+    cover: "/tours/maasai-mara/cover.webp",
     title: "Maasai Mara Big Five Safari",
     duration: "3 Days / 2 Nights",
     highlights: "Big Five & Great Migration",
@@ -22,6 +26,8 @@ const destinationsList = [
   },
   {
     id: "amboseli",
+    slug: "amboseli",
+    cover: "/tours/amboseli/cover.webp",
     title: "Amboseli Elephant & Kilimanjaro",
     duration: "2 Days / 1 Night",
     highlights: "Mt. Kilimanjaro Views & Elephant Herds",
@@ -31,6 +37,8 @@ const destinationsList = [
   },
   {
     id: "samburu",
+    slug: "samburu",
+    cover: "/tours/samburu/cover.webp",
     title: "Samburu Northern Special Five",
     duration: "3 Days / 2 Nights",
     highlights: "Rare Northern Wildlife & Culture",
@@ -40,6 +48,8 @@ const destinationsList = [
   },
   {
     id: "nakuru",
+    slug: "lake-nakuru",
+    cover: "/tours/lake-nakuru/cover.webp",
     title: "Lake Nakuru Rhino & Flamingo",
     duration: "1 Day Safari",
     highlights: "Rhino Sanctuary & Seasonal Flamingos",
@@ -49,6 +59,8 @@ const destinationsList = [
   },
   {
     id: "naivasha",
+    slug: "lake-naivasha",
+    cover: "/tours/lake-naivasha/cover.webp",
     title: "Lake Naivasha & Crescent Island",
     duration: "1 Day Safari",
     highlights: "Boat Safari & Walking with Giraffes",
@@ -58,6 +70,8 @@ const destinationsList = [
   },
   {
     id: "custom",
+    slug: null,
+    cover: null,
     title: "Custom Multi-Park Itinerary",
     duration: "Flexible (3–10 Days)",
     highlights: "Tailor-made private Kenyan circuit",
@@ -283,6 +297,14 @@ export default function Hero({ onOpenBooking }) {
                           <div
                             key={item.id}
                             className={`dropdown-option-item ${isSelected ? "selected" : ""}`}
+                            onMouseEnter={() => {
+                              preloadSafariDetail();
+                              if (item.cover) preloadImage(item.cover);
+                            }}
+                            onTouchStart={() => {
+                              preloadSafariDetail();
+                              if (item.cover) preloadImage(item.cover);
+                            }}
                             onClick={() => {
                               setSelectedDest(item);
                               setIsDestOpen(false);
@@ -402,6 +424,26 @@ export default function Hero({ onOpenBooking }) {
               Check Availability
             </button>
           </form>
+
+          {selectedDest.slug && (
+            <div className="hero-search-quick-direct">
+              <span className="hsq-label">Instant Browse:</span>
+              <Link
+                to={`/safaris/${selectedDest.slug}`}
+                className="hsq-link"
+                onMouseEnter={() => {
+                  preloadSafariDetail();
+                  if (selectedDest.cover) preloadImage(selectedDest.cover);
+                }}
+                onTouchStart={() => {
+                  preloadSafariDetail();
+                  if (selectedDest.cover) preloadImage(selectedDest.cover);
+                }}
+              >
+                View {selectedDest.title} Details &amp; Pricing <FaArrowRight />
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>

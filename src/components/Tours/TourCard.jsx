@@ -1,6 +1,7 @@
 import "./TourCard.css";
 import { Link } from "react-router-dom";
 import { FaCalendarAlt, FaCheck, FaArrowRight, FaWhatsapp } from "react-icons/fa";
+import { preloadSafariDetail, preloadImage } from "../../utils/preload";
 
 export default function TourCard({ tour, onOpen, onOpenBooking }) {
   const defaultInclusions = [
@@ -11,7 +12,18 @@ export default function TourCard({ tour, onOpen, onOpenBooking }) {
   ];
 
   return (
-    <article className="tour-card" aria-label={`Safari package: ${tour.title}`}>
+    <article
+      className="tour-card"
+      aria-label={`Safari package: ${tour.title}`}
+      onMouseEnter={() => {
+        preloadSafariDetail();
+        preloadImage(tour.cover);
+      }}
+      onTouchStart={() => {
+        preloadSafariDetail();
+        preloadImage(tour.cover);
+      }}
+    >
       <div className="tour-image">
         <img
           src={tour.cover}
@@ -80,7 +92,18 @@ export default function TourCard({ tour, onOpen, onOpenBooking }) {
           </button>
         </div>
 
-        <Link className="tour-details-link" to={`/safaris/${tour.slug}`}>
+        <Link
+          className="tour-details-link"
+          to={`/safaris/${tour.slug}`}
+          onMouseEnter={() => {
+            preloadSafariDetail();
+            preloadImage(tour.cover);
+          }}
+          onTouchStart={() => {
+            preloadSafariDetail();
+            preloadImage(tour.cover);
+          }}
+        >
           Detailed Itinerary &amp; FAQs <span aria-hidden="true">→</span>
         </Link>
       </div>

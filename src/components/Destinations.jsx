@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaMapMarkerAlt, FaCompass, FaCalendarAlt, FaBinoculars, FaArrowRight } from "react-icons/fa";
+import { preloadSafariDetail, preloadImage } from "../utils/preload";
 import "./Destinations.css";
 
 const DESTINATIONS = [
@@ -98,7 +99,18 @@ export default function Destinations({ onOpenBooking }) {
         {/* DESTINATIONS GRID */}
         <div className="vm-dest-grid">
           {DESTINATIONS.map((dest) => (
-            <article className="vm-dest-card" key={dest.id}>
+            <article
+              className="vm-dest-card"
+              key={dest.id}
+              onMouseEnter={() => {
+                preloadSafariDetail();
+                preloadImage(dest.image);
+              }}
+              onTouchStart={() => {
+                preloadSafariDetail();
+                preloadImage(dest.image);
+              }}
+            >
               <div className="vm-dest-media">
                 <img
                   src={dest.image}
@@ -142,7 +154,18 @@ export default function Destinations({ onOpenBooking }) {
                     Enquire This Route <FaArrowRight />
                   </button>
 
-                  <Link to={`/safaris/${dest.tourSlug}`} className="vm-dest-link">
+                  <Link
+                    to={`/safaris/${dest.tourSlug}`}
+                    className="vm-dest-link"
+                    onMouseEnter={() => {
+                      preloadSafariDetail();
+                      preloadImage(dest.image);
+                    }}
+                    onTouchStart={() => {
+                      preloadSafariDetail();
+                      preloadImage(dest.image);
+                    }}
+                  >
                     View Package
                   </Link>
                 </div>

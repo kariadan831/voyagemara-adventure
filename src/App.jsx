@@ -3,10 +3,11 @@ import { useEffect, useState, lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 
 import tours from "./data/tours";
+import { preloadSafariDetail, preloadAboutUs, initIdlePreload } from "./utils/preload";
 
-// Lazy-load heavy pages so the initial JS bundle stays small
-const AboutUs = lazy(() => import("./pages/AboutUs"));
-const SafariDetail = lazy(() => import("./pages/SafariDetail"));
+// Instant preloading with lazy fallback
+const AboutUs = lazy(preloadAboutUs);
+const SafariDetail = lazy(preloadSafariDetail);
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -27,6 +28,22 @@ import BookingModal from "./components/BookingModal";
 import Footer from "./components/Footer";
 
 import { initScrollAnimations } from "./animations/scrollAnimations";
+
+function RouteLoader() {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        height: "3px",
+        zIndex: 99999,
+        background: "linear-gradient(90deg, #b89a63, #edd8a6, #b89a63)",
+      }}
+    />
+  );
+}
 
 export default function App() {
   const { pathname, hash } = useLocation();
@@ -64,6 +81,18 @@ export default function App() {
   const handleCloseBooking = () => {
     setBookingModalData(null);
   };
+
+  // Preload routes and images in background on idle time
+  useEffect(() => {
+    initIdlePreload();
+  }, []);
+
+  // Instant scroll to top on navigation to a new page (unless targeted with anchor hash)
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
+  }, [pathname, hash]);
 
   useEffect(() => {
     if (pathname !== "/") return undefined;
@@ -176,13 +205,13 @@ export default function App() {
           />
 
           {/* ================= ABOUT PAGE ================= */}
-          <Route path="/about" element={<Suspense fallback={null}><AboutUs /></Suspense>} />
+          <Route path="/about" element={<Suspense fallback={<RouteLoader />}><AboutUs /></Suspense>} />
 
           <Route
             path="/safaris/:slug"
             element={
               activeTour ? (
-                <Suspense fallback={null}><SafariDetail tour={activeTour} /></Suspense>
+                <Suspense fallback={<RouteLoader />}><SafariDetail tour={activeTour} /></Suspense>
               ) : (
                 <main className="safari-not-found">
                   <h1>Safari not found</h1>
@@ -195,7 +224,7 @@ export default function App() {
           <Route
             path="/booking"
             element={
-              <Suspense fallback={null}>
+              <Suspense fallback={<RouteLoader />}>
                 <SafariDetail
                   tour={tours.find((tour) => tour.slug === "maasai-mara") || tours[0]}
                 />
