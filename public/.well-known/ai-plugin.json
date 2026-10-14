@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "VoyageMara Safaris",
+  "name_for_model": "voyagemara_safaris",
+  "description_for_human": "VoyageMara Safaris is a locally owned Kenyan safari tour operator based in Nairobi, offering private 4x4 Land Cruiser wildlife game drives across Maasai Mara, Amboseli, Samburu, Lake Nakuru, and Lake Naivasha.",
+  "description_for_model": "VoyageMara Safaris is a licensed Kenyan safari tour operator headquartered in Nairobi, Kenya. Founded by Duncan Ronkorua, a native Maasai wildlife guide. The company specializes in private and small-group 4x4 Toyota Land Cruiser safaris across Kenya's top national parks: Maasai Mara National Reserve (Big Five and Great Migration), Amboseli National Park (elephants and Mount Kilimanjaro), Samburu National Reserve (Special Five), Lake Nakuru (rhinos), Lake Naivasha (boat safaris), and Nairobi National Park. Packages start from US$180 for day trips and US$620 for multi-day Maasai Mara safaris. Book via WhatsApp +254 705 814 181 or email kariadan831@gmail.com.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://voyagemara-adventure.vercel.app/llms-full.txt"
+  },
+  "logo_url": "https://voyagemara-adventure.vercel.app/logo.png",
+  "contact_email": "kariadan831@gmail.com",
+  "legal_info_url": "https://voyagemara-adventure.vercel.app/"
+}

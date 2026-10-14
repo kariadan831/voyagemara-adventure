@@ -7,25 +7,64 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-# Specific directives for major search engines
+# ===== Major Search Engine Crawlers =====
 User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-# Directives for AI Search and Retrieval Crawlers
+User-agent: YandexBot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# ===== AI Search & Retrieval Crawlers =====
+
+# OpenAI — ChatGPT Search and browsing
 User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: PerplexityBot
-Allow: /
-
+# Anthropic — Claude search and retrieval
 User-agent: ClaudeBot
 Allow: /
 
-# Canonical XML Sitemap
+User-agent: anthropic-ai
+Allow: /
+
+# Google — Gemini / AI Overviews
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity — AI search engine
+User-agent: PerplexityBot
+Allow: /
+
+# Microsoft — Copilot search
+User-agent: BingPreview
+Allow: /
+
+# Apple — Applebot for Siri and Spotlight
+User-agent: Applebot
+Allow: /
+
+# Meta — AI search features
+User-agent: FacebookExternalHit
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Cohere — AI retrieval
+User-agent: cohere-ai
+Allow: /
+
+# ===== Canonical XML Sitemap =====
 Sitemap: https://voyagemara-adventure.vercel.app/sitemap.xml
