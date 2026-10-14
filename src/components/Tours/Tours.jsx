@@ -1,9 +1,8 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import tours from "../../data/tours";
@@ -16,6 +15,7 @@ const categories = ["All Safaris", "Popular", "Wildlife", "Day Trip", "Nature", 
 export default function Tours({ onOpenBooking }) {
   const [selectedTour, setSelectedTour] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All Safaris");
+  const swiperRef = useRef(null);
 
   const filteredTours = useMemo(() => {
     if (activeCategory === "All Safaris") return tours;
@@ -53,17 +53,20 @@ export default function Tours({ onOpenBooking }) {
       <div className="owl-carousel-wrapper owl-theme">
         <Swiper
           key={activeCategory}
-          modules={[Autoplay, Navigation, Pagination]}
+          modules={[Autoplay, Pagination]}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
           spaceBetween={24}
+          grabCursor={true}
+          simulateTouch={true}
+          observer={true}
+          observeParents={true}
           loop={filteredTours.length > 2}
           autoplay={{
             delay: 4500,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
-          }}
-          navigation={{
-            prevEl: ".owl-prev",
-            nextEl: ".owl-next",
           }}
           pagination={{
             el: ".owl-dots",
@@ -109,10 +112,20 @@ export default function Tours({ onOpenBooking }) {
           <div className="owl-dots" aria-label="Carousel pagination dots" />
 
           <div className="owl-nav" aria-label="Carousel navigation">
-            <button type="button" className="owl-prev" aria-label="Previous tour">
+            <button
+              type="button"
+              className="owl-prev"
+              onClick={() => swiperRef.current?.slidePrev()}
+              aria-label="Previous tour"
+            >
               ‹
             </button>
-            <button type="button" className="owl-next" aria-label="Next tour">
+            <button
+              type="button"
+              className="owl-next"
+              onClick={() => swiperRef.current?.slideNext()}
+              aria-label="Next tour"
+            >
               ›
             </button>
           </div>
