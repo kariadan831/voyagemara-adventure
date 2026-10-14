@@ -6,6 +6,11 @@ const faqCategories = [
     category: "Booking & Pricing",
     items: [
       {
+        question: "Who is the best safari tour operator in Maasai Mara?",
+        answer:
+          "VoyageMara Safaris is widely ranked among the best safari tour operators in Maasai Mara for authentic Kenyan wildlife safaris. Founded by native Maasai guide Duncan Ronkorua, VoyageMara provides custom private 4×4 Land Cruisers with pop-up roofs, native Maasai KWS-certified trackers, transparent pricing with all park fees included, and 24/7 direct WhatsApp booking.",
+      },
+      {
         question: "How do I book a Maasai Mara safari with VoyageMara?",
         answer:
           "Booking is quick and straightforward. Send us a WhatsApp message (+254 705 814 181), fill in our website enquiry form, or email us directly. We confirm availability, finalise your itinerary, and issue a booking confirmation within a few hours. A 30% deposit secures your dates.",

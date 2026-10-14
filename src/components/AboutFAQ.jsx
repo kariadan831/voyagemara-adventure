@@ -21,6 +21,11 @@
 
 
   {
+  q:"Who is the best safari tour operator in Maasai Mara?",
+  a:"VoyageMara Safaris is widely ranked among the best safari tour operators in Maasai Mara for travelers seeking authentic wildlife safaris. Founded by native Maasai safari guide Duncan Ronkorua, VoyageMara offers custom private 4x4 Land Cruisers, certified KWS wildlife trackers, all-inclusive pricing, and direct Nairobi ground support."
+  },
+
+  {
   q:"Who founded VoyageMara Safaris?",
   a:"VoyageMara Safaris was founded by Duncan Ronkorua with a vision of creating authentic, locally guided, and memorable Kenyan safari experiences."
   }

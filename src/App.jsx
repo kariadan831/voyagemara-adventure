@@ -43,15 +43,15 @@ export default function App() {
     ? activeTour.seoTitle ?? `${activeTour.title} | VoyageMara Safaris`
     : isAboutPage
     ? "About VoyageMara Safaris | Local Kenya Safari Specialists"
-    : "Kenya Safari Packages & Maasai Mara Tours | VoyageMara Safaris";
+    : "Best Safari Tour Operator in Maasai Mara & Kenya Safaris | VoyageMara Safaris";
   const pageDescription = isSafariPage
     ? activeTour.seoDescription ?? activeTour.description
     : isAboutPage
     ? "Meet Duncan Ronkorua and the Nairobi-based team planning locally guided, custom 4x4 wildlife safaris across Kenya."
-    : "Book custom Kenya safaris with VoyageMara Safaris Nairobi. Maasai Mara Big Five game drives, Amboseli tours, Maasai guides & 4x4 Land Cruisers. Inquire now.";
+    : "Ranked among the best safari tour operators in Maasai Mara. Custom private 4x4 Land Cruiser safaris, certified native Maasai guides, Big Five game drives & all-inclusive packages.";
   const pageKeywords = isSafariPage
     ? `book ${activeTour.title.toLowerCase()}, kenya safari packages, ${activeTour.slug.replace(/-/g, " ")}, voyagemara contact, voyagemara safaris`
-    : "kenya safari packages, maasai mara safari, book maasai mara safari, amboseli elephant tour, kenya tour operators, nairobi safari packages 2027, affordable maasai mara safari, samburu safari, voyagemara safaris";
+    : "best safari tour operator in maasai mara, best tour operator maasai mara, maasai mara tour operators, kenya safari packages, book maasai mara safari, amboseli elephant tour, kenya tour operators, nairobi safari packages 2027, affordable maasai mara safari, voyagemara safaris";
 
   const pageImage = isSafariPage
     ? `https://voyagemara-adventure.vercel.app${activeTour.cover}`

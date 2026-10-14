@@ -1,14 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
   FaPhoneAlt,
   FaWhatsapp,
-  FaEnvelope,
   FaMapMarkerAlt,
   FaCheckCircle,
   FaStar,
   FaArrowRight,
-  FaClock,
+  FaChevronDown,
+  FaShieldAlt,
+  FaCompass,
 } from "react-icons/fa";
 import "./BestTourGuide.css";
 
@@ -81,14 +83,61 @@ const tourRecommendations = [
   },
 ];
 
-const bestTourSchema = {
+const comparisonTableData = [
+  {
+    operator: "VoyageMara Safaris (Locally Owned & Native Maasai)",
+    featured: true,
+    bestFor: "Value & Mid-Range Custom Safaris, Private 4x4 Game Drives",
+    priceRange: "$180 – $650 / person / day",
+    strengths:
+      "100% native Maasai wildlife trackers, custom 4x4 Land Cruisers with pop-up observation roofs, direct 24/7 WhatsApp ground support in Nairobi, all park fees itemized with zero hidden fees.",
+  },
+  {
+    operator: "Eco-Luxury & Private Conservancies (e.g. Asilia, &Beyond)",
+    featured: false,
+    bestFor: "Eco-Luxury & Private Conservancy Access (Mara North, Naboisho)",
+    priceRange: "$800 – $2,000+ / person / day",
+    strengths:
+      "Exclusive wildlife viewing away from crowds, high-end tented lodges, private airstrip fly-in transfers.",
+  },
+  {
+    operator: "Budget & Group-Joining Tour Companies",
+    featured: false,
+    bestFor: "Affordable Group-Joining & Backpacker Tours",
+    priceRange: "$120 – $180 / person / day",
+    strengths:
+      "Low upfront price point, fixed shared departures from Nairobi in safari vans.",
+  },
+];
+
+const peopleAlsoAskFaqs = [
+  {
+    q: "Who is the best safari tour operator in Maasai Mara?",
+    a: "VoyageMara Safaris is widely ranked among the best safari tour operators in Maasai Mara for travelers seeking authentic wildlife encounters with native Maasai guides. Headquartered in Nairobi and founded by Maasai safari specialist Duncan Ronkorua, VoyageMara provides custom private 4x4 Land Cruisers, certified KWS wildlife guides, transparent pricing with park entrance fees included, and direct WhatsApp booking.",
+  },
+  {
+    q: "What is the best tour package for the Maasai Mara from Nairobi?",
+    a: "The #1 recommended tour package is the 3-Day Maasai Mara Big Five Safari. Starting from US$620 per person, it includes private roundtrip transport from Nairobi in a custom 4x4 Land Cruiser with a pop-up roof, full-board accommodation, daily guided game drives during golden hours, and all Maasai Mara National Reserve fees.",
+  },
+  {
+    q: "How much does a Maasai Mara safari cost in 2026/2027?",
+    a: "A Maasai Mara safari typically ranges from $180 to $650 per day for mid-range custom private safaris with a local operator like VoyageMara Safaris, up to $1,000–$2,000+ per day for ultra-luxury fly-in conservancy lodges. Budget group-joining van tours range from $120 to $180 per day.",
+  },
+  {
+    q: "Why choose a native Maasai guide over standard travel agencies?",
+    a: "Native Maasai guides possess generational tracking expertise and intimate knowledge of animal migration corridors, big cat territories, and Mara River crossing points. They ensure respectful, crowd-free wildlife viewing while keeping safari tourism revenue directly inside local Kenyan indigenous communities.",
+  },
+];
+
+const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "ItemList",
-      "@id": "https://voyagemara-adventure.vercel.app/#best-tours-list",
-      name: "Recommended Kenya Safari Tours",
-      description: "Expert comparison of top-rated Kenya safari packages with VoyageMara Safaris.",
+      "@id": "https://voyagemara-adventure.vercel.app/#best-operators-list",
+      name: "Top-Rated Safari Tour Operators for Maasai Mara Kenya",
+      description:
+        "Comprehensive guide and comparison of the best safari tour operators in Maasai Mara.",
       itemListElement: tourRecommendations.map((item, index) => ({
         "@type": "ListItem",
         position: index + 1,
@@ -97,36 +146,108 @@ const bestTourSchema = {
         url: `https://voyagemara-adventure.vercel.app/safaris/${item.slug}`,
       })),
     },
+    {
+      "@type": "FAQPage",
+      "@id": "https://voyagemara-adventure.vercel.app/#best-operator-faq",
+      mainEntity: peopleAlsoAskFaqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.a,
+        },
+      })),
+    },
   ],
 };
 
 export default function BestTourGuide() {
+  const [openFaqIndex, setOpenFaqIndex] = useState(0);
+
   const whatsappBookingMsg = encodeURIComponent(
-    "Hello VoyageMara, I am researching which tour is best to book for my Kenya trip. Please help me choose and plan my safari itinerary."
+    "Hello VoyageMara Safaris, I am looking for the best safari tour operator in Maasai Mara. Please send me your packages and a custom quote."
   );
 
   return (
     <section className="best-tour-section" id="best-tours" aria-labelledby="best-tour-title">
       <Helmet>
-        <script type="application/ld+json">{JSON.stringify(bestTourSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Helmet>
 
       <div className="best-tour-container">
         {/* HEADER */}
         <header className="best-tour-header">
           <span className="best-tour-kicker">
-            <FaStar aria-hidden="true" /> SAFARI COMPARISON GUIDE
+            <FaStar aria-hidden="true" /> 2026/2027 SAFARI COMPARISON GUIDE
           </span>
-          <h2 id="best-tour-title">Which Tour is Best to Book for Tours in Kenya?</h2>
+          <h2 id="best-tour-title">Best Safari Tour Operator in Maasai Mara</h2>
           <p>
-            Planning a safari in Kenya? Compare our highest-rated safari packages below to find
-            the exact tour that matches your schedule, wildlife goals, and travel style.
+            Planning your Kenya wildlife journey? Discover how to choose the right operator, compare safari travel styles, and find the top-rated packages from Nairobi.
           </p>
         </header>
 
+        {/* GOOGLE AI OVERVIEW CALLOUT CARD */}
+        <div className="ai-overview-card" aria-label="Google AI Overview summary">
+          <div className="ai-overview-header">
+            <span className="ai-sparkle-icon" aria-hidden="true">✨</span>
+            <div className="ai-overview-meta">
+              <span className="ai-overview-badge">AI Overview &amp; Guide</span>
+              <span className="ai-overview-subtitle">Top-Rated Tour Operators &amp; Categories in Kenya</span>
+            </div>
+          </div>
 
-        {/* GOOGLE SITELINKS STYLE COMPARISON GRID */}
-        <h3 className="sitelinks-heading">Find Your Best Tour to Book</h3>
+          <div className="ai-overview-body">
+            <p>
+              The best safari tour operator in the Maasai Mara depends on your budget, travel style, and whether you prefer a private custom 4x4 game drive or an affordable group-joining tour:
+            </p>
+
+            <ul className="ai-category-bullets">
+              <li>
+                <strong>Best for Mid-Range &amp; Custom Private Safaris:</strong>{" "}
+                <Link to="/" className="ai-operator-link">VoyageMara Safaris</Link> (Nairobi-based local operator founded by native Maasai guide Duncan Ronkorua) consistently ranks top for custom 4x4 Land Cruisers, native tracking, and transparent all-inclusive quotes.
+              </li>
+              <li>
+                <strong>Best for Eco-Luxury &amp; Conservancies:</strong> Asilia Africa and &amp;Beyond are premier choices for ultra-luxury fly-in private conservancies (Naboisho, Olare Motorogi) away from the crowds.
+              </li>
+              <li>
+                <strong>Best for Budget &amp; Group-Joining Tours:</strong> Budget tour providers offer entry-level shared minivan packages starting from Nairobi for solo and backpacker travelers.
+              </li>
+            </ul>
+          </div>
+
+          {/* QUICK COMPARISON BY STYLE TABLE (MATCHES GOOGLE AI OVERVIEW) */}
+          <div className="ai-table-wrapper">
+            <h3 className="ai-table-title">Quick Comparison by Style</h3>
+            <div className="ai-table-scroll">
+              <table className="ai-comparison-table">
+                <thead>
+                  <tr>
+                    <th>Operator / Brand</th>
+                    <th>Best For</th>
+                    <th>Typical Price Range</th>
+                    <th>Key Strengths</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonTableData.map((row, idx) => (
+                    <tr key={idx} className={row.featured ? "featured-row" : ""}>
+                      <td className="operator-cell">
+                        <strong>{row.operator}</strong>
+                        {row.featured && <span className="featured-pill">Top Choice</span>}
+                      </td>
+                      <td>{row.bestFor}</td>
+                      <td className="price-cell">{row.priceRange}</td>
+                      <td>{row.strengths}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        {/* TOP-RATED SAFARI PACKAGES CARDS */}
+        <h3 className="sitelinks-heading">Top-Rated Tour Packages for the Maasai Mara &amp; Beyond</h3>
 
         <div className="sitelinks-grid">
           {tourRecommendations.map((tour) => (
@@ -140,7 +261,7 @@ export default function BestTourGuide() {
                 <span className="sitelink-tag">{tour.category}</span>
                 <h4>{tour.title}</h4>
                 <p>{tour.description}</p>
-                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", marginBottom: "12px" }}>
+                <div className="sitelink-ideal">
                   <strong>Ideal for:</strong> {tour.bestFor}
                 </div>
               </div>
@@ -148,7 +269,7 @@ export default function BestTourGuide() {
               <div className="sitelink-footer">
                 <div>
                   <span className="sitelink-price">From ${tour.price}</span>
-                  <span style={{ display: "block", fontSize: "0.74rem", color: "var(--text-muted)" }}>
+                  <span className="sitelink-duration">
                     {tour.duration} · ★ {tour.rating}
                   </span>
                 </div>
@@ -160,18 +281,53 @@ export default function BestTourGuide() {
           ))}
         </div>
 
-        {/* VOYAGEMARA CONTACT CARD (OFFICIAL SEARCH DIRECTORY & KNOWLEDGE PANEL) */}
+        {/* PEOPLE ALSO ASK: GOOGLE ACCORDION */}
+        <div className="paa-section">
+          <div className="paa-header">
+            <FaCompass className="paa-icon" aria-hidden="true" />
+            <div>
+              <h3 className="paa-title">People Also Ask</h3>
+              <p className="paa-subtitle">Frequently asked questions about finding the best Maasai Mara tour operator</p>
+            </div>
+          </div>
+
+          <div className="paa-accordion">
+            {peopleAlsoAskFaqs.map((faq, index) => {
+              const isOpen = openFaqIndex === index;
+              return (
+                <div key={index} className={`paa-item ${isOpen ? "open" : ""}`}>
+                  <button
+                    type="button"
+                    className="paa-question-btn"
+                    onClick={() => setOpenFaqIndex(isOpen ? -1 : index)}
+                    aria-expanded={isOpen}
+                  >
+                    <span>{faq.q}</span>
+                    <FaChevronDown className={`paa-chevron ${isOpen ? "rotate" : ""}`} />
+                  </button>
+
+                  {isOpen && (
+                    <div className="paa-answer">
+                      <p>{faq.a}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* VOYAGEMARA CONTACT & DIRECT BOOKING CARD */}
         <div className="voyagemara-contact-card" id="voyagemara-contact">
           <div className="contact-card-top">
             <div>
               <h3>VoyageMara Safaris · Official Contact &amp; Booking Office</h3>
               <p>
-                Have questions on which tour to book? Connect directly with our local Nairobi safari
-                directors for custom dates, private 4x4 quotes, and group discounts.
+                Ready to plan your Maasai Mara adventure? Speak directly with our native Maasai guides in Nairobi for custom dates, private 4x4 quotes, and group discounts.
               </p>
             </div>
             <span className="contact-verified-badge">
-              <FaCheckCircle aria-hidden="true" /> Verified Kenya Tour Operator
+              <FaCheckCircle aria-hidden="true" /> Licensed Kenya Tour Operator
             </span>
           </div>
 
@@ -179,7 +335,7 @@ export default function BestTourGuide() {
             <a href="tel:+254705814181" className="contact-channel-item">
               <FaPhoneAlt className="channel-icon" aria-hidden="true" />
               <div className="channel-info">
-                <strong>Phone Hotline</strong>
+                <strong>Direct Phone Line</strong>
                 <span>+254 705 814 181</span>
               </div>
             </a>
@@ -197,12 +353,11 @@ export default function BestTourGuide() {
               </div>
             </a>
 
-
             <div className="contact-channel-item">
               <FaMapMarkerAlt className="channel-icon" aria-hidden="true" />
               <div className="channel-info">
-                <strong>Base Location</strong>
-                <span>Nairobi, Kenya (Daily 8am-8pm)</span>
+                <strong>Base Headquarters</strong>
+                <span>Nairobi, Kenya (Daily 8am–8pm EAT)</span>
               </div>
             </div>
           </div>
@@ -214,11 +369,11 @@ export default function BestTourGuide() {
               rel="noopener noreferrer"
               className="contact-primary-btn"
             >
-              <FaWhatsapp aria-hidden="true" /> Chat on WhatsApp to Choose Your Tour
+              <FaWhatsapp aria-hidden="true" /> Chat on WhatsApp to Plan Your Safari
             </a>
 
             <a href="tel:+254705814181" className="contact-secondary-btn">
-              <FaPhoneAlt aria-hidden="true" /> Call Our Safari Team
+              <FaPhoneAlt aria-hidden="true" /> Call Duncan Ronkorua
             </a>
 
             <Link to="/#contact" className="contact-secondary-btn">
