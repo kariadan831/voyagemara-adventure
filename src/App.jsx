@@ -159,7 +159,7 @@ export default function App() {
             path="/"
             element={
               <>
-                <div className="story-section">
+                <div className="story-section hero-story-section">
                   <Hero onOpenBooking={handleOpenBooking} />
                 </div>
 

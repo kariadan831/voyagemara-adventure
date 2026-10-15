@@ -121,11 +121,33 @@ export default function Hero({ onOpenBooking }) {
 
   const [isDestOpen, setIsDestOpen] = useState(false);
   const [isGuestOpen, setIsGuestOpen] = useState(false);
+  const [destOpenUp, setDestOpenUp] = useState(false);
+  const [guestOpenUp, setGuestOpenUp] = useState(false);
   const [destSearchQuery, setDestSearchQuery] = useState("");
 
   const destRef = useRef(null);
   const guestRef = useRef(null);
   const destSearchInputRef = useRef(null);
+
+  const toggleDestDropdown = () => {
+    if (!isDestOpen && destRef.current) {
+      const rect = destRef.current.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      setDestOpenUp(spaceBelow < 380 && rect.top > 320);
+    }
+    setIsDestOpen(!isDestOpen);
+    setIsGuestOpen(false);
+  };
+
+  const toggleGuestDropdown = () => {
+    if (!isGuestOpen && guestRef.current) {
+      const rect = guestRef.current.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      setGuestOpenUp(spaceBelow < 330 && rect.top > 300);
+    }
+    setIsGuestOpen(!isGuestOpen);
+    setIsDestOpen(false);
+  };
 
   // Today date formatted for HTML min attribute
   const todayStr = new Date().toISOString().split("T")[0];
@@ -254,10 +276,7 @@ export default function Hero({ onOpenBooking }) {
               <button
                 type="button"
                 className={`hero-select-trigger ${isDestOpen ? "active" : ""}`}
-                onClick={() => {
-                  setIsDestOpen(!isDestOpen);
-                  setIsGuestOpen(false);
-                }}
+                onClick={toggleDestDropdown}
                 aria-haspopup="listbox"
                 aria-expanded={isDestOpen}
               >
@@ -275,7 +294,7 @@ export default function Hero({ onOpenBooking }) {
 
               {/* SELECT2 LUXURY POPUP MENU */}
               {isDestOpen && (
-                <div className="hero-dropdown-menu dest-menu" role="listbox">
+                <div className={`hero-dropdown-menu dest-menu ${destOpenUp ? "open-up" : ""}`} role="listbox">
                   {/* SEARCH FILTER BOX (SELECT2 FEATURE) */}
                   <div className="dropdown-search-box">
                     <FaSearch className="search-box-icon" />
@@ -364,10 +383,7 @@ export default function Hero({ onOpenBooking }) {
               <button
                 type="button"
                 className={`hero-select-trigger ${isGuestOpen ? "active" : ""}`}
-                onClick={() => {
-                  setIsGuestOpen(!isGuestOpen);
-                  setIsDestOpen(false);
-                }}
+                onClick={toggleGuestDropdown}
                 aria-haspopup="listbox"
                 aria-expanded={isGuestOpen}
               >
@@ -385,7 +401,7 @@ export default function Hero({ onOpenBooking }) {
 
               {/* TRAVELLERS POPUP MENU */}
               {isGuestOpen && (
-                <div className="hero-dropdown-menu guest-menu" role="listbox">
+                <div className={`hero-dropdown-menu guest-menu ${guestOpenUp ? "open-up" : ""}`} role="listbox">
                   <div className="dropdown-options-list">
                     {guestsList.map((item) => {
                       const isSelected = item.id === selectedGuest.id;
