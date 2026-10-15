@@ -246,7 +246,7 @@ export default function Hero({ onOpenBooking }) {
         <div className="hero-search-bar-wrap">
           <form className="hero-search-bar" onSubmit={handleQuickSearchSubmit}>
             {/* 1. CUSTOM LUXURY DESTINATION SELECT */}
-            <div className="hero-select-field" ref={destRef}>
+            <div className={`hero-select-field ${isDestOpen ? "is-open" : ""}`} ref={destRef}>
               <span className="hero-field-label">
                 <FaCompass /> Destination / Safari
               </span>
@@ -356,7 +356,7 @@ export default function Hero({ onOpenBooking }) {
             </div>
 
             {/* 3. CUSTOM LUXURY TRAVELLERS SELECT */}
-            <div className="hero-select-field" ref={guestRef}>
+            <div className={`hero-select-field ${isGuestOpen ? "is-open" : ""}`} ref={guestRef}>
               <span className="hero-field-label">
                 <FaUsers /> Travellers
               </span>
@@ -425,7 +425,7 @@ export default function Hero({ onOpenBooking }) {
             </button>
           </form>
 
-          {selectedDest.slug && (
+          {selectedDest.slug && !isDestOpen && !isGuestOpen && (
             <div className="hero-search-quick-direct">
               <span className="hsq-label">Instant Browse:</span>
               <Link
