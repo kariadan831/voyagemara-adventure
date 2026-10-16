@@ -1,4 +1,13 @@
 import { useState } from "react";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTiktok,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaWhatsapp,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
 const footerLinks = [
@@ -6,7 +15,8 @@ const footerLinks = [
   { label: "Our story", href: "/#about" },
   { label: "Safari itineraries", href: "/#itineraries" },
   { label: "Safari experiences", href: "/#tours" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Photo gallery", href: "/#gallery" },
+  { label: "Contact us", href: "/#contact" },
 ];
 
 export default function Footer() {
@@ -45,7 +55,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-inner">
         <section className="footer-cta" aria-labelledby="footer-cta-heading">
-          <div>
+          <div className="footer-cta-text">
             <span className="footer-eyebrow">YOUR NEXT GREAT STORY STARTS HERE</span>
             <h2 id="footer-cta-heading">Ready to plan your Kenya safari?</h2>
             <p>Talk with our local team and start shaping a journey around you.</p>
@@ -61,32 +71,96 @@ export default function Footer() {
         </section>
 
         <div className="footer-grid">
+          {/* Brand Box with Socials */}
           <div className="footer-box footer-brand">
             <a className="footer-brand-link" href="/#home" aria-label="VoyageMara Safaris home">
-              <img src="/logo.png" alt="" width="52" height="52" loading="lazy" />
+              <img src="/logo.png" alt="VoyageMara Safaris Logo" width="46" height="46" loading="lazy" />
               <span>VoyageMara <strong>Safaris</strong></span>
             </a>
-            <p>Locally planned journeys into Kenya’s wild places, made personal from the very first conversation.</p>
-            <span className="footer-location"><span aria-hidden="true">⌖</span> Nairobi, Kenya · Exploring all of Kenya</span>
+            <p className="footer-tagline">
+              Locally planned journeys into Kenya’s wild places, made personal from the very first conversation.
+            </p>
+            <div className="footer-location">
+              <FaMapMarkerAlt aria-hidden="true" className="footer-loc-icon" />
+              <span>Nairobi, Kenya · Exploring all of Kenya</span>
+            </div>
+
+            <div className="footer-social-wrapper">
+              <span className="footer-social-label">Follow Us</span>
+              <div className="footer-social-links">
+                <a
+                  href="https://www.tiktok.com/@voyagemara"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow VoyageMara on TikTok"
+                  title="TikTok"
+                >
+                  <FaTiktok />
+                </a>
+                <a
+                  href="https://www.instagram.com/voyagemara/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow VoyageMara on Instagram"
+                  title="Instagram"
+                >
+                  <FaInstagram />
+                </a>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61595111565710"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow VoyageMara on Facebook"
+                  title="Facebook"
+                >
+                  <FaFacebookF />
+                </a>
+              </div>
+            </div>
           </div>
 
+          {/* Explore Links */}
           <nav className="footer-box footer-links" aria-label="Footer navigation">
             <h3>Explore</h3>
-            {footerLinks.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}
+            <div className="footer-links-list">
+              {footerLinks.map((link) => (
+                <a key={link.href} href={link.href}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </nav>
 
+          {/* Contact Details */}
           <div className="footer-box footer-contact">
             <h3>Get in touch</h3>
-            <a href="mailto:kariadan831@gmail.com.">kariadan831@gmail.com</a>
-            <a href="tel:+254705814181">+254 705 814 181</a>
-            <a href="https://wa.me/254705814181" target="_blank" rel="noopener noreferrer">WhatsApp our team <span aria-hidden="true">↗</span></a>
-            <span>Daily, 8:00 am – 8:00 pm EAT</span>
+            <div className="footer-contact-list">
+              <a href="tel:+254705814181" className="footer-contact-item">
+                <FaPhoneAlt className="footer-contact-icon" />
+                <span>+254 705 814 181</span>
+              </a>
+              <a href="mailto:kariadan831@gmail.com" className="footer-contact-item">
+                <FaEnvelope className="footer-contact-icon" />
+                <span>kariadan831@gmail.com</span>
+              </a>
+              <a
+                href="https://wa.me/254705814181?text=Hello%20VoyageMara%2C%20I%27d%20like%20to%20plan%20a%20Kenya%20safari."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-whatsapp-pill"
+              >
+                <FaWhatsapp className="footer-wa-icon" />
+                <span>WhatsApp Us</span>
+              </a>
+              <span className="footer-hours">Daily, 8:00 am – 8:00 pm EAT</span>
+            </div>
           </div>
 
+          {/* Newsletter Box */}
           <section className="footer-box footer-newsletter" aria-labelledby="newsletter-heading">
-            <h3 id="newsletter-heading">Notes from the wild</h3>
+            <h3 id="newsletter-heading">Safari Dispatch</h3>
             <p>Occasional safari inspiration, destination stories and travel updates. No noise.</p>
-            <form onSubmit={subscribe}>
+            <form onSubmit={subscribe} className="footer-newsletter-form">
               <label className="visually-hidden" htmlFor="footer-newsletter-email">Email address</label>
               <input
                 id="footer-newsletter-email"
@@ -99,18 +173,23 @@ export default function Footer() {
                 required
               />
               <button type="submit" disabled={submitting} aria-label="Subscribe to the newsletter">
-                {submitting ? "Sending…" : "Subscribe"}
+                {submitting ? "..." : "Subscribe"}
               </button>
             </form>
-            <p className="newsletter-consent">By subscribing, you agree to receive occasional email updates. Unsubscribe at any time.</p>
-            <p className="newsletter-status" role="status" aria-live="polite">{status}</p>
+            <p className="newsletter-consent">By subscribing, you agree to receive occasional updates. Unsubscribe anytime.</p>
+            {status && (
+              <p className="newsletter-status" role="status" aria-live="polite">{status}</p>
+            )}
           </section>
         </div>
 
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} VoyageMara Safaris. All rights reserved.</span>
-          <a href="/about">About VoyageMara</a>
-          <span>Thoughtfully planned in Kenya.</span>
+          <div className="footer-bottom-links">
+            <a href="/about">About VoyageMara</a>
+            <span className="footer-bottom-sep" aria-hidden="true">·</span>
+            <span>Thoughtfully planned in Kenya.</span>
+          </div>
         </div>
       </div>
     </footer>
