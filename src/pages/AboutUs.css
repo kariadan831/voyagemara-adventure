@@ -460,34 +460,21 @@ margin-bottom:40px;
 }
 
 
-.faq-item{
-
-background:#10251a;
-
-padding:25px;
-
-margin-bottom:20px;
-
-border-radius:15px;
-
+.about-faq .faq-item {
+  background: #10251a;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 15px;
 }
 
-
-.faq-item h3{
-
-color:#ffffff;
-
-margin-bottom:15px;
-
+.about-faq .faq-item h3 {
+  color: #ffffff;
+  margin-bottom: 15px;
 }
 
-
-.faq-item p{
-
-color:#ddd;
-
-line-height:1.8;
-
+.about-faq .faq-item p {
+  color: #ddd;
+  line-height: 1.8;
 }
 
 /* Keep every About page surface legible in both saved theme preferences. */

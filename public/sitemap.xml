@@ -12,6 +12,30 @@
       <image:loc>https://voyagemara-adventure.vercel.app/images/masai-mara.webp</image:loc>
       <image:title>Maasai Mara Big Five Kenya Safari</image:title>
     </image:image>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/images/lions.webp</image:loc>
+      <image:title>Big Five Lions Safari in Maasai Mara</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/images/elephant.webp</image:loc>
+      <image:title>Amboseli Elephants with Mount Kilimanjaro Views</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/images/camp.webp</image:loc>
+      <image:title>Luxury Safari Tented Camp VoyageMara Safaris</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/images/ballon.webp</image:loc>
+      <image:title>Hot Air Balloon Safari over Maasai Mara Plains</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/images/maasai.webp</image:loc>
+      <image:title>Native Maasai Wildlife Trackers and Guides</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://voyagemara-adventure.vercel.app/logo.png</image:loc>
+      <image:title>VoyageMara Safaris Official Business Logo</image:title>
+    </image:image>
   </url>
 
   <!-- 3-Day Maasai Mara Big Five Safari -->

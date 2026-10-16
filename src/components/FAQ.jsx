@@ -176,9 +176,11 @@ export default function FAQ() {
               <h3 className="faq-category-title">{cat.category}</h3>
               <div className="faq-group">
                 {cat.items.map((faq, i) => (
-                  <details key={i} className="faq-item">
-                    <summary>{faq.question}</summary>
-                    <p>{faq.answer}</p>
+                  <details key={i} className="faq-item faq-accordion-item">
+                    <summary className="faq-question">
+                      <span className="faq-question-text">{faq.question}</span>
+                    </summary>
+                    <p className="faq-answer">{faq.answer}</p>
                   </details>
                 ))}
               </div>

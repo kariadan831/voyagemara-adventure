@@ -142,60 +142,83 @@
 
 /* ─── INDIVIDUAL FAQ ITEM ─────────────────────────────── */
 .faq-item {
-  border: 1.5px solid rgba(28, 55, 43, 0.12);
+  border: 1.5px solid rgba(28, 55, 43, 0.14) !important;
   border-radius: 14px;
-  background: #ffffff;
+  background: #ffffff !important;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(28, 55, 43, 0.04);
+  box-shadow: 0 4px 16px rgba(28, 55, 43, 0.05);
   transition: all 220ms ease;
   position: relative;
 }
 
 [data-theme="dark"] .faq-item {
-  background: #12251d;
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  background: #12251d !important;
+  border-color: rgba(234, 222, 190, 0.2) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
 .faq-item:hover {
-  border-color: rgba(184, 154, 99, 0.45);
-  box-shadow: 0 8px 24px rgba(28, 55, 43, 0.08);
+  border-color: var(--accent-color, #b89a63) !important;
+  box-shadow: 0 8px 24px rgba(28, 55, 43, 0.09);
 }
 
 [data-theme="dark"] .faq-item:hover {
-  border-color: rgba(221, 201, 155, 0.35);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  border-color: var(--accent-light, #ddc99b) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
 .faq-item[open] {
-  border-color: var(--accent-color, #b89a63);
+  border-color: var(--accent-color, #b89a63) !important;
+  border-left: 5px solid var(--accent-color, #b89a63) !important;
+  background: #ffffff !important;
   box-shadow: 0 10px 32px rgba(28, 55, 43, 0.1);
-  border-left: 4px solid var(--accent-color, #b89a63);
 }
 
 [data-theme="dark"] .faq-item[open] {
-  background: #162c23;
-  border-color: var(--accent-color, #b89a63);
-  border-left: 4px solid var(--accent-color, #b89a63);
+  background: #152b21 !important;
+  border-color: var(--accent-color, #b89a63) !important;
+  border-left: 5px solid var(--accent-color, #b89a63) !important;
 }
 
-.faq-item summary {
+.faq-item summary,
+.faq-question {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   padding: 18px 22px;
-  color: var(--primary-dark, #15382d);
-  font-size: clamp(0.95rem, 1.3vw, 1.02rem);
-  font-weight: 700;
   cursor: pointer;
   list-style: none;
   line-height: 1.45;
   user-select: none;
 }
 
-[data-theme="dark"] .faq-item summary {
-  color: #fffdf6;
+.faq-question-text {
+  color: #15382d !important;
+  font-size: clamp(0.96rem, 1.3vw, 1.05rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.faq-item:hover .faq-question-text {
+  color: #8a6f3b !important;
+}
+
+[data-theme="dark"] .faq-question-text {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .faq-item:hover .faq-question-text {
+  color: var(--accent-light, #ddc99b) !important;
+}
+
+.faq-item[open] .faq-question-text {
+  color: #15382d !important;
+}
+
+[data-theme="dark"] .faq-item[open] .faq-question-text {
+  color: #ffffff !important;
 }
 
 .faq-item summary::-webkit-details-marker { display: none; }
@@ -205,14 +228,14 @@
   content: "+";
   flex: 0 0 auto;
   display: grid;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   place-items: center;
   border-radius: 50%;
   background: rgba(33, 72, 58, 0.08);
-  border: 1px solid rgba(33, 72, 58, 0.15);
-  color: var(--primary-dark, #15382d);
-  font-size: 1.15rem;
+  border: 1px solid rgba(33, 72, 58, 0.18);
+  color: #15382d;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1;
   transition: all 220ms ease;
@@ -220,31 +243,33 @@
 
 [data-theme="dark"] .faq-item summary::after {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
   color: var(--accent-light, #ddc99b);
 }
 
 .faq-item[open] summary::after {
   content: "−";
-  background: var(--accent-color, #b89a63);
-  border-color: var(--accent-color, #b89a63);
-  color: #16291f;
+  background: var(--accent-color, #b89a63) !important;
+  border-color: var(--accent-color, #b89a63) !important;
+  color: #16291f !important;
   transform: rotate(180deg);
 }
 
-.faq-item p {
+.faq-item p,
+.faq-answer {
   padding: 0 22px 20px;
-  color: #384d42;
-  font-size: 0.92rem;
-  line-height: 1.75;
+  color: #2b3d33 !important;
+  font-size: 0.94rem;
+  line-height: 1.78;
   margin: 0;
-  border-top: 1px solid rgba(28, 55, 43, 0.08);
-  padding-top: 14px;
+  border-top: 1px solid rgba(28, 55, 43, 0.09);
+  padding-top: 16px;
 }
 
-[data-theme="dark"] .faq-item p {
-  color: #cfddd6;
-  border-top-color: rgba(255, 255, 255, 0.08);
+[data-theme="dark"] .faq-item p,
+[data-theme="dark"] .faq-answer {
+  color: #dbe7e1 !important;
+  border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 /* ─── BOOKING & CANCELLATION POLICY CARD ──────────────── */
