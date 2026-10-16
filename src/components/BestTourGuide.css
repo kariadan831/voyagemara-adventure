@@ -63,90 +63,108 @@
 }
 
 /* =========================================================
-   AI OVERVIEW CALLOUT CARD (MATCHES GOOGLE AI OVERVIEW)
+   OPERATOR BENCHMARK & SELECTION GUIDE (PROFESSIONAL)
 ========================================================= */
 
-.ai-overview-card {
+.operator-benchmark-card {
   position: relative;
-  background: linear-gradient(135deg, rgba(245, 242, 233, 0.95), rgba(255, 255, 255, 0.98));
+  background: linear-gradient(135deg, rgba(245, 242, 233, 0.96), rgba(255, 255, 255, 0.99));
   border: 1.5px solid rgba(184, 154, 99, 0.4);
   border-radius: 22px;
-  padding: clamp(24px, 4vw, 36px);
+  padding: clamp(24px, 4vw, 38px);
   margin-bottom: 48px;
   box-shadow: 0 16px 45px rgba(24, 48, 36, 0.07);
+  transition: all 0.3s ease;
 }
 
-[data-theme="dark"] .ai-overview-card {
-  background: linear-gradient(135deg, rgba(16, 35, 26, 0.95), rgba(11, 23, 18, 0.98));
+[data-theme="dark"] .operator-benchmark-card {
+  background: linear-gradient(135deg, rgba(16, 35, 26, 0.96), rgba(11, 23, 18, 0.98));
   border-color: rgba(184, 154, 99, 0.35);
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.35);
 }
 
-.ai-overview-header {
+.operator-benchmark-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-  padding-bottom: 14px;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
   border-bottom: 1px solid rgba(28, 55, 43, 0.1);
 }
 
-[data-theme="dark"] .ai-overview-header {
+[data-theme="dark"] .operator-benchmark-header {
   border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
-.ai-sparkle-icon {
-  font-size: 1.5rem;
-  line-height: 1;
+.benchmark-shield-badge {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(184, 154, 99, 0.15);
+  border: 1px solid rgba(184, 154, 99, 0.35);
+  color: var(--accent-dark, #806a40);
+  flex-shrink: 0;
 }
 
-.ai-overview-badge {
-  font-size: 0.82rem;
+[data-theme="dark"] .benchmark-shield-badge {
+  background: rgba(221, 201, 155, 0.15);
+  border-color: rgba(221, 201, 155, 0.4);
+  color: var(--accent-light, #ddc99b);
+}
+
+.benchmark-shield-icon {
+  font-size: 1.25rem;
+}
+
+.operator-benchmark-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.operator-benchmark-badge {
+  font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   color: var(--primary-color, #21483a);
   text-transform: uppercase;
 }
 
-[data-theme="dark"] .ai-overview-badge {
+[data-theme="dark"] .operator-benchmark-badge {
   color: var(--accent-light, #ddc99b);
 }
 
-.ai-overview-body {
-  color: var(--text-dark, #26372f);
-  font-size: 1.02rem;
-  line-height: 1.8;
+.operator-benchmark-subtitle {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--primary-dark, #15382d);
 }
 
-[data-theme="dark"] .ai-overview-body {
+[data-theme="dark"] .operator-benchmark-subtitle {
+  color: #ffffff;
+}
+
+.operator-benchmark-body {
+  color: var(--text-dark, #26372f);
+  font-size: 1.02rem;
+  line-height: 1.78;
+}
+
+[data-theme="dark"] .operator-benchmark-body {
   color: #edf3ef;
 }
 
-.ai-overview-body strong {
+.operator-benchmark-body strong {
   color: var(--primary-dark, #15382d);
 }
 
-[data-theme="dark"] .ai-overview-body strong {
+[data-theme="dark"] .operator-benchmark-body strong {
   color: var(--accent-light, #ddc99b);
 }
 
-.ai-overview-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.ai-overview-subtitle {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--primary-dark, #15382d);
-}
-
-[data-theme="dark"] .ai-overview-subtitle {
-  color: #fff;
-}
-
-.ai-category-bullets {
+.operator-category-bullets {
   margin: 18px 0 24px;
   padding-left: 20px;
   display: flex;
@@ -154,58 +172,58 @@
   gap: 12px;
 }
 
-.ai-category-bullets li {
+.operator-category-bullets li {
   line-height: 1.65;
   font-size: 0.96rem;
 }
 
-.ai-operator-link {
+.operator-brand-link {
   color: var(--primary-color, #21483a);
-  font-weight: 700;
+  font-weight: 800;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-[data-theme="dark"] .ai-operator-link {
+[data-theme="dark"] .operator-brand-link {
   color: var(--accent-light, #ddc99b);
 }
 
 /* =========================================================
-   AI COMPARISON TABLE (MATCHES GOOGLE AI OVERVIEW)
+   OPERATOR COMPARISON BENCHMARK TABLE
 ========================================================= */
 
-.ai-table-wrapper {
+.operator-table-wrapper {
   margin-top: 28px;
   padding-top: 20px;
   border-top: 1px solid rgba(28, 55, 43, 0.12);
 }
 
-[data-theme="dark"] .ai-table-wrapper {
+[data-theme="dark"] .operator-table-wrapper {
   border-top-color: rgba(255, 255, 255, 0.1);
 }
 
-.ai-table-title {
-  font-size: 1.25rem;
+.operator-table-title {
+  font-size: 1.22rem;
   font-weight: 800;
   color: var(--primary-dark, #15382d);
   margin-bottom: 14px;
 }
 
-[data-theme="dark"] .ai-table-title {
+[data-theme="dark"] .operator-table-title {
   color: #fff;
 }
 
-.ai-table-scroll {
+.operator-table-scroll {
   overflow-x: auto;
   border-radius: 12px;
   border: 1px solid rgba(28, 55, 43, 0.12);
 }
 
-[data-theme="dark"] .ai-table-scroll {
+[data-theme="dark"] .operator-table-scroll {
   border-color: rgba(255, 255, 255, 0.12);
 }
 
-.ai-comparison-table {
+.operator-comparison-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
@@ -213,11 +231,11 @@
   background: var(--card-bg, #fffefa);
 }
 
-[data-theme="dark"] .ai-comparison-table {
+[data-theme="dark"] .operator-comparison-table {
   background: #0e2017;
 }
 
-.ai-comparison-table th {
+.operator-comparison-table th {
   background: rgba(33, 72, 58, 0.08);
   padding: 12px 16px;
   font-weight: 800;
@@ -229,20 +247,20 @@
   white-space: nowrap;
 }
 
-[data-theme="dark"] .ai-comparison-table th {
+[data-theme="dark"] .operator-comparison-table th {
   background: rgba(184, 154, 99, 0.15);
   color: var(--accent-light, #ddc99b);
   border-bottom-color: rgba(255, 255, 255, 0.15);
 }
 
-.ai-comparison-table td {
+.operator-comparison-table td {
   padding: 14px 16px;
   border-bottom: 1px solid rgba(28, 55, 43, 0.08);
   vertical-align: top;
   line-height: 1.55;
 }
 
-[data-theme="dark"] .ai-comparison-table td {
+[data-theme="dark"] .operator-comparison-table td {
   border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 

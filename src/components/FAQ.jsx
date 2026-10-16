@@ -1,4 +1,12 @@
 import { Helmet } from "react-helmet-async";
+import {
+  FaShieldAlt,
+  FaCheckCircle,
+  FaClock,
+  FaCalendarCheck,
+  FaExchangeAlt,
+  FaWhatsapp,
+} from "react-icons/fa";
 import "../styles/FAQ.css";
 
 const faqCategories = [
@@ -181,34 +189,70 @@ export default function FAQ() {
         {/* BOOKING & CANCELLATION POLICY SUMMARY */}
         <div className="faq-policy-box" aria-label="Booking and cancellation policy summary">
           <div className="faq-policy-header">
-            <span>BOOKING &amp; CANCELLATION POLICY</span>
-            <h3>Transparent, fair terms — no surprises</h3>
+            <span className="faq-policy-badge">
+              <FaShieldAlt aria-hidden="true" /> OFFICIAL BOOKING &amp; CANCELLATION POLICY
+            </span>
+            <h3>Transparent, Fair Terms — No Surprises</h3>
+            <p className="faq-policy-subtitle">
+              We believe in honest, flexible booking conditions so you can plan your Kenya safari with total confidence.
+            </p>
           </div>
           <div className="faq-policy-grid">
-            <div className="faq-policy-item faq-policy-item--green">
-              <strong>30% Deposit</strong>
-              <p>Secures your safari dates immediately upon confirmation.</p>
+            <div className="faq-policy-item faq-policy-item--deposit">
+              <div className="faq-policy-item-header">
+                <FaShieldAlt className="faq-policy-icon" aria-hidden="true" />
+                <strong>30% Deposit</strong>
+              </div>
+              <p>Secures your safari vehicle, driver-guide, and lodge dates immediately.</p>
             </div>
-            <div className="faq-policy-item faq-policy-item--green">
-              <strong>Balance Due 14 Days Before</strong>
-              <p>Remaining 70% is due 14 days before your departure.</p>
+            <div className="faq-policy-item faq-policy-item--balance">
+              <div className="faq-policy-item-header">
+                <FaClock className="faq-policy-icon" aria-hidden="true" />
+                <strong>Balance Due 14 Days Before</strong>
+              </div>
+              <p>Remaining 70% is due 14 days before departure via secure transfer or card.</p>
             </div>
-            <div className="faq-policy-item faq-policy-item--amber">
-              <strong>Cancel 30+ Days Out</strong>
-              <p>Full deposit refund — no penalty.</p>
+            <div className="faq-policy-item faq-policy-item--refund">
+              <div className="faq-policy-item-header">
+                <FaCheckCircle className="faq-policy-icon" aria-hidden="true" />
+                <strong>Cancel 30+ Days Out</strong>
+              </div>
+              <p>100% full deposit refund — zero cancellation penalty.</p>
             </div>
-            <div className="faq-policy-item faq-policy-item--amber">
-              <strong>Cancel 14–29 Days Out</strong>
-              <p>50% of deposit is forfeited.</p>
+            <div className="faq-policy-item faq-policy-item--partial">
+              <div className="faq-policy-item-header">
+                <FaCalendarCheck className="faq-policy-icon" aria-hidden="true" />
+                <strong>Cancel 14–29 Days Out</strong>
+              </div>
+              <p>50% of deposit refunded, or roll 100% toward future travel dates.</p>
             </div>
-            <div className="faq-policy-item faq-policy-item--red">
-              <strong>Cancel Within 14 Days</strong>
-              <p>Deposit is non-refundable.</p>
+            <div className="faq-policy-item faq-policy-item--close">
+              <div className="faq-policy-item-header">
+                <FaClock className="faq-policy-icon" aria-hidden="true" />
+                <strong>Cancel Within 14 Days</strong>
+              </div>
+              <p>Deposit is retained for committed lodge bookings &amp; park permits.</p>
             </div>
-            <div className="faq-policy-item faq-policy-item--green">
-              <strong>Free Rescheduling</strong>
-              <p>Change your dates at no extra cost, subject to availability.</p>
+            <div className="faq-policy-item faq-policy-item--reschedule">
+              <div className="faq-policy-item-header">
+                <FaExchangeAlt className="faq-policy-icon" aria-hidden="true" />
+                <strong>Free Rescheduling</strong>
+              </div>
+              <p>Easily transfer dates at no penalty, subject to seasonal lodge availability.</p>
             </div>
+          </div>
+
+          <div className="faq-policy-footer">
+            <span>Need custom safari dates or have questions about terms?</span>
+            <a
+              href="https://wa.me/254705814181?text=Hello%20VoyageMara%2C%20I%20have%20a%20question%20about%20your%20safari%20booking%20and%20cancellation%20policy."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="faq-policy-wa-btn"
+            >
+              <FaWhatsapp aria-hidden="true" />
+              <span>Ask Our Safari Team on WhatsApp</span>
+            </a>
           </div>
         </div>
       </section>

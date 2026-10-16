@@ -186,46 +186,48 @@ export default function BestTourGuide() {
           </p>
         </header>
 
-        {/* GOOGLE AI OVERVIEW CALLOUT CARD */}
-        <div className="ai-overview-card" aria-label="Google AI Overview summary">
-          <div className="ai-overview-header">
-            <span className="ai-sparkle-icon" aria-hidden="true">✨</span>
-            <div className="ai-overview-meta">
-              <span className="ai-overview-badge">AI Overview &amp; Guide</span>
-              <span className="ai-overview-subtitle">Top-Rated Tour Operators &amp; Categories in Kenya</span>
+        {/* PROFESSIONAL OPERATOR BENCHMARK & COMPARISON CARD */}
+        <div className="operator-benchmark-card" aria-label="Maasai Mara Tour Operator Evaluation and Guide">
+          <div className="operator-benchmark-header">
+            <div className="benchmark-shield-badge">
+              <FaShieldAlt className="benchmark-shield-icon" aria-hidden="true" />
+            </div>
+            <div className="operator-benchmark-meta">
+              <span className="operator-benchmark-badge">2026 Operator Evaluation &amp; Selection Guide</span>
+              <span className="operator-benchmark-subtitle">Comprehensive Tour Operator Breakdown · Maasai Mara &amp; Kenya</span>
             </div>
           </div>
 
-          <div className="ai-overview-body">
+          <div className="operator-benchmark-body">
             <p>
-              The best safari tour operator in the Maasai Mara depends on your budget, travel style, and whether you prefer a private custom 4x4 game drive or an affordable group-joining tour:
+              Selecting the right safari tour operator in the Maasai Mara determines the safety, authenticity, wildlife encounter rate, and overall comfort of your African expedition. Here is an independent breakdown comparing private custom operators, luxury fly-in conservancies, and budget shared minivans:
             </p>
 
-            <ul className="ai-category-bullets">
+            <ul className="operator-category-bullets">
               <li>
                 <strong>Best for Mid-Range &amp; Custom Private Safaris:</strong>{" "}
-                <Link to="/" className="ai-operator-link">VoyageMara Safaris</Link> (Nairobi-based local operator founded by native Maasai guide Duncan Ronkorua) consistently ranks top for custom 4x4 Land Cruisers, native tracking, and transparent all-inclusive quotes.
+                <Link to="/" className="operator-brand-link">VoyageMara Safaris</Link> (Nairobi-based local operator founded by native Maasai guide Duncan Ronkorua) consistently ranks top for dedicated custom 4x4 Land Cruisers with pop-up roofs, generational native tracking, and transparent all-inclusive quotes with zero hidden fees.
               </li>
               <li>
-                <strong>Best for Eco-Luxury &amp; Conservancies:</strong> Asilia Africa and &amp;Beyond are premier choices for ultra-luxury fly-in private conservancies (Naboisho, Olare Motorogi) away from the crowds.
+                <strong>Best for Ultra-Luxury &amp; Private Conservancies:</strong> Asilia Africa and &amp;Beyond are premier choices for ultra-luxury fly-in private conservancies (Naboisho, Olare Motorogi) featuring secluded tented camps away from public reserve crowds.
               </li>
               <li>
-                <strong>Best for Budget &amp; Group-Joining Tours:</strong> Budget tour providers offer entry-level shared minivan packages starting from Nairobi for solo and backpacker travelers.
+                <strong>Best for Budget &amp; Group-Joining Safaris:</strong> Budget tour providers offer entry-level shared minivan departures from Nairobi suited for solo backpackers prioritizing low upfront cost.
               </li>
             </ul>
           </div>
 
-          {/* QUICK COMPARISON BY STYLE TABLE (MATCHES GOOGLE AI OVERVIEW) */}
-          <div className="ai-table-wrapper">
-            <h3 className="ai-table-title">Quick Comparison by Style</h3>
-            <div className="ai-table-scroll">
-              <table className="ai-comparison-table">
+          {/* QUICK COMPARISON BY STYLE & OPERATOR TIER TABLE */}
+          <div className="operator-table-wrapper">
+            <h3 className="operator-table-title">Operator Comparison by Travel Style &amp; Tier</h3>
+            <div className="operator-table-scroll">
+              <table className="operator-comparison-table">
                 <thead>
                   <tr>
-                    <th>Operator / Brand</th>
+                    <th>Operator / Tier</th>
                     <th>Best For</th>
                     <th>Typical Price Range</th>
-                    <th>Key Strengths</th>
+                    <th>Key Fleet &amp; Service Strengths</th>
                   </tr>
                 </thead>
                 <tbody>
