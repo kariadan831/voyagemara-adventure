@@ -17,6 +17,7 @@ import About from "./components/About";
 import Itineraries from "./components/Itineraries";
 import Tours from "./components/Tours/Tours";
 import BestTourGuide from "./components/BestTourGuide";
+import SafariPricingTables from "./components/SafariPricingTables";
 import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
@@ -183,6 +184,10 @@ export default function App() {
 
                 <div className="story-section">
                   <BestTourGuide />
+                </div>
+
+                <div className="story-section">
+                  <SafariPricingTables />
                 </div>
 
                 <div className="story-section">
