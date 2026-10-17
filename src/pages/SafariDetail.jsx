@@ -15,6 +15,7 @@ import {
   FaPlaneDeparture,
   FaPaperPlane,
 } from "react-icons/fa";
+import MaasaiMaraGuideContent from "../components/MaasaiMaraGuideContent";
 import "./SafariDetail.css";
 
 const SITE_URL = "https://voyagemara-adventure.vercel.app";
@@ -42,7 +43,7 @@ const DEFAULT_EXCLUSIONS = [
   "Gratuities / tips for guide & camp staff",
 ];
 
-export default function SafariDetail({ tour }) {
+export default function SafariDetail({ tour, onOpenBooking }) {
   const canonical = `${SITE_URL}/safaris/${tour.slug}`;
   const images = [...new Set([tour.cover, ...tour.gallery].filter(Boolean))];
   const message = encodeURIComponent(
@@ -347,8 +348,13 @@ export default function SafariDetail({ tour }) {
           </ul>
         </section>
 
+        {/* COMPREHENSIVE MAASAI MARA DESTINATION GUIDE & CAMPS DIRECTORY */}
+        {tour.slug === "maasai-mara" && (
+          <MaasaiMaraGuideContent onOpenBooking={onOpenBooking} />
+        )}
+
         {/* ITINERARY */}
-        <section className="safari-detail-section safari-itinerary-section" aria-labelledby="safari-itinerary-heading">
+        <section className="safari-detail-section safari-itinerary-section" id="itinerary" aria-labelledby="safari-itinerary-heading">
           <div className="safari-section-heading">
             <span>YOUR JOURNEY</span>
             <h2 id="safari-itinerary-heading">{tour.duration} itinerary</h2>

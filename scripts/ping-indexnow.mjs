@@ -8,6 +8,8 @@ const payload = {
   urlList: [
     "https://voyagemara-adventure.vercel.app/",
     "https://voyagemara-adventure.vercel.app/safaris/maasai-mara",
+    "https://voyagemara-adventure.vercel.app/destinations/maasai-mara",
+    "https://voyagemara-adventure.vercel.app/accommodation/maasai-mara",
     "https://voyagemara-adventure.vercel.app/safaris/amboseli",
     "https://voyagemara-adventure.vercel.app/safaris/samburu",
     "https://voyagemara-adventure.vercel.app/safaris/lake-nakuru",

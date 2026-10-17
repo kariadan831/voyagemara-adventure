@@ -41,13 +41,27 @@
   <!-- 3-Day Maasai Mara Big Five Safari -->
   <url>
     <loc>https://voyagemara-adventure.vercel.app/safaris/maasai-mara</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <image:image>
       <image:loc>https://voyagemara-adventure.vercel.app/tours/maasai-mara/cover.webp</image:loc>
       <image:title>Maasai Mara Safari Tour Package</image:title>
     </image:image>
+  </url>
+
+  <!-- Maasai Mara Destination & Camps Directory -->
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/destinations/maasai-mara</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/accommodation/maasai-mara</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
 
   <!-- 2-Day Amboseli Elephant Safari -->

@@ -54,6 +54,8 @@ export default function App() {
   const isAboutPage = pathname === "/about";
   const requestedTourSlug = pathname.startsWith("/safaris/")
     ? pathname.split("/").filter(Boolean)[1]
+    : pathname === "/destinations/maasai-mara" || pathname === "/accommodation/maasai-mara"
+    ? "maasai-mara"
     : null;
   const activeTour = tours.find((tour) => tour.slug === requestedTourSlug);
   const isSafariPage = Boolean(activeTour);
@@ -217,7 +219,9 @@ export default function App() {
             path="/safaris/:slug"
             element={
               activeTour ? (
-                <Suspense fallback={<RouteLoader />}><SafariDetail tour={activeTour} /></Suspense>
+                <Suspense fallback={<RouteLoader />}>
+                  <SafariDetail tour={activeTour} onOpenBooking={handleOpenBooking} />
+                </Suspense>
               ) : (
                 <main className="safari-not-found">
                   <h1>Safari not found</h1>
@@ -227,12 +231,37 @@ export default function App() {
             }
           />
 
+          {/* Dedicated Maasai Mara Destination & Accommodation URLs */}
+          <Route
+            path="/destinations/maasai-mara"
+            element={
+              <Suspense fallback={<RouteLoader />}>
+                <SafariDetail
+                  tour={tours.find((tour) => tour.slug === "maasai-mara") || tours[0]}
+                  onOpenBooking={handleOpenBooking}
+                />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/accommodation/maasai-mara"
+            element={
+              <Suspense fallback={<RouteLoader />}>
+                <SafariDetail
+                  tour={tours.find((tour) => tour.slug === "maasai-mara") || tours[0]}
+                  onOpenBooking={handleOpenBooking}
+                />
+              </Suspense>
+            }
+          />
+
           <Route
             path="/booking"
             element={
               <Suspense fallback={<RouteLoader />}>
                 <SafariDetail
                   tour={tours.find((tour) => tour.slug === "maasai-mara") || tours[0]}
+                  onOpenBooking={handleOpenBooking}
                 />
               </Suspense>
             }
