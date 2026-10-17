@@ -210,7 +210,7 @@ export default function Navbar({ onOpenBooking }) {
               <FaPhoneAlt /> +254 705 814 181
             </a>
             <a
-              href="https://wa.me/254705814181?text=Hi!%20I%20would%20like%20to%20enquire%20about%20a%20Kenya%20safari."
+              href="https://wa.me/254705814181?text=Hello%20VoyageMara%20Safaris!%20I%20would%20like%20to%20enquire%20about%20a%20Kenya%20safari."
               target="_blank"
               rel="noopener noreferrer"
               className="topbar-link topbar-wa"
@@ -330,7 +330,7 @@ export default function Navbar({ onOpenBooking }) {
 
           <div className="nav-drawer-ctas">
             <a
-              href="https://wa.me/254705814181?text=Hi!%20I%20would%20like%20to%20enquire%20about%20a%20Kenya%20safari."
+              href="https://wa.me/254705814181?text=Hello%20VoyageMara%20Safaris!%20I%20would%20like%20to%20enquire%20about%20a%20Kenya%20safari."
               target="_blank"
               rel="noopener noreferrer"
               className="drawer-wa-btn"

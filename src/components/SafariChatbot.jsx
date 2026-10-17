@@ -325,7 +325,7 @@ export default function SafariChatbot({ onOpenBooking }) {
   const handleChipClick = (chipText) => {
     if (chipText === "Chat on WhatsApp" || chipText === "WhatsApp Duncan") {
       window.open(
-        "https://wa.me/254705814181?text=Hello%20Duncan!%20I'm%20chatting%20on%20your%20website%20and%20would%20like%20to%20plan%20a%20safari.",
+        "https://wa.me/254705814181?text=Hello%20VoyageMara%20Safaris!%20I'm%20chatting%20on%20your%20website%20and%20would%20like%20to%20plan%20a%20safari.",
         "_blank"
       );
       return;
@@ -504,7 +504,7 @@ export default function SafariChatbot({ onOpenBooking }) {
           <div className="sc-wa-strip">
             <span>Want to chat live with Duncan?</span>
             <a
-              href="https://wa.me/254705814181?text=Hi%20Duncan!%20I'd%20like%20to%20inquire%20about%20a%20safari."
+              href="https://wa.me/254705814181?text=Hello%20VoyageMara%20Safaris!%20I'd%20like%20to%20inquire%20about%20a%20safari."
               target="_blank"
               rel="noopener noreferrer"
               className="sc-wa-btn"
