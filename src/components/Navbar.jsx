@@ -281,8 +281,9 @@ export default function Navbar({ onOpenBooking }) {
             className="nav-quote-btn"
             onClick={handleGetQuote}
             id="navbar-get-quote"
+            aria-label="Get a Safari Quote"
           >
-            Get a Quote →
+            <span>Get a Quote</span> <span className="nav-quote-arrow">→</span>
           </button>
 
           {/* Mobile hamburger */}
