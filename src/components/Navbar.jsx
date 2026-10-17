@@ -3,13 +3,14 @@ import { useEffect, useState, useRef } from "react";
 import { FaPhoneAlt, FaWhatsapp, FaChevronDown, FaTimes, FaBars, FaSun, FaMoon } from "react-icons/fa";
 import "./Navbar.css";
 
+/* ─── Menu Data ──────────────────────────────────────────── */
 const MEGA_MENUS = {
   "Maasai Mara": [
-    { label: "Maasai Mara Overview", href: "/#tours" },
-    { label: "3-Day Big Five Safari", href: "/safaris/maasai-mara" },
+    { label: "Maasai Mara Overview", href: "/safaris/maasai-mara" },
+    { label: "3-Day Big Five Safari", href: "/safaris/maasai-mara#itinerary" },
     { label: "Great Wildebeest Migration", href: "/#itineraries" },
-    { label: "Luxury Mara Camps", href: "/#tours" },
-    { label: "Maasai Culture Experience", href: "/#about" },
+    { label: "Luxury Mara Camps", href: "/safaris/maasai-mara#accommodation" },
+    { label: "Maasai Culture Experience", href: "/safaris/maasai-mara#culture" },
   ],
   "Itineraries": [
     { label: "1-Day Nairobi Safari", href: "/safaris/nairobi-national-park" },
@@ -18,7 +19,7 @@ const MEGA_MENUS = {
     { label: "2-Day Amboseli Safari", href: "/safaris/amboseli" },
     { label: "3-Day Maasai Mara", href: "/safaris/maasai-mara" },
     { label: "3-Day Samburu Safari", href: "/safaris/samburu" },
-    { label: "5-Day Kenya Classic", href: "/#tours" },
+    { label: "5-Day Kenya Classic", href: "/#safari-pricing-tables" },
     { label: "7-Day Ultimate Kenya", href: "/#safari-pricing-tables" },
     { label: "Custom Itinerary", href: "/#contact" },
   ],
@@ -41,6 +42,7 @@ const MEGA_MENUS = {
   ],
 };
 
+/* ─── Desktop Dropdown ──────────────────────────────────── */
 function MegaDropdown({ label, items, isOpen, onToggle }) {
   const ref = useRef(null);
 
@@ -82,9 +84,54 @@ function MegaDropdown({ label, items, isOpen, onToggle }) {
   );
 }
 
+/* ─── Mobile Accordion Item ──────────────────────────────── */
+function MobileAccordion({ label, items, isOpen, onToggle, onClose }) {
+  const contentRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(isOpen ? contentRef.current.scrollHeight : 0);
+    }
+  }, [isOpen]);
+
+  return (
+    <div className={`drawer-accordion${isOpen ? " open" : ""}`}>
+      <button
+        type="button"
+        className="drawer-accordion-trigger"
+        onClick={() => onToggle(isOpen ? null : label)}
+        aria-expanded={isOpen}
+      >
+        <span>{label}</span>
+        <FaChevronDown className="drawer-accordion-chevron" />
+      </button>
+      <div
+        className="drawer-accordion-content"
+        ref={contentRef}
+        style={{ maxHeight: `${height}px` }}
+        aria-hidden={!isOpen}
+      >
+        {items.map((item) => (
+          <Link
+            key={item.label}
+            to={item.href}
+            className="drawer-accordion-link"
+            onClick={onClose}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ─── Main Navbar ─────────────────────────────────────────── */
 export default function Navbar({ onOpenBooking }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [mobileAccordion, setMobileAccordion] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const [activeSection, setActiveSection] = useState("home");
@@ -128,12 +175,25 @@ export default function Navbar({ onOpenBooking }) {
     return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", update); };
   }, [pathname]);
 
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      setMobileAccordion(null);
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
   const handleGetQuote = () => {
     setMobileOpen(false);
     setOpenDropdown(null);
     if (onOpenBooking) onOpenBooking();
     else document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const closeMobile = () => setMobileOpen(false);
 
   const isActive = (sec) => pathname === "/" && activeSection === sec;
 
@@ -163,7 +223,7 @@ export default function Navbar({ onOpenBooking }) {
 
       {/* Main Navbar */}
       <nav className={`navbar${scrolled ? " scrolled" : ""}`} id="main-nav">
-        <Link className="logo" to="/#home" onClick={() => setMobileOpen(false)}>
+        <Link className="logo" to="/#home" onClick={closeMobile}>
           <img src="/logo.png" alt="VoyageMara Safaris Logo" width="140" height="48" />
         </Link>
 
@@ -238,18 +298,34 @@ export default function Navbar({ onOpenBooking }) {
         </div>
       </nav>
 
-      {/* Mobile Drawer */}
+      {/* ── Mobile Drawer ─────────────────────────────────── */}
       <div className={`nav-mobile-drawer${mobileOpen ? " open" : ""}`} aria-hidden={!mobileOpen}>
+        <div className="nav-drawer-header">
+          <img src="/logo.png" alt="VoyageMara Safaris" width="120" height="40" />
+          <button type="button" className="nav-drawer-close" onClick={closeMobile} aria-label="Close menu">
+            <FaTimes />
+          </button>
+        </div>
+
         <div className="nav-drawer-inner">
-          <Link to="/#home" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>Home</Link>
-          <Link to="/#tours" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>All Safaris</Link>
-          <Link to="/#destinations" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>Destinations</Link>
-          <Link to="/#itineraries" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>Itineraries</Link>
-          <Link to="/#safari-pricing-tables" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>Pricing & Park Fees</Link>
-          <Link to="/#gallery" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>Gallery</Link>
-          <Link to="/#faq" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>FAQ</Link>
-          <Link to="/about" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>About Us</Link>
-          <Link to="/#contact" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>Contact</Link>
+          <Link to="/#home" className="nav-drawer-link" onClick={closeMobile}>Home</Link>
+
+          {/* Accordion menus — same as desktop dropdowns */}
+          {Object.entries(MEGA_MENUS).map(([label, items]) => (
+            <MobileAccordion
+              key={label}
+              label={label}
+              items={items}
+              isOpen={mobileAccordion === label}
+              onToggle={setMobileAccordion}
+              onClose={closeMobile}
+            />
+          ))}
+
+          <Link to="/about" className="nav-drawer-link" onClick={closeMobile}>About Us</Link>
+          <Link to="/#gallery" className="nav-drawer-link" onClick={closeMobile}>Gallery</Link>
+          <Link to="/#faq" className="nav-drawer-link" onClick={closeMobile}>FAQ</Link>
+          <Link to="/#contact" className="nav-drawer-link" onClick={closeMobile}>Contact</Link>
 
           <div className="nav-drawer-ctas">
             <a
@@ -274,7 +350,7 @@ export default function Navbar({ onOpenBooking }) {
           </button>
         </div>
       </div>
-      {mobileOpen && <div className="nav-drawer-overlay" onClick={() => setMobileOpen(false)} />}
+      {mobileOpen && <div className="nav-drawer-overlay" onClick={closeMobile} />}
     </>
   );
 }

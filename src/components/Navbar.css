@@ -352,11 +352,14 @@
   right: -320px;
   width: 300px;
   height: 100vh;
+  height: 100dvh;
   background: var(--bg-white, #fbfaf6);
   z-index: 10000;
   overflow-y: auto;
   transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
   box-shadow: -8px 0 40px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
 }
 
 [data-theme="dark"] .nav-mobile-drawer {
@@ -373,16 +376,61 @@
   backdrop-filter: blur(2px);
 }
 
+/* Drawer Header */
+.nav-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(33,72,58,0.1);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .nav-drawer-header {
+  border-color: rgba(255,255,255,0.08);
+}
+
+.nav-drawer-header img {
+  height: 38px;
+  width: auto;
+}
+
+.nav-drawer-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(33,72,58,0.15);
+  background: transparent;
+  color: var(--primary-dark, #15382d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.nav-drawer-close:hover {
+  background: rgba(33,72,58,0.08);
+}
+
+[data-theme="dark"] .nav-drawer-close {
+  border-color: rgba(255,255,255,0.12);
+  color: #c8e6d4;
+}
+
 .nav-drawer-inner {
-  padding: 28px 20px 40px;
+  padding: 12px 16px 40px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
+  flex: 1;
+  overflow-y: auto;
 }
 
 .nav-drawer-link {
   display: block;
-  padding: 12px 16px;
+  padding: 13px 16px;
   font-size: 0.97rem;
   font-weight: 600;
   color: var(--primary-dark, #15382d);
@@ -402,6 +450,102 @@
   background: rgba(184,154,99,0.1);
 }
 
+/* ── Mobile Accordion ────────────────────────────────────── */
+.drawer-accordion {
+  border-bottom: 1px solid rgba(33,72,58,0.07);
+}
+
+[data-theme="dark"] .drawer-accordion {
+  border-color: rgba(255,255,255,0.06);
+}
+
+.drawer-accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: var(--primary-dark, #15382d);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.2s, color 0.2s;
+  text-align: left;
+}
+
+.drawer-accordion-trigger:hover {
+  background: rgba(33,72,58,0.06);
+}
+
+.drawer-accordion.open .drawer-accordion-trigger {
+  color: var(--primary-color, #21483a);
+  background: rgba(33,72,58,0.05);
+}
+
+[data-theme="dark"] .drawer-accordion-trigger {
+  color: #c8e6d4;
+}
+
+[data-theme="dark"] .drawer-accordion-trigger:hover {
+  background: rgba(184,154,99,0.08);
+}
+
+[data-theme="dark"] .drawer-accordion.open .drawer-accordion-trigger {
+  color: var(--accent-light, #ddc99b);
+  background: rgba(184,154,99,0.08);
+}
+
+.drawer-accordion-chevron {
+  font-size: 0.65rem;
+  transition: transform 0.3s ease;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.drawer-accordion.open .drawer-accordion-chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.drawer-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+  padding-left: 12px;
+}
+
+.drawer-accordion-link {
+  display: block;
+  padding: 10px 16px 10px 20px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--primary-dark, #15382d);
+  text-decoration: none;
+  border-left: 2px solid rgba(33,72,58,0.12);
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.drawer-accordion-link:hover {
+  background: rgba(33,72,58,0.06);
+  color: var(--primary-color, #21483a);
+  border-left-color: var(--accent-color, #b89a63);
+}
+
+[data-theme="dark"] .drawer-accordion-link {
+  color: #a8c8b4;
+  border-left-color: rgba(255,255,255,0.08);
+}
+
+[data-theme="dark"] .drawer-accordion-link:hover {
+  background: rgba(184,154,99,0.08);
+  color: var(--accent-light, #ddc99b);
+  border-left-color: var(--accent-color, #b89a63);
+}
+
+/* ── Drawer CTAs & Theme ─────────────────────────────────── */
 .nav-drawer-ctas {
   display: flex;
   flex-direction: column;
@@ -440,6 +584,7 @@
   font-size: 0.95rem;
   cursor: pointer;
   transition: opacity 0.2s;
+  text-align: center;
 }
 
 .drawer-quote-btn:hover { opacity: 0.9; }
@@ -482,3 +627,4 @@
   .nav-quote-btn { display: none; }
   .navbar-topbar { display: none; }
 }
+
