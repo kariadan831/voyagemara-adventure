@@ -26,6 +26,7 @@ import ProSafariMap from "./components/ProSafariMap";
 import ScrollToTop from "./components/ScrollToTop";
 import WhatsAppButton from "./components/WhatsAppButton";
 import BookingModal from "./components/BookingModal";
+import SafariChatbot from "./components/SafariChatbot";
 import Footer from "./components/Footer";
 
 import { initScrollAnimations } from "./animations/scrollAnimations";
@@ -243,6 +244,7 @@ export default function App() {
       <ProSafariMap />
       <ScrollToTop />
       <WhatsAppButton />
+      <SafariChatbot onOpenBooking={handleOpenBooking} />
       <Footer />
 
       {/* UNIVERSAL BOOKING MODAL */}
