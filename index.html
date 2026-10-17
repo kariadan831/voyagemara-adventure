@@ -490,9 +490,12 @@
     }
   </style>
 
-  <!-- ================= REACT MOUNT CONTAINER WITH CRAWLER FALLBACK ================= -->
-  <div id="root">
-    <!-- Semantic crawler fallback for search engines and AI retrieval bots prior to JS hydration -->
+  <!-- ================= REACT MOUNT CONTAINER ================= -->
+  <div id="root"></div>
+
+  <!-- ================= NOSCRIPT CRAWLER FALLBACK ================= -->
+  <!-- Semantic crawler fallback for search engines and bots without JS; never displayed to users -->
+  <noscript>
     <header>
       <p><strong>VoyageMara Safaris</strong> · Licensed Tour Operator · Nairobi, Kenya</p>
       <nav>
@@ -553,7 +556,7 @@
         <p>Headquarters: Nairobi, Kenya</p>
       </section>
     </main>
-  </div>
+  </noscript>
 
   <script type="module" src="/src/main.jsx"></script>
 
@@ -561,6 +564,7 @@
   <script>
     (function () {
       var loader = document.getElementById('vm-loader');
+      if (!loader) return;
 
       function hide() {
         if (!loader) return;
@@ -572,17 +576,21 @@
 
       var root = document.getElementById('root');
 
+      // Dismiss loader only after React mounts content into root
       var observer = new MutationObserver(function () {
-        if (root && root.firstElementChild) {
+        if (root && root.children.length > 0) {
           observer.disconnect();
-          hide();
+          setTimeout(hide, 120);
         }
       });
 
       if (root) {
-        observer.observe(root, { childList: true, subtree: true });
+        observer.observe(root, { childList: true });
       }
 
+      window.addEventListener('load', function () {
+        setTimeout(hide, 400);
+      });
       setTimeout(hide, 2500);
     })();
   </script>
