@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "optimize": "node scripts/optimize-images.mjs"
+    "optimize": "node scripts/optimize-images.mjs",
+    "ping-indexnow": "node scripts/ping-indexnow.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

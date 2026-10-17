@@ -1,160 +1,280 @@
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { FaPhoneAlt } from "react-icons/fa";
+import { useEffect, useState, useRef } from "react";
+import { FaPhoneAlt, FaWhatsapp, FaChevronDown, FaTimes, FaBars, FaSun, FaMoon } from "react-icons/fa";
+import "./Navbar.css";
+
+const MEGA_MENUS = {
+  "Maasai Mara": [
+    { label: "Maasai Mara Overview", href: "/#tours" },
+    { label: "3-Day Big Five Safari", href: "/safaris/maasai-mara" },
+    { label: "Great Wildebeest Migration", href: "/#itineraries" },
+    { label: "Luxury Mara Camps", href: "/#tours" },
+    { label: "Maasai Culture Experience", href: "/#about" },
+  ],
+  "Itineraries": [
+    { label: "1-Day Nairobi Safari", href: "/safaris/nairobi-national-park" },
+    { label: "1-Day Lake Naivasha", href: "/safaris/lake-naivasha" },
+    { label: "1-Day Lake Nakuru", href: "/safaris/lake-nakuru" },
+    { label: "2-Day Amboseli Safari", href: "/safaris/amboseli" },
+    { label: "3-Day Maasai Mara", href: "/safaris/maasai-mara" },
+    { label: "3-Day Samburu Safari", href: "/safaris/samburu" },
+    { label: "5-Day Kenya Classic", href: "/#tours" },
+    { label: "7-Day Ultimate Kenya", href: "/#safari-pricing-tables" },
+    { label: "Custom Itinerary", href: "/#contact" },
+  ],
+  "Kenya Safaris": [
+    { label: "All Safari Packages", href: "/#tours" },
+    { label: "Kenya Safari Pricing", href: "/#safari-pricing-tables" },
+    { label: "Park Fees Explained", href: "/#safari-pricing-tables" },
+    { label: "Family Safaris", href: "/#tours" },
+    { label: "Honeymoon Safaris", href: "/#contact" },
+    { label: "Group / Corporate Safaris", href: "/#contact" },
+  ],
+  "Destinations": [
+    { label: "All Destinations", href: "/#destinations" },
+    { label: "Maasai Mara Reserve", href: "/safaris/maasai-mara" },
+    { label: "Amboseli National Park", href: "/safaris/amboseli" },
+    { label: "Lake Nakuru Park", href: "/safaris/lake-nakuru" },
+    { label: "Samburu Reserve", href: "/safaris/samburu" },
+    { label: "Lake Naivasha", href: "/safaris/lake-naivasha" },
+    { label: "Nairobi National Park", href: "/safaris/nairobi-national-park" },
+  ],
+};
+
+function MegaDropdown({ label, items, isOpen, onToggle }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    function handleOutside(e) {
+      if (ref.current && !ref.current.contains(e.target)) onToggle(null);
+    }
+    if (isOpen) document.addEventListener("mousedown", handleOutside);
+    return () => document.removeEventListener("mousedown", handleOutside);
+  }, [isOpen, onToggle]);
+
+  return (
+    <div className={`nav-dropdown-wrap${isOpen ? " open" : ""}`} ref={ref}>
+      <button
+        className="nav-dropdown-trigger"
+        onClick={() => onToggle(isOpen ? null : label)}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        type="button"
+      >
+        {label} <FaChevronDown className="nav-chevron" />
+      </button>
+      <div className="nav-mega-panel" role="menu" aria-label={label + " menu"}>
+        <ul>
+          {items.map((item) => (
+            <li key={item.label}>
+              <Link
+                to={item.href}
+                role="menuitem"
+                onClick={() => onToggle(null)}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 export default function Navbar({ onOpenBooking }) {
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
-  const [activeSection, setActiveSection] = useState(() =>
-    typeof window === "undefined" ? "home" : window.location.hash.slice(1) || "home"
-  );
+  const [activeSection, setActiveSection] = useState("home");
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window === "undefined") return false;
-
-    const savedTheme = localStorage.getItem("voyagemara-theme");
-    return savedTheme
-      ? savedTheme === "dark"
-      : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const saved = localStorage.getItem("voyagemara-theme");
+    return saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
+  // Apply dark mode
   useEffect(() => {
-    document.documentElement.setAttribute(
-      "data-theme",
-      darkMode ? "dark" : "light"
-    );
+    document.documentElement.setAttribute("data-theme", darkMode ? "dark" : "light");
+    localStorage.setItem("voyagemara-theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
+  // Scroll tracker for sticky style
   useEffect(() => {
-    if (pathname !== "/") return undefined;
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
+  // Active section tracker
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const ids = ["home", "destinations", "tours", "about", "itineraries", "safari-pricing-tables", "gallery", "faq", "contact"];
     let frame = 0;
-    const sectionIds = ["home", "destinations", "tours", "about", "itineraries", "gallery", "faq", "contact"];
-
-    const updateActiveSection = () => {
+    const update = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        const marker = 220;
         let current = "home";
-
-        for (const id of sectionIds) {
-          const section = document.getElementById(id);
-          const heading = section?.querySelector("h1, h2");
-          const sectionTop = heading?.getBoundingClientRect().top ?? section?.getBoundingClientRect().top;
-          if (section && sectionTop <= marker) {
-            current = id;
-          }
+        for (const id of ids) {
+          const el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top <= 200) current = id;
         }
-
         setActiveSection(current);
       });
     };
-
-    updateActiveSection();
-    window.addEventListener("scroll", updateActiveSection, { passive: true });
-    window.addEventListener("hashchange", updateActiveSection);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", updateActiveSection);
-      window.removeEventListener("hashchange", updateActiveSection);
-    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", update); };
   }, [pathname]);
 
-  const handleClick = () => setOpen(false);
-
-  const isActive = (section) => pathname === "/" && activeSection === section;
-
-  const toggleTheme = () => {
-    const newDarkMode = !darkMode;
-
-    setDarkMode(newDarkMode);
-
-    localStorage.setItem(
-      "voyagemara-theme",
-      newDarkMode ? "dark" : "light"
-    );
+  const handleGetQuote = () => {
+    setMobileOpen(false);
+    setOpenDropdown(null);
+    if (onOpenBooking) onOpenBooking();
+    else document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleBookingClick = () => {
-    setOpen(false);
-    if (onOpenBooking) {
-      onOpenBooking();
-    } else {
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const isActive = (sec) => pathname === "/" && activeSection === sec;
 
   return (
-    <nav className="navbar">
-      <Link className="logo" to="/#home" onClick={handleClick}>
-        <img src="/logo.png" alt="VoyageMara Safaris Logo" />
-      </Link>
-
-      <div className={`nav-links ${open ? "active" : ""}`}>
-        <Link to="/#home" onClick={handleClick} aria-current={isActive("home") ? "location" : undefined}>
-          Home
-        </Link>
-
-        <Link to="/#destinations" onClick={handleClick} aria-current={isActive("destinations") ? "location" : undefined}>
-          Destinations
-        </Link>
-
-        <Link to="/#tours" onClick={handleClick} aria-current={isActive("tours") ? "location" : undefined}>
-          Safaris
-        </Link>
-
-        <Link to="/about" onClick={handleClick} aria-current={pathname === "/about" ? "page" : undefined}>
-          About Us
-        </Link>
-
-        <Link to="/#itineraries" onClick={handleClick} aria-current={isActive("itineraries") ? "location" : undefined}>
-          Itineraries
-        </Link>
-
-        <Link to="/#gallery" onClick={handleClick} aria-current={isActive("gallery") ? "location" : undefined}>
-          Gallery
-        </Link>
-
-        <Link to="/#contact" onClick={handleClick} aria-current={isActive("contact") ? "location" : undefined}>
-          Contact
-        </Link>
-
-        <button
-          type="button"
-          className="theme-toggle"
-          onClick={toggleTheme}
-          aria-label={
-            darkMode ? "Switch to light mode" : "Switch to dark mode"
-          }
-          title={darkMode ? "Light mode" : "Dark mode"}
-        >
-          <span className="theme-icon">
-            {darkMode ? "☀️" : "🌙"}
+    <>
+      {/* Top Bar */}
+      <div className="navbar-topbar">
+        <div className="navbar-topbar-inner">
+          <span className="topbar-left">
+            🌍 Nairobi-based safari experts — 100% Maasai-guided private safaris
           </span>
-        </button>
-
-        <a href="tel:+254705814181" className="nav-phone-link" aria-label="Call VoyageMara Safaris">
-          <FaPhoneAlt /> +254 705 814 181
-        </a>
-
-        <button type="button" className="btn nav-plan-btn" onClick={handleBookingClick}>
-          Plan My Safari
-        </button>
+          <div className="topbar-right">
+            <a href="tel:+254705814181" className="topbar-link">
+              <FaPhoneAlt /> +254 705 814 181
+            </a>
+            <a
+              href="https://wa.me/254705814181?text=Hi!%20I%20would%20like%20to%20enquire%20about%20a%20Kenya%20safari."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="topbar-link topbar-wa"
+            >
+              <FaWhatsapp /> WhatsApp Us
+            </a>
+          </div>
+        </div>
       </div>
 
-      <button
-        type="button"
-        className={`hamburger ${open ? "active" : ""}`}
-        onClick={() => setOpen(!open)}
-        aria-label={
-          open ? "Close navigation menu" : "Open navigation menu"
-        }
-        aria-expanded={open}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </nav>
+      {/* Main Navbar */}
+      <nav className={`navbar${scrolled ? " scrolled" : ""}`} id="main-nav">
+        <Link className="logo" to="/#home" onClick={() => setMobileOpen(false)}>
+          <img src="/logo.png" alt="VoyageMara Safaris Logo" width="140" height="48" />
+        </Link>
+
+        {/* Desktop nav */}
+        <div className="nav-desktop">
+          <Link
+            to="/#home"
+            className={`nav-link${isActive("home") ? " active" : ""}`}
+          >
+            Home
+          </Link>
+
+          {Object.entries(MEGA_MENUS).map(([label, items]) => (
+            <MegaDropdown
+              key={label}
+              label={label}
+              items={items}
+              isOpen={openDropdown === label}
+              onToggle={setOpenDropdown}
+            />
+          ))}
+
+          <Link
+            to="/about"
+            className={`nav-link${pathname === "/about" ? " active" : ""}`}
+          >
+            About
+          </Link>
+
+          <Link
+            to="/#contact"
+            className={`nav-link${isActive("contact") ? " active" : ""}`}
+          >
+            Contact
+          </Link>
+        </div>
+
+        {/* Right actions */}
+        <div className="nav-actions">
+          <button
+            type="button"
+            className="nav-theme-btn"
+            onClick={() => setDarkMode(!darkMode)}
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {darkMode ? <FaSun /> : <FaMoon />}
+          </button>
+
+          <a href="tel:+254705814181" className="nav-phone-pill" aria-label="Call us">
+            <FaPhoneAlt /> <span>Call</span>
+          </a>
+
+          <button
+            type="button"
+            className="nav-quote-btn"
+            onClick={handleGetQuote}
+            id="navbar-get-quote"
+          >
+            Get a Quote →
+          </button>
+
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            className="nav-hamburger"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Drawer */}
+      <div className={`nav-mobile-drawer${mobileOpen ? " open" : ""}`} aria-hidden={!mobileOpen}>
+        <div className="nav-drawer-inner">
+          <Link to="/#home" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>Home</Link>
+          <Link to="/#tours" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>All Safaris</Link>
+          <Link to="/#destinations" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>Destinations</Link>
+          <Link to="/#itineraries" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>Itineraries</Link>
+          <Link to="/#safari-pricing-tables" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>Pricing & Park Fees</Link>
+          <Link to="/#gallery" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>Gallery</Link>
+          <Link to="/#faq" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>FAQ</Link>
+          <Link to="/about" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>About Us</Link>
+          <Link to="/#contact" className="nav-drawer-link" onClick={() => setMobileOpen(false)}>Contact</Link>
+
+          <div className="nav-drawer-ctas">
+            <a
+              href="https://wa.me/254705814181?text=Hi!%20I%20would%20like%20to%20enquire%20about%20a%20Kenya%20safari."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="drawer-wa-btn"
+            >
+              <FaWhatsapp /> Chat on WhatsApp
+            </a>
+            <button type="button" className="drawer-quote-btn" onClick={handleGetQuote}>
+              Get a Free Quote →
+            </button>
+          </div>
+
+          <button
+            type="button"
+            className="nav-drawer-theme"
+            onClick={() => setDarkMode(!darkMode)}
+          >
+            {darkMode ? <FaSun /> : <FaMoon />} {darkMode ? "Light Mode" : "Dark Mode"}
+          </button>
+        </div>
+      </div>
+      {mobileOpen && <div className="nav-drawer-overlay" onClick={() => setMobileOpen(false)} />}
+    </>
   );
 }

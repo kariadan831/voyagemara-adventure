@@ -1,346 +1,662 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import emailjs from "@emailjs/browser";
-import { FaTimes, FaWhatsapp, FaCalendarAlt, FaUsers, FaCompass, FaCheckCircle, FaPaperPlane } from "react-icons/fa";
+import {
+  FaTimes, FaWhatsapp, FaCalendarAlt, FaUsers, FaCompass,
+  FaCheckCircle, FaPaperPlane, FaArrowRight, FaArrowLeft,
+  FaStar, FaShieldAlt, FaBed, FaMoneyBillWave, FaUser,
+  FaEnvelope, FaPhone, FaChevronRight
+} from "react-icons/fa";
 import "./BookingModal.css";
 
-const TOURS_LIST = [
-  "3-Day Maasai Mara Big Five Safari",
-  "2-Day Amboseli Elephant & Kilimanjaro Safari",
-  "3-Day Samburu Northern Special Five Safari",
-  "1-Day Lake Nakuru Rhino & Flamingo Safari",
-  "1-Day Lake Naivasha Boat & Crescent Island Tour",
-  "1-Day Nairobi National Park Safari",
-  "Custom Multi-Park Kenya Itinerary",
+/* ─── Data ─────────────────────────────────────────────── */
+const PACKAGES = [
+  {
+    id: "nairobi",
+    title: "Nairobi National Park Day Safari",
+    duration: "1 Day",
+    slug: "nairobi-national-park",
+    lowPrice: 180,
+    peakPrice: 220,
+    badge: null,
+    icon: "🦏",
+  },
+  {
+    id: "nakuru",
+    title: "Lake Nakuru Flamingo Safari",
+    duration: "1 Day",
+    slug: "lake-nakuru",
+    lowPrice: 450,
+    peakPrice: 520,
+    badge: null,
+    icon: "🦩",
+  },
+  {
+    id: "naivasha",
+    title: "Lake Naivasha Boat & Crescent Island",
+    duration: "1 Day",
+    slug: "lake-naivasha",
+    lowPrice: 300,
+    peakPrice: 360,
+    badge: null,
+    icon: "🚤",
+  },
+  {
+    id: "amboseli",
+    title: "Amboseli Elephant Safari",
+    duration: "2 Days / 1 Night",
+    slug: "amboseli",
+    lowPrice: 520,
+    peakPrice: 650,
+    badge: null,
+    icon: "🐘",
+  },
+  {
+    id: "maasai-mara",
+    title: "Maasai Mara Big Five Safari",
+    duration: "3 Days / 2 Nights",
+    slug: "maasai-mara",
+    lowPrice: 620,
+    peakPrice: 820,
+    badge: "BEST SELLER",
+    icon: "🦁",
+  },
+  {
+    id: "samburu",
+    title: "Samburu Special Five Safari",
+    duration: "3 Days / 2 Nights",
+    slug: "samburu",
+    lowPrice: 750,
+    peakPrice: 1000,
+    badge: null,
+    icon: "🦒",
+  },
+  {
+    id: "combo",
+    title: "Mara + Amboseli Combo",
+    duration: "6 Days / 5 Nights",
+    slug: "maasai-mara",
+    lowPrice: 1350,
+    peakPrice: 1780,
+    badge: "BEST VALUE",
+    icon: "🌍",
+  },
+  {
+    id: "custom",
+    title: "Custom Multi-Park Itinerary",
+    duration: "Flexible",
+    slug: null,
+    lowPrice: null,
+    peakPrice: null,
+    badge: null,
+    icon: "🗺️",
+  },
 ];
 
 const ACCOMMODATION_TIERS = [
-  "Luxury Tented Camp (5-Star)",
-  "Mid-Range Safari Lodge",
-  "Comfort Safari Camp",
-  "Budget / Camping Safari",
-  "Not sure yet — recommend options",
+  {
+    id: "budget",
+    label: "Budget",
+    desc: "Shared tented camps, comfortable basics",
+    priceAdd: 0,
+    icon: "🏕️",
+  },
+  {
+    id: "mid-range",
+    label: "Mid-Range",
+    desc: "En-suite lodges, full board, private vehicle",
+    priceAdd: 150,
+    icon: "🏠",
+    recommended: true,
+  },
+  {
+    id: "luxury",
+    label: "Luxury",
+    desc: "5-star camps, gourmet meals, spa services",
+    priceAdd: 400,
+    icon: "✨",
+  },
+  {
+    id: "luxury-plus",
+    label: "Luxury Plus",
+    desc: "Governors' Camp, Angama Mara, private butler",
+    priceAdd: 900,
+    icon: "👑",
+  },
 ];
 
-const BUDGET_RANGES = [
-  "Flexible / Best Value",
-  "$300 – $600 per person",
-  "$600 – $1,200 per person",
-  "$1,200 – $2,500 per person",
-  "$2,500+ Luxury tier",
+const GUEST_OPTIONS = [
+  { value: "1", label: "1 — Solo Traveller (+30% supplement)" },
+  { value: "2", label: "2 — Couple / Friends" },
+  { value: "3", label: "3 Travellers" },
+  { value: "4", label: "4 Travellers" },
+  { value: "5-6", label: "5–6 Travellers (Small Group)" },
+  { value: "7-10", label: "7–10 Travellers (Group)" },
+  { value: "10+", label: "10+ Travellers (Corporate / Large Group)" },
 ];
 
+/* ─── Helpers ───────────────────────────────────────────── */
+function isPeakSeason(dateStr) {
+  if (!dateStr) return false;
+  const month = new Date(dateStr).getMonth(); // 0-indexed
+  return month >= 6 && month <= 11; // Jul–Dec
+}
+
+function calcEstimate(pkg, tier, guests) {
+  if (!pkg || pkg.lowPrice === null) return null;
+  const base = isPeakSeason("") ? pkg.peakPrice : pkg.lowPrice;
+  const tierAdd = tier?.priceAdd ?? 0;
+  const pax = parseInt(guests) || 2;
+  let pp = base + tierAdd;
+  if (pax === 1) pp = Math.round(pp * 1.3);
+  return pp;
+}
+
+function calcFromDate(pkg, date, tier, guests) {
+  if (!pkg || pkg.lowPrice === null) return null;
+  const peak = isPeakSeason(date);
+  const base = peak ? pkg.peakPrice : pkg.lowPrice;
+  const tierAdd = tier?.priceAdd ?? 0;
+  const pax = parseInt(guests) || 2;
+  let pp = base + tierAdd;
+  if (pax === 1) pp = Math.round(pp * 1.3);
+  return { perPerson: pp, season: peak ? "Peak" : "Low", total: pp * pax };
+}
+
+const STEPS = ["Package", "Dates & Guests", "Accommodation", "Your Details", "Review"];
+
+/* ─── Step Components ────────────────────────────────────── */
+function StepPackage({ selected, onSelect }) {
+  return (
+    <div className="bm-step">
+      <p className="bm-step-intro">Choose your Kenya safari package. You can customise dates and accommodation next.</p>
+      <div className="bm-package-grid">
+        {PACKAGES.map((pkg) => (
+          <button
+            key={pkg.id}
+            type="button"
+            className={`bm-package-card${selected?.id === pkg.id ? " selected" : ""}`}
+            onClick={() => onSelect(pkg)}
+          >
+            <span className="bm-pkg-icon">{pkg.icon}</span>
+            {pkg.badge && <span className="bm-pkg-badge">{pkg.badge}</span>}
+            <strong className="bm-pkg-title">{pkg.title}</strong>
+            <span className="bm-pkg-duration">{pkg.duration}</span>
+            {pkg.lowPrice ? (
+              <span className="bm-pkg-from">From ${pkg.lowPrice}/pp</span>
+            ) : (
+              <span className="bm-pkg-from">Custom Quote</span>
+            )}
+            {selected?.id === pkg.id && <FaCheckCircle className="bm-pkg-check" />}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function StepDatesGuests({ form, onChange }) {
+  const peak = isPeakSeason(form.travelDate);
+  return (
+    <div className="bm-step">
+      <div className="bm-form-grid">
+        <div className="bm-field full">
+          <label htmlFor="bm-date">
+            <FaCalendarAlt /> Approximate Start Date
+          </label>
+          <input
+            type="date"
+            id="bm-date"
+            name="travelDate"
+            value={form.travelDate}
+            min={new Date().toISOString().split("T")[0]}
+            onChange={onChange}
+          />
+          {form.travelDate && (
+            <p className={`bm-season-tag${peak ? " peak" : " low"}`}>
+              {peak ? "🔥 Peak Season (Jul–Dec) — higher rates apply" : "🌿 Low Season (Jan–Jun) — best value rates"}
+            </p>
+          )}
+        </div>
+
+        <div className="bm-field">
+          <label htmlFor="bm-guests">
+            <FaUsers /> Number of Travellers
+          </label>
+          <select id="bm-guests" name="guests" value={form.guests} onChange={onChange}>
+            {GUEST_OPTIONS.map((g) => (
+              <option key={g.value} value={g.value}>{g.label}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="bm-field">
+          <label htmlFor="bm-return-date">
+            <FaCalendarAlt /> Return / Flexibility
+          </label>
+          <select id="bm-return-date" name="flexibility" value={form.flexibility} onChange={onChange}>
+            <option value="exact">Exact dates</option>
+            <option value="flexible-3">Flexible ± 3 days</option>
+            <option value="flexible-7">Flexible ± 1 week</option>
+            <option value="month">Flexible within a month</option>
+            <option value="open">Fully open — suggest best dates</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function StepAccommodation({ selected, onSelect }) {
+  return (
+    <div className="bm-step">
+      <p className="bm-step-intro">Choose your preferred accommodation tier. All options include private 4×4 transport and expert guide.</p>
+      <div className="bm-tier-grid">
+        {ACCOMMODATION_TIERS.map((tier) => (
+          <button
+            key={tier.id}
+            type="button"
+            className={`bm-tier-card${selected?.id === tier.id ? " selected" : ""}${tier.recommended ? " recommended" : ""}`}
+            onClick={() => onSelect(tier)}
+          >
+            {tier.recommended && <span className="bm-tier-recommended">RECOMMENDED</span>}
+            <span className="bm-tier-icon">{tier.icon}</span>
+            <strong className="bm-tier-label">{tier.label}</strong>
+            <p className="bm-tier-desc">{tier.desc}</p>
+            <span className="bm-tier-price">
+              {tier.priceAdd === 0 ? "Lowest cost" : `+$${tier.priceAdd}/pp`}
+            </span>
+            {selected?.id === tier.id && <FaCheckCircle className="bm-tier-check" />}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function StepDetails({ form, onChange }) {
+  return (
+    <div className="bm-step">
+      <div className="bm-form-grid">
+        <div className="bm-field">
+          <label htmlFor="bm-name"><FaUser /> Full Name *</label>
+          <input
+            type="text"
+            id="bm-name"
+            name="fullName"
+            placeholder="e.g. John Smith"
+            value={form.fullName}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div className="bm-field">
+          <label htmlFor="bm-email"><FaEnvelope /> Email Address *</label>
+          <input
+            type="email"
+            id="bm-email"
+            name="email"
+            placeholder="name@example.com"
+            value={form.email}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div className="bm-field full">
+          <label htmlFor="bm-phone"><FaPhone /> Phone / WhatsApp</label>
+          <input
+            type="tel"
+            id="bm-phone"
+            name="phone"
+            placeholder="+1 555-0199 or +254 700 000 000"
+            value={form.phone}
+            onChange={onChange}
+          />
+        </div>
+        <div className="bm-field full">
+          <label htmlFor="bm-nationality">Nationality / Country</label>
+          <input
+            type="text"
+            id="bm-nationality"
+            name="nationality"
+            placeholder="e.g. United States, UK, Germany"
+            value={form.nationality}
+            onChange={onChange}
+          />
+        </div>
+        <div className="bm-field full">
+          <label htmlFor="bm-requests">Special Requests / Notes</label>
+          <textarea
+            id="bm-requests"
+            name="specialRequests"
+            rows="3"
+            placeholder="Dietary needs, photography goals, children's ages, accessibility needs, must-see wildlife, add-ons (balloon safari, bush walk, Maasai village)..."
+            value={form.specialRequests}
+            onChange={onChange}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function StepReview({ selectedPkg, selectedTier, form, priceInfo }) {
+  const summary = [
+    { label: "Package", value: selectedPkg?.title ?? "—" },
+    { label: "Duration", value: selectedPkg?.duration ?? "—" },
+    { label: "Start Date", value: form.travelDate || "Flexible" },
+    { label: "Date Flexibility", value: form.flexibility || "Exact" },
+    { label: "Travellers", value: form.guests },
+    { label: "Accommodation", value: selectedTier?.label ?? "—" },
+    { label: "Season", value: priceInfo?.season ?? "—" },
+    { label: "Name", value: form.fullName || "—" },
+    { label: "Email", value: form.email || "—" },
+    { label: "Phone", value: form.phone || "—" },
+    { label: "Nationality", value: form.nationality || "—" },
+  ];
+
+  return (
+    <div className="bm-step">
+      <div className="bm-review-card">
+        {priceInfo && (
+          <div className="bm-price-estimate">
+            <p className="bm-estimate-label">Estimated Cost</p>
+            <p className="bm-estimate-pp">${priceInfo.perPerson.toLocaleString()}<span>/person</span></p>
+            {priceInfo.total !== priceInfo.perPerson && (
+              <p className="bm-estimate-total">~${priceInfo.total.toLocaleString()} total for {form.guests} pax</p>
+            )}
+            <p className="bm-estimate-note">
+              {priceInfo.season} season pricing. Final quote confirmed by our safari team.
+            </p>
+          </div>
+        )}
+
+        <div className="bm-summary-grid">
+          {summary.filter(r => r.value && r.value !== "—").map((row) => (
+            <div key={row.label} className="bm-summary-row">
+              <span className="bm-summary-label">{row.label}</span>
+              <span className="bm-summary-value">{row.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {form.specialRequests && (
+        <div className="bm-review-notes">
+          <strong>Notes:</strong> {form.specialRequests}
+        </div>
+      )}
+
+      <div className="bm-guarantee-bar">
+        <span><FaShieldAlt /> No payment now</span>
+        <span>🔒 100% private</span>
+        <span>⚡ Reply within 2 hours</span>
+        <span>✅ Free consultation</span>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Main Modal ─────────────────────────────────────────── */
 export default function BookingModal({ isOpen, onClose, initialData = {} }) {
+  const [step, setStep] = useState(0);
+  const [selectedPkg, setSelectedPkg] = useState(null);
+  const [selectedTier, setSelectedTier] = useState(ACCOMMODATION_TIERS[1]);
   const [form, setForm] = useState({
-    tour: initialData.tour || TOURS_LIST[0],
-    travelDate: initialData.travelDate || "",
-    guests: initialData.guests || "2 travellers",
-    accommodation: initialData.accommodation || ACCOMMODATION_TIERS[1],
-    budget: initialData.budget || BUDGET_RANGES[0],
+    travelDate: "",
+    guests: "2",
+    flexibility: "flexible-3",
     fullName: "",
     email: "",
     phone: "",
+    nationality: "",
     specialRequests: "",
   });
+  const [sending, setSending] = useState(false);
+  const [statusMsg, setStatusMsg] = useState("");
+  const [success, setSuccess] = useState(false);
 
-  const [loading, setLoading] = useState(false);
-  const [statusMessage, setStatusMessage] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
-
+  // Pre-populate from parent
   useEffect(() => {
     if (initialData.tour) {
-      setForm((prev) => ({
-        ...prev,
-        tour: initialData.tour,
-        travelDate: initialData.travelDate || prev.travelDate,
-        guests: initialData.guests || prev.guests,
-      }));
+      const pkg = PACKAGES.find(p => p.title === initialData.tour || p.id === initialData.tour);
+      if (pkg) setSelectedPkg(pkg);
     }
+    if (initialData.travelDate) setForm(f => ({ ...f, travelDate: initialData.travelDate }));
+    if (initialData.guests) setForm(f => ({ ...f, guests: initialData.guests }));
   }, [initialData]);
 
+  // Reset on open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      setStatusMessage("");
-      setIsSuccess(false);
+      setStatusMsg("");
+      setSuccess(false);
+      setStep(0);
     } else {
       document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
+    setForm(f => ({ ...f, [name]: value }));
+  }, []);
 
-  const buildWhatsAppMessage = () => {
+  const priceInfo = selectedPkg && form.guests
+    ? calcFromDate(selectedPkg, form.travelDate, selectedTier, form.guests)
+    : null;
+
+  // Build WhatsApp message
+  const buildWAMsg = () => {
     const lines = [
-      "Hello VoyageMara Safaris! I would like to book / enquire about a Kenya safari:",
+      "Hello VoyageMara Safaris! I'd like to request a safari quote:",
       "",
-      `*Selected Tour:* ${form.tour}`,
-      `*Approx. Travel Date:* ${form.travelDate || "Flexible / To be confirmed"}`,
-      `*Number of Travellers:* ${form.guests}`,
-      `*Accommodation Preference:* ${form.accommodation}`,
-      `*Budget Preference:* ${form.budget}`,
+      `*Package:* ${selectedPkg?.title ?? "Custom"}`,
+      `*Duration:* ${selectedPkg?.duration ?? "—"}`,
+      `*Start Date:* ${form.travelDate || "Flexible"}`,
+      `*Flexibility:* ${form.flexibility || "Exact"}`,
+      `*Travellers:* ${form.guests}`,
+      `*Accommodation:* ${selectedTier?.label ?? "—"}`,
+      priceInfo ? `*Estimated Budget:* ~$${priceInfo.perPerson}/pp (${priceInfo.season} season)` : "",
       "",
-      `*Full Name:* ${form.fullName || "Prospective Traveller"}`,
+      `*Name:* ${form.fullName || "—"}`,
       form.email ? `*Email:* ${form.email}` : "",
-      form.phone ? `*Phone/WhatsApp:* ${form.phone}` : "",
-      form.specialRequests ? `*Special Requests / Notes:* ${form.specialRequests}` : "",
+      form.phone ? `*Phone:* ${form.phone}` : "",
+      form.nationality ? `*Nationality:* ${form.nationality}` : "",
+      form.specialRequests ? `*Notes:* ${form.specialRequests}` : "",
       "",
-      "Please confirm availability, custom dates, and provide a tailored quote. Thank you!",
+      "Please confirm availability and send a detailed itinerary. Thank you!",
     ].filter(Boolean);
-
     return encodeURIComponent(lines.join("\n"));
   };
 
-  const handleWhatsAppSubmit = (e) => {
-    e.preventDefault();
-    const encoded = buildWhatsAppMessage();
-    const whatsappUrl = `https://wa.me/254705814181?text=${encoded}`;
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  const handleWA = (e) => {
+    if (e) e.preventDefault();
+    window.open(`https://wa.me/254705814181?text=${buildWAMsg()}`, "_blank", "noopener,noreferrer");
   };
 
-  const handleEmailSubmit = async (e) => {
-    e.preventDefault();
+  const handleEmailSend = async () => {
     if (!form.fullName || !form.email) {
-      setStatusMessage("Please provide your name and email address so we can reply.");
+      setStatusMsg("Please provide your name and email so we can reply.");
       return;
     }
+    setSending(true);
+    setStatusMsg("");
 
-    setLoading(true);
-    setStatusMessage("");
-
-    const structuredNotes = `
-SAFARI ENQUIRY DETAILS:
-- Safari Package: ${form.tour}
-- Approx Travel Date: ${form.travelDate || "Flexible"}
-- Travellers: ${form.guests}
-- Accommodation Tier: ${form.accommodation}
-- Budget: ${form.budget}
-- Phone/WhatsApp: ${form.phone || "Not provided"}
-
-SPECIAL REQUESTS & NOTES:
-${form.specialRequests || "No extra notes specified."}
-    `.trim();
-
-    const templateParams = {
-      name: form.fullName,
-      email: form.email,
-      subject: `Safari Booking Enquiry: ${form.tour} (${form.guests})`,
-      message: structuredNotes,
-      time: new Date().toLocaleString(),
-    };
+    const notes = [
+      `Package: ${selectedPkg?.title ?? "Custom"}`,
+      `Duration: ${selectedPkg?.duration ?? "—"}`,
+      `Start Date: ${form.travelDate || "Flexible"}`,
+      `Flexibility: ${form.flexibility}`,
+      `Travellers: ${form.guests}`,
+      `Accommodation: ${selectedTier?.label}`,
+      priceInfo ? `Est. Budget: ~$${priceInfo.perPerson}/pp (${priceInfo.season} season)` : "",
+      `Phone: ${form.phone || "Not provided"}`,
+      `Nationality: ${form.nationality || "Not provided"}`,
+      `Notes: ${form.specialRequests || "None"}`,
+    ].filter(Boolean).join("\n");
 
     try {
-      await emailjs.send(
-        "service_egs1gmk",
-        "template_qmm8w9k",
-        templateParams,
-        "XlvozJruwt1UBTXLu"
-      );
-      setIsSuccess(true);
-      setStatusMessage("Thank you! Your safari enquiry has been sent to our planning team. We will respond promptly.");
+      await emailjs.send("service_egs1gmk", "template_qmm8w9k", {
+        name: form.fullName,
+        email: form.email,
+        subject: `Safari Booking Enquiry — ${selectedPkg?.title ?? "Custom Safari"} (${form.guests} pax)`,
+        message: notes,
+        time: new Date().toLocaleString(),
+      }, "XlvozJruwt1UBTXLu");
+      setSuccess(true);
+      setStatusMsg("Your enquiry has been sent! Our safari team will reply within 2 hours.");
     } catch {
-      setStatusMessage("We could not send your message online just now. You can chat directly with us on WhatsApp or call +254 705 814 181.");
+      setStatusMsg("Could not send email right now. Please chat on WhatsApp or call +254 705 814 181.");
     } finally {
-      setLoading(false);
+      setSending(false);
     }
   };
 
+  const canNext = () => {
+    if (step === 0 && !selectedPkg) return false;
+    if (step === 3 && (!form.fullName || !form.email)) return false;
+    return true;
+  };
+
+  const next = () => { if (canNext()) setStep(s => Math.min(s + 1, STEPS.length - 1)); };
+  const prev = () => setStep(s => Math.max(s - 1, 0));
+
+  if (!isOpen) return null;
+
   return (
-    <div className="vm-modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <div className="vm-modal-card" onClick={(e) => e.stopPropagation()}>
-        <button className="vm-modal-close" onClick={onClose} type="button" aria-label="Close booking modal">
+    <div
+      className="bm-overlay"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bm-title"
+    >
+      <div className="bm-modal" onClick={e => e.stopPropagation()}>
+        {/* Close */}
+        <button className="bm-close" onClick={onClose} type="button" aria-label="Close booking form">
           <FaTimes />
         </button>
 
-        <div className="vm-modal-header">
-          <span className="vm-modal-kicker">
-            <FaCompass /> VOYAGEMARA DIRECT BOOKING &amp; ENQUIRY
-          </span>
-          <h2 id="modal-title">Plan Your Kenya Safari Experience</h2>
-          <p>
-            Share your preferred dates and travel style. We will craft a transparent, customized itinerary with no hidden costs.
-          </p>
-        </div>
-
-        {isSuccess ? (
-          <div className="vm-modal-success">
-            <FaCheckCircle className="vm-success-icon" />
-            <h3>Enquiry Successfully Received!</h3>
-            <p>Our safari director is reviewing your request. For immediate assistance or instant date confirmation, chat with us directly on WhatsApp.</p>
-            <div className="vm-modal-actions single">
-              <a
-                href={`https://wa.me/254705814181?text=${buildWhatsAppMessage()}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="vm-btn-whatsapp"
+        {/* Header */}
+        <div className="bm-header">
+          <div className="bm-header-text">
+            <span className="bm-kicker"><FaCompass /> FREE SAFARI QUOTE — NO PAYMENT NOW</span>
+            <h2 id="bm-title">Plan Your Kenya Safari</h2>
+          </div>
+          {/* Progress Steps */}
+          <div className="bm-progress" role="navigation" aria-label="Booking steps">
+            {STEPS.map((s, i) => (
+              <button
+                key={s}
+                type="button"
+                className={`bm-step-dot${i === step ? " active" : ""}${i < step ? " done" : ""}`}
+                onClick={() => i < step && setStep(i)}
+                aria-label={`Step ${i + 1}: ${s}`}
+                aria-current={i === step ? "step" : undefined}
+                disabled={i > step}
               >
-                <FaWhatsapp /> Continue on WhatsApp (+254 705 814 181)
-              </a>
+                <span className="bm-dot-num">{i < step ? <FaCheckCircle /> : i + 1}</span>
+                <span className="bm-dot-label">{s}</span>
+              </button>
+            ))}
+            <div className="bm-progress-bar">
+              <div
+                className="bm-progress-fill"
+                style={{ width: `${(step / (STEPS.length - 1)) * 100}%` }}
+              />
             </div>
           </div>
-        ) : (
-          <form className="vm-modal-form" onSubmit={handleEmailSubmit}>
-            <div className="vm-form-grid">
-              {/* Tour Selection */}
-              <div className="vm-form-group full-width">
-                <label htmlFor="vm-tour">Selected Safari Tour</label>
-                <select id="vm-tour" name="tour" value={form.tour} onChange={handleChange}>
-                  {TOURS_LIST.map((t) => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
+        </div>
+
+        {/* Step Content */}
+        <div className="bm-body">
+          {!success ? (
+            <>
+              <div className="bm-step-title">
+                <strong>Step {step + 1} of {STEPS.length}:</strong> {STEPS[step]}
               </div>
 
-              {/* Travel Date */}
-              <div className="vm-form-group">
-                <label htmlFor="vm-date">
-                  <FaCalendarAlt /> Approximate Travel Date
-                </label>
-                <input
-                  type="date"
-                  id="vm-date"
-                  name="travelDate"
-                  value={form.travelDate}
-                  onChange={handleChange}
-                />
-              </div>
+              {step === 0 && <StepPackage selected={selectedPkg} onSelect={pkg => { setSelectedPkg(pkg); next(); }} />}
+              {step === 1 && <StepDatesGuests form={form} onChange={handleChange} />}
+              {step === 2 && <StepAccommodation selected={selectedTier} onSelect={tier => { setSelectedTier(tier); next(); }} />}
+              {step === 3 && <StepDetails form={form} onChange={handleChange} />}
+              {step === 4 && <StepReview selectedPkg={selectedPkg} selectedTier={selectedTier} form={form} priceInfo={priceInfo} />}
 
-              {/* Guests */}
-              <div className="vm-form-group">
-                <label htmlFor="vm-guests">
-                  <FaUsers /> Number of Travellers
-                </label>
-                <select id="vm-guests" name="guests" value={form.guests} onChange={handleChange}>
-                  <option value="1 Solo Traveller">1 Solo Traveller</option>
-                  <option value="2 Travellers (Couple / Friends)">2 Travellers (Couple / Friends)</option>
-                  <option value="3-4 Travellers (Small Group)">3-4 Travellers (Small Group)</option>
-                  <option value="5-8 Travellers (Family / Group)">5-8 Travellers (Family / Group)</option>
-                  <option value="9+ Large Group Departure">9+ Large Group Departure</option>
-                </select>
-              </div>
+              {statusMsg && (
+                <p className={`bm-status ${success ? "success" : "error"}`} role="alert">
+                  {statusMsg}
+                </p>
+              )}
 
-              {/* Accommodation Preference */}
-              <div className="vm-form-group">
-                <label htmlFor="vm-accommodation">Accommodation Preference</label>
-                <select
-                  id="vm-accommodation"
-                  name="accommodation"
-                  value={form.accommodation}
-                  onChange={handleChange}
-                >
-                  {ACCOMMODATION_TIERS.map((tier) => (
-                    <option key={tier} value={tier}>
-                      {tier}
-                    </option>
-                  ))}
-                </select>
+              {/* Nav buttons */}
+              <div className="bm-footer-btns">
+                {step > 0 && (
+                  <button type="button" className="bm-btn-back" onClick={prev}>
+                    <FaArrowLeft /> Back
+                  </button>
+                )}
+                <div className="bm-footer-right">
+                  {step < STEPS.length - 1 ? (
+                    <button
+                      type="button"
+                      className="bm-btn-next"
+                      onClick={next}
+                      disabled={!canNext()}
+                    >
+                      Continue <FaArrowRight />
+                    </button>
+                  ) : (
+                    <>
+                      <button
+                        type="button"
+                        className="bm-btn-wa"
+                        onClick={handleWA}
+                      >
+                        <FaWhatsapp /> Send via WhatsApp
+                      </button>
+                      <button
+                        type="button"
+                        className="bm-btn-email"
+                        onClick={handleEmailSend}
+                        disabled={sending}
+                      >
+                        <FaPaperPlane /> {sending ? "Sending..." : "Send Email Enquiry"}
+                      </button>
+                    </>
+                  )}
+                </div>
               </div>
-
-              {/* Budget Range */}
-              <div className="vm-form-group">
-                <label htmlFor="vm-budget">Budget Tier (Per Person)</label>
-                <select id="vm-budget" name="budget" value={form.budget} onChange={handleChange}>
-                  {BUDGET_RANGES.map((b) => (
-                    <option key={b} value={b}>
-                      {b}
-                    </option>
-                  ))}
-                </select>
+            </>
+          ) : (
+            /* Success State */
+            <div className="bm-success">
+              <div className="bm-success-icon-wrap">
+                <FaCheckCircle />
               </div>
-
-              {/* Full Name */}
-              <div className="vm-form-group">
-                <label htmlFor="vm-name">Full Name *</label>
-                <input
-                  type="text"
-                  id="vm-name"
-                  name="fullName"
-                  placeholder="e.g. John Doe"
-                  value={form.fullName}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              {/* Email Address */}
-              <div className="vm-form-group">
-                <label htmlFor="vm-email">Email Address *</label>
-                <input
-                  type="email"
-                  id="vm-email"
-                  name="email"
-                  placeholder="name@example.com"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              {/* Phone / WhatsApp */}
-              <div className="vm-form-group full-width">
-                <label htmlFor="vm-phone">Phone / WhatsApp Number</label>
-                <input
-                  type="tel"
-                  id="vm-phone"
-                  name="phone"
-                  placeholder="+1 555-0199 or +254 700 000 000"
-                  value={form.phone}
-                  onChange={handleChange}
-                />
-              </div>
-
-              {/* Special Requests */}
-              <div className="vm-form-group full-width">
-                <label htmlFor="vm-requests">Special Requests / Notes (Optional)</label>
-                <textarea
-                  id="vm-requests"
-                  name="specialRequests"
-                  rows="3"
-                  placeholder="Tell us about must-see wildlife, photography goals, children travelling, or airport transfer needs..."
-                  value={form.specialRequests}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            {statusMessage && (
-              <p className={`vm-modal-status ${isSuccess ? "success" : "notice"}`} role="status">
-                {statusMessage}
+              <h3>Enquiry Received!</h3>
+              <p>
+                Thank you, <strong>{form.fullName}</strong>! Our Nairobi safari team will
+                contact you at <strong>{form.email}</strong> within 2 hours with a fully
+                customised itinerary and transparent quote.
               </p>
-            )}
-
-            <div className="vm-modal-actions">
+              <p className="bm-success-sub">
+                For instant confirmation, chat with us on WhatsApp — Peter or David will reply immediately.
+              </p>
               <button
                 type="button"
-                className="vm-btn-whatsapp"
-                onClick={handleWhatsAppSubmit}
+                className="bm-btn-wa bm-btn-lg"
+                onClick={handleWA}
               >
-                <FaWhatsapp /> Send via WhatsApp
+                <FaWhatsapp /> Continue on WhatsApp (+254 705 814 181)
               </button>
-
-              <button
-                type="submit"
-                className="vm-btn-email"
-                disabled={loading}
-              >
-                <FaPaperPlane /> {loading ? "Sending Enquiry..." : "Send Email Enquiry"}
+              <button type="button" className="bm-success-close" onClick={onClose}>
+                Close
               </button>
             </div>
-
-            <p className="vm-modal-guarantee">
-              🔒 We respect your privacy. No spam. You will speak directly with our local Nairobi safari planning team.
-            </p>
-          </form>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
