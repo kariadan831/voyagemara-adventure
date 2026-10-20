@@ -3,11 +3,12 @@ import { useEffect, useState, lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 
 import tours from "./data/tours";
-import { preloadSafariDetail, preloadAboutUs, initIdlePreload } from "./utils/preload";
+import { preloadSafariDetail, preloadAboutUs, preloadBooking, initIdlePreload } from "./utils/preload";
 
 // Instant preloading with lazy fallback
 const AboutUs = lazy(preloadAboutUs);
 const SafariDetail = lazy(preloadSafariDetail);
+const Booking = lazy(preloadBooking);
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -52,6 +53,7 @@ export default function App() {
   const [bookingModalData, setBookingModalData] = useState(null);
 
   const isAboutPage = pathname === "/about";
+  const isBookingPage = pathname === "/booking";
   const requestedTourSlug = pathname.startsWith("/safaris/")
     ? pathname.split("/").filter(Boolean)[1]
     : pathname === "/destinations/maasai-mara" || pathname === "/accommodation/maasai-mara"
@@ -59,19 +61,33 @@ export default function App() {
     : null;
   const activeTour = tours.find((tour) => tour.slug === requestedTourSlug);
   const isSafariPage = Boolean(activeTour);
-  const pageUrl = `https://voyagemara-adventure.vercel.app${isAboutPage ? "/about" : isSafariPage ? `/safaris/${activeTour.slug}` : "/"}`;
+  const pageUrl = `https://voyagemara-adventure.vercel.app${
+    isAboutPage
+      ? "/about"
+      : isBookingPage
+      ? "/booking"
+      : isSafariPage
+      ? `/safaris/${activeTour.slug}`
+      : "/"
+  }`;
   const pageTitle = isSafariPage
     ? activeTour.seoTitle ?? `${activeTour.title} | VoyageMara Safaris`
     : isAboutPage
     ? "About VoyageMara Safaris | Local Kenya Safari Specialists"
+    : isBookingPage
+    ? "Book Your Kenya Safari | Direct Operator Instant Quote | VoyageMara Safaris"
     : "Best Safari Tour Operator in Maasai Mara & Kenya Safaris | VoyageMara Safaris";
   const pageDescription = isSafariPage
     ? activeTour.seoDescription ?? activeTour.description
     : isAboutPage
     ? "Meet Duncan Ronkorua and the Nairobi-based team planning locally guided, custom 4x4 wildlife safaris across Kenya."
+    : isBookingPage
+    ? "Book your Kenya safari directly with TripAdvisor listed operator VoyageMara Safaris (#d34744740). Instant quotes, private 4x4 Land Cruisers, transparent pricing."
     : "Ranked among the best safari tour operators in Maasai Mara. Custom private 4x4 Land Cruiser safaris, certified native Maasai guides, Big Five game drives & all-inclusive packages.";
   const pageKeywords = isSafariPage
     ? `book ${activeTour.title.toLowerCase()}, kenya safari packages, ${activeTour.slug.replace(/-/g, " ")}, voyagemara contact, voyagemara safaris`
+    : isBookingPage
+    ? "book kenya safari, maasai mara booking, nairobi safari quote, tripadvisor kenya safari operator, voyagemara reservations"
     : "best safari tour operator in maasai mara, best tour operator maasai mara, maasai mara tour operators, kenya safari packages, book maasai mara safari, amboseli elephant tour, kenya tour operators, nairobi safari packages 2027, affordable maasai mara safari, voyagemara safaris";
 
   const pageImage = isSafariPage
@@ -259,10 +275,7 @@ export default function App() {
             path="/booking"
             element={
               <Suspense fallback={<RouteLoader />}>
-                <SafariDetail
-                  tour={tours.find((tour) => tour.slug === "maasai-mara") || tours[0]}
-                  onOpenBooking={handleOpenBooking}
-                />
+                <Booking />
               </Suspense>
             }
           />

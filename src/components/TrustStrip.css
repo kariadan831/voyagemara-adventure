@@ -38,6 +38,12 @@
   transition: all 0.25s ease;
 }
 
+.vm-trust-item-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 .vm-trust-item:hover {
   background: rgba(184, 154, 99, 0.12);
   border-color: rgba(184, 154, 99, 0.35);

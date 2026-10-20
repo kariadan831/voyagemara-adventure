@@ -2895,6 +2895,28 @@ a.info-item:hover {
   box-shadow: 0 6px 16px rgba(184, 154, 99, 0.35);
 }
 
+.footer-tripadvisor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(0, 170, 108, 0.15);
+  border: 1px solid rgba(52, 224, 161, 0.35);
+  color: #34e0a1;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-tripadvisor-badge:hover {
+  background: #00aa6c;
+  color: #ffffff;
+  border-color: #00aa6c;
+}
+
 .footer-box h3 {
   margin: 4px 0 16px;
   color: var(--accent-light);

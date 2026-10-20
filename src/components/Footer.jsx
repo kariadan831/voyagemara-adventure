@@ -7,12 +7,17 @@ import {
   FaEnvelope,
   FaWhatsapp,
   FaMapMarkerAlt,
+  FaTripadvisor,
 } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
+const TRIPADVISOR_URL =
+  "https://www.tripadvisor.com/Attraction_Review-g294207-d34744740-Reviews-VoyageMara_Safaris-Nairobi.html";
+
 const footerLinks = [
   { label: "Home", href: "/#home" },
-  { label: "Our story", href: "/#about" },
+  { label: "Our story", href: "/about" },
+  { label: "Book a Safari (Quote)", href: "/booking" },
   { label: "Safari itineraries", href: "/#itineraries" },
   { label: "Safari experiences", href: "/#tours" },
   { label: "Photo gallery", href: "/#gallery" },
@@ -115,8 +120,28 @@ export default function Footer() {
                 >
                   <FaFacebookF />
                 </a>
+                <a
+                  href={TRIPADVISOR_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Review VoyageMara Safaris on TripAdvisor"
+                  title="TripAdvisor"
+                >
+                  <FaTripadvisor />
+                </a>
               </div>
             </div>
+
+            <a
+              href={TRIPADVISOR_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-tripadvisor-badge"
+              title="VoyageMara Safaris on TripAdvisor"
+            >
+              <FaTripadvisor />
+              <span>TripAdvisor Listed Operator #d34744740</span>
+            </a>
           </div>
 
           {/* Explore Links */}

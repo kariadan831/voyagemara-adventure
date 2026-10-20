@@ -3,14 +3,16 @@
         id: 1,
         slug: "nairobi-national-park",
         category: "Day Trip",
-        title: "Nairobi National Park Day Safari",
-        rating: 5,
-        duration: "1 Day",
-        price: 180,
+        title: "Nairobi National Park Half-Day Tour; Free Wi-Fi connection",
+        rating: 4.9,
+        reviewCount: 1152,
+        recommendedPct: 98,
+        duration: "5h 30m",
+        price: 38,
         location: "Nairobi National Park, Nairobi, Kenya",
         geo: { latitude: -1.3611, longitude: 36.8578 },
-        seoTitle: "Book Nairobi National Park Tour | Day Safari | VoyageMara",
-        seoDescription: "Book a Nairobi National Park day safari with VoyageMara Safaris. Spot lions, rhinos, and giraffes just minutes from the city. From US$180 with hotel pickup.",
+        seoTitle: "Nairobi National Park Half-Day Tour | Free Wi-Fi | VoyageMara",
+        seoDescription: "Book a Nairobi National Park half-day safari with VoyageMara Safaris. Spot lions, rhinos, and giraffes just minutes from the city with free Wi-Fi and 4x4 Land Cruiser.",
 
       cover: "/tours/nairobi/cover.webp",
 
@@ -31,22 +33,38 @@
   },
 
         description:
-          "Experience wildlife just outside Nairobi city. Enjoy game drives while spotting lions, rhinos, giraffes, zebras, buffaloes, and many other animals.",
+          "See free-ranging wildlife with the backdrop of the Nairobi skyline on a half-day tour to Nairobi National Park, a convenient way to experience a Kenya safari even if you have limited time. Door-to-door transport from Nairobi hotels makes this a hassle-free journey in a custom 4×4 pop-up roof Land Cruiser with onboard Wi-Fi.",
 
         highlights: [
-          "Morning game drive",
-          "Professional safari guide",
-          "Big Four wildlife",
-          "Hotel pickup and drop-off",
+          "Door-to-door Nairobi hotel pickup and drop-off",
+          "Dedicated 4×4 pop-up roof Safari Land Cruiser with onboard Wi-Fi",
+          "Spot lions, black rhinos, giraffes, buffaloes & leopards",
+          "Certified native Maasai driver-guide with deep tracking expertise",
+        ],
+        reviews: [
+          {
+            name: "Meg C.",
+            date: "Oct 2024",
+            rating: 5,
+            title: "Great day out with Duncan",
+            text: "Great day out with Duncan our guide and driver. Saw so many animals including 2 lions, zebras, giraffes, hippos, rhinos, impalas, an eagle, herons, and cranes! Highly recommend booking direct.",
+          },
+          {
+            name: "Daniel W.",
+            date: "Nov 2024",
+            rating: 5,
+            title: "Unreal wildlife right near the city",
+            text: "Most experienced guide ever and so enjoyed seeing the real wildlife just 20 minutes from the city. The 4x4 Land Cruiser was comfortable with pop-up roof and Wi-Fi.",
+          },
         ],
         faqs: [
-          { question: "How do I book a Nairobi National Park tour?", answer: "Book directly via WhatsApp (+254 705 814 181) or our online contact form. We arrange morning or afternoon departures with hotel transfers." },
+          { question: "How do I book this Nairobi National Park tour?", answer: "Book directly via WhatsApp (+254 705 814 181) or our online contact form. We arrange morning or afternoon departures with hotel transfers." },
           { question: "What animals can I see?", answer: "Nairobi National Park is home to lions, leopards, black rhinos, giraffes, zebras, buffaloes, and over 400 bird species." },
         ],
         itinerary: [
-          { day: "Morning", title: "Nairobi pickup", description: "Meet your safari guide at your Nairobi hotel and travel to the park entrance." },
-          { day: "Game drive", title: "Explore the park", description: "Enjoy a guided game drive with time to look for wildlife across the open plains." },
-          { day: "Afternoon", title: "Return to Nairobi", description: "Exit the park and return to your hotel. Exact timing depends on traffic and wildlife sightings." },
+          { day: "06:00 AM", title: "Nairobi pickup", description: "Meet your safari guide at your Nairobi hotel and travel to the park entrance in a private 4x4 Land Cruiser." },
+          { day: "06:30 AM", title: "Game drive", description: "Enjoy a guided game drive tracking lions, rhinos, and wildlife across the open plains." },
+          { day: "11:30 AM", title: "Return to Nairobi", description: "Exit the park and return to your hotel or airport. Timing accommodates your flight." },
         ],
       },
 

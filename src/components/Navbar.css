@@ -23,9 +23,41 @@
 }
 
 .topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-weight: 500;
   letter-spacing: 0.01em;
-  opacity: 0.9;
+  opacity: 0.95;
+  flex-wrap: wrap;
+}
+
+.topbar-expert-text {
+  white-space: nowrap;
+}
+
+.topbar-ta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #00aa6c;
+  color: #ffffff !important;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 170, 108, 0.3);
+}
+
+.topbar-ta-badge:hover {
+  transform: translateY(-1px);
+  background: #008756;
+}
+
+.topbar-ta-icon {
+  font-size: 0.95rem;
 }
 
 .topbar-right {
@@ -627,6 +659,61 @@
 [data-theme="dark"] .nav-drawer-theme {
   border-color: rgba(255,255,255,0.1);
   color: #c8e6d4;
+}
+
+/* ── Booking & TripAdvisor Nav Utilities ─────────────────── */
+.nav-link-booking {
+  background: rgba(184, 154, 99, 0.15) !important;
+  color: var(--accent-dark, #806a40) !important;
+  border: 1px solid rgba(184, 154, 99, 0.4);
+  font-weight: 700 !important;
+}
+
+.nav-link-booking:hover,
+.nav-link-booking.active {
+  background: var(--accent-color, #b89a63) !important;
+  color: #ffffff !important;
+  border-color: var(--accent-color, #b89a63) !important;
+}
+
+[data-theme="dark"] .nav-link-booking {
+  background: rgba(52, 224, 161, 0.1) !important;
+  color: #34e0a1 !important;
+  border-color: rgba(52, 224, 161, 0.35);
+}
+
+[data-theme="dark"] .nav-link-booking:hover,
+[data-theme="dark"] .nav-link-booking.active {
+  background: #34e0a1 !important;
+  color: #0b1712 !important;
+}
+
+.nav-drawer-booking-highlight {
+  background: rgba(184, 154, 99, 0.12) !important;
+  color: var(--primary-color, #21483a) !important;
+  font-weight: 700 !important;
+  border-left: 3px solid var(--accent-color, #b89a63);
+}
+
+.drawer-ta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #00aa6c;
+  color: #ffffff !important;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow: 0 3px 10px rgba(0, 170, 108, 0.25);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.drawer-ta-btn:hover {
+  background: #008756;
+  transform: translateY(-1px);
 }
 
 /* ================================================================

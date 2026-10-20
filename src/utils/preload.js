@@ -2,6 +2,7 @@
 
 let safariDetailPromise = null;
 let aboutUsPromise = null;
+let bookingPromise = null;
 
 // Preload SafariDetail component
 export const preloadSafariDetail = () => {
@@ -17,6 +18,14 @@ export const preloadAboutUs = () => {
     aboutUsPromise = import("../pages/AboutUs");
   }
   return aboutUsPromise;
+};
+
+// Preload Booking component
+export const preloadBooking = () => {
+  if (!bookingPromise) {
+    bookingPromise = import("../pages/Booking");
+  }
+  return bookingPromise;
 };
 
 // Cache and preload images into browser memory
@@ -49,6 +58,7 @@ export const initIdlePreload = () => {
   const run = () => {
     preloadSafariDetail();
     preloadAboutUs();
+    preloadBooking();
     preloadAllTourCovers();
   };
 

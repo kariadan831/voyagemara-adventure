@@ -1,7 +1,19 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
-import { FaPhoneAlt, FaWhatsapp, FaChevronDown, FaTimes, FaBars, FaSun, FaMoon } from "react-icons/fa";
+import {
+  FaPhoneAlt,
+  FaWhatsapp,
+  FaChevronDown,
+  FaTimes,
+  FaBars,
+  FaSun,
+  FaMoon,
+  FaTripadvisor,
+} from "react-icons/fa";
 import "./Navbar.css";
+
+const TRIPADVISOR_URL =
+  "https://www.tripadvisor.com/Attraction_Review-g294207-d34744740-Reviews-VoyageMara_Safaris-Nairobi.html";
 
 /* ─── Menu Data ──────────────────────────────────────────── */
 const MEGA_MENUS = {
@@ -24,6 +36,7 @@ const MEGA_MENUS = {
     { label: "Custom Itinerary", href: "/#contact" },
   ],
   "Kenya Safaris": [
+    { label: "Book a Safari (Instant Quote)", href: "/booking" },
     { label: "All Safari Packages", href: "/#tours" },
     { label: "Kenya Safari Pricing", href: "/#safari-pricing-tables" },
     { label: "Park Fees Explained", href: "/#safari-pricing-tables" },
@@ -134,6 +147,7 @@ export default function Navbar({ onOpenBooking }) {
   const [mobileAccordion, setMobileAccordion] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState("home");
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window === "undefined") return false;
@@ -189,8 +203,7 @@ export default function Navbar({ onOpenBooking }) {
   const handleGetQuote = () => {
     setMobileOpen(false);
     setOpenDropdown(null);
-    if (onOpenBooking) onOpenBooking();
-    else document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    navigate("/booking");
   };
 
   const closeMobile = () => setMobileOpen(false);
@@ -202,9 +215,21 @@ export default function Navbar({ onOpenBooking }) {
       {/* Top Bar */}
       <div className="navbar-topbar">
         <div className="navbar-topbar-inner">
-          <span className="topbar-left">
-            🌍 Nairobi-based safari experts — 100% Maasai-guided private safaris
-          </span>
+          <div className="topbar-left">
+            <span className="topbar-expert-text">
+              🌍 Nairobi safari experts — 100% Maasai-guided
+            </span>
+            <a
+              href={TRIPADVISOR_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="topbar-ta-badge"
+              title="VoyageMara Safaris on TripAdvisor"
+            >
+              <FaTripadvisor className="topbar-ta-icon" />
+              <span>Listed on TripAdvisor #d34744740</span>
+            </a>
+          </div>
           <div className="topbar-right">
             <a href="tel:+254705814181" className="topbar-link">
               <FaPhoneAlt /> +254 705 814 181
@@ -251,6 +276,13 @@ export default function Navbar({ onOpenBooking }) {
             className={`nav-link${pathname === "/about" ? " active" : ""}`}
           >
             About
+          </Link>
+
+          <Link
+            to="/booking"
+            className={`nav-link nav-link-booking${pathname === "/booking" ? " active" : ""}`}
+          >
+            Bookings
           </Link>
 
           <Link
@@ -324,11 +356,22 @@ export default function Navbar({ onOpenBooking }) {
           ))}
 
           <Link to="/about" className="nav-drawer-link" onClick={closeMobile}>About Us</Link>
+          <Link to="/booking" className="nav-drawer-link nav-drawer-booking-highlight" onClick={closeMobile}>
+            🦁 Book a Safari (Instant Quote)
+          </Link>
           <Link to="/#gallery" className="nav-drawer-link" onClick={closeMobile}>Gallery</Link>
           <Link to="/#faq" className="nav-drawer-link" onClick={closeMobile}>FAQ</Link>
           <Link to="/#contact" className="nav-drawer-link" onClick={closeMobile}>Contact</Link>
 
           <div className="nav-drawer-ctas">
+            <a
+              href={TRIPADVISOR_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="drawer-ta-btn"
+            >
+              <FaTripadvisor /> TripAdvisor Verified Operator
+            </a>
             <a
               href="https://wa.me/254705814181?text=Hello%20VoyageMara%20Safaris!%20I%20would%20like%20to%20enquire%20about%20a%20Kenya%20safari."
               target="_blank"
@@ -338,7 +381,7 @@ export default function Navbar({ onOpenBooking }) {
               <FaWhatsapp /> Chat on WhatsApp
             </a>
             <button type="button" className="drawer-quote-btn" onClick={handleGetQuote}>
-              Get a Free Quote →
+              Instant Quote & Booking Engine →
             </button>
           </div>
 
