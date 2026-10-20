@@ -74,6 +74,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
+  /* Clip horizontal overflow without disrupting position:sticky */
+  overflow-x: clip;
 }
 
 body {

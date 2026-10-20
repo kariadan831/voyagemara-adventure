@@ -132,6 +132,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--navbar-height);
+  /* Clip horizontal overflow at html level without breaking position:sticky */
+  overflow-x: clip;
 }
 
 body {
@@ -1144,8 +1146,8 @@ p {
   position: absolute;
   top: calc(100% + 8px);
   left: 0;
-  width: max(100%, 380px);
-  max-width: min(94vw, 440px);
+  /* Use min() so width never exceeds the viewport on phones */
+  width: min(max(100%, 360px), min(94vw, 440px));
   background: #0b1f16;
   border: 1px solid rgba(184, 154, 99, 0.55);
   border-radius: 14px;
@@ -1158,16 +1160,15 @@ p {
 .dest-menu {
   left: 0;
   right: auto;
-  width: max(100%, 380px);
-  max-width: min(94vw, 440px);
+  width: min(max(100%, 360px), min(94vw, 440px));
 }
 
 .guest-menu {
   left: auto;
   right: 0;
   width: 100%;
-  min-width: 320px;
-  max-width: 400px;
+  min-width: min(300px, 90vw);
+  max-width: min(400px, 92vw);
 }
 
 .hero-story-section {
@@ -1363,18 +1364,37 @@ p {
 @media (max-width: 640px) {
   .hero-pro {
     min-height: auto;
-    padding: calc(var(--navbar-height, 70px) + 24px) 16px 44px;
+    padding: calc(var(--navbar-height, 70px) + 24px) 12px 44px;
   }
   .hero-search-bar {
     grid-template-columns: 1fr;
     gap: 12px;
-    padding: 18px 14px;
+    padding: 16px 12px;
+  }
+  .hero-search-bar-wrap {
+    width: 100%;
+    /* Prevent search bar dropdowns from extending beyond viewport */
+    overflow: visible;
+    position: relative;
   }
   .hero-search-submit {
     grid-column: span 1;
   }
-  .hero-dropdown-menu {
+  .hero-dropdown-menu,
+  .dest-menu {
+    /* On small phones, pin to left edge and use full available width */
+    left: 0;
+    right: 0;
     width: 100%;
+    min-width: unset;
+    max-width: 100%;
+  }
+  .guest-menu {
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-width: unset;
+    max-width: 100%;
   }
 }
 
