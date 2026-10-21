@@ -11,6 +11,8 @@ import {
 } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
+import TripAdvisorBadge from "./TripAdvisorBadge";
+
 const TRIPADVISOR_URL =
   "https://www.tripadvisor.com/Attraction_Review-g294207-d34744740-Reviews-VoyageMara_Safaris-Nairobi.html";
 
@@ -132,16 +134,33 @@ export default function Footer() {
               </div>
             </div>
 
-            <a
-              href={TRIPADVISOR_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-tripadvisor-badge"
-              title="VoyageMara Safaris on TripAdvisor"
-            >
-              <FaTripadvisor />
-              <span>TripAdvisor Listed Operator #d34744740</span>
-            </a>
+            {/* ── Official TripAdvisor Verified Showcase (Matching Reference) ── */}
+            <div className="footer-ta-showcase">
+              <a
+                href={TRIPADVISOR_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-ta-card"
+                title="Top-Rated on TripAdvisor - VoyageMara Safaris #d34744740"
+                aria-label="View VoyageMara Safaris reviews on TripAdvisor"
+              >
+                <TripAdvisorBadge size={118} />
+              </a>
+
+              <a
+                href={TRIPADVISOR_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-ta-verified"
+                title="Verified TripAdvisor Operator"
+              >
+                <span className="footer-ta-check">✓</span> Verified
+              </a>
+
+              <p className="footer-ta-desc">
+                Experience unforgettable adventures across Africa with VoyageMara Safaris. Explore wildlife, culture, and breathtaking landscapes with us.
+              </p>
+            </div>
           </div>
 
           {/* Explore Links */}

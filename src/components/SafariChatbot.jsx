@@ -1,81 +1,209 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import {
   FaTimes,
-  FaPaperPlane,
-  FaWhatsapp,
   FaRobot,
-  FaCompass,
-  FaUndo,
-  FaChevronDown,
-  FaPhoneAlt,
-  FaShieldAlt,
+  FaWhatsapp,
+  FaCalendarCheck,
+  FaCheck,
 } from "react-icons/fa";
 import "./SafariChatbot.css";
 
-/* ─── Safari Knowledge Base ──────────────────────────────────── */
+/* ─── Real Safari Knowledge Base & Most FAQs ────────────────────── */
 const KNOWLEDGE = [
   {
+    id: "packages",
+    triggers: [
+      "tell me about safari packages",
+      "safari packages",
+      "packages",
+      "package",
+      "itinerary",
+      "itineraries",
+      "wildlife",
+      "cultural",
+      "adventure",
+      "tour",
+      "tours",
+      "trips",
+    ],
+    response:
+      "We have wildlife, cultural, and adventure packages. 🚙 🦁\n\n" +
+      "Here are our most popular Kenya safaris:\n\n" +
+      "• **3-Day Maasai Mara Big Five Safari**: From **$620** / person. High predator action, wildebeest river crossings, native Maasai guides.\n" +
+      "• **2-Day Amboseli Elephant Safari**: From **$520** / person. Massive elephant herds with breathtaking views of Mt Kilimanjaro.\n" +
+      "• **4-Day Maasai Mara & Lake Nakuru**: From **$890** / person. Big cats plus rhinos and flamingos.\n" +
+      "• **3-Day Samburu Northern Special Five**: From **$750** / person. Rare species (Grevy's zebra, gerenuk, oryx).\n" +
+      "• **5-Day Best of Kenya Classic**: From **$1,150** / person. Mara, Nakuru & Naivasha.\n" +
+      "• **Day Tours**: Nairobi National Park ($180), Lake Nakuru ($450), Lake Naivasha ($300).\n\n" +
+      "All packages include a private 4x4 Land Cruiser with pop-up roof, native Maasai guide, park entrance fees, and full-board accommodation! Which package would you like to explore?",
+    action: "openBooking",
+    actionLabel: "Get a Custom Quote",
+    chips: [
+      "3-Day Maasai Mara",
+      "Amboseli Elephants",
+      "When is Migration?",
+      "Chat on WhatsApp",
+    ],
+  },
+  {
+    id: "prices",
+    triggers: [
+      "price",
+      "prices",
+      "pricing",
+      "cost",
+      "how much",
+      "rate",
+      "rates",
+      "quote",
+      "quotes",
+      "budget",
+      "expensive",
+      "cheap",
+    ],
+    response:
+      "Our Kenya safari prices are fully transparent with zero hidden fees:\n\n" +
+      "• **Budget Tier**: From **$620** / person (tented camps, full-board, private 4x4 Land Cruiser)\n" +
+      "• **Mid-Range Tier**: From **$850 – $1,250** / person (comfort safari lodges & luxury tented camps)\n" +
+      "• **Luxury Tier**: From **$1,600+** / person (5-star luxury lodges like Serena, Ashnil, or Entim)\n\n" +
+      "✅ **What's Included in Every Package**:\n" +
+      "• Private 4x4 Toyota Land Cruiser with pop-up roof\n" +
+      "• KWS-certified native Maasai safari guide\n" +
+      "• All park and reserve entrance fees\n" +
+      "• Full-board meals (breakfast, lunch, dinner)\n" +
+      "• Complimentary airport pickup in Nairobi\n" +
+      "• Unlimited bottled mineral drinking water\n\n" +
+      "Would you like an immediate personalized quote for your group and travel dates?",
+    action: "openBooking",
+    actionLabel: "Request Custom Quote",
+    chips: ["Tell me about safari packages.", "Park Fees", "Chat on WhatsApp"],
+  },
+  {
+    id: "migration",
     triggers: [
       "migration",
       "wildebeest",
       "crossing",
-      "river",
+      "river crossing",
       "mara river",
       "serengeti",
       "when is migration",
-      "best time to see",
+      "best time to see migration",
     ],
     response:
-      "The Great Wildebeest Migration river crossings in Maasai Mara typically take place between **July and October** each year! Over 1.5 million wildebeest and zebras brave crocodile-filled crossings along the Mara and Talek rivers.\n\n" +
-      "• **July–Aug**: Herds arrive from Serengeti and commence dramatic river crossings.\n" +
-      "• **Sept–Oct**: Prime predator action on the golden Mara plains.\n" +
-      "• **Nov**: Herds start trekking south back towards Tanzania.\n\n" +
-      "Would you like recommendations on lodges near the crossing points (such as Mara Serena, Ashnil Mara, or Entim Camp)?",
-    chips: ["Migration Safaris", "Lodges near River", "Book Mara Trip"],
-  },
-  {
-    triggers: [
-      "price",
-      "cost",
-      "how much",
-      "rate",
-      "package",
-      "pricing",
-      "expensive",
-      "quote",
-      "budget",
-    ],
-    response:
-      "Our Kenya safari packages are fully customized and transparent (all 4x4 transport, Maasai guide, park fees, and full-board accommodation included):\n\n" +
-      "• **3-Day Maasai Mara Big Five**: From **$620** / person\n" +
-      "• **2-Day Amboseli Elephant Safari**: From **$520** / person\n" +
-      "• **3-Day Samburu Northern Special Five**: From **$750** / person\n" +
-      "• **1-Day Lake Nakuru Rhino Tour**: From **$450** / person\n" +
-      "• **1-Day Lake Naivasha & Crescent Island**: From **$300** / person\n" +
-      "• **1-Day Nairobi National Park**: From **$180** / person\n\n" +
-      "We offer Budget, Mid-Range, and Luxury tiers. I can prepare a personalized quote for your travel dates and group size right now!",
+      "The world-renowned Great Wildebeest Migration river crossings in Maasai Mara happen between **July and October** each year! 🦓🐊\n\n" +
+      "Over 1.5 million wildebeest and zebras brave predator- and crocodile-filled crossings along the Mara and Talek rivers:\n\n" +
+      "• **July – August**: Herds arrive from Tanzania's Serengeti and begin dramatic river crossings.\n" +
+      "• **September – October**: Prime predator action on the golden Mara savannah.\n" +
+      "• **November**: Herds start migrating south back towards the Serengeti.\n\n" +
+      "Lodges near the river crossings book out quickly. We recommend reserving 3 to 6 months in advance for peak migration season!",
     action: "openBooking",
-    actionLabel: "Get a Custom Quote",
-    chips: ["3-Day Maasai Mara", "Amboseli Safari", "Custom Itinerary"],
+    actionLabel: "Plan Migration Safari",
+    chips: ["Safari Packages", "Maasai Mara Park Fees", "WhatsApp Duncan"],
   },
   {
+    id: "park_fees",
     triggers: [
       "park fee",
-      "fees",
+      "park fees",
       "entry fee",
+      "fees",
       "tariffs",
       "kws",
       "narok",
       "ticket",
+      "gate fee",
     ],
     response:
-      "Here is how Kenya park entry fees currently work:\n\n" +
-      "• **Maasai Mara**: Non-resident adults are **$100/day** (Jan–June, Nov–Dec) and **$200/day** during high peak season (July–October). Children are $50/day.\n" +
-      "• **Amboseli / Lake Nakuru (KWS)**: Non-resident adults are approx. **$100/day**.\n\n" +
-      "💡 *Great news*: All VoyageMara safaris already include all park fees, conservancy fees, and taxes in the total package price so there are never any surprise charges at the park gate!",
-    chips: ["Safari Packages", "Maasai Mara Info", "Chat on WhatsApp"],
+      "Here is how official Kenya park entry fees currently stand for 2026/2027:\n\n" +
+      "• **Maasai Mara National Reserve**:\n" +
+      "  - Non-resident Adults: **$100 / day** (Jan–June, Nov–Dec)\n" +
+      "  - Non-resident Adults (Peak Migration): **$200 / day** (July–October)\n" +
+      "  - Children (under 18): **$50 / day**\n\n" +
+      "• **Amboseli & Lake Nakuru (KWS)**: Approx. **$100 / day** per non-resident adult.\n\n" +
+      "💡 **Good to know**: All VoyageMara package prices ALREADY INCLUDE all park fees, conservancy fees, and government taxes. You will never pay anything extra at the park gate!",
+    chips: ["Tell me about safari packages.", "Booking & Deposit", "Chat on WhatsApp"],
   },
   {
+    id: "vehicles",
+    triggers: [
+      "vehicle",
+      "vehicles",
+      "land cruiser",
+      "car",
+      "van",
+      "minivan",
+      "transport",
+      "4x4",
+      "jeep",
+      "drive",
+    ],
+    response:
+      "All VoyageMara safaris are conducted 100% in custom-built **Toyota 4×4 Land Cruisers** designed specifically for wildlife photography:\n\n" +
+      "• **Full-length pop-up roof hatch** for 360° unobstructed wildlife viewing\n" +
+      "• **Guaranteed window seat** for every traveler (max 6 guests)\n" +
+      "• **Onboard charging ports** (USB & 240V AC) for cameras, drones, and phones\n" +
+      "• **Built-in cooler box** with complimentary chilled drinking water\n" +
+      "• **High-gain HF/VHF two-way radio** connecting to park rangers and Nairobi base\n" +
+      "• Superior high ground clearance for rough, muddy tracks (we do NOT use minivans!)",
+    chips: ["Tell me about safari packages.", "Chat with Duncan", "Get a Quote"],
+  },
+  {
+    id: "booking_policy",
+    triggers: [
+      "deposit",
+      "cancellation",
+      "cancel",
+      "refund",
+      "how to book",
+      "booking policy",
+      "reschedule",
+      "book a safari",
+    ],
+    response:
+      "Booking with VoyageMara is flexible and traveler-friendly:\n\n" +
+      "1. **30% Deposit**: Confirms your reservation, vehicle, and lodge rooms.\n" +
+      "2. **Balance**: Due 14 days before safari departure (or upon arrival in Nairobi).\n" +
+      "3. **Free Rescheduling**: Move your dates at no penalty (subject to lodge availability).\n" +
+      "4. **Cancellations**:\n" +
+      "   - 30+ days before: **Full deposit refund**\n" +
+      "   - 14–29 days before: 50% refund\n" +
+      "   - Within 14 days: Non-refundable\n\n" +
+      "You can book directly via WhatsApp (+254 705 814 181) or our online booking form.",
+    action: "openBooking",
+    actionLabel: "Open Booking Form",
+    chips: ["Open Booking Form", "Payment Methods", "Chat on WhatsApp"],
+  },
+  {
+    id: "payments",
+    triggers: [
+      "payment",
+      "pay",
+      "card",
+      "credit card",
+      "mpesa",
+      "m-pesa",
+      "bank transfer",
+      "wire",
+      "currency",
+      "usd",
+      "kes",
+      "euro",
+      "shillings",
+    ],
+    response:
+      "We offer multiple safe, convenient payment options:\n\n" +
+      "• **Currencies Accepted**: USD ($), EUR (€), GBP (£), and Kenyan Shillings (KES)\n" +
+      "• **Payment Methods**:\n" +
+      "  - Online Credit / Debit Card (Visa, MasterCard)\n" +
+      "  - International Bank Wire Transfer (SWIFT)\n" +
+      "  - M-Pesa Mobile Money (instant confirmation in Kenya)\n" +
+      "  - Cash on arrival at our Nairobi office\n\n" +
+      "Official receipts and confirmation vouchers are issued immediately upon booking.",
+    chips: ["Tell me about safari packages.", "Get a Quote", "Chat on WhatsApp"],
+  },
+  {
+    id: "best_time",
     triggers: [
       "best time",
       "weather",
@@ -84,56 +212,39 @@ const KNOWLEDGE = [
       "rainy",
       "when to go",
       "month",
+      "months",
+      "climate",
     ],
     response:
-      "Kenya is a year-round wildlife destination with three distinct seasons:\n\n" +
-      "1. **July – October (Peak / Migration)**: Dry weather, easy animal spotting around waterholes, and the dramatic Mara River crossings.\n" +
-      "2. **December – March (Warm & Dry)**: Superb predator sightings, birthing/calving season, clear views of Mount Kilimanjaro in Amboseli.\n" +
-      "3. **April – May (Green Season)**: Lush landscapes, lower lodge rates, baby animals, and zero tourist crowds.\n\n" +
+      "Kenya is an exceptional year-round safari destination:\n\n" +
+      "• **July – October (Peak Migration)**: Dry season, world-famous Mara River crossings, best big cat action.\n" +
+      "• **December – March (Warm & Sunny)**: Fantastic weather, newborn animals, predator hunts, clear views of Mt Kilimanjaro in Amboseli.\n" +
+      "• **April – May (Green Season)**: Lush emerald landscapes, blooming flowers, lower lodge rates, baby animals, and zero tourist crowds!\n\n" +
       "What month are you thinking of traveling?",
-    chips: ["July–Oct Migration", "December Safaris", "Plan My Dates"],
+    chips: ["July–Oct Migration", "December Safaris", "Custom Quote"],
   },
   {
+    id: "packing",
     triggers: [
       "pack",
       "packing",
-      "what to bring",
       "clothes",
       "wear",
+      "what to bring",
       "luggage",
       "dress",
     ],
     response:
-      "Here are our essential packing recommendations for a Kenya safari:\n\n" +
-      "• **Clothing**: Earthy neutral tones (khaki, tan, olive). Avoid bright blue/black (attracts tsetse flies). Bring light layers + a warm fleece/jacket for chilly early morning game drives.\n" +
-      "• **Sun & Health**: Wide-brim safari hat, sunglasses, SPF 50+ sunscreen, insect repellent with DEET.\n" +
-      "• **Gear**: Binoculars (8x42 or 10x42), camera with telephoto zoom (200-400mm), extra memory cards.\n" +
-      "• **Plugs**: Kenya uses UK Type G (three rectangular pins, 240V). Our Land Cruisers have USB & 240V charging sockets!\n" +
-      "• **Bags**: Soft-sided duffle bags are strongly recommended (15kg limit if taking bush flights).",
-    chips: ["Safari Vehicles", "Maasai Mara Info", "Book a Safari"],
+      "Here is our essential packing checklist for a Kenya safari:\n\n" +
+      "• **Clothing**: Earthy neutral tones (khaki, tan, olive green). Avoid dark blue and black (attracts tsetse flies). Bring light layers + a warm fleece/jacket for chilly dawn drives (can be 12°C/54°F at 6 AM).\n" +
+      "• **Sun Protection**: Wide-brim hat, UV sunglasses, SPF 50+ sunscreen.\n" +
+      "• **Photography Gear**: Binoculars (8×42 or 10×42), camera with 200–400mm zoom lens, extra batteries.\n" +
+      "• **Health & Toiletries**: Insect repellent with DEET, lip balm, personal medications.\n" +
+      "• **Power & Bags**: UK Type G (3-pin rectangular, 240V). Soft duffle luggage is recommended for Land Cruisers.",
+    chips: ["Vehicle Details", "Health & Safety", "Tell me about safari packages."],
   },
   {
-    triggers: [
-      "vehicle",
-      "land cruiser",
-      "car",
-      "van",
-      "transport",
-      "4x4",
-      "jeep",
-      "drive",
-    ],
-    response:
-      "All VoyageMara safaris are conducted in **customized 4×4 Toyota Land Cruisers** designed specifically for African savannah game viewing:\n\n" +
-      "• **Pop-up roof hatch** for 360° unobstructed wildlife photography\n" +
-      "• **Guaranteed window seat** for every guest\n" +
-      "• **Onboard charging ports** (USB + AC) for cameras and phones\n" +
-      "• **Cooler box** with complimentary chilled drinking water\n" +
-      "• **High-gain HF 2-way radio** connecting to our Nairobi base & park rangers\n" +
-      "• Driven by licensed, native Maasai KWS-certified safari guides.",
-    chips: ["View Safari Packages", "Chat with Duncan", "Get a Quote"],
-  },
-  {
+    id: "health_safety",
     triggers: [
       "malaria",
       "vaccine",
@@ -143,116 +254,221 @@ const KNOWLEDGE = [
       "safety",
       "water",
       "doctor",
+      "medicine",
     ],
     response:
       "Guest health and safety are our highest priorities:\n\n" +
-      "• **Yellow Fever**: Proof of vaccination is required only if arriving from an endemic country.\n" +
-      "• **Malaria**: Prophylaxis (e.g. Malarone or Doxycycline) is recommended by travel clinics. Safari lodges supply mosquito nets and insect repellent.\n" +
-      "• **Drinking Water**: We provide unlimited sealed bottled mineral water throughout your safari — never drink tap water.\n" +
-      "• **Safety**: Kenya's national parks and private conservancies are very safe and peaceful. You are always escorted by our professional guides.",
-    chips: ["Family Safaris", "What to Pack", "Contact Guide"],
+      "• **Yellow Fever**: Vaccination certificate is required ONLY if arriving from a country with risk of yellow fever transmission.\n" +
+      "• **Malaria**: Prophylaxis (such as Malarone or Doxycycline) is recommended by travel clinics. All safari lodges provide mosquito nets.\n" +
+      "• **Drinking Water**: We supply unlimited sealed bottled mineral water throughout your safari — never drink tap water.\n" +
+      "• **Safety**: Kenya's wildlife parks are very safe and peaceful. You are always escorted by licensed native Maasai KWS guides with 24/7 radio communication.",
+    chips: ["Visa Requirements", "What to Pack", "Chat on WhatsApp"],
   },
   {
+    id: "visa",
+    triggers: ["visa", "eta", "passport", "entry", "permit", "evisa"],
+    response:
+      "All international travelers visiting Kenya need an Electronic Travel Authorisation (eTA):\n\n" +
+      "• **Where to apply**: Official website at **www.etakenya.go.ke** or **evisa.go.ke**\n" +
+      "• **Cost**: Approx. **$35 – $51** per person\n" +
+      "• **Processing Time**: Usually 3 business days (apply at least 1–2 weeks before departure)\n" +
+      "• **Requirement**: Passport valid for at least 6 months, return flight ticket, and booking confirmation.",
+    chips: ["Booking Confirmation", "Tell me about safari packages.", "Chat on WhatsApp"],
+  },
+  {
+    id: "balloon",
+    triggers: ["balloon", "hot air balloon", "balloon safari", "flight"],
+    response:
+      "The Maasai Mara Hot Air Balloon Safari is an unforgettable once-in-a-lifetime experience! 🎈🌅\n\n" +
+      "• **Departure**: 5:30 AM dawn takeoff as the sun rises over the Mara savannah\n" +
+      "• **Experience**: 1 hour floating silently above elephants, lions, and galloping herds\n" +
+      "• **Celebration**: Smooth landing followed by a five-star **Champagne Bush Breakfast** in the wild!\n" +
+      "• **Price**: Approx. **$450 – $500** per person\n\n" +
+      "Can be seamlessly added to any Maasai Mara package!",
+    chips: ["3-Day Maasai Mara", "Tell me about safari packages.", "WhatsApp Duncan"],
+  },
+  {
+    id: "airport",
+    triggers: [
+      "airport",
+      "transfer",
+      "transfers",
+      "pickup",
+      "dropoff",
+      "jkia",
+      "wilson",
+      "nairobi hotel",
+    ],
+    response:
+      "Yes! We provide complimentary airport transfers:\n\n" +
+      "• **Jomo Kenyatta International Airport (NBO)**: Free meet & greet on arrival.\n" +
+      "• **Wilson Airport (WIL)**: Domestic bush flight connections.\n" +
+      "• **Nairobi Hotels**: Free pickup and return drop-off for all safari tours.\n\n" +
+      "Our driver meets you with a personalized VoyageMara name board as soon as you clear customs.",
+    chips: ["Tell me about safari packages.", "Get a Quote", "Chat on WhatsApp"],
+  },
+  {
+    id: "amboseli",
+    triggers: ["amboseli", "kilimanjaro", "elephant", "elephants"],
+    response:
+      "Amboseli National Park is world-famous for massive free-ranging elephant herds set against the snow-capped peak of **Mount Kilimanjaro**! 🐘🏔️\n\n" +
+      "Our **2-Day Amboseli Safari** starts from **$520/person** and includes private 4x4 Land Cruiser transport, full-board lodge/camp stay, Observation Hill game drives, and park fees.",
+    action: "openBooking",
+    actionLabel: "Book Amboseli Safari",
+    chips: ["Book Amboseli", "3-Day Maasai Mara", "Custom Quote"],
+  },
+  {
+    id: "samburu",
+    triggers: [
+      "samburu",
+      "nakuru",
+      "naivasha",
+      "tsavo",
+      "lake nakuru",
+      "rhino",
+      "flamingos",
+    ],
+    response:
+      "We explore all of Kenya's legendary wildlife parks:\n\n" +
+      "• **Samburu Reserve**: Arid northern beauty & the Special Five (Grevy's zebra, gerenuk, Somali ostrich, beisa oryx, reticulated giraffe).\n" +
+      "• **Lake Nakuru**: Famous rhino sanctuary (both black and white rhinos) and flamingos.\n" +
+      "• **Lake Naivasha & Hell's Gate**: Walking safaris, bicycle rides, and boat tours to Crescent Island.\n" +
+      "• **Tsavo East & West**: Red dust elephants, Mzima Springs, and vast open wilderness.",
+    chips: ["Tell me about safari packages.", "Lake Nakuru Tour", "Get a Quote"],
+  },
+  {
+    id: "about_duncan",
     triggers: [
       "duncan",
       "who are you",
-      "guide",
       "about",
+      "guide",
       "voyagemara",
-      "local",
       "company",
+      "local",
+      "authentic",
     ],
     response:
-      "Jambo! VoyageMara Safaris was founded by **Duncan Ronkorua**, a native Maasai safari specialist born and raised in the Maasai Mara ecosystem.\n\n" +
-      "Unlike overseas booking portals, we are 100% locally owned and operated from Nairobi. Our certified Maasai guides have an innate tracking ability and deep respect for wildlife, giving you exclusive access to remote lion prides, leopard territories, and secluded river banks.",
-    chips: ["Our Story", "WhatsApp Duncan", "Custom Quote"],
+      "Jambo! VoyageMara Safaris was founded by **Duncan Ronkorua**, a native Maasai safari guide born and raised in the Maasai Mara ecosystem.\n\n" +
+      "Unlike foreign booking agencies, we are 100% locally owned and based right here in Nairobi, Kenya. Our guides are native Maasai KWS-certified trackers who know the bush intimately, bringing you directly to the best wildlife sightings!",
+    chips: ["WhatsApp Duncan", "TripAdvisor Reviews", "Tell me about safari packages."],
   },
   {
+    id: "tripadvisor",
     triggers: [
-      "amboseli",
-      "kilimanjaro",
-      "elephant",
-      "elephants",
+      "tripadvisor",
+      "review",
+      "reviews",
+      "verified",
+      "reputation",
+      "trusted",
     ],
     response:
-      "Amboseli National Park is world-famous for having the largest free-ranging elephant herds in Africa with breathtaking views of snow-capped **Mount Kilimanjaro**!\n\n" +
-      "Our popular **2-Day Amboseli Elephant Safari** starts from **$520/person** and includes private 4x4 round-trip transport from Nairobi, full-board lodge/camp stay, observation hill walk, and sunrise game drives.",
-    action: "openBooking",
-    actionLabel: "Book Amboseli Safari",
-    chips: ["Amboseli Details", "Maasai Mara", "Ask a Question"],
+      "VoyageMara Safaris is an officially verified, Top-Rated tour operator on TripAdvisor (#d34744740) with 5-star traveler ratings!\n\n" +
+      "You can read genuine traveler reviews from past guests who have explored Maasai Mara, Amboseli, and Samburu with Duncan and our team.",
+    chips: ["Tell me about safari packages.", "Get a Quote", "Chat on WhatsApp"],
   },
   {
+    id: "contact_team",
     triggers: [
-      "samburu",
-      "special 5",
-      "special five",
-      "north",
-      "reticulated",
+      "contact",
+      "whatsapp",
+      "phone",
+      "number",
+      "email",
+      "talk",
+      "chat",
+      "call",
+      "agent",
+      "human",
     ],
     response:
-      "Samburu National Reserve in northern Kenya is a rugged arid wilderness famous for the **Samburu Special Five** (Grevy's zebra, reticulated giraffe, Somali ostrich, beisa oryx, and long-necked gerenuk) plus healthy leopard populations along the Ewaso Nyiro River!\n\n" +
-      "Our **3-Day Samburu Safari** starts from **$750/person**.",
-    chips: ["Samburu Details", "View All Packages", "Chat on WhatsApp"],
+      "You can connect directly with our local team 24/7:\n\n" +
+      "• **Lead Guide**: Duncan Ronkorua\n" +
+      "• **WhatsApp / Phone**: **+254 705 814 181**\n" +
+      "• **Email**: **kariadan831@gmail.com** / **info@voyagemara.com**\n" +
+      "• **Office**: Nairobi, Kenya (open daily 8:00 AM – 8:00 PM EAT)\n\n" +
+      "Tap below to open WhatsApp directly with Duncan!",
+    action: "whatsapp",
+    actionLabel: "Chat on WhatsApp Now",
+    chips: ["WhatsApp Duncan", "Tell me about safari packages.", "Get a Quote"],
   },
   {
+    id: "greeting",
     triggers: [
-      "book",
-      "how to book",
-      "deposit",
-      "payment",
-      "pay",
-      "card",
-      "mpesa",
-      "m-pesa",
+      "hello",
+      "hi",
+      "jambo",
+      "hey",
+      "good morning",
+      "good evening",
+      "greetings",
     ],
     response:
-      "Booking with VoyageMara is straightforward and risk-free:\n\n" +
-      "1. **No upfront cost** to discuss your itinerary and get a personalized quote.\n" +
-      "2. Once you love your plan, a **30% deposit** secures your preferred lodges and private 4x4 Land Cruiser.\n" +
-      "3. The remaining balance can be settled 30 days prior or upon arrival in Nairobi.\n" +
-      "4. We accept **Credit/Debit Card (Visa/Mastercard), International Bank Wire, and M-Pesa**.\n\n" +
-      "Ready to start? Fill our quick quote form or chat directly with Duncan on WhatsApp!",
-    action: "openBooking",
-    actionLabel: "Open Booking Form",
-    chips: ["Open Booking Form", "Chat on WhatsApp", "Safari Pricing"],
+      "Hello! 👋 I'm your VoyageMara Safaris Assistant. How can I help you today?",
+    chips: [
+      "Tell me about safari packages.",
+      "When is the Great Migration?",
+      "Safari Prices & Quotes",
+      "Maasai Mara Park Fees",
+    ],
   },
   {
-    triggers: ["hello", "hi", "jambo", "hey", "good morning", "good evening", "greetings"],
+    id: "thanks",
+    triggers: ["thank", "thanks", "asante", "helpful", "great", "awesome"],
     response:
-      "Jambo! 🇰🇪 Welcome to VoyageMara Safaris. I'm Duncan's AI safari assistant.\n\n" +
-      "Whether you're looking for the Great Wildebeest Migration, a Big Five safari in Maasai Mara, Amboseli elephant tours, or a custom Kenya itinerary, I'm here to help 24/7!\n\n" +
-      "What kind of safari adventure are you dreaming of?",
-    chips: ["Great Migration Dates", "Safari Packages & Prices", "Custom Quote"],
-  },
-  {
-    triggers: ["thank", "thanks", "asante", "helpful", "great", "good"],
-    response:
-      "Asante sana! (Thank you very much!) It is our joy to assist you. If you need any more details, feel free to ask or tap below to connect directly with Duncan on WhatsApp for real-time lodge availability.",
-    chips: ["Chat on WhatsApp", "Get a Quote", "Ask another question"],
+      "Asante sana! (Thank you very much!) It is our pleasure to help you. Feel free to ask any other questions, or tap below to speak directly with Duncan on WhatsApp.",
+    chips: ["Tell me about safari packages.", "Get a Quote", "Chat on WhatsApp"],
   },
 ];
 
-/* ─── Matcher Function ───────────────────────────────────────── */
+/* ─── Intelligent Scored Query Matcher ─────────────────────────── */
 function findBestAnswer(query) {
   const q = query.toLowerCase().trim();
 
-  // Check direct matches
+  // 1. Exact phrase match first
   for (const item of KNOWLEDGE) {
     for (const trigger of item.triggers) {
-      if (q.includes(trigger)) {
+      if (q === trigger) {
         return item;
       }
     }
   }
 
-  // Fallback intelligent response
+  // 2. Score by trigger presence and length
+  let bestMatch = null;
+  let bestScore = 0;
+
+  for (const item of KNOWLEDGE) {
+    let score = 0;
+    for (const trigger of item.triggers) {
+      if (q.includes(trigger)) {
+        // Longer trigger match = higher confidence
+        score += trigger.length;
+      }
+    }
+    if (score > bestScore) {
+      bestScore = score;
+      bestMatch = item;
+    }
+  }
+
+  if (bestMatch && bestScore > 0) {
+    return bestMatch;
+  }
+
+  // 3. Helpful fallback response
   return {
     response:
-      "Thank you for your question! As native Kenyan safari specialists, we can certainly arrange that for you.\n\n" +
-      "Would you like to get an immediate custom quote from Duncan, or connect live via WhatsApp at **+254 705 814 181**?",
+      "Thank you for your question! As local Kenya safari specialists, we can arrange any private safari or custom tour for you.\n\n" +
+      "Would you like to explore our safari packages, get an immediate custom quote, or chat directly with Duncan on WhatsApp at **+254 705 814 181**?",
     action: "openBooking",
     actionLabel: "Request Custom Safari",
-    chips: ["Safari Packages", "Wildebeest Migration", "Chat on WhatsApp"],
+    chips: [
+      "Tell me about safari packages.",
+      "Safari Prices & Quotes",
+      "Chat on WhatsApp",
+    ],
   };
 }
 
@@ -262,19 +478,18 @@ export default function SafariChatbot({ onOpenBooking }) {
     {
       id: "welcome-1",
       sender: "bot",
-      text: "Jambo! 🇰🇪 I'm Duncan, your VoyageMara safari specialist.\n\nLooking for the Great Migration, Maasai Mara Big Five tours, or current safari prices? Ask me anything!",
+      text: "Hello! 👋 I'm your VoyageMara Safaris Assistant. How can I help you today?",
       chips: [
-        "Wildebeest Migration?",
-        "Safari Packages & Prices",
-        "Park Fees Explained",
-        "Request a Quote",
+        "Tell me about safari packages.",
+        "When is the Great Migration?",
+        "Safari Prices & Quotes",
+        "Maasai Mara Park Fees",
       ],
       time: "Just now",
     },
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [unreadCount, setUnreadCount] = useState(1);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -285,7 +500,6 @@ export default function SafariChatbot({ onOpenBooking }) {
   useEffect(() => {
     if (isOpen) {
       scrollToBottom();
-      setUnreadCount(0);
       setTimeout(() => inputRef.current?.focus(), 250);
     }
   }, [isOpen, messages, scrollToBottom]);
@@ -305,7 +519,6 @@ export default function SafariChatbot({ onOpenBooking }) {
     setInput("");
     setIsTyping(true);
 
-    // Simulate natural typing delay (450ms - 900ms)
     setTimeout(() => {
       const match = findBestAnswer(text);
       const botMsg = {
@@ -319,7 +532,7 @@ export default function SafariChatbot({ onOpenBooking }) {
       };
       setMessages((prev) => [...prev, botMsg]);
       setIsTyping(false);
-    }, 650);
+    }, 450);
   };
 
   const handleChipClick = (chipText) => {
@@ -330,8 +543,13 @@ export default function SafariChatbot({ onOpenBooking }) {
       );
       return;
     }
-    if (chipText === "Request a Quote" || chipText === "Book Mara Trip" || chipText === "Open Booking Form") {
-      if (onOpenBooking) onOpenBooking();
+    if (
+      chipText === "Get a Quote" ||
+      chipText === "Custom Quote" ||
+      chipText === "Open Booking Form" ||
+      chipText === "Safari Prices & Quotes"
+    ) {
+      handleSend("How much does a safari cost?");
       return;
     }
     handleSend(chipText);
@@ -340,101 +558,54 @@ export default function SafariChatbot({ onOpenBooking }) {
   const handleActionClick = (action) => {
     if (action === "openBooking" && onOpenBooking) {
       onOpenBooking();
+    } else if (action === "whatsapp") {
+      window.open(
+        "https://wa.me/254705814181?text=Hello%20VoyageMara%20Safaris!%20I'd%20like%20to%20inquire%20about%20a%20safari.",
+        "_blank"
+      );
     }
-  };
-
-  const handleResetChat = () => {
-    setMessages([
-      {
-        id: "welcome-reset-" + Date.now(),
-        sender: "bot",
-        text: "Jambo! Chat reset. How can I assist you with your Kenya safari planning?",
-        chips: [
-          "Wildebeest Migration?",
-          "Safari Packages & Prices",
-          "Park Fees Explained",
-          "Request a Quote",
-        ],
-        time: "Just now",
-      },
-    ]);
   };
 
   return (
     <div className="sc-widget-root">
-      {/* ── Floating Launcher Badge ── */}
-      {!isOpen && (
-        <button
-          type="button"
-          className="sc-launcher"
-          onClick={() => setIsOpen(true)}
-          aria-label="Open Safari AI Assistant"
-          id="safari-chat-launcher"
-        >
-          <div className="sc-launcher-avatar">
-            <span className="sc-avatar-emoji">🦁</span>
-            <span className="sc-online-pulse" />
-          </div>
-          <div className="sc-launcher-text">
-            <span className="sc-launcher-title">Ask Safari Guide</span>
-            <span className="sc-launcher-sub">Duncan · Online</span>
-          </div>
-          {unreadCount > 0 && <span className="sc-badge">{unreadCount}</span>}
-        </button>
-      )}
-
-      {/* ── Chat Window ── */}
+      {/* ── Chat Window (Positioned right above launcher) ── */}
       {isOpen && (
-        <div className="sc-window" role="dialog" aria-label="Safari Assistant Chat">
-          {/* Header */}
+        <div
+          className="sc-window"
+          role="dialog"
+          aria-label="Safari Assistant Chat"
+          id="safari-chat-window"
+        >
+          {/* Header matching Image 1: Forest green #1e5631 */}
           <div className="sc-header">
-            <div className="sc-header-info">
-              <div className="sc-header-avatar">
-                <span>🦁</span>
-                <span className="sc-dot-online" />
+            <div className="sc-header-left">
+              <div className="sc-brand-avatar" aria-hidden="true">
+                <span className="sc-avatar-icon">🦁</span>
               </div>
-              <div>
-                <h3 className="sc-header-name">Duncan | Safari Specialist</h3>
-                <p className="sc-header-status">
-                  <span className="sc-status-dot" /> Online · Typically replies instantly
-                </p>
+              <div className="sc-header-meta">
+                <h3 className="sc-header-title">VoyageMara Safaris</h3>
+                <span className="sc-online-status">
+                  <span className="sc-green-dot" /> Online
+                </span>
               </div>
             </div>
 
-            <div className="sc-header-actions">
-              <button
-                type="button"
-                className="sc-action-btn"
-                onClick={handleResetChat}
-                title="Restart chat"
-                aria-label="Restart chat"
-              >
-                <FaUndo />
-              </button>
-              <button
-                type="button"
-                className="sc-action-btn"
-                onClick={() => setIsOpen(false)}
-                title="Close chat"
-                aria-label="Close chat"
-              >
-                <FaChevronDown />
-              </button>
-            </div>
+            <button
+              type="button"
+              className="sc-close-btn"
+              onClick={() => setIsOpen(false)}
+              title="Close chat"
+              aria-label="Close chat window"
+            >
+              <FaTimes />
+            </button>
           </div>
 
-          {/* Trust Banner */}
-          <div className="sc-trust-banner">
-            <span><FaShieldAlt /> 100% Native Maasai Guided</span>
-            <span>⚡ Instant Safari Advice</span>
-          </div>
-
-          {/* Messages Area */}
+          {/* Messages Area (Dark Charcoal #141414 / #181818) */}
           <div className="sc-messages">
             {messages.map((m) => (
               <div key={m.id} className={`sc-msg-wrap ${m.sender}`}>
-                {m.sender === "bot" && <div className="sc-msg-avatar">🦁</div>}
-                <div className="sc-msg-bubble">
+                <div className={`sc-msg-bubble ${m.sender}`}>
                   <div className="sc-msg-text">
                     {m.text.split("\n\n").map((para, i) => (
                       <p key={i}>
@@ -480,16 +651,13 @@ export default function SafariChatbot({ onOpenBooking }) {
                       ))}
                     </div>
                   )}
-
-                  <span className="sc-msg-time">{m.time}</span>
                 </div>
               </div>
             ))}
 
             {isTyping && (
               <div className="sc-msg-wrap bot">
-                <div className="sc-msg-avatar">🦁</div>
-                <div className="sc-msg-bubble sc-typing">
+                <div className="sc-msg-bubble bot sc-typing">
                   <span className="sc-dot" />
                   <span className="sc-dot" />
                   <span className="sc-dot" />
@@ -500,20 +668,7 @@ export default function SafariChatbot({ onOpenBooking }) {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Direct WhatsApp Bar */}
-          <div className="sc-wa-strip">
-            <span>Want to chat live with Duncan?</span>
-            <a
-              href="https://wa.me/254705814181?text=Hello%20VoyageMara%20Safaris!%20I'd%20like%20to%20inquire%20about%20a%20safari."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sc-wa-btn"
-            >
-              <FaWhatsapp /> WhatsApp Line
-            </a>
-          </div>
-
-          {/* Input Box */}
+          {/* Bottom Input Area matching Image 1 */}
           <form
             className="sc-input-form"
             onSubmit={(e) => {
@@ -524,7 +679,7 @@ export default function SafariChatbot({ onOpenBooking }) {
             <input
               ref={inputRef}
               type="text"
-              placeholder="Ask about migration, prices, parks..."
+              placeholder="Type a message..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
               className="sc-input"
@@ -536,11 +691,23 @@ export default function SafariChatbot({ onOpenBooking }) {
               disabled={!input.trim()}
               aria-label="Send message"
             >
-              <FaPaperPlane />
+              Send
             </button>
           </form>
         </div>
       )}
+
+      {/* ── Circular Orange Robot Launcher Button (Matching Image 1) ── */}
+      <button
+        type="button"
+        className={`sc-orange-launcher ${isOpen ? "open" : ""}`}
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Close Safari Assistant" : "Open Safari Assistant"}
+        title="Chat with Safari Assistant"
+        id="safari-chat-launcher"
+      >
+        <FaRobot className="sc-robot-icon" aria-hidden="true" />
+      </button>
     </div>
   );
 }
