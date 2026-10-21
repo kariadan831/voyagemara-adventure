@@ -833,6 +833,9 @@ export default function Booking() {
           </div>
 
           <div className="vm-compare-table-wrap">
+            <div className="vm-table-scroll-hint" aria-hidden="true">
+              <span>← Swipe table horizontally to compare →</span>
+            </div>
             <table className="vm-compare-table">
               <thead>
                 <tr>

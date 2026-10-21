@@ -296,11 +296,14 @@
 
 .vm-tsc-title {
   font-size: 0.95rem;
+  font-weight: 700;
   color: var(--text-dark, #26372f);
   margin: 2px 0 4px;
-  white-space: nowrap;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 [data-theme="dark"] .vm-tsc-title {
@@ -819,15 +822,27 @@
   font-size: 0.85rem;
 }
 
-/* ── Sticky Sidebar ──────────────────────────────────────── */
+/* ── Sticky Sidebar (Optimized for Desktops & Laptops) ───── */
 .vm-sticky-summary-card {
   position: sticky;
-  top: 90px;
+  top: 84px;
   background: var(--card-bg, #fffefa);
   border: 1px solid rgba(28, 55, 43, 0.12);
   border-radius: 16px;
   padding: 24px;
   box-shadow: var(--shadow-md, 0 12px 30px rgba(0, 0, 0, 0.06));
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.vm-sticky-summary-card::-webkit-scrollbar {
+  width: 5px;
+}
+
+.vm-sticky-summary-card::-webkit-scrollbar-thumb {
+  background: rgba(184, 154, 99, 0.35);
+  border-radius: 999px;
 }
 
 [data-theme="dark"] .vm-sticky-summary-card {
@@ -1156,12 +1171,32 @@
 
 .vm-compare-table-wrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-radius: 14px;
   box-shadow: var(--shadow-sm, 0 8px 24px rgba(0, 0, 0, 0.06));
+  position: relative;
+}
+
+.vm-table-scroll-hint {
+  display: none;
+  font-size: 0.78rem;
+  color: var(--accent-dark, #806a40);
+  background: rgba(184, 154, 99, 0.12);
+  padding: 6px 12px;
+  text-align: center;
+  font-weight: 600;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+[data-theme="dark"] .vm-table-scroll-hint {
+  color: var(--accent-light, #ddc99b);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .vm-compare-table {
   width: 100%;
+  min-width: 580px;
   border-collapse: collapse;
   background: var(--card-bg, #fffefa);
   text-align: left;
@@ -1273,39 +1308,290 @@
   color: var(--text-muted, #6d786f);
 }
 
-/* ── Responsive Queries ──────────────────────────────────── */
-@media (max-width: 1024px) {
+/* ── Comprehensive Responsive Design (Laptops, Tablets & Mobiles) ── */
+
+/* 1. Laptops & Small Desktops (1025px – 1280px) */
+@media (max-width: 1280px) {
   .vm-booking-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1.45fr 1fr;
+    gap: 24px;
   }
+
+  .vm-step-card {
+    padding: 24px 20px;
+  }
+
   .vm-sticky-summary-card {
-    position: static;
+    padding: 20px 18px;
+    max-height: calc(100vh - 90px);
   }
-  .vm-booking-highlights-bar {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+
+  .vm-tours-pill-grid {
+    gap: 10px;
   }
-  .vm-counter-grid {
-    grid-template-columns: 1fr;
+
+  .vm-tour-select-card {
+    padding: 8px 10px;
   }
-  .vm-tier-cards-grid {
-    grid-template-columns: 1fr;
+
+  .vm-tsc-img-wrap {
+    width: 72px;
+    height: 58px;
   }
 }
 
-@media (max-width: 768px) {
-  .vm-booking-header h1 {
-    font-size: 2rem;
+/* 2. Tablets & Small Laptops (769px – 1024px) */
+@media (max-width: 1024px) {
+  .vm-booking-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
+
+  .vm-sticky-summary-card {
+    position: static;
+    max-height: none;
+    margin-top: 10px;
+  }
+
+  .vm-booking-highlights-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .vm-counter-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .vm-tier-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .vm-step-card {
+    padding: 24px 20px;
+  }
+}
+
+/* 3. Mobile Landscape & Standard Mobile (481px – 768px) */
+@media (max-width: 768px) {
+  .vm-booking-header {
+    padding: 38px 0 28px;
+  }
+
+  .vm-booking-header h1 {
+    font-size: 1.85rem;
+    line-height: 1.25;
+  }
+
+  .vm-booking-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .vm-booking-highlights-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding-top: 18px;
+  }
+
+  .vm-b-hl-item {
+    gap: 10px;
+  }
+
+  .vm-b-hl-icon {
+    font-size: 1.25rem;
+  }
+
+  .vm-b-hl-item strong {
+    font-size: 0.88rem;
+  }
+
+  .vm-b-hl-item span {
+    font-size: 0.74rem;
+  }
+
+  .vm-step-card {
+    padding: 20px 16px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+  }
+
   .vm-tours-pill-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
-  .vm-form-dates-row,
-  .vm-form-grid,
+
+  .vm-tour-select-card {
+    padding: 10px 12px;
+  }
+
+  .vm-tsc-img-wrap {
+    width: 72px;
+    height: 60px;
+  }
+
+  .vm-form-dates-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* Counter boxes become clean horizontal rows on mobile */
+  .vm-counter-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .vm-counter-box {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+  }
+
+  .vm-counter-controls button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .vm-tier-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .vm-form-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
   .vm-booking-action-buttons {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
+
+  .vm-table-scroll-hint {
+    display: block;
+  }
+
+  .vm-compare-header h2 {
+    font-size: 1.65rem;
+  }
+
+  .vm-booking-top-trust {
+    padding: 8px 0;
+  }
+
+  .vm-top-trust-inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .vm-ta-perks {
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.78rem;
+  }
+}
+
+/* 4. Small Mobile Phones (Up to 480px) */
+@media (max-width: 480px) {
+  .vm-booking-container {
+    padding: 0 12px;
+  }
+
+  .vm-booking-header {
+    padding: 30px 0 20px;
+  }
+
+  .vm-booking-header h1 {
+    font-size: 1.55rem;
+  }
+
+  .vm-booking-subtitle {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
   .vm-booking-highlights-bar {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding-top: 14px;
+  }
+
+  .vm-b-hl-item {
+    gap: 8px;
+  }
+
+  .vm-b-hl-icon {
+    font-size: 1.15rem;
+  }
+
+  .vm-step-card {
+    padding: 16px 12px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+  }
+
+  .vm-step-num {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    font-size: 0.95rem;
+  }
+
+  .vm-step-legend h2 {
+    font-size: 1.12rem;
+  }
+
+  .vm-step-legend p {
+    font-size: 0.82rem;
+  }
+
+  /* Prevent auto-zoom on iOS by keeping form fields at 16px */
+  .vm-input,
+  .vm-field-col input,
+  .vm-field-full textarea {
+    font-size: 16px;
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+
+  .vm-price-breakdown-box {
+    padding: 14px 12px;
+  }
+
+  .vm-pm-number {
+    font-size: 1.85rem;
+  }
+
+  .vm-btn-whatsapp-primary {
+    font-size: 0.98rem;
+    padding: 14px 16px;
+  }
+
+  .vm-btn-email-secondary {
+    font-size: 0.95rem;
+    padding: 14px 16px;
+  }
+
+  .vm-compare-header h2 {
+    font-size: 1.35rem;
+  }
+
+  .vm-compare-header p {
+    font-size: 0.84rem;
+  }
+
+  .vm-b-faq-item {
+    padding: 14px 16px;
+  }
+
+  .vm-b-faq-item summary {
+    font-size: 0.94rem;
+  }
+
+  .vm-b-faq-item p {
+    font-size: 0.86rem;
   }
 }
