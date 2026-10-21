@@ -747,16 +747,54 @@
 
 @media (max-width: 640px) {
   .mmc-directory-section {
-    padding: 40px 0 20px;
+    padding: 30px 0 20px;
+  }
+  .mmc-category-banners {
+    margin: 0 10px 24px;
+    gap: 12px;
+  }
+  .mmc-category-card {
+    padding: 20px 16px;
   }
   .mmc-controls-bar {
-    padding: 12px;
+    padding: 10px;
+    margin: 0 10px 16px;
+    gap: 10px;
+  }
+  .mmc-search-box {
+    min-width: 0;
+    width: 100%;
+  }
+  .mmc-search-box input {
+    font-size: 16px;
+  }
+  .mmc-filter-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .mmc-filter-group select {
+    flex: 1;
+    min-width: 0;
+    font-size: 16px;
   }
   .mmc-card-actions {
     flex-wrap: wrap;
+    gap: 8px;
   }
   .mmc-btn-enquire {
     width: 100%;
     flex: none;
+    min-height: 44px;
+  }
+  .mmc-btn-wa,
+  .mmc-btn-link {
+    width: 48px;
+    height: 44px;
+  }
+  .mmc-advice-strip {
+    margin: 24px 10px 0;
+    padding: 16px;
+    flex-direction: column;
+    text-align: center;
   }
 }
