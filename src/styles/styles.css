@@ -3794,7 +3794,7 @@ body.is-about-carousel-visible { --map-button-bg: #24533f; }
     width: 50px;
     height: 50px;
     right: 16px;
-    bottom: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom, 16px));
     z-index: 9998;
   }
 
@@ -3802,14 +3802,37 @@ body.is-about-carousel-visible { --map-button-bg: #24533f; }
     width: 44px;
     height: 44px;
     right: 16px;
-    bottom: 76px;
+    bottom: calc(74px + env(safe-area-inset-bottom, 0px));
     z-index: 9998;
+  }
+
+  .footer-ta-showcase {
+    margin-top: 18px;
+    align-items: flex-start;
+  }
+
+  .footer-ta-card {
+    padding: 10px 12px;
+    border-radius: 18px;
+    box-shadow: 0 0 24px rgba(255, 255, 255, 0.42), 0 8px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  .footer-ta-verified {
+    font-size: 1.05rem;
+    margin-top: 8px;
+  }
+
+  .footer-ta-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    max-width: 100%;
+    color: #cbd5e1;
   }
 
   .floating-map-btn {
     left: 16px;
     right: auto;
-    bottom: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom, 16px));
     padding: 11px 15px;
     font-size: 0.86rem;
     z-index: 9998;
