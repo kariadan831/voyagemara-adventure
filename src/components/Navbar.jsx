@@ -15,43 +15,211 @@ import "./Navbar.css";
 const TRIPADVISOR_URL =
   "https://www.tripadvisor.com/Attraction_Review-g294207-d34744740-Reviews-VoyageMara_Safaris-Nairobi.html";
 
-/* ─── Menu Data ──────────────────────────────────────────── */
+/* ─── Menu Data with Rich Professional Info ─────────────── */
 const MEGA_MENUS = {
+  "Kenya Safaris": [
+    {
+      label: "Book a Safari (Instant Quote)",
+      desc: "Interactive pricing engine: customize dates, party size & vehicle options with zero hidden fees.",
+      tag: "Live Calculator",
+      icon: "⚡",
+      href: "/booking",
+    },
+    {
+      label: "All Safari Packages",
+      desc: "1 to 7-day wildlife, migration & cultural expeditions across Kenya's iconic national parks.",
+      tag: "From $180",
+      icon: "🚙",
+      href: "/#tours",
+    },
+    {
+      label: "Kenya Safari Pricing",
+      desc: "Transparent price tiers: Budget Bush Camps, Mid-Range Tented Lodges & 5-Star Luxury.",
+      tag: "Best Rates",
+      icon: "💰",
+      href: "/#safari-pricing-tables",
+    },
+    {
+      label: "Park Fees Explained",
+      desc: "Official 2026/2027 KWS & Maasai Mara tariffs ($100–$200/day). All included in our package quotes.",
+      tag: "2026/2027 Tariffs",
+      icon: "🎟️",
+      href: "/#safari-pricing-tables",
+    },
+    {
+      label: "Family Safaris",
+      desc: "Child-friendly lodges, dedicated private pop-up 4×4 Land Cruisers, and flexible savannah pacing.",
+      tag: "Kids Welcome",
+      icon: "👨‍👩‍👦",
+      href: "/#tours",
+    },
+    {
+      label: "Honeymoon Safaris",
+      desc: "Romantic private luxury camps, sunrise champagne balloon safaris & candlelit bush dinners.",
+      tag: "Romantic Escapes",
+      icon: "💍",
+      href: "/#contact",
+    },
+    {
+      label: "Group / Corporate Safaris",
+      desc: "Multi-vehicle safari fleets, team retreats, private Maasai guides & custom group discounts.",
+      tag: "Special Rates",
+      icon: "👥",
+      href: "/#contact",
+    },
+  ],
   "Maasai Mara": [
-    { label: "Maasai Mara Overview", href: "/safaris/maasai-mara" },
-    { label: "3-Day Big Five Safari", href: "/safaris/maasai-mara#itinerary" },
-    { label: "Great Wildebeest Migration", href: "/#itineraries" },
-    { label: "Luxury Mara Camps", href: "/safaris/maasai-mara#accommodation" },
-    { label: "Maasai Culture Experience", href: "/safaris/maasai-mara#culture" },
+    {
+      label: "Maasai Mara Overview",
+      desc: "Kenya's premier wildlife reserve: predator density, open savannah plains & community conservancies.",
+      tag: "Reserve Guide",
+      icon: "🌍",
+      href: "/safaris/maasai-mara",
+    },
+    {
+      label: "3-Day Big Five Safari",
+      desc: "Our flagship tour: lions, leopards, cheetahs, and elephants in private custom 4×4 Land Cruisers.",
+      tag: "Best Seller",
+      icon: "🦁",
+      href: "/safaris/maasai-mara#itinerary",
+    },
+    {
+      label: "Great Wildebeest Migration",
+      desc: "Over 1.5 million herds braving the Mara River crocodile crossings between July and October.",
+      tag: "July – Oct Peak",
+      icon: "🦓",
+      href: "/#itineraries",
+    },
+    {
+      label: "Luxury Mara Camps",
+      desc: "Handpicked 5-star tented pavilions, en-suite bathrooms, swimming pools & gourmet dining.",
+      tag: "5-Star Lodges",
+      icon: "⛺",
+      href: "/safaris/maasai-mara#accommodation",
+    },
+    {
+      label: "Maasai Culture Experience",
+      desc: "Authentic cultural visits to traditional Maasai bomas, fire-making, traditional dances & wisdom.",
+      tag: "Cultural Heritage",
+      icon: "🔥",
+      href: "/safaris/maasai-mara#culture",
+    },
   ],
   "Itineraries": [
-    { label: "1-Day Nairobi Safari", href: "/safaris/nairobi-national-park" },
-    { label: "1-Day Lake Naivasha", href: "/safaris/lake-naivasha" },
-    { label: "1-Day Lake Nakuru", href: "/safaris/lake-nakuru" },
-    { label: "2-Day Amboseli Safari", href: "/safaris/amboseli" },
-    { label: "3-Day Maasai Mara", href: "/safaris/maasai-mara" },
-    { label: "3-Day Samburu Safari", href: "/safaris/samburu" },
-    { label: "5-Day Kenya Classic", href: "/#safari-pricing-tables" },
-    { label: "7-Day Ultimate Kenya", href: "/#safari-pricing-tables" },
-    { label: "Custom Itinerary", href: "/#contact" },
-  ],
-  "Kenya Safaris": [
-    { label: "Book a Safari (Instant Quote)", href: "/booking" },
-    { label: "All Safari Packages", href: "/#tours" },
-    { label: "Kenya Safari Pricing", href: "/#safari-pricing-tables" },
-    { label: "Park Fees Explained", href: "/#safari-pricing-tables" },
-    { label: "Family Safaris", href: "/#tours" },
-    { label: "Honeymoon Safaris", href: "/#contact" },
-    { label: "Group / Corporate Safaris", href: "/#contact" },
+    {
+      label: "1-Day Nairobi Safari",
+      desc: "Wildlife safari with Nairobi city skyline in the background. Lions, rhinos & buffaloes.",
+      tag: "Quick Day Trip",
+      icon: "🦒",
+      href: "/safaris/nairobi-national-park",
+    },
+    {
+      label: "1-Day Lake Naivasha",
+      desc: "Scenic boat ride among hippos and walking safari on Crescent Island alongside giraffes & zebras.",
+      tag: "Walking Safari",
+      icon: "🦩",
+      href: "/safaris/lake-naivasha",
+    },
+    {
+      label: "1-Day Lake Nakuru",
+      desc: "World-famous protected rhino sanctuary for endangered black & white rhinos, plus flamingos.",
+      tag: "Rhino Sanctuary",
+      icon: "🦏",
+      href: "/safaris/lake-nakuru",
+    },
+    {
+      label: "2-Day Amboseli Safari",
+      desc: "Massive elephant herds roaming beneath the snow-capped peak of Mount Kilimanjaro.",
+      tag: "Kilimanjaro Views",
+      icon: "🐘",
+      href: "/safaris/amboseli",
+    },
+    {
+      label: "3-Day Maasai Mara",
+      desc: "Complete Big Five savannah adventure with native Maasai guides and sunrise game drives.",
+      tag: "Most Popular",
+      icon: "🐆",
+      href: "/safaris/maasai-mara",
+    },
+    {
+      label: "3-Day Samburu Safari",
+      desc: "Rugged northern arid wilderness with rare Grevy's zebras, gerenuks, Somali ostriches & leopards.",
+      tag: "Northern Kenya",
+      icon: "🦅",
+      href: "/safaris/samburu",
+    },
+    {
+      label: "5-Day Kenya Classic",
+      desc: "The grand circuit: Maasai Mara Big Five, Lake Nakuru rhinos & Lake Naivasha boat adventures.",
+      tag: "Comprehensive",
+      icon: "⭐",
+      href: "/#safari-pricing-tables",
+    },
+    {
+      label: "7-Day Ultimate Kenya",
+      desc: "Full Kenya immersion: Samburu, Lake Nakuru, Maasai Mara & Amboseli with top lodges.",
+      tag: "Full Immersion",
+      icon: "👑",
+      href: "/#safari-pricing-tables",
+    },
+    {
+      label: "Custom Itinerary",
+      desc: "Build your dream custom Kenya route with Duncan Ronkorua and our local Nairobi team.",
+      tag: "Tailor-Made",
+      icon: "✨",
+      href: "/#contact",
+    },
   ],
   "Destinations": [
-    { label: "All Destinations", href: "/#destinations" },
-    { label: "Maasai Mara Reserve", href: "/safaris/maasai-mara" },
-    { label: "Amboseli National Park", href: "/safaris/amboseli" },
-    { label: "Lake Nakuru Park", href: "/safaris/lake-nakuru" },
-    { label: "Samburu Reserve", href: "/safaris/samburu" },
-    { label: "Lake Naivasha", href: "/safaris/lake-naivasha" },
-    { label: "Nairobi National Park", href: "/safaris/nairobi-national-park" },
+    {
+      label: "All Destinations",
+      desc: "Explore all premier national parks, private conservancies & wildlife ecosystems in Kenya.",
+      tag: "Explore All",
+      icon: "🗺️",
+      href: "/#destinations",
+    },
+    {
+      label: "Maasai Mara Reserve",
+      desc: "World capital of lion prides, cheetahs & the dramatic Great Wildebeest Migration.",
+      tag: "Iconic Mara",
+      icon: "🦁",
+      href: "/safaris/maasai-mara",
+    },
+    {
+      label: "Amboseli National Park",
+      desc: "Land of giants: large elephant herds against the snow-capped peak of Mount Kilimanjaro.",
+      tag: "Mt Kilimanjaro",
+      icon: "🐘",
+      href: "/safaris/amboseli",
+    },
+    {
+      label: "Lake Nakuru Park",
+      desc: "Rift Valley flamingo haven & premier UNESCO World Heritage rhino sanctuary.",
+      tag: "Rhino Sanctuary",
+      icon: "🦏",
+      href: "/safaris/lake-nakuru",
+    },
+    {
+      label: "Samburu Reserve",
+      desc: "Untamed northern savannah home to the rare Northern Special Five adapted to arid lands.",
+      tag: "Northern Wilderness",
+      icon: "🌿",
+      href: "/safaris/samburu",
+    },
+    {
+      label: "Lake Naivasha",
+      desc: "Freshwater rift lake with boat cruises, walking safaris on Crescent Island & birdlife.",
+      tag: "Boat & Walk",
+      icon: "⛵",
+      href: "/safaris/lake-naivasha",
+    },
+    {
+      label: "Nairobi National Park",
+      desc: "The world's only wildlife park bordering a capital city, just 15 minutes from downtown.",
+      tag: "City Sanctuary",
+      icon: "🏙️",
+      href: "/safaris/nairobi-national-park",
+    },
   ],
 };
 
@@ -79,35 +247,35 @@ function MegaDropdown({ label, items, isOpen, onToggle }) {
         {label} <FaChevronDown className="nav-chevron" />
       </button>
       <div className="nav-mega-panel" role="menu" aria-label={label + " menu"}>
-        <ul>
+        <div className="nav-mega-grid">
           {items.map((item) => (
-            <li key={item.label}>
-              <Link
-                to={item.href}
-                role="menuitem"
-                onClick={() => onToggle(null)}
-              >
-                {item.label}
-              </Link>
-            </li>
+            <Link
+              key={item.label}
+              to={item.href}
+              className="nav-mega-card"
+              role="menuitem"
+              onClick={() => onToggle(null)}
+            >
+              <div className="nav-mc-icon-wrap" aria-hidden="true">
+                <span>{item.icon}</span>
+              </div>
+              <div className="nav-mc-body">
+                <div className="nav-mc-head">
+                  <strong className="nav-mc-title">{item.label}</strong>
+                  {item.tag && <span className="nav-mc-tag">{item.tag}</span>}
+                </div>
+                {item.desc && <p className="nav-mc-desc">{item.desc}</p>}
+              </div>
+            </Link>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );
 }
 
-/* ─── Mobile Accordion Item ──────────────────────────────── */
+/* ─── Mobile Accordion Item with Rich Info Cards ─────────── */
 function MobileAccordion({ label, items, isOpen, onToggle, onClose }) {
-  const contentRef = useRef(null);
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setHeight(isOpen ? contentRef.current.scrollHeight : 0);
-    }
-  }, [isOpen]);
-
   return (
     <div className={`drawer-accordion${isOpen ? " open" : ""}`}>
       <button
@@ -121,20 +289,33 @@ function MobileAccordion({ label, items, isOpen, onToggle, onClose }) {
       </button>
       <div
         className="drawer-accordion-content"
-        ref={contentRef}
-        style={{ maxHeight: `${height}px` }}
+        style={{
+          maxHeight: isOpen ? "2500px" : "0px",
+          transition: "max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+        }}
         aria-hidden={!isOpen}
       >
-        {items.map((item) => (
-          <Link
-            key={item.label}
-            to={item.href}
-            className="drawer-accordion-link"
-            onClick={onClose}
-          >
-            {item.label}
-          </Link>
-        ))}
+        <div className="drawer-accordion-items">
+          {items.map((item) => (
+            <Link
+              key={item.label}
+              to={item.href}
+              className="drawer-accordion-card"
+              onClick={onClose}
+            >
+              <div className="drawer-ac-icon-wrap" aria-hidden="true">
+                <span>{item.icon}</span>
+              </div>
+              <div className="drawer-ac-body">
+                <div className="drawer-ac-head">
+                  <strong className="drawer-ac-title">{item.label}</strong>
+                  {item.tag && <span className="drawer-ac-tag">{item.tag}</span>}
+                </div>
+                {item.desc && <p className="drawer-ac-desc">{item.desc}</p>}
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
