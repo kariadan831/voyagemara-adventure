@@ -739,27 +739,63 @@
 @media (max-width: 860px) {
   .mmc-category-banners {
     grid-template-columns: 1fr;
+    margin-left: 0;
+    margin-right: 0;
   }
   .mmc-grid {
     grid-template-columns: 1fr;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .mmc-controls-bar {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .mmc-advice-strip {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .mmc-meta-bar {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .mmc-directory-section {
-    padding: 30px 0 20px;
+    padding: 24px 0 16px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .mmc-header {
+    padding: 0 4px;
+    margin-bottom: 20px;
+  }
+  .mmc-title {
+    font-size: 1.4rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .mmc-lead {
+    font-size: 0.92rem;
   }
   .mmc-category-banners {
-    margin: 0 10px 24px;
+    margin: 0 0 20px 0;
     gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .mmc-category-card {
-    padding: 20px 16px;
+    padding: 18px 14px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .mmc-controls-bar {
-    padding: 10px;
-    margin: 0 10px 16px;
+    padding: 12px;
+    margin: 0 0 16px 0;
     gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .mmc-search-box {
     min-width: 0;
@@ -767,15 +803,39 @@
   }
   .mmc-search-box input {
     font-size: 16px;
+    padding: 10px 32px 10px 36px;
   }
   .mmc-filter-group {
     width: 100%;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
   }
   .mmc-filter-group select {
-    flex: 1;
-    min-width: 0;
+    width: 100%;
     font-size: 16px;
+  }
+  .mmc-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+  }
+  .mmc-pill {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 7px 10px;
+    font-size: 0.78rem;
+  }
+  .mmc-grid {
+    margin: 0 0 24px 0;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .mmc-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .mmc-card-actions {
     flex-wrap: wrap;
@@ -788,13 +848,15 @@
   }
   .mmc-btn-wa,
   .mmc-btn-link {
-    width: 48px;
-    height: 44px;
+    flex: 1;
+    min-height: 44px;
   }
   .mmc-advice-strip {
-    margin: 24px 10px 0;
-    padding: 16px;
+    margin: 20px 0 0 0;
+    padding: 14px;
     flex-direction: column;
     text-align: center;
+    width: 100%;
+    box-sizing: border-box;
   }
 }

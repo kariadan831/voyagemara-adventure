@@ -393,6 +393,19 @@
   grid-template-columns: 1.85fr 1fr;
   gap: 36px;
   align-items: flex-start;
+  min-width: 0;
+  width: 100%;
+}
+
+.ta-main-col {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+.ta-sidebar-col {
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* ── Left Column Sections ────────────────────────────────── */
@@ -402,6 +415,14 @@
   border-radius: 16px;
   padding: 28px;
   margin-bottom: 24px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.ta-section.ta-guide-section {
+  padding: 24px 20px;
+  overflow: hidden;
 }
 
 [data-theme="dark"] .ta-section {
@@ -1190,6 +1211,18 @@
 }
 
 @media (max-width: 768px) {
+  .ta-content-grid {
+    gap: 20px;
+  }
+  .ta-subnav-tabs {
+    top: 64px;
+    margin-bottom: 20px;
+    padding: 0 4px;
+  }
+  .ta-subnav-tabs button {
+    padding: 11px 13px;
+    font-size: 0.85rem;
+  }
   .ta-product-header {
     flex-direction: column;
     gap: 14px;
@@ -1203,6 +1236,14 @@
   }
   .ta-gallery-side {
     display: none;
+  }
+  .ta-section {
+    padding: 20px 16px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+  }
+  .ta-section.ta-guide-section {
+    padding: 16px 10px;
   }
   .ta-specs-list,
   .ta-review-cards-row,
@@ -1224,6 +1265,10 @@
   .safari-detail-container {
     padding: 0 12px;
   }
+  .ta-subnav-tabs {
+    top: 60px;
+    margin-bottom: 16px;
+  }
   .ta-product-title {
     font-size: 1.35rem;
   }
@@ -1241,8 +1286,11 @@
     font-size: 1.8rem;
   }
   .ta-section {
-    padding: 18px 16px;
+    padding: 16px 12px;
     border-radius: 12px;
+  }
+  .ta-section.ta-guide-section {
+    padding: 12px 6px;
   }
   .ta-section-title {
     font-size: 1.25rem;

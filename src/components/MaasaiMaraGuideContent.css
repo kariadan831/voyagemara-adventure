@@ -3,9 +3,12 @@
    ================================================================ */
 
 .mm-guide-root {
-  max-width: 1200px;
+  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 /* ── Jump To Section Bar ─────────────────────────────────── */
@@ -13,12 +16,14 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 20px;
+  padding: 14px 18px;
   background: #f7f9f7;
   border-radius: 12px;
   border: 1px solid rgba(20, 56, 41, 0.12);
-  margin: 30px 0 40px;
+  margin: 16px 0 32px;
   flex-wrap: wrap;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 [data-theme="dark"] .mm-toc-bar {
@@ -208,11 +213,16 @@
 }
 
 .mm-table-scroll {
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  display: block;
 }
 
 .mm-cost-table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.92rem;
@@ -527,44 +537,57 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .mm-guide-root {
-    padding: 0 12px;
+    padding: 0;
   }
 
   .mm-toc-bar {
-    padding: 10px 14px;
+    padding: 10px 12px;
     gap: 8px;
     overflow-x: auto;
     flex-wrap: nowrap;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
+    margin: 12px 0 24px;
   }
 
   .mm-toc-links {
     flex-wrap: nowrap;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .mm-toc-links button {
     flex-shrink: 0;
-    padding: 5px 12px;
+    padding: 6px 12px;
     font-size: 0.78rem;
     min-height: 36px;
   }
 
   .mm-guide-section {
-    padding: 30px 0 14px;
+    padding: 24px 0 14px;
   }
 
   .mm-section-header h2 {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .mm-duration-tabs {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
   }
 
   .mm-duration-tabs button {
-    padding: 8px 14px;
-    font-size: 0.85rem;
-    min-height: 40px;
+    width: 100%;
+    text-align: center;
+    padding: 11px 14px;
+    font-size: 0.88rem;
+    min-height: 44px;
   }
 
   .mm-cost-table th,
@@ -578,16 +601,10 @@
     gap: 14px;
   }
 
-  .mm-season-card {
-    padding: 18px;
-  }
-
-  .mm-eco-card {
-    padding: 18px;
-  }
-
+  .mm-season-card,
+  .mm-eco-card,
   .mm-transfer-card {
-    padding: 18px;
+    padding: 16px;
   }
 
   .mm-cost-intro {

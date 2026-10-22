@@ -547,7 +547,7 @@ export default function SafariDetail({ tour, onOpenBooking }) {
 
             {/* MAASAI MARA DEDICATED CONTENT IF APPLICABLE */}
             {tour.slug === "maasai-mara" && (
-              <section className="ta-section">
+              <section className="ta-section ta-guide-section">
                 <MaasaiMaraGuideContent onOpenBooking={onOpenBooking} />
               </section>
             )}
