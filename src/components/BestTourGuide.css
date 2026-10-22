@@ -716,4 +716,57 @@
   .contact-secondary-btn {
     justify-content: center;
   }
+  .operator-benchmark-card {
+    padding: 20px 16px;
+  }
+  .paa-question-btn {
+    padding: 14px 16px;
+    font-size: 0.93rem;
+  }
+  .paa-answer {
+    padding: 0 16px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .best-tour-section {
+    padding: 48px 12px;
+  }
+  .best-tour-header h2 {
+    font-size: 1.75rem;
+  }
+  .operator-benchmark-card {
+    padding: 16px 14px;
+    border-radius: 16px;
+  }
+  .operator-benchmark-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .paa-section {
+    padding: 18px 14px;
+    border-radius: 14px;
+  }
+  .paa-title {
+    font-size: 1.1rem;
+  }
+  .paa-question-btn {
+    padding: 12px 14px;
+    font-size: 0.88rem;
+  }
+  .operator-comparison-table th,
+  .operator-comparison-table td {
+    padding: 10px 12px;
+    font-size: 0.82rem;
+  }
+  .operator-cell {
+    min-width: 140px;
+  }
+  .contact-primary-btn,
+  .contact-secondary-btn {
+    padding: 12px 20px;
+    font-size: 0.88rem;
+  }
 }

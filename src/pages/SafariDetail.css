@@ -1240,4 +1240,36 @@
   .ta-price-amount {
     font-size: 1.8rem;
   }
+  .ta-section {
+    padding: 18px 16px;
+    border-radius: 12px;
+  }
+  .ta-section-title {
+    font-size: 1.25rem;
+  }
+  .ta-specs-list {
+    grid-template-columns: 1fr;
+  }
+  .ta-review-cards-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 360px) {
+  .safari-detail-container {
+    padding: 0 10px;
+  }
+  .ta-product-title {
+    font-size: 1.2rem;
+  }
+  .ta-sticky-booking-widget {
+    padding: 12px;
+  }
+  .ta-book-btn {
+    padding: 14px 12px;
+    font-size: 0.9rem;
+  }
+  .ta-gallery-mosaic {
+    height: 220px;
+  }
 }

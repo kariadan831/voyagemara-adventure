@@ -438,108 +438,156 @@
 
 
   }
-  .about-faq{
+  .about-faq {
+    max-width: 1100px;
+    margin: auto;
+    padding: 80px 30px;
+  }
 
-max-width:1100px;
+  .about-faq h2 {
+    color: #d4af37;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
 
-margin:auto;
+  .about-faq .faq-item {
+    background: #10251a;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+  }
 
-padding:80px 30px;
+  .about-faq .faq-item h3 {
+    color: #ffffff;
+    margin-bottom: 15px;
+  }
 
-}
+  .about-faq .faq-item p {
+    color: #ddd;
+    line-height: 1.8;
+  }
 
+  @media (max-width: 600px) {
+    .about-faq {
+      padding: 50px 16px;
+    }
 
-.about-faq h2{
+    .about-faq h2 {
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+    }
 
-color:#d4af37;
+    .about-faq .faq-item {
+      padding: 18px;
+    }
 
-font-size:2.5rem;
+    .about-section {
+      padding: 60px 16px;
+    }
 
-margin-bottom:40px;
+    .about-section h2,
+    .about-grid h2 {
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+    }
 
-}
+    .founder-card {
+      padding: 24px 18px;
+    }
 
+    .founder-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
 
-.about-faq .faq-item {
-  background: #10251a;
-  padding: 25px;
-  margin-bottom: 20px;
-  border-radius: 15px;
-}
+    .info-card {
+      padding: 24px 18px;
+    }
 
-.about-faq .faq-item h3 {
-  color: #ffffff;
-  margin-bottom: 15px;
-}
+    .list-card {
+      padding: 18px;
+    }
 
-.about-faq .faq-item p {
-  color: #ddd;
-  line-height: 1.8;
-}
+    .contact-box {
+      padding: 60px 16px;
+    }
 
-/* Keep every About page surface legible in both saved theme preferences. */
-.about-page {
-  background: var(--bg-light, #f5f2e9);
-  color: var(--text-dark, #26372f);
-}
+    .about-hero-content {
+      padding: 16px;
+    }
 
-.about-page .about-hero-content h1 {
-  color: #fffdf6;
-  text-shadow: 0 3px 24px rgba(0, 0, 0, 0.45);
-}
+    .about-hero-content h1 {
+      font-size: 1.8rem;
+    }
 
-.about-page .about-hero-content span {
-  color: var(--accent-light, #ddc99b);
-}
+    .about-hero-content p {
+      font-size: 1rem;
+    }
+  }
 
-.about-page .about-hero-content p {
-  color: #f2f2ed;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
-}
+  /* Keep every About page surface legible in both saved theme preferences. */
+  .about-page {
+    background: var(--bg-light, #f5f2e9);
+    color: var(--text-dark, #26372f);
+  }
 
-.about-page .about-section h2,
-.about-page .about-grid h2,
-.about-page .about-faq h2 {
-  color: var(--primary-dark, #15382d);
-}
+  .about-page .about-hero-content h1 {
+    color: #fffdf6;
+    text-shadow: 0 3px 24px rgba(0, 0, 0, 0.45);
+  }
 
-.about-page .about-section p,
-.about-page .about-text p,
-.about-page .about-faq .faq-item p {
-  color: var(--text-muted, #59695f);
-}
+  .about-page .about-hero-content span {
+    color: var(--accent-light, #ddc99b);
+  }
 
-.about-page .founder-card,
-.about-page .info-card,
-.about-page .list-card,
-.about-page .about-faq .faq-item {
-  background: var(--card-bg, #fffefa);
-  border: 1px solid var(--border, rgba(28, 55, 43, 0.13));
-  box-shadow: 0 12px 34px rgba(24, 48, 36, 0.06);
-}
+  .about-page .about-hero-content p {
+    color: #f2f2ed;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  }
 
-.about-page .founder-card h3,
-.about-page .info-card h3,
-.about-page .about-faq .faq-item h3 {
-  color: var(--primary-dark, #15382d);
-}
+  .about-page .about-section h2,
+  .about-page .about-grid h2,
+  .about-page .about-faq h2 {
+    color: var(--primary-dark, #15382d);
+  }
 
-.about-page .list-card {
-  color: var(--text-dark, #26372f);
-}
+  .about-page .about-section p,
+  .about-page .about-text p,
+  .about-page .about-faq .faq-item p {
+    color: var(--text-muted, #59695f);
+  }
 
-.about-page .list-card:hover {
-  border-color: var(--accent-color, #b89a63);
-}
+  .about-page .founder-card,
+  .about-page .info-card,
+  .about-page .list-card,
+  .about-page .about-faq .faq-item {
+    background: var(--card-bg, #fffefa);
+    border: 1px solid var(--border, rgba(28, 55, 43, 0.13));
+    box-shadow: 0 12px 34px rgba(24, 48, 36, 0.06);
+  }
 
-.about-page > .contact-box {
-  color: var(--text-dark, #26372f);
-}
+  .about-page .founder-card h3,
+  .about-page .info-card h3,
+  .about-page .about-faq .faq-item h3 {
+    color: var(--primary-dark, #15382d);
+  }
 
-.about-page > .contact-box h2 {
-  color: var(--primary-dark, #15382d);
-}
+  .about-page .list-card {
+    color: var(--text-dark, #26372f);
+  }
 
-.about-page > .contact-box p {
-  color: var(--text-muted, #59695f);
-}
+  .about-page .list-card:hover {
+    border-color: var(--accent-color, #b89a63);
+  }
+
+  .about-page > .contact-box {
+    color: var(--text-dark, #26372f);
+  }
+
+  .about-page > .contact-box h2 {
+    color: var(--primary-dark, #15382d);
+  }
+
+  .about-page > .contact-box p {
+    color: var(--text-muted, #59695f);
+  }

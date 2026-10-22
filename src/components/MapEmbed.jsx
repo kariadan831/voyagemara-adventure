@@ -4,21 +4,13 @@ export default function MapEmbed() {
       
       <h2>📍 Maasai Mara Location</h2>
 
-      <div
-        style={{
-          width: "100%",
-          height: "450px",
-          borderRadius: "14px",
-          overflow: "hidden",
-          marginTop: "15px",
-        }}
-      >
+      <div className="map-iframe-wrapper">
         <iframe
           title="Maasai Mara Map"
           src="https://maps.google.com/maps?q=Maasai%20Mara%20National%20Reserve%2C%20Kenya&output=embed"
           width="100%"
           height="100%"
-          style={{ border: 0 }}
+          style={{ border: 0, display: "block" }}
           allowFullScreen=""
           loading="lazy"
         />
@@ -47,4 +39,4 @@ export default function MapEmbed() {
 
     </section>
   );
-}
+}
