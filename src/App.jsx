@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+﻿import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, useState, lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 
@@ -12,6 +12,7 @@ const Booking = lazy(preloadBooking);
 import MaasaiMaraSubPage from "./pages/MaasaiMaraSubPage";
 import { MAASAI_MARA_PAGES } from "./data/maasaiMaraPagesData";
 import KenyaSafarisSubPage from "./pages/KenyaSafarisSubPage";
+const GalleryPage = lazy(() => import("./pages/GalleryPage"));
 import { KENYA_SAFARIS_PAGES } from "./data/kenyaSafarisPagesData";
 
 import Navbar from "./components/Navbar";
@@ -255,6 +256,9 @@ export default function App() {
             }
           />
 
+          {/* ================= GALLERY PAGE ================= */}
+          <Route path="/gallery" element={<Suspense fallback={<RouteLoader />}><GalleryPage /></Suspense>} />
+
           {/* ================= ABOUT PAGE ================= */}
           <Route path="/about" element={<Suspense fallback={<RouteLoader />}><AboutUs /></Suspense>} />
 
@@ -337,3 +341,4 @@ export default function App() {
     </>
   );
 }
+

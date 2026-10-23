@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+﻿import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import {
   FaPhoneAlt,
@@ -15,7 +15,7 @@ import "./Navbar.css";
 const TRIPADVISOR_URL =
   "https://www.tripadvisor.com/Attraction_Review-g294207-d34744740-Reviews-VoyageMara_Safaris-Nairobi.html";
 
-/* ─── Menu Data ──────────────────────────────────────────── */
+/* â”€â”€â”€ Menu Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const MEGA_MENUS = {
   "Maasai Mara": [
     { label: "Maasai Mara Overview", href: "/safaris/maasai-mara/overview" },
@@ -55,7 +55,7 @@ const MEGA_MENUS = {
   ],
 };
 
-/* ─── Desktop Dropdown ──────────────────────────────────── */
+/* â”€â”€â”€ Desktop Dropdown â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function MegaDropdown({ label, items, isOpen, onToggle }) {
   const ref = useRef(null);
 
@@ -97,7 +97,7 @@ function MegaDropdown({ label, items, isOpen, onToggle }) {
   );
 }
 
-/* ─── Mobile Accordion Item ──────────────────────────────── */
+/* â”€â”€â”€ Mobile Accordion Item â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function MobileAccordion({ label, items, isOpen, onToggle, onClose }) {
   const contentRef = useRef(null);
   const [height, setHeight] = useState(0);
@@ -140,7 +140,7 @@ function MobileAccordion({ label, items, isOpen, onToggle, onClose }) {
   );
 }
 
-/* ─── Main Navbar ─────────────────────────────────────────── */
+/* â”€â”€â”€ Main Navbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 export default function Navbar({ onOpenBooking }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -217,7 +217,7 @@ export default function Navbar({ onOpenBooking }) {
         <div className="navbar-topbar-inner">
           <div className="topbar-left">
             <span className="topbar-expert-text">
-              🌍 Nairobi safari experts — 100% Maasai-guided
+              ðŸŒ Nairobi safari experts â€” 100% Maasai-guided
             </span>
             <a
               href={TRIPADVISOR_URL}
@@ -279,6 +279,13 @@ export default function Navbar({ onOpenBooking }) {
           </Link>
 
           <Link
+            to="/gallery"
+            className={`nav-link${pathname === "/gallery" ? " active" : ""}`}
+          >
+            Gallery
+          </Link>
+
+          <Link
             to="/booking"
             className={`nav-link nav-link-booking${pathname === "/booking" ? " active" : ""}`}
           >
@@ -315,7 +322,7 @@ export default function Navbar({ onOpenBooking }) {
             id="navbar-get-quote"
             aria-label="Get a Safari Quote"
           >
-            <span>Get a Quote</span> <span className="nav-quote-arrow">→</span>
+            <span>Get a Quote</span> <span className="nav-quote-arrow">â†’</span>
           </button>
 
           {/* Mobile hamburger */}
@@ -331,7 +338,7 @@ export default function Navbar({ onOpenBooking }) {
         </div>
       </nav>
 
-      {/* ── Mobile Drawer ─────────────────────────────────── */}
+      {/* â”€â”€ Mobile Drawer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className={`nav-mobile-drawer${mobileOpen ? " open" : ""}`} aria-hidden={!mobileOpen}>
         <div className="nav-drawer-header">
           <img src="/logo.webp" alt="VoyageMara Safaris" width="120" height="40" />
@@ -343,7 +350,7 @@ export default function Navbar({ onOpenBooking }) {
         <div className="nav-drawer-inner">
           <Link to="/#home" className="nav-drawer-link" onClick={closeMobile}>Home</Link>
 
-          {/* Accordion menus — same as desktop dropdowns */}
+          {/* Accordion menus â€” same as desktop dropdowns */}
           {Object.entries(MEGA_MENUS).map(([label, items]) => (
             <MobileAccordion
               key={label}
@@ -357,9 +364,9 @@ export default function Navbar({ onOpenBooking }) {
 
           <Link to="/about" className="nav-drawer-link" onClick={closeMobile}>About Us</Link>
           <Link to="/booking" className="nav-drawer-link nav-drawer-booking-highlight" onClick={closeMobile}>
-            🦁 Book a Safari (Instant Quote)
+            ðŸ¦ Book a Safari (Instant Quote)
           </Link>
-          <Link to="/#gallery" className="nav-drawer-link" onClick={closeMobile}>Gallery</Link>
+          <Link to="/gallery" className="nav-drawer-link" onClick={closeMobile}>Gallery</Link>
           <Link to="/#faq" className="nav-drawer-link" onClick={closeMobile}>FAQ</Link>
           <Link to="/#contact" className="nav-drawer-link" onClick={closeMobile}>Contact</Link>
 
@@ -381,7 +388,7 @@ export default function Navbar({ onOpenBooking }) {
               <FaWhatsapp /> Chat on WhatsApp
             </a>
             <button type="button" className="drawer-quote-btn" onClick={handleGetQuote}>
-              Instant Quote & Booking Engine →
+              Instant Quote & Booking Engine â†’
             </button>
           </div>
 
@@ -398,3 +405,4 @@ export default function Navbar({ onOpenBooking }) {
     </>
   );
 }
+

@@ -1,0 +1,503 @@
+﻿/* ================================================================
+   VOYAGEMARA – GALLERY PAGE
+   Masonry grid + category filters + lightbox
+================================================================ */
+
+/* ── Page wrapper ───────────────────────────────────────────── */
+.gallery-page {
+  min-height: 100vh;
+  background: var(--bg-white);
+  padding-top: var(--navbar-height);
+}
+
+/* ── Hero Banner ────────────────────────────────────────────── */
+.gallery-page-hero {
+  position: relative;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #2d6245 60%, var(--accent-dark) 100%);
+}
+
+.gallery-page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/images/masai-mara-480.webp") center / cover no-repeat;
+  opacity: 0.25;
+  filter: saturate(1.2);
+}
+
+.gallery-hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.gallery-hero-inner h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  color: #fff;
+  margin: 0 0 0.5rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,.5);
+}
+
+.gallery-hero-inner p {
+  color: rgba(255,255,255,.85);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.gallery-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+  border-radius: 50px;
+  padding: 0.35rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Filters ────────────────────────────────────────────────── */
+.gallery-filters-bar {
+  position: sticky;
+  top: var(--navbar-height);
+  z-index: 40;
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+
+.gallery-filters-bar::-webkit-scrollbar { display: none; }
+
+.gallery-filter-btn {
+  flex-shrink: 0;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text-dark);
+  border-radius: 50px;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+.gallery-filter-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: rgba(33,72,58,.07);
+}
+
+.gallery-filter-btn.active {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 14px rgba(33,72,58,.3);
+}
+
+.gallery-count-badge {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ── Masonry Grid ────────────────────────────────────────────── */
+.gallery-masonry {
+  column-count: 4;
+  column-gap: 1rem;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1100px) {
+  .gallery-masonry { column-count: 3; }
+}
+@media (max-width: 700px) {
+  .gallery-masonry { column-count: 2; column-gap: 0.6rem; padding: 0.75rem; }
+}
+@media (max-width: 420px) {
+  .gallery-masonry { column-count: 1; }
+}
+
+/* ── Gallery Card ─────────────────────────────────────────────── */
+.gallery-card {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  background: var(--bg-soft);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.28s cubic-bezier(.34,1.56,.64,1), box-shadow 0.28s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px) scale(1.012);
+  box-shadow: var(--shadow-md);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.72) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+}
+
+.gallery-card:hover .gallery-card-overlay {
+  opacity: 1;
+}
+
+.gallery-card-caption {
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+
+.gallery-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255,255,255,.75);
+  font-size: 0.75rem;
+}
+
+.gallery-card-meta svg {
+  font-size: 0.7rem;
+}
+
+.gallery-card-category {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: rgba(0,0,0,.45);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 50px;
+  padding: 0.2rem 0.6rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.gallery-card-zoom {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.gallery-card:hover .gallery-card-zoom {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ── "View Experience" promo card ─────────────────────────────── */
+.gallery-promo-card {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--primary-color), #2d6245, var(--accent-dark));
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.28s cubic-bezier(.34,1.56,.64,1), box-shadow 0.28s ease;
+  box-shadow: var(--shadow-sm);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.gallery-promo-card:hover {
+  transform: translateY(-4px) scale(1.012);
+  box-shadow: var(--shadow-md);
+}
+
+.gallery-promo-icon {
+  font-size: 2.5rem;
+}
+
+.gallery-promo-label {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.gallery-promo-sub {
+  color: rgba(255,255,255,.7);
+  font-size: 0.8rem;
+}
+
+/* ── Empty state ──────────────────────────────────────────────── */
+.gallery-empty {
+  text-align: center;
+  padding: 5rem 1.5rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* ── Load more ────────────────────────────────────────────────── */
+.gallery-load-more-wrap {
+  text-align: center;
+  padding: 1rem 1.5rem 3rem;
+}
+
+.gallery-load-more-btn {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  border-radius: 50px;
+  padding: 0.7rem 2.2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.22s ease;
+}
+
+.gallery-load-more-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(33,72,58,.28);
+}
+
+/* ================================================================
+   LIGHTBOX
+================================================================ */
+.gallery-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lb-fade-in 0.2s ease;
+}
+
+@keyframes lb-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.gallery-lightbox-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+.gallery-lightbox-img-wrap {
+  position: relative;
+  max-width: min(90vw, 900px);
+  max-height: 80vh;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0,0,0,.7);
+  animation: lb-slide-up 0.25s cubic-bezier(.34,1.56,.64,1);
+}
+
+@keyframes lb-slide-up {
+  from { transform: scale(.93) translateY(20px); opacity: 0; }
+  to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.gallery-lightbox-img {
+  display: block;
+  max-width: min(90vw, 900px);
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+.gallery-lightbox-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.75), transparent);
+  color: #fff;
+  padding: 1.5rem 1rem 1rem;
+  text-align: center;
+}
+
+.gallery-lightbox-caption strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.gallery-lightbox-caption span {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,.7);
+}
+
+/* Lightbox navigation buttons */
+.lb-nav-btn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255,255,255,.25);
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.03em;
+  font-family: var(--font-body);
+}
+
+.lb-nav-btn:hover {
+  background: rgba(255,255,255,.22);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.lb-nav-btn:active {
+  transform: translateY(-50%) scale(0.97);
+}
+
+.lb-prev { left: 1rem; }
+.lb-next { right: 1rem; }
+
+.lb-close-btn {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255,255,255,.25);
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background 0.2s;
+  font-family: var(--font-body);
+}
+
+.lb-close-btn:hover {
+  background: rgba(255,255,255,.22);
+}
+
+.lb-counter {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,.6);
+  font-size: 0.8rem;
+  z-index: 10001;
+}
+
+/* dark mode overrides */
+[data-theme="dark"] .gallery-page {
+  background: var(--bg-dark, #0e1a14);
+}
+
+[data-theme="dark"] .gallery-filters-bar {
+  background: var(--bg-dark, #111c16);
+  border-color: rgba(255,255,255,.08);
+}
+
+[data-theme="dark"] .gallery-filter-btn {
+  border-color: rgba(255,255,255,.14);
+  color: rgba(255,255,255,.85);
+}
+
+[data-theme="dark"] .gallery-filter-btn:hover {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+}
+
+/* ── Mobile tweaks ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .lb-nav-btn { padding: 0.55rem 1rem; font-size: 0.82rem; }
+  .lb-prev { left: 0.4rem; }
+  .lb-next { right: 0.4rem; }
+  .gallery-lightbox-inner { padding: 3.5rem 0.25rem; }
+  .gallery-lightbox-img { max-height: 72vh; }
+}
