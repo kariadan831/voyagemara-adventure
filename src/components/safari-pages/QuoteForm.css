@@ -1,0 +1,189 @@
+.vm-quote-form-section {
+  margin: 48px 0 32px;
+}
+
+.vm-quote-form-card {
+  background: #ffffff;
+  border: 1px solid #e5e0d2;
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .vm-quote-form-card {
+  background: #11231a;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.vm-quote-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.vm-quote-title {
+  font-family: var(--font-heading, Fraunces, Georgia, serif);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #0c3b2a;
+  margin: 0 0 10px 0;
+}
+
+[data-theme="dark"] .vm-quote-title {
+  color: #edd8a6;
+}
+
+.vm-quote-sub {
+  font-size: 0.98rem;
+  color: #5a6b62;
+  max-width: 60ch;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+[data-theme="dark"] .vm-quote-sub {
+  color: #9ca3af;
+}
+
+.vm-form-error {
+  grid-column: 1 / -1;
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.vm-quote-grid-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.vm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vm-field label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #0c3b2a;
+}
+
+[data-theme="dark"] .vm-field label {
+  color: #edd8a6;
+}
+
+.vm-field-full {
+  grid-column: 1 / -1;
+}
+
+.vm-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #cfc8b6;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #1f2937;
+  background: #ffffff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+[data-theme="dark"] .vm-input {
+  background: #091711;
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #f3f4f6;
+}
+
+.vm-input:focus {
+  outline: none;
+  border-color: #d9a441;
+  box-shadow: 0 0 0 3px rgba(217, 164, 65, 0.2);
+}
+
+.vm-select {
+  cursor: pointer;
+}
+
+.vm-textarea {
+  resize: vertical;
+  min-height: 85px;
+}
+
+.vm-btn-submit-quote {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #d9a441;
+  color: #0c3b2a;
+  border: none;
+  border-radius: 30px;
+  padding: 16px 28px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(217, 164, 65, 0.35);
+  transition: transform 0.15s, background 0.15s;
+  margin-top: 8px;
+}
+
+.vm-btn-submit-quote:hover {
+  background: #edd8a6;
+  transform: translateY(-2px);
+}
+
+.vm-quote-success {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.vm-success-icon {
+  font-size: 3rem;
+  color: #10b981;
+  margin-bottom: 12px;
+}
+
+.vm-quote-success h3 {
+  font-family: var(--font-heading, Fraunces, Georgia, serif);
+  font-size: 1.6rem;
+  color: #0c3b2a;
+  margin-bottom: 8px;
+}
+
+[data-theme="dark"] .vm-quote-success h3 {
+  color: #edd8a6;
+}
+
+.vm-quote-success p {
+  color: #5a6b62;
+  font-size: 0.95rem;
+  max-width: 50ch;
+  margin: 0 auto 20px;
+}
+
+.vm-btn-whatsapp-direct {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25d366;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .vm-quote-grid-form {
+    grid-template-columns: 1fr;
+  }
+  .vm-quote-form-card {
+    padding: 24px 16px;
+  }
+}

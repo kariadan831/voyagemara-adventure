@@ -11,6 +11,8 @@ const SafariDetail = lazy(preloadSafariDetail);
 const Booking = lazy(preloadBooking);
 import MaasaiMaraSubPage from "./pages/MaasaiMaraSubPage";
 import { MAASAI_MARA_PAGES } from "./data/maasaiMaraPagesData";
+import KenyaSafarisSubPage from "./pages/KenyaSafarisSubPage";
+import { KENYA_SAFARIS_PAGES } from "./data/kenyaSafarisPagesData";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -58,9 +60,16 @@ export default function App() {
   const isBookingPage = pathname === "/booking";
 
   const pathParts = pathname.split("/").filter(Boolean);
-  const isSubPage = pathParts[0] === "safaris" && pathParts[1] === "maasai-mara" && pathParts.length > 2;
-  const subPageKey = isSubPage ? pathParts[2] : null;
-  const subPageData = subPageKey ? MAASAI_MARA_PAGES[subPageKey] : null;
+  const isMaraSubPage = pathParts[0] === "safaris" && pathParts[1] === "maasai-mara" && pathParts.length > 2;
+  const maraSubPageKey = isMaraSubPage ? pathParts[2] : null;
+  const maraSubPageData = maraSubPageKey ? MAASAI_MARA_PAGES[maraSubPageKey] : null;
+
+  const isKenyaSafarisSubPage = pathParts[0] === "kenya-safaris" && pathParts.length > 1;
+  const kenyaSubPageKey = isKenyaSafarisSubPage ? pathParts[1] : null;
+  const kenyaSubPageData = kenyaSubPageKey ? KENYA_SAFARIS_PAGES[kenyaSubPageKey] : null;
+
+  const subPageData = maraSubPageData || kenyaSubPageData;
+  const isSubPage = Boolean(subPageData);
 
   const requestedTourSlug = !isSubPage && pathname.startsWith("/safaris/")
     ? pathParts[1]
@@ -253,6 +262,12 @@ export default function App() {
           <Route
             path="/safaris/maasai-mara/:subpage"
             element={<MaasaiMaraSubPage onOpenBooking={handleOpenBooking} />}
+          />
+
+          {/* ================= KENYA SAFARIS DEDICATED SUB-PAGES ================= */}
+          <Route
+            path="/kenya-safaris/:subpage"
+            element={<KenyaSafarisSubPage onOpenBooking={handleOpenBooking} />}
           />
 
           <Route

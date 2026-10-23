@@ -1,0 +1,92 @@
+.vm-cta-band {
+  background: linear-gradient(135deg, #0c3b2a 0%, #16533c 100%);
+  color: #ffffff;
+  padding: 56px 20px;
+  text-align: center;
+  margin-top: 48px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.vm-cta-band-in {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.vm-cta-band-title {
+  font-family: var(--font-heading, Fraunces, Georgia, serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: #ffffff;
+  margin: 0 0 12px 0;
+}
+
+.vm-cta-band-sub {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 60ch;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+}
+
+.vm-cta-band-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.vm-btn-band-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.vm-btn-band-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+  color: #ffffff;
+}
+
+.vm-btn-band-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #d9a441;
+  color: #0c3b2a;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(217, 164, 65, 0.35);
+  transition: transform 0.15s, background 0.15s;
+}
+
+.vm-btn-band-call:hover {
+  background: #edd8a6;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .vm-cta-band {
+    padding: 40px 16px;
+  }
+  .vm-cta-band-actions {
+    flex-direction: column;
+  }
+  .vm-btn-band-whatsapp,
+  .vm-btn-band-call {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+}

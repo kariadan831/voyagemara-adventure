@@ -20,6 +20,9 @@ import {
   FaCamera,
 } from "react-icons/fa";
 import { MAASAI_MARA_PAGES } from "../data/maasaiMaraPagesData";
+import PageTrustStrip from "../components/safari-pages/PageTrustStrip";
+import ReviewsGrid from "../components/safari-pages/ReviewsGrid";
+import CtaBand from "../components/safari-pages/CtaBand";
 import "./MaasaiMaraSubPage.css";
 import "./SafariDetail.css";
 
@@ -87,6 +90,30 @@ export default function MaasaiMaraSubPage({ pageKey: propKey, onOpenBooking }) {
 
   const canonical = `https://voyagemara-adventure.vercel.app${page.route}`;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://voyagemara-adventure.vercel.app/" },
+      { "@type": "ListItem", position: 2, name: "Kenya", item: "https://voyagemara-adventure.vercel.app/#destinations" },
+      { "@type": "ListItem", position: 3, name: "Maasai Mara", item: "https://voyagemara-adventure.vercel.app/safaris/maasai-mara" },
+      { "@type": "ListItem", position: 4, name: page.breadcrumbName, item: canonical },
+    ],
+  };
+
+  const tripSchema = page.slug === "3-day-big-five-safari" ? {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    name: page.title,
+    description: page.seo.description,
+    touristType: ["Wildlife", "Safari", "Photography"],
+    provider: {
+      "@type": "TravelAgency",
+      name: "VoyageMara Safaris",
+      url: "https://voyagemara-adventure.vercel.app",
+    },
+  } : null;
+
   return (
     <div className="safari-detail-page ta-styled-page mm-sub-page">
       {/* ── SEO METADATA ── */}
@@ -105,6 +132,8 @@ export default function MaasaiMaraSubPage({ pageKey: propKey, onOpenBooking }) {
         <meta name="twitter:title" content={page.seo.title} />
         <meta name="twitter:description" content={page.seo.description} />
         <meta name="twitter:image" content={page.seo.ogImage} />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        {tripSchema && <script type="application/ld+json">{JSON.stringify(tripSchema)}</script>}
       </Helmet>
 
       {/* ── BREADCRUMBS & TOP UTILITY BAR (Requirement 2) ── */}
@@ -126,6 +155,9 @@ export default function MaasaiMaraSubPage({ pageKey: propKey, onOpenBooking }) {
           </div>
         </div>
       </div>
+
+      {/* ── TRUST STRIP ── */}
+      <PageTrustStrip />
 
       <div className="safari-detail-container">
         {/* ── SUB-PAGE QUICK NAV TABS ── */}
@@ -671,7 +703,16 @@ export default function MaasaiMaraSubPage({ pageKey: propKey, onOpenBooking }) {
             </div>
           </aside>
         </div>
+
+        {/* ── REVIEWS SECTION ── */}
+        <ReviewsGrid title="What Travelers Say About Our Maasai Mara Safaris" />
       </div>
+
+      {/* ── FINAL CALL-TO-ACTION BAND ── */}
+      <CtaBand
+        title="Plan Your Maasai Mara Safari With Duncan"
+        subtitle="100% Native Maasai guided. Direct Land Cruiser bookings with zero middleman commissions."
+      />
     </div>
   );
 }

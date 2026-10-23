@@ -1,0 +1,520 @@
+/* ================================================================
+   KenyaSafarisSubPage.css — Dedicated Sub-Pages Styling
+   SaaS-quality layout, responsive tables, cards, and dark mode
+   ================================================================ */
+
+.vm-kenya-subpage-root {
+  background-color: #f7f6f2;
+  color: #2c2c2c;
+  font-family: var(--font-body, "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  min-height: 100vh;
+}
+
+[data-theme="dark"] .vm-kenya-subpage-root {
+  background-color: #0c1813;
+  color: #e5ece8;
+}
+
+.vm-subpage-main-wrap {
+  padding: 32px 0 60px;
+}
+
+.vm-subpage-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.vm-content-section {
+  margin: 36px 0;
+}
+
+.vm-section-title {
+  font-family: var(--font-heading, Fraunces, Georgia, serif);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #0c3b2a;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+}
+
+[data-theme="dark"] .vm-section-title {
+  color: #edd8a6;
+}
+
+.vm-section-lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #4b5563;
+  max-width: 75ch;
+  margin: 0 0 24px 0;
+}
+
+[data-theme="dark"] .vm-section-lead {
+  color: #9ca3af;
+}
+
+/* ── Steps Grid ───────────────────────────────────────────── */
+.vm-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin: 24px 0;
+}
+
+.vm-step-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  border-top: 4px solid #d9a441;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .vm-step-card {
+  background: #11231a;
+  border-color: #d9a441;
+}
+
+.vm-step-badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8a5a00;
+  background: #fdf1d4;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+[data-theme="dark"] .vm-step-badge {
+  background: rgba(217, 164, 65, 0.2);
+  color: #edd8a6;
+}
+
+.vm-step-card h4 {
+  font-size: 1.12rem;
+  color: #0c3b2a;
+  margin: 0 0 8px 0;
+}
+
+[data-theme="dark"] .vm-step-card h4 {
+  color: #edd8a6;
+}
+
+.vm-step-card p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0;
+}
+
+[data-theme="dark"] .vm-step-card p {
+  color: #9ca3af;
+}
+
+/* ── Info Cards Grid ──────────────────────────────────────── */
+.vm-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin: 20px 0;
+}
+
+.vm-info-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 22px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .vm-info-card {
+  background: #11231a;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.vm-info-card h4 {
+  font-size: 1.05rem;
+  color: #0c3b2a;
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+[data-theme="dark"] .vm-info-card h4 {
+  color: #edd8a6;
+}
+
+.vm-info-card p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #4b5563;
+  margin: 0;
+}
+
+[data-theme="dark"] .vm-info-card p {
+  color: #9ca3af;
+}
+
+.vm-ico-green { color: #10b981; }
+.vm-ico-gold { color: #d9a441; }
+.vm-ico-red { color: #ef4444; }
+
+/* ── Tables ───────────────────────────────────────────────── */
+.vm-table-responsive {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  margin: 20px 0;
+}
+
+[data-theme="dark"] .vm-table-responsive {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.vm-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  font-size: 0.92rem;
+  text-align: left;
+}
+
+[data-theme="dark"] .vm-data-table {
+  background: #11231a;
+}
+
+.vm-data-table th {
+  background: #0c3b2a;
+  color: #ffffff;
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+[data-theme="dark"] .vm-data-table th {
+  background: #081d14;
+}
+
+.vm-data-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  vertical-align: top;
+  line-height: 1.55;
+  color: #374151;
+}
+
+[data-theme="dark"] .vm-data-table td {
+  border-color: rgba(255, 255, 255, 0.06);
+  color: #d1d5db;
+}
+
+.vm-cell-tag {
+  white-space: nowrap;
+  font-weight: 700;
+  color: #d9a441;
+}
+
+.vm-btn-table-action {
+  display: inline-block;
+  white-space: nowrap;
+  background: #d9a441;
+  color: #0c3b2a;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.vm-btn-table-action:hover {
+  background: #edd8a6;
+}
+
+/* ── Facts Grid 4-column ──────────────────────────────────── */
+.vm-facts-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.vm-fact-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  border-left: 5px solid #d9a441;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .vm-fact-card {
+  background: #11231a;
+}
+
+.vm-fact-lbl {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #0c3b2a;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+[data-theme="dark"] .vm-fact-lbl {
+  color: #edd8a6;
+}
+
+.vm-fact-val {
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: #374151;
+  margin: 0;
+}
+
+[data-theme="dark"] .vm-fact-val {
+  color: #d1d5db;
+}
+
+/* ── Notice Callout ───────────────────────────────────────── */
+.vm-notice-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #fdf1d4;
+  border: 1px solid rgba(217, 164, 65, 0.5);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 24px 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #7a6a40;
+}
+
+[data-theme="dark"] .vm-notice-callout {
+  background: rgba(217, 164, 65, 0.15);
+  color: #edd8a6;
+  border-color: rgba(217, 164, 65, 0.3);
+}
+
+.vm-notice-ico {
+  font-size: 1.4rem;
+  color: #d9a441;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.vm-notice-callout p {
+  margin: 4px 0 0 0;
+}
+
+/* ── Inclusions Grid ──────────────────────────────────────── */
+.vm-inclusions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.vm-inc-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  border-top: 4px solid #10b981;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.vm-inc-box.not-inc {
+  border-top-color: #ef4444;
+}
+
+[data-theme="dark"] .vm-inc-box {
+  background: #11231a;
+}
+
+.vm-inc-box h4 {
+  font-size: 1.05rem;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vm-inc-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vm-inc-box li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 10px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #4b5563;
+}
+
+[data-theme="dark"] .vm-inc-box li {
+  color: #9ca3af;
+}
+
+.vm-inc-box li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: 800;
+}
+
+.vm-inc-box.not-inc li::before {
+  content: "✕";
+  color: #ef4444;
+}
+
+/* ── 3-Photo Gallery Grid ─────────────────────────────────── */
+.vm-photo-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.vm-photo-card {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #16533c;
+}
+
+.vm-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.vm-photo-card:hover img {
+  transform: scale(1.04);
+}
+
+.vm-photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 14px;
+  background: linear-gradient(transparent, rgba(12, 59, 42, 0.9));
+  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.vm-placeholder-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(12, 59, 42, 0.85);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-family: monospace;
+  padding: 3px 8px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+/* ── Destination Cards & Bullet List ──────────────────────── */
+.vm-dest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.vm-dest-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .vm-dest-card {
+  background: #11231a;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.vm-dest-card h4 {
+  font-size: 1.05rem;
+  color: #0c3b2a;
+  margin: 0 0 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+[data-theme="dark"] .vm-dest-card h4 {
+  color: #edd8a6;
+}
+
+.vm-dest-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #4b5563;
+  margin: 0;
+}
+
+[data-theme="dark"] .vm-dest-card p {
+  color: #9ca3af;
+}
+
+.vm-bullet-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.vm-bullet-card-list li {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 0.92rem;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .vm-bullet-card-list li {
+  background: #11231a;
+  color: #d1d5db;
+}
+
+.vm-inline-code {
+  font-family: monospace;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+[data-theme="dark"] .vm-inline-code {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 640px) {
+  .vm-subpage-main-wrap {
+    padding: 20px 0 40px;
+  }
+}

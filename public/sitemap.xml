@@ -135,9 +135,85 @@
   <!-- Direct Booking Page -->
   <url>
     <loc>https://voyagemara-adventure.vercel.app/booking</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- ================= MAASAI MARA DEDICATED SUBPAGES ================= -->
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/maasai-mara/overview</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/maasai-mara/3-day-big-five-safari</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/maasai-mara/great-wildebeest-migration</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/maasai-mara/luxury-mara-camps</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/safaris/maasai-mara/maasai-culture-experience</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ================= KENYA SAFARIS DEDICATED SUBPAGES ================= -->
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/kenya-safaris/book-a-safari</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/kenya-safaris/all-safari-packages</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/kenya-safaris/pricing</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/kenya-safaris/park-fees-explained</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/kenya-safaris/family-safaris</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/kenya-safaris/honeymoon-safaris</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://voyagemara-adventure.vercel.app/kenya-safaris/group-corporate-safaris</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
 
 </urlset>
