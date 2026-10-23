@@ -34,7 +34,9 @@ export default function MaasaiMaraCampsDirectory({ onOpenBooking }) {
       if (
         searchQuery &&
         !camp.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-        !camp.location.toLowerCase().includes(searchQuery.toLowerCase())
+        !camp.location.toLowerCase().includes(searchQuery.toLowerCase()) &&
+        !(camp.conservancy && camp.conservancy.toLowerCase().includes(searchQuery.toLowerCase())) &&
+        !(camp.description && camp.description.toLowerCase().includes(searchQuery.toLowerCase()))
       ) {
         return false;
       }
