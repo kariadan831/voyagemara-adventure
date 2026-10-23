@@ -279,8 +279,8 @@ export default function Navbar({ onOpenBooking }) {
           </Link>
 
           <Link
-            to="/gallery"
-            className={`nav-link${pathname === "/gallery" ? " active" : ""}`}
+            to="/#gallery"
+            className={`nav-link${isActive("gallery") ? " active" : ""}`}
           >
             Gallery
           </Link>
@@ -366,7 +366,7 @@ export default function Navbar({ onOpenBooking }) {
           <Link to="/booking" className="nav-drawer-link nav-drawer-booking-highlight" onClick={closeMobile}>
             ðŸ¦ Book a Safari (Instant Quote)
           </Link>
-          <Link to="/gallery" className="nav-drawer-link" onClick={closeMobile}>Gallery</Link>
+          <Link to="/#gallery" className="nav-drawer-link" onClick={closeMobile}>Gallery</Link>
           <Link to="/#faq" className="nav-drawer-link" onClick={closeMobile}>FAQ</Link>
           <Link to="/#contact" className="nav-drawer-link" onClick={closeMobile}>Contact</Link>
 

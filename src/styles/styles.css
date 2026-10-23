@@ -1,7 +1,7 @@
- /* =========================================================
+﻿ /* =========================================================
    VOYAGEMARA ADVENTURE
    PREMIUM SAFARI DESIGN SYSTEM
-   Responsive • Light/Dark • Mobile • Tablet • Desktop
+   Responsive â€¢ Light/Dark â€¢ Mobile â€¢ Tablet â€¢ Desktop
 ========================================================= */
 
 
@@ -2359,62 +2359,227 @@ body.is-about-carousel-visible .floating-map-btn.safari-map-button {
    7. GALLERY
 ========================================================= */
 
+/* ─── Safari Gallery Section ──────────────────────────────── */
 .gallery-section {
-  padding: 90px 20px;
-
+  padding: 90px 20px 100px;
   background: #07110d;
-
   color: white;
-
   text-align: center;
+}
+
+.gallery-header {
+  margin-bottom: 44px;
 }
 
 .gallery-header h2 {
   margin-bottom: 10px;
-
   color: #fff;
-
   font-size: clamp(2rem, 4vw, 2.8rem);
 }
 
 .gallery-header p {
-  margin-bottom: 40px;
-
   color: rgba(255, 255, 255, 0.7);
+  font-size: 1.05rem;
 }
 
+/* 5-col desktop grid */
 .gallery-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(220px, 1fr));
-
-  gap: 15px;
-
-  max-width: 1200px;
-
-  margin: auto;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .gallery-item {
   overflow: hidden;
-
   border-radius: 14px;
-
   cursor: pointer;
+  position: relative;
+  background: #111;
 }
 
 .gallery-item img {
   width: 100%;
-  height: 240px;
-
+  height: 200px;
   object-fit: cover;
-
+  display: block;
   transition: transform 0.5s ease;
 }
 
 .gallery-item:hover img {
-  transform: scale(1.1);
+  transform: scale(1.08);
+}
+
+.gallery-item-zoom {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.35);
+  color: #fff;
+  font-size: 1.4rem;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: 14px;
+}
+
+.gallery-item:hover .gallery-item-zoom,
+.gallery-item:focus .gallery-item-zoom {
+  opacity: 1;
+}
+
+.gallery-item:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* ─── Homepage Gallery Lightbox ────────────────────────────── */
+.gallery-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lb-fade-in 0.2s ease;
+}
+
+@keyframes lb-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.gallery-lightbox-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+.gallery-lightbox-img-wrap {
+  position: relative;
+  max-width: min(90vw, 900px);
+  max-height: 80vh;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0,0,0,.7);
+  animation: lb-slide-up 0.25s cubic-bezier(.34,1.56,.64,1);
+}
+
+@keyframes lb-slide-up {
+  from { transform: scale(.93) translateY(20px); opacity: 0; }
+  to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.gallery-lightbox-img {
+  display: block;
+  max-width: min(90vw, 900px);
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 18px;
+}
+
+.gallery-lightbox-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.75), transparent);
+  color: #fff;
+  padding: 1.5rem 1rem 1rem;
+  text-align: center;
+}
+
+.gallery-lightbox-caption strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.gallery-lightbox-caption span {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,.7);
+}
+
+.lb-nav-btn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255,255,255,.25);
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.03em;
+  font-family: var(--font-body);
+}
+
+.lb-nav-btn:hover {
+  background: rgba(255,255,255,.22);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.lb-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.lb-prev { left: 1rem; }
+.lb-next { right: 1rem; }
+
+.lb-close-btn {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255,255,255,.25);
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background 0.2s;
+  font-family: var(--font-body);
+}
+
+.lb-close-btn:hover { background: rgba(255,255,255,.22); }
+
+.lb-counter {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,.6);
+  font-size: 0.8rem;
+  z-index: 10001;
+  pointer-events: none;
 }
 
 
@@ -2964,7 +3129,7 @@ a.info-item:hover {
   box-shadow: 0 6px 16px rgba(184, 154, 99, 0.35);
 }
 
-/* ── TripAdvisor Verified Footer Showcase (Matching Screenshot) ── */
+/* â”€â”€ TripAdvisor Verified Footer Showcase (Matching Screenshot) â”€â”€ */
 .footer-ta-showcase {
   margin-top: 22px;
   display: flex;
