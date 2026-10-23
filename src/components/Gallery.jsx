@@ -1,12 +1,12 @@
 ﻿import { useState, useEffect, useCallback } from "react";
-import { FaCalendarAlt, FaTimes, FaChevronLeft, FaChevronRight, FaSearchPlus } from "react-icons/fa";
+import { FaTimes, FaChevronLeft, FaChevronRight, FaSearchPlus } from "react-icons/fa";
 import { galleryImages } from "../data/galleryData";
 import "../styles/styles.css";
 
 export default function Gallery() {
   const [lightboxIdx, setLightboxIdx] = useState(null);
 
-  // ── Keyboard navigation ───────────────────────────────────
+  // Keyboard navigation
   const handleKey = useCallback(
     (e) => {
       if (lightboxIdx === null) return;
@@ -22,7 +22,7 @@ export default function Gallery() {
     return () => window.removeEventListener("keydown", handleKey);
   }, [handleKey]);
 
-  // ── Lock scroll when lightbox open ───────────────────────
+  // Lock scroll when lightbox open
   useEffect(() => {
     document.body.style.overflow = lightboxIdx !== null ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -32,11 +32,11 @@ export default function Gallery() {
 
   return (
     <>
-      {/* ── Gallery section ─────────────────────────────────── */}
+      {/* Gallery section */}
       <section className="gallery-section" id="gallery">
         <div className="gallery-header">
           <h2>Safari Gallery</h2>
-          <p>Moments from the wild — captured by our guides &amp; guests</p>
+          <p>Moments from the wild &mdash; captured by our guides &amp; guests</p>
         </div>
 
         <div className="gallery-grid">
@@ -47,26 +47,28 @@ export default function Gallery() {
               onClick={() => setLightboxIdx(idx)}
               tabIndex={0}
               role="button"
-              aria-label={`Open photo: ${image.caption}`}
+              aria-label={`View photo: ${image.caption}`}
               onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setLightboxIdx(idx)}
             >
               <img
                 src={image.thumb || image.src}
                 alt={image.alt}
-                loading="lazy"
+                loading={idx < 8 ? "eager" : "lazy"}
+                fetchpriority={idx < 4 ? "high" : "auto"}
                 decoding="async"
                 width="480"
-                height="240"
+                height="320"
               />
-              <div className="gallery-item-zoom" aria-hidden="true">
-                <FaSearchPlus />
+              <div className="gallery-item-overlay" aria-hidden="true">
+                <span className="gallery-item-caption">{image.caption}</span>
+                <FaSearchPlus className="gallery-item-zoom-icon" />
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── Lightbox ─────────────────────────────────────────── */}
+      {/* Lightbox */}
       {currentImg && (
         <div
           className="gallery-lightbox-backdrop"
@@ -75,17 +77,7 @@ export default function Gallery() {
           aria-label={`Photo lightbox: ${currentImg.caption}`}
           onClick={(e) => e.target === e.currentTarget && setLightboxIdx(null)}
         >
-          {/* Close */}
-          <button
-            type="button"
-            className="lb-close-btn"
-            onClick={() => setLightboxIdx(null)}
-            aria-label="Close lightbox"
-          >
-            <FaTimes /> Close
-          </button>
-
-          {/* Prev */}
+          {/* Previous */}
           <button
             type="button"
             className="lb-nav-btn lb-prev"
@@ -96,6 +88,28 @@ export default function Gallery() {
             <FaChevronLeft /> Previous
           </button>
 
+          {/* Close */}
+          <button
+            type="button"
+            className="lb-close-btn"
+            onClick={() => setLightboxIdx(null)}
+            aria-label="Close lightbox"
+          >
+            <FaTimes /> Close
+          </button>
+
+          {/* Next */}
+          <button
+            type="button"
+            className="lb-nav-btn lb-next"
+            onClick={() => setLightboxIdx((i) => Math.min(i + 1, galleryImages.length - 1))}
+            disabled={lightboxIdx === galleryImages.length - 1}
+            aria-label="Next photo"
+          >
+            Next <FaChevronRight />
+          </button>
+
+          {/* Image */}
           <div
             className="gallery-lightbox-inner"
             onClick={(e) => e.stopPropagation()}
@@ -110,24 +124,10 @@ export default function Gallery() {
               />
               <div className="gallery-lightbox-caption">
                 <strong>{currentImg.caption}</strong>
-                <span>
-                  <FaCalendarAlt style={{ marginRight: "0.3rem", verticalAlign: "middle" }} />
-                  {currentImg.date} · {currentImg.category}
-                </span>
+                <span>{currentImg.category} &middot; {currentImg.date}</span>
               </div>
             </div>
           </div>
-
-          {/* Next */}
-          <button
-            type="button"
-            className="lb-nav-btn lb-next"
-            onClick={() => setLightboxIdx((i) => Math.min(i + 1, galleryImages.length - 1))}
-            disabled={lightboxIdx === galleryImages.length - 1}
-            aria-label="Next photo"
-          >
-            Next <FaChevronRight />
-          </button>
 
           {/* Counter */}
           <div className="lb-counter" aria-live="polite">
