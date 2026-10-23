@@ -2477,7 +2477,7 @@ body.is-about-carousel-visible .floating-map-btn.safari-map-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 1rem;
+  padding: 5.5rem 1rem 2.5rem;
 }
 
 .gallery-lightbox-img-wrap {
@@ -2528,86 +2528,129 @@ body.is-about-carousel-visible .floating-map-btn.safari-map-button {
   color: rgba(255,255,255,.7);
 }
 
-/* Lightbox top button bar - Previous | x Close | Next */
-.lb-nav-btn {
+/* Lightbox top button bar - Previous | Close | Next (Exact scopesafaris style) */
+.gallery-lightbox-topbar {
   position: fixed;
   top: 1.5rem;
-  background: rgba(40,40,40,.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,.18);
-  color: #fff;
-  border-radius: 50px;
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
-  z-index: 200001;
-  display: flex;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 0.5rem;
-  letter-spacing: 0.02em;
-  font-family: var(--font-body);
-  transform: none;
-}
-
-.lb-nav-btn:hover {
-  background: rgba(60,60,60,.95);
-  transform: scale(1.04);
-}
-
-.lb-nav-btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-.lb-prev { left: 1.5rem; }
-.lb-next { right: 1.5rem; }
-
-.lb-close-btn {
-  position: fixed;
-  top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(40,40,40,.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,.18);
-  color: #fff;
-  border-radius: 50px;
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
+  padding: 0 clamp(1rem, 4vw, 3.5rem);
   z-index: 200001;
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  transition: background 0.2s;
-  font-family: var(--font-body);
+  pointer-events: none;
 }
 
-.lb-close-btn:hover { background: rgba(60,60,60,.95); }
+.lb-action-btn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(20, 20, 20, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  padding: 16px 36px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.lb-action-btn:hover {
+  border-color: rgba(255, 255, 255, 1);
+  background: rgba(40, 40, 40, 0.95);
+  transform: translateY(-1px);
+}
+
+.lb-action-btn:active {
+  transform: translateY(1px);
+}
+
+.lb-action-btn svg {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  stroke: currentColor;
+  stroke-width: 2;
+  display: block;
+}
+
+.lb-action-btn.lb-prev {
+  justify-self: start;
+}
+
+.lb-action-btn.lb-close {
+  justify-self: center;
+}
+
+.lb-action-btn.lb-next {
+  justify-self: end;
+}
 
 .lb-counter {
   position: fixed;
   bottom: 1.2rem;
   left: 50%;
   transform: translateX(-50%);
-  color: rgba(255,255,255,.55);
-  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   z-index: 200001;
   pointer-events: none;
-  letter-spacing: 0.04em;
 }
 
-@media (max-width: 480px) {
-  .lb-prev { left: 0.5rem; }
-  .lb-next { right: 0.5rem; }
-  .lb-nav-btn, .lb-close-btn {
-    padding: 0.5rem 0.9rem;
-    font-size: 0.8rem;
+@media (max-width: 768px) {
+  .gallery-lightbox-topbar {
+    top: 1rem;
+    padding: 0 1rem;
+  }
+  .lb-action-btn {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .gallery-lightbox-topbar {
+    top: 0.75rem;
+    padding: 0 0.5rem;
+  }
+  .lb-action-btn {
+    padding: 10px 18px;
+    font-size: 1rem;
+    gap: 6px;
+    border-radius: 10px;
+    border-width: 1.5px;
+  }
+  .lb-action-btn svg {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .gallery-lightbox-topbar {
+    padding: 0 0.25rem;
+  }
+  .lb-action-btn {
+    padding: 8px 12px;
+    font-size: 0.88rem;
+    gap: 4px;
+  }
+  .lb-action-btn svg {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
   }
 }
 

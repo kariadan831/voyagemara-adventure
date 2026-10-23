@@ -1,18 +1,22 @@
 ﻿import { useState, useEffect, useCallback } from "react";
-import { FaTimes, FaChevronLeft, FaChevronRight, FaSearchPlus } from "react-icons/fa";
+import { FaSearchPlus } from "react-icons/fa";
 import { galleryImages } from "../data/galleryData";
 import "../styles/styles.css";
 
 export default function Gallery() {
   const [lightboxIdx, setLightboxIdx] = useState(null);
 
-  // Keyboard navigation
+  // Keyboard navigation with looping
   const handleKey = useCallback(
     (e) => {
       if (lightboxIdx === null) return;
-      if (e.key === "ArrowRight") setLightboxIdx((i) => Math.min(i + 1, galleryImages.length - 1));
-      else if (e.key === "ArrowLeft") setLightboxIdx((i) => Math.max(i - 1, 0));
-      else if (e.key === "Escape") setLightboxIdx(null);
+      if (e.key === "ArrowRight") {
+        setLightboxIdx((i) => (i + 1) % galleryImages.length);
+      } else if (e.key === "ArrowLeft") {
+        setLightboxIdx((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+      } else if (e.key === "Escape") {
+        setLightboxIdx(null);
+      }
     },
     [lightboxIdx]
   );
@@ -25,7 +29,9 @@ export default function Gallery() {
   // Lock scroll when lightbox open
   useEffect(() => {
     document.body.style.overflow = lightboxIdx !== null ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [lightboxIdx]);
 
   const currentImg = lightboxIdx !== null ? galleryImages[lightboxIdx] : null;
@@ -77,37 +83,80 @@ export default function Gallery() {
           aria-label={`Photo lightbox: ${currentImg.caption}`}
           onClick={(e) => e.target === e.currentTarget && setLightboxIdx(null)}
         >
-          {/* Previous */}
-          <button
-            type="button"
-            className="lb-nav-btn lb-prev"
-            onClick={() => setLightboxIdx((i) => Math.max(i - 1, 0))}
-            disabled={lightboxIdx === 0}
-            aria-label="Previous photo"
-          >
-            <FaChevronLeft /> Previous
-          </button>
+          {/* Top Button Bar: Previous | Close | Next in one row */}
+          <div className="gallery-lightbox-topbar">
+            {/* Previous */}
+            <button
+              type="button"
+              className="lb-action-btn lb-prev"
+              onClick={() => setLightboxIdx((i) => (i - 1 + galleryImages.length) % galleryImages.length)}
+              aria-label="Previous photo"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="19" y1="12" x2="5" y2="12" />
+                <polyline points="12 19 5 12 12 5" />
+              </svg>
+              <span>Previous</span>
+            </button>
 
-          {/* Close */}
-          <button
-            type="button"
-            className="lb-close-btn"
-            onClick={() => setLightboxIdx(null)}
-            aria-label="Close lightbox"
-          >
-            <FaTimes /> Close
-          </button>
+            {/* Close */}
+            <button
+              type="button"
+              className="lb-action-btn lb-close"
+              onClick={() => setLightboxIdx(null)}
+              aria-label="Close lightbox"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span>Close</span>
+            </button>
 
-          {/* Next */}
-          <button
-            type="button"
-            className="lb-nav-btn lb-next"
-            onClick={() => setLightboxIdx((i) => Math.min(i + 1, galleryImages.length - 1))}
-            disabled={lightboxIdx === galleryImages.length - 1}
-            aria-label="Next photo"
-          >
-            Next <FaChevronRight />
-          </button>
+            {/* Next */}
+            <button
+              type="button"
+              className="lb-action-btn lb-next"
+              onClick={() => setLightboxIdx((i) => (i + 1) % galleryImages.length)}
+              aria-label="Next photo"
+            >
+              <span>Next</span>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </button>
+          </div>
 
           {/* Image */}
           <div
