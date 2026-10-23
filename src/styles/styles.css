@@ -2455,8 +2455,8 @@ body.is-about-carousel-visible .floating-map-btn.safari-map-button {
 .gallery-lightbox-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 9999;
-  background: rgba(0,0,0,.9);
+  z-index: 200000;
+  background: rgba(0,0,0,.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;
@@ -2482,9 +2482,9 @@ body.is-about-carousel-visible .floating-map-btn.safari-map-button {
 
 .gallery-lightbox-img-wrap {
   position: relative;
-  max-width: min(90vw, 900px);
-  max-height: 80vh;
-  border-radius: 18px;
+  max-width: min(94vw, 1200px);
+  max-height: 88vh;
+  border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 40px 120px rgba(0,0,0,.7);
   animation: lb-slide-up 0.25s cubic-bezier(.34,1.56,.64,1);
@@ -2497,8 +2497,8 @@ body.is-about-carousel-visible .floating-map-btn.safari-map-button {
 
 .gallery-lightbox-img {
   display: block;
-  max-width: min(90vw, 900px);
-  max-height: 80vh;
+  max-width: min(94vw, 1200px);
+  max-height: 88vh;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -2537,13 +2537,13 @@ body.is-about-carousel-visible .floating-map-btn.safari-map-button {
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,.18);
   color: #fff;
-  border-radius: 10px;
-  padding: 0.65rem 1.5rem;
-  font-size: 0.92rem;
-  font-weight: 600;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
-  z-index: 10001;
+  z-index: 200001;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -2575,12 +2575,12 @@ body.is-about-carousel-visible .floating-map-btn.safari-map-button {
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,.18);
   color: #fff;
-  border-radius: 10px;
-  padding: 0.65rem 1.5rem;
-  font-size: 0.92rem;
-  font-weight: 600;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
-  z-index: 10001;
+  z-index: 200001;
   display: flex;
   align-items: center;
   gap: 0.45rem;
@@ -2597,7 +2597,7 @@ body.is-about-carousel-visible .floating-map-btn.safari-map-button {
   transform: translateX(-50%);
   color: rgba(255,255,255,.55);
   font-size: 0.78rem;
-  z-index: 10001;
+  z-index: 200001;
   pointer-events: none;
   letter-spacing: 0.04em;
 }
