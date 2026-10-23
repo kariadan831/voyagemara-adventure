@@ -9,6 +9,8 @@ import { preloadSafariDetail, preloadAboutUs, preloadBooking, initIdlePreload } 
 const AboutUs = lazy(preloadAboutUs);
 const SafariDetail = lazy(preloadSafariDetail);
 const Booking = lazy(preloadBooking);
+import MaasaiMaraSubPage from "./pages/MaasaiMaraSubPage";
+import { MAASAI_MARA_PAGES } from "./data/maasaiMaraPagesData";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -54,15 +56,23 @@ export default function App() {
 
   const isAboutPage = pathname === "/about";
   const isBookingPage = pathname === "/booking";
-  const requestedTourSlug = pathname.startsWith("/safaris/")
-    ? pathname.split("/").filter(Boolean)[1]
+
+  const pathParts = pathname.split("/").filter(Boolean);
+  const isSubPage = pathParts[0] === "safaris" && pathParts[1] === "maasai-mara" && pathParts.length > 2;
+  const subPageKey = isSubPage ? pathParts[2] : null;
+  const subPageData = subPageKey ? MAASAI_MARA_PAGES[subPageKey] : null;
+
+  const requestedTourSlug = !isSubPage && pathname.startsWith("/safaris/")
+    ? pathParts[1]
     : pathname === "/destinations/maasai-mara" || pathname === "/accommodation/maasai-mara"
     ? "maasai-mara"
     : null;
   const activeTour = tours.find((tour) => tour.slug === requestedTourSlug);
   const isSafariPage = Boolean(activeTour);
   const pageUrl = `https://voyagemara-adventure.vercel.app${
-    isAboutPage
+    subPageData
+      ? subPageData.route
+      : isAboutPage
       ? "/about"
       : isBookingPage
       ? "/booking"
@@ -70,27 +80,35 @@ export default function App() {
       ? `/safaris/${activeTour.slug}`
       : "/"
   }`;
-  const pageTitle = isSafariPage
+  const pageTitle = subPageData
+    ? subPageData.seo.title
+    : isSafariPage
     ? activeTour.seoTitle ?? `${activeTour.title} | VoyageMara Safaris`
     : isAboutPage
     ? "About VoyageMara Safaris | Local Kenya Safari Specialists"
     : isBookingPage
     ? "Book Your Kenya Safari | Direct Operator Instant Quote | VoyageMara Safaris"
     : "Best Safari Tour Operator in Maasai Mara & Kenya Safaris | VoyageMara Safaris";
-  const pageDescription = isSafariPage
+  const pageDescription = subPageData
+    ? subPageData.seo.description
+    : isSafariPage
     ? activeTour.seoDescription ?? activeTour.description
     : isAboutPage
     ? "Meet Duncan Ronkorua and the Nairobi-based team planning locally guided, custom 4x4 wildlife safaris across Kenya."
     : isBookingPage
     ? "Book your Kenya safari directly with TripAdvisor listed operator VoyageMara Safaris (#d34744740). Instant quotes, private 4x4 Land Cruisers, transparent pricing."
     : "Ranked among the best safari tour operators in Maasai Mara. Custom private 4x4 Land Cruiser safaris, certified native Maasai guides, Big Five game drives & all-inclusive packages.";
-  const pageKeywords = isSafariPage
+  const pageKeywords = subPageData
+    ? subPageData.seo.keywords
+    : isSafariPage
     ? `book ${activeTour.title.toLowerCase()}, kenya safari packages, ${activeTour.slug.replace(/-/g, " ")}, voyagemara contact, voyagemara safaris`
     : isBookingPage
     ? "book kenya safari, maasai mara booking, nairobi safari quote, tripadvisor kenya safari operator, voyagemara reservations"
     : "best safari tour operator in maasai mara, best tour operator maasai mara, maasai mara tour operators, kenya safari packages, book maasai mara safari, amboseli elephant tour, kenya tour operators, nairobi safari packages 2027, affordable maasai mara safari, voyagemara safaris";
 
-  const pageImage = isSafariPage
+  const pageImage = subPageData
+    ? subPageData.seo.ogImage
+    : isSafariPage
     ? `https://voyagemara-adventure.vercel.app${activeTour.cover}`
     : "https://voyagemara-adventure.vercel.app/og-image.png";
 
@@ -230,6 +248,12 @@ export default function App() {
 
           {/* ================= ABOUT PAGE ================= */}
           <Route path="/about" element={<Suspense fallback={<RouteLoader />}><AboutUs /></Suspense>} />
+
+          {/* ================= MAASAI MARA DEDICATED SUB-PAGES ================= */}
+          <Route
+            path="/safaris/maasai-mara/:subpage"
+            element={<MaasaiMaraSubPage onOpenBooking={handleOpenBooking} />}
+          />
 
           <Route
             path="/safaris/:slug"

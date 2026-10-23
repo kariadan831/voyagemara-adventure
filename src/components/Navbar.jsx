@@ -18,11 +18,11 @@ const TRIPADVISOR_URL =
 /* ─── Menu Data ──────────────────────────────────────────── */
 const MEGA_MENUS = {
   "Maasai Mara": [
-    { label: "Maasai Mara Overview", href: "/safaris/maasai-mara" },
-    { label: "3-Day Big Five Safari", href: "/safaris/maasai-mara#itinerary" },
-    { label: "Great Wildebeest Migration", href: "/#itineraries" },
-    { label: "Luxury Mara Camps", href: "/safaris/maasai-mara#accommodation" },
-    { label: "Maasai Culture Experience", href: "/safaris/maasai-mara#culture" },
+    { label: "Maasai Mara Overview", href: "/safaris/maasai-mara/overview" },
+    { label: "3-Day Big Five Safari", href: "/safaris/maasai-mara/3-day-big-five-safari" },
+    { label: "Great Wildebeest Migration", href: "/safaris/maasai-mara/great-wildebeest-migration" },
+    { label: "Luxury Mara Camps", href: "/safaris/maasai-mara/luxury-mara-camps" },
+    { label: "Maasai Culture Experience", href: "/safaris/maasai-mara/maasai-culture-experience" },
   ],
   "Itineraries": [
     { label: "1-Day Nairobi Safari", href: "/safaris/nairobi-national-park" },
