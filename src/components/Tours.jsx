@@ -8,7 +8,7 @@ const tours = [
     duration: "1 Day",
     rating: "★★★★★",
     tag: "Day Trip",
-    img: "/images/nairobi.jpg",
+    img: "/images/nairobi.webp",
   },
   {
     title: "Maasai Mara Big Five Safari",
@@ -17,7 +17,7 @@ const tours = [
     duration: "3 Days / 2 Nights",
     rating: "★★★★★",
     tag: "Popular",
-    img: "/images/masai mara.jpg",
+    img: "/images/masai mara.webp",
   },
   {
     title: "Amboseli Elephant Safari",
@@ -26,7 +26,7 @@ const tours = [
     duration: "2 Days / 1 Night",
     rating: "★★★★★",
     tag: "Wildlife",
-    img: "/images/elephant.jpg",
+    img: "/images/elephant.webp",
   },
   {
     title: "Lake Nakuru Flamingo Safari",
@@ -35,7 +35,7 @@ const tours = [
     duration: "1 Day",
     rating: "★★★★☆",
     tag: "Nature",
-    img: "/images/hippo.jpg",
+    img: "/images/hippo.webp",
   },
   {
     title: "Samburu Special Five Safari",
@@ -44,7 +44,7 @@ const tours = [
     duration: "3 Days / 2 Nights",
     rating: "★★★★★",
     tag: "Adventure",
-    img: "/images/pumba.jpg",
+    img: "/images/pumba.webp",
   },
   {
     title: "Lake Naivasha Boat & Crescent Island",
@@ -53,7 +53,7 @@ const tours = [
     duration: "1 Day",
     rating: "★★★★☆",
     tag: "Relax",
-    img: "/images/zebras.jpg",
+    img: "/images/zebras.webp",
   },
 ];
 

@@ -119,7 +119,7 @@ export default function App() {
     ? subPageData.seo.ogImage
     : isSafariPage
     ? `https://voyagemara-adventure.vercel.app${activeTour.cover}`
-    : "https://voyagemara-adventure.vercel.app/og-image.png";
+    : "https://voyagemara-adventure.vercel.app/og-image.webp";
 
   const handleOpenBooking = (data = {}) => {
     setBookingModalData(data || {});

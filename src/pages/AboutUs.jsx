@@ -32,7 +32,7 @@
       "https://voyagemara-adventure.vercel.app/",
 
       "logo":
-      "https://voyagemara-adventure.vercel.app/logo.png",
+      "https://voyagemara-adventure.vercel.app/logo.webp",
 
 
       "description":

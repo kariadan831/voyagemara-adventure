@@ -81,7 +81,7 @@ export default function Footer() {
           {/* Brand Box with Socials */}
           <div className="footer-box footer-brand">
             <a className="footer-brand-link" href="/#home" aria-label="VoyageMara Safaris home">
-              <img src="/logo.png" alt="VoyageMara Safaris Logo" width="46" height="46" loading="lazy" />
+              <img src="/logo.webp" alt="VoyageMara Safaris Logo" width="46" height="46" loading="lazy" />
               <span>VoyageMara <strong>Safaris</strong></span>
             </a>
             <p className="footer-tagline">

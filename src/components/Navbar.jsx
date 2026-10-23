@@ -249,7 +249,7 @@ export default function Navbar({ onOpenBooking }) {
       {/* Main Navbar */}
       <nav className={`navbar${scrolled ? " scrolled" : ""}`} id="main-nav">
         <Link className="logo" to="/#home" onClick={closeMobile}>
-          <img src="/logo.png" alt="VoyageMara Safaris Logo" width="140" height="48" />
+          <img src="/logo.webp" alt="VoyageMara Safaris Logo" width="140" height="48" />
         </Link>
 
         {/* Desktop nav */}
@@ -334,7 +334,7 @@ export default function Navbar({ onOpenBooking }) {
       {/* ── Mobile Drawer ─────────────────────────────────── */}
       <div className={`nav-mobile-drawer${mobileOpen ? " open" : ""}`} aria-hidden={!mobileOpen}>
         <div className="nav-drawer-header">
-          <img src="/logo.png" alt="VoyageMara Safaris" width="120" height="40" />
+          <img src="/logo.webp" alt="VoyageMara Safaris" width="120" height="40" />
           <button type="button" className="nav-drawer-close" onClick={closeMobile} aria-label="Close menu">
             <FaTimes />
           </button>

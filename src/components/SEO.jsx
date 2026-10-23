@@ -5,7 +5,7 @@ export default function SEO({
   description = "Book your Maasai Mara safari with VoyageMara Safaris. Handcrafted 3-day Big Five wildlife game drives, Great Migration safaris, luxury tented camps, and custom Kenya packages.",
   keywords = "book my maasai mara, book maasai mara safari, maasai mara safari booking, masai mara tour packages, 3 days maasai mara safari, kenya safari booking, voyagemara safaris",
   url = "https://voyagemara-adventure.vercel.app/",
-  image = "https://voyagemara-adventure.vercel.app/logo.png",
+  image = "https://voyagemara-adventure.vercel.app/logo.webp",
 }) {
   return (
     <Helmet>

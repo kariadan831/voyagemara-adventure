@@ -5,10 +5,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
-import maraHero from "../assets/images/maasai-mara-hero.jpg";
-import lion from "../assets/images/lion-safari.jpg";
-import elephant from "../assets/images/elephant-herd.jpg";
-import balloon from "../assets/images/hot-air-balloon.jpg";
+import maraHero from "../assets/images/maasai-mara-hero.webp";
+import lion from "../assets/images/lion-safari.webp";
+import elephant from "../assets/images/elephant-herd.webp";
+import balloon from "../assets/images/hot-air-balloon.webp";
 
 export default function SafariCarousel() {
   return (

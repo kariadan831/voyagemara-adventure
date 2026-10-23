@@ -45,31 +45,31 @@ export const MAASAI_MARA_PAGES = {
     ],
     heroImage: {
       src: "/tours/maasai-mara/maasai-mara-cover.webp",
-      placeholderFile: "images/mara-landscape.jpg",
+      placeholderFile: "images/mara-landscape.webp",
       alt: "Maasai Mara plains at sunrise with acacia trees",
     },
     gallery: [
       {
         src: "/tours/maasai-mara/lions.webp",
-        placeholderFile: "images/mara-lions.jpg",
+        placeholderFile: "images/mara-lions.webp",
         alt: "Pride of lions on the savannah",
         caption: "Top Big Cat Sightings",
       },
       {
         src: "/tours/maasai-mara/ballon.webp",
-        placeholderFile: "images/mara-balloon.jpg",
+        placeholderFile: "images/mara-balloon.webp",
         alt: "Hot air balloon safari over Maasai Mara",
         caption: "Sunrise Balloon Safari",
       },
       {
         src: "/tours/maasai-mara/maasai.webp",
-        placeholderFile: "images/maasai-community.jpg",
+        placeholderFile: "images/maasai-community.webp",
         alt: "Maasai cultural guide in traditional shuka",
         caption: "Native Maasai Guides",
       },
       {
         src: "/tours/maasai-mara/maasai-mara-3.webp",
-        placeholderFile: "images/mara-river.jpg",
+        placeholderFile: "images/mara-river.webp",
         alt: "Mara River landscape with hippos",
         caption: "Mara & Talek River Basins",
       },
@@ -171,25 +171,25 @@ export const MAASAI_MARA_PAGES = {
     },
     heroImage: {
       src: "/tours/maasai-mara/maasai-mara-big-five.webp",
-      placeholderFile: "images/big-five.jpg",
+      placeholderFile: "images/big-five.webp",
       alt: "The African Big Five animals in Maasai Mara",
     },
     gallery: [
       {
         src: "/tours/maasai-mara/lions.webp",
-        placeholderFile: "images/lion.jpg",
+        placeholderFile: "images/lion.webp",
         alt: "Male lion in golden afternoon light",
         caption: "Lion (Simba)",
       },
       {
         src: "/tours/maasai-mara/maasai-mara-4.webp",
-        placeholderFile: "images/elephant.jpg",
+        placeholderFile: "images/elephant.webp",
         alt: "African elephant family on the savannah",
         caption: "Elephant (Tembo)",
       },
       {
         src: "/tours/maasai-mara/maasai-mara-6.webp",
-        placeholderFile: "images/leopard.jpg",
+        placeholderFile: "images/leopard.webp",
         alt: "Leopard resting on an acacia branch",
         caption: "Leopard (Chui)",
       },
@@ -261,25 +261,25 @@ export const MAASAI_MARA_PAGES = {
     ],
     heroImage: {
       src: "/tours/maasai-mara/zebras.webp",
-      placeholderFile: "images/migration-herds.jpg",
+      placeholderFile: "images/migration-herds.webp",
       alt: "Vast wildebeest and zebra herds sweeping the Maasai Mara savannah",
     },
     gallery: [
       {
         src: "/tours/maasai-mara/maasai-mara-3.webp",
-        placeholderFile: "images/river-crossing.jpg",
+        placeholderFile: "images/river-crossing.webp",
         alt: "Wildebeest crossing the turbulent Mara River",
         caption: "Mara River Crossing Point",
       },
       {
         src: "/tours/maasai-mara/zebras.webp",
-        placeholderFile: "images/zebra.jpg",
+        placeholderFile: "images/zebra.webp",
         alt: "Burchell's zebras grazing peacefully on the Mara plains",
         caption: "Zebras on Migration Path",
       },
       {
         src: "/tours/maasai-mara/maasai-mara-5.webp",
-        placeholderFile: "images/crocodile.jpg",
+        placeholderFile: "images/crocodile.webp",
         alt: "River banks and wildlife habitat in Maasai Mara",
         caption: "Riverbank Ambush Zones",
       },
@@ -397,25 +397,25 @@ export const MAASAI_MARA_PAGES = {
     ],
     heroImage: {
       src: "/tours/maasai-mara/camp.webp",
-      placeholderFile: "images/camp-tent.jpg",
+      placeholderFile: "images/camp-tent.webp",
       alt: "Luxury safari tent with private wooden veranda overlooking savannah",
     },
     gallery: [
       {
         src: "/tours/maasai-mara/camp.webp",
-        placeholderFile: "images/camp-tent.jpg",
+        placeholderFile: "images/camp-tent.webp",
         alt: "Spacious canvas safari suite",
         caption: "Luxury Tented Suites",
       },
       {
         src: "/tours/maasai-mara/maasai-mara-4.webp",
-        placeholderFile: "images/camp-dining.jpg",
+        placeholderFile: "images/camp-dining.webp",
         alt: "Candlelit bush dining table under acacia trees",
         caption: "Private Bush Dining",
       },
       {
         src: "/tours/maasai-mara/maasai-mara-6.webp",
-        placeholderFile: "images/camp-pool.jpg",
+        placeholderFile: "images/camp-pool.webp",
         alt: "Swimming pool with panoramic plains view",
         caption: "Panoramic Pools",
       },
@@ -514,25 +514,25 @@ export const MAASAI_MARA_PAGES = {
     ],
     heroImage: {
       src: "/tours/maasai-mara/maasai.webp",
-      placeholderFile: "images/maasai-community.jpg",
+      placeholderFile: "images/maasai-community.webp",
       alt: "Maasai community members gathered in vibrant traditional beadwork and red shuka",
     },
     gallery: [
       {
         src: "/tours/maasai-mara/maasai-1.webp",
-        placeholderFile: "images/beadwork.jpg",
+        placeholderFile: "images/beadwork.webp",
         alt: "Intricate handmade Maasai beadwork necklaces and bracelets",
         caption: "Artisanal Beadwork",
       },
       {
         src: "/tours/maasai-mara/maasai.webp",
-        placeholderFile: "images/shuka.jpg",
+        placeholderFile: "images/shuka.webp",
         alt: "Traditional red shuka fabric draped over Maasai guides",
         caption: "Iconic Red Shuka",
       },
       {
         src: "/tours/maasai-mara/maasai-mara-6.webp",
-        placeholderFile: "images/boma.jpg",
+        placeholderFile: "images/boma.webp",
         alt: "Traditional Maasai boma settlement on the Mara savannah",
         caption: "Boma Village Life",
       },

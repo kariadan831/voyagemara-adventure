@@ -38,3 +38,5 @@ Thumbs.db
 
 # TypeScript / build artifacts
 *.tsbuildinfo
+# Raw phone photos gallery (too large for git, keep locally)
+public/gallery/

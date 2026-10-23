@@ -29,7 +29,7 @@ export const KENYA_SAFARIS_PAGES = {
     },
     heroImage: {
       src: "/tours/maasai-mara/maasai-mara-cover.webp",
-      placeholderFile: "images/booking-hero.jpg",
+      placeholderFile: "images/booking-hero.webp",
       alt: "Safari Land Cruiser on the golden plains of Kenya",
     },
     howItWorks: [
@@ -99,7 +99,7 @@ export const KENYA_SAFARIS_PAGES = {
     },
     heroImage: {
       src: "/tours/maasai-mara/maasai-mara-big-five.webp",
-      placeholderFile: "images/packages-hero.jpg",
+      placeholderFile: "images/packages-hero.webp",
       alt: "African wildlife and scenic savannah landscapes in Kenya",
     },
     packagesTable: [
@@ -142,19 +142,19 @@ export const KENYA_SAFARIS_PAGES = {
     gallery: [
       {
         src: "/tours/maasai-mara/lions.webp",
-        placeholderFile: "images/pkg-mara.jpg",
+        placeholderFile: "images/pkg-mara.webp",
         alt: "Maasai Mara big cats safari",
         caption: "Maasai Mara Big Cats",
       },
       {
         src: "/tours/amboseli/cover.webp",
-        placeholderFile: "images/pkg-amboseli.jpg",
+        placeholderFile: "images/pkg-amboseli.webp",
         alt: "Amboseli elephants beneath Mount Kilimanjaro",
         caption: "Amboseli & Kilimanjaro",
       },
       {
         src: "/tours/nakuru/cover.webp",
-        placeholderFile: "images/pkg-nakuru.jpg",
+        placeholderFile: "images/pkg-nakuru.webp",
         alt: "Lake Nakuru flamingos and rhinos",
         caption: "Lake Nakuru Rhinos",
       },
@@ -193,7 +193,7 @@ export const KENYA_SAFARIS_PAGES = {
     },
     heroImage: {
       src: "/tours/maasai-mara/camp.webp",
-      placeholderFile: "images/pricing-hero.jpg",
+      placeholderFile: "images/pricing-hero.webp",
       alt: "Safari camp hospitality on the savannah in Kenya",
     },
     costFactors: [
@@ -316,7 +316,7 @@ export const KENYA_SAFARIS_PAGES = {
     },
     heroImage: {
       src: "/tours/maasai-mara/maasai-mara-4.webp",
-      placeholderFile: "images/park-fees-hero.jpg",
+      placeholderFile: "images/park-fees-hero.webp",
       alt: "Wildlife in Kenya protected national park sanctuary",
     },
     facts: [
@@ -391,7 +391,7 @@ export const KENYA_SAFARIS_PAGES = {
     },
     heroImage: {
       src: "/tours/maasai-mara/lions.webp",
-      placeholderFile: "images/family.jpg",
+      placeholderFile: "images/family.webp",
       alt: "Family watching wildlife safely from a private safari vehicle in Kenya",
     },
     features: [
@@ -466,7 +466,7 @@ export const KENYA_SAFARIS_PAGES = {
     },
     heroImage: {
       src: "/tours/maasai-mara/ballon.webp",
-      placeholderFile: "images/honeymoon.jpg",
+      placeholderFile: "images/honeymoon.webp",
       alt: "Couple enjoying sunrise hot air balloon flight over Maasai Mara",
     },
     romanticHighlights: [
@@ -529,7 +529,7 @@ export const KENYA_SAFARIS_PAGES = {
     },
     heroImage: {
       src: "/tours/maasai-mara/maasai-mara-cover.webp",
-      placeholderFile: "images/group.jpg",
+      placeholderFile: "images/group.webp",
       alt: "Safari Land Cruiser convoy on an organized group expedition in Kenya",
     },
     groupBenefits: [
