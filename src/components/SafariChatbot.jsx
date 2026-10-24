@@ -698,16 +698,23 @@ export default function SafariChatbot({ onOpenBooking }) {
       )}
 
       {/* ── Circular Orange Robot Launcher Button (Matching Image 1) ── */}
-      <button
-        type="button"
-        className={`sc-orange-launcher ${isOpen ? "open" : ""}`}
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? "Close Safari Assistant" : "Open Safari Assistant"}
-        title="Chat with Safari Assistant"
-        id="safari-chat-launcher"
-      >
-        <FaRobot className="sc-robot-icon" aria-hidden="true" />
-      </button>
+      <div className="sc-launcher-container">
+        <button
+          type="button"
+          className={`sc-orange-launcher ${isOpen ? "open" : ""}`}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close Safari Assistant" : "Open Safari Assistant"}
+          title="Chat with Safari Assistant"
+          id="safari-chat-launcher"
+        >
+          <FaRobot className="sc-robot-icon" aria-hidden="true" />
+        </button>
+        {!isOpen && (
+          <span className="sc-launcher-label" onClick={() => setIsOpen(true)}>
+            Chat with Voyage Mara Assistant
+          </span>
+        )}
+      </div>
     </div>
   );
 }
