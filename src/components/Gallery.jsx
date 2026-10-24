@@ -6,7 +6,7 @@ import "../styles/styles.css";
 export default function Gallery() {
   const [lightboxIdx, setLightboxIdx] = useState(null);
 
-  // Keyboard navigation with looping
+  // Keyboard navigation with infinite looping
   const handleKey = useCallback(
     (e) => {
       if (lightboxIdx === null) return;
@@ -74,113 +74,108 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Lightbox */}
+      {/* Lightbox matching scopesafaris reference */}
       {currentImg && (
         <div
           className="gallery-lightbox-backdrop"
           role="dialog"
           aria-modal="true"
-          aria-label={`Photo lightbox: ${currentImg.caption}`}
+          aria-label={`Photo lightbox: Experience ${lightboxIdx + 1} of ${galleryImages.length}`}
           onClick={(e) => e.target === e.currentTarget && setLightboxIdx(null)}
         >
-          {/* Top Button Bar: Previous | Close | Next in one row */}
-          <div className="gallery-lightbox-topbar">
-            {/* Previous */}
-            <button
-              type="button"
-              className="lb-action-btn lb-prev"
-              onClick={() => setLightboxIdx((i) => (i - 1 + galleryImages.length) % galleryImages.length)}
-              aria-label="Previous photo"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
+          <div className="gallery-lightbox-container" onClick={(e) => e.stopPropagation()}>
+            {/* Top balanced action row */}
+            <div className="gallery-lightbox-header">
+              {/* Previous */}
+              <button
+                type="button"
+                className="lb-btn lb-btn-prev"
+                onClick={() => setLightboxIdx((i) => (i - 1 + galleryImages.length) % galleryImages.length)}
+                aria-label="Previous photo"
               >
-                <line x1="19" y1="12" x2="5" y2="12" />
-                <polyline points="12 19 5 12 12 5" />
-              </svg>
-              <span>Previous</span>
-            </button>
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="19" y1="12" x2="5" y2="12" />
+                  <polyline points="12 19 5 12 12 5" />
+                </svg>
+                <span>Previous</span>
+              </button>
 
-            {/* Close */}
-            <button
-              type="button"
-              className="lb-action-btn lb-close"
-              onClick={() => setLightboxIdx(null)}
-              aria-label="Close lightbox"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
+              {/* Close */}
+              <button
+                type="button"
+                className="lb-btn lb-btn-close"
+                onClick={() => setLightboxIdx(null)}
+                aria-label="Close lightbox"
               >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-              <span>Close</span>
-            </button>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+                <span>Close</span>
+              </button>
 
-            {/* Next */}
-            <button
-              type="button"
-              className="lb-action-btn lb-next"
-              onClick={() => setLightboxIdx((i) => (i + 1) % galleryImages.length)}
-              aria-label="Next photo"
-            >
-              <span>Next</span>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
+              {/* Next */}
+              <button
+                type="button"
+                className="lb-btn lb-btn-next"
+                onClick={() => setLightboxIdx((i) => (i + 1) % galleryImages.length)}
+                aria-label="Next photo"
               >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </button>
-          </div>
+                <span>Next</span>
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            </div>
 
-          {/* Image */}
-          <div
-            className="gallery-lightbox-inner"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="gallery-lightbox-img-wrap">
+            {/* Middle Image Stage */}
+            <div className="gallery-lightbox-stage">
               <img
                 key={currentImg.src}
                 className="gallery-lightbox-img"
                 src={currentImg.src}
-                alt={currentImg.alt}
+                alt={currentImg.alt || currentImg.caption}
                 loading="eager"
               />
-              <div className="gallery-lightbox-caption">
-                <strong>{currentImg.caption}</strong>
-                <span>{currentImg.category} &middot; {currentImg.date}</span>
+            </div>
+
+            {/* Bottom Experience Counter Pill */}
+            <div className="gallery-lightbox-footer">
+              <div className="gallery-lightbox-counter-pill">
+                Experience {lightboxIdx + 1} of {galleryImages.length}
               </div>
             </div>
-          </div>
-
-          {/* Counter */}
-          <div className="lb-counter" aria-live="polite">
-            {lightboxIdx + 1} / {galleryImages.length}
           </div>
         </div>
       )}
