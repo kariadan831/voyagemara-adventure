@@ -1,4 +1,4 @@
-import "../styles/styles.css";
+﻿import "../styles/styles.css";
 
 const tours = [
   {
@@ -6,43 +6,43 @@ const tours = [
     desc: "Experience wildlife just outside the city. See lions, rhinos, giraffes, and more in their natural habitat with guided game drives.",
     price: "From $180",
     duration: "1 Day",
-    rating: "★★★★★",
+    rating: "â˜…â˜…â˜…â˜…â˜…",
     tag: "Day Trip",
     img: "/images/nairobi.webp",
   },
   {
     title: "Maasai Mara Big Five Safari",
-    desc: "A 3-day luxury safari in Kenya’s most iconic reserve. Includes accommodation, guided game drives, and Big Five encounters.",
+    desc: "A 3-day luxury safari in Kenyaâ€™s most iconic reserve. Includes accommodation, guided game drives, and Big Five encounters.",
     price: "From $620",
     duration: "3 Days / 2 Nights",
-    rating: "★★★★★",
+    rating: "â˜…â˜…â˜…â˜…â˜…",
     tag: "Popular",
-    img: "/images/masai mara.webp",
+    img: "/images/masai-mara.webp",
   },
   {
     title: "Amboseli Elephant Safari",
     desc: "Discover elephants with breathtaking views of Mount Kilimanjaro. Includes guided drives, transport, and park entry.",
     price: "From $520",
     duration: "2 Days / 1 Night",
-    rating: "★★★★★",
+    rating: "â˜…â˜…â˜…â˜…â˜…",
     tag: "Wildlife",
     img: "/images/elephant.webp",
   },
   {
     title: "Lake Nakuru Flamingo Safari",
-    desc: "Witness pink flamingos, rhinos, and diverse birdlife in one of Kenya’s most scenic national parks.",
+    desc: "Witness pink flamingos, rhinos, and diverse birdlife in one of Kenyaâ€™s most scenic national parks.",
     price: "From $450",
     duration: "1 Day",
-    rating: "★★★★☆",
+    rating: "â˜…â˜…â˜…â˜…â˜†",
     tag: "Nature",
     img: "/images/hippo.webp",
   },
   {
     title: "Samburu Special Five Safari",
-    desc: "Explore northern Kenya and see rare species like Grevy’s zebra and reticulated giraffe in a raw wilderness experience.",
+    desc: "Explore northern Kenya and see rare species like Grevyâ€™s zebra and reticulated giraffe in a raw wilderness experience.",
     price: "From $750",
     duration: "3 Days / 2 Nights",
-    rating: "★★★★★",
+    rating: "â˜…â˜…â˜…â˜…â˜…",
     tag: "Adventure",
     img: "/images/pumba.webp",
   },
@@ -51,7 +51,7 @@ const tours = [
     desc: "A peaceful escape with boat rides, hippos, and walking safari experiences on Crescent Island.",
     price: "From $300",
     duration: "1 Day",
-    rating: "★★★★☆",
+    rating: "â˜…â˜…â˜…â˜…â˜†",
     tag: "Relax",
     img: "/images/zebras.webp",
   },
@@ -65,7 +65,7 @@ export default function Tours() {
       <div className="tours-header">
         <h2>Featured Tours & Safari Experiences</h2>
         <p>
-          Handcrafted luxury safari packages across Kenya’s most iconic destinations
+          Handcrafted luxury safari packages across Kenyaâ€™s most iconic destinations
         </p>
       </div>
 
@@ -86,7 +86,7 @@ export default function Tours() {
 
               <p>{tour.desc}</p>
 
-              <div className="tour-meta">📅 {tour.duration}</div>
+              <div className="tour-meta">ðŸ“… {tour.duration}</div>
 
               <div className="price">{tour.price}</div>
 
