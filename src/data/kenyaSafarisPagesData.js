@@ -78,7 +78,7 @@ export const KENYA_SAFARIS_PAGES = {
       },
     ],
     whatsappMsg:
-      "Hello VoyageMara, please send me a safari quote. Dates: [EDIT ME: dates]. Travelers: [EDIT ME: group size]. Preferred parks: [EDIT ME: parks].",
+      "Hello VoyageMara, please send me a customized safari quote for my upcoming Kenya trip. Travelers, dates, and preferred parks will be shared.",
   },
 
   "all-safari-packages": {
@@ -217,7 +217,7 @@ export const KENYA_SAFARIS_PAGES = {
     pricingCards: [
       {
         tier: "Budget Adventure",
-        price: "[EDIT ME: US$ ___]",
+        price: "From US$ 590",
         period: "per person, sharing (2–6 guests)",
         isHot: false,
         badgeText: "Best Value",
@@ -233,7 +233,7 @@ export const KENYA_SAFARIS_PAGES = {
       },
       {
         tier: "Mid-Range Comfort",
-        price: "[EDIT ME: US$ ___]",
+        price: "From US$ 890",
         period: "per person, sharing (2–6 guests)",
         isHot: true,
         badgeText: "Most Booked",
@@ -249,7 +249,7 @@ export const KENYA_SAFARIS_PAGES = {
       },
       {
         tier: "Premier Luxury",
-        price: "[EDIT ME: US$ ___]",
+        price: "From US$ 1,650",
         period: "per person, sharing (2–6 guests)",
         isHot: false,
         badgeText: "5-Star Experience",
@@ -295,7 +295,7 @@ export const KENYA_SAFARIS_PAGES = {
       },
     ],
     whatsappMsg:
-      "Hello VoyageMara, please send exact pricing for [EDIT ME: preferred tier] safari for [EDIT ME: dates].",
+      "Hello VoyageMara, please send exact pricing and availability for your Kenya safari packages.",
   },
 
   "park-fees-explained": {
@@ -356,7 +356,7 @@ export const KENYA_SAFARIS_PAGES = {
       },
     ],
     officialNotice:
-      "[EDIT ME: Note that park authorities update conservation tariffs periodically. Always verify current published rates with KWS and Narok County before travel. VoyageMara includes all current fees directly in your quoted price.]",
+      "Note that park authorities update conservation tariffs periodically. Always verify current published rates with KWS and Narok County before travel. VoyageMara includes all current fees directly in your quoted price.",
     faqs: [
       {
         question: "Are park fees included in VoyageMara's safari quotes?",
@@ -445,7 +445,7 @@ export const KENYA_SAFARIS_PAGES = {
       },
     ],
     whatsappMsg:
-      "Hello VoyageMara, I want to plan a family safari for [EDIT ME: number of adults & kids] with children aged [EDIT ME: ages]. Please share family-friendly options.",
+      "Hello VoyageMara, I want to plan a family safari in Kenya with our children. Please share family-friendly itinerary options and pricing.",
   },
 
   "honeymoon-safaris": {
@@ -508,7 +508,7 @@ export const KENYA_SAFARIS_PAGES = {
       },
     ],
     whatsappMsg:
-      "Hello VoyageMara, we want to plan our dream honeymoon safari in Kenya. Our wedding/travel dates are [EDIT ME: dates]. Please share romantic options.",
+      "Hello VoyageMara, we want to plan our dream honeymoon safari in Kenya. Please share romantic luxury safari options and pricing.",
   },
 
   "group-corporate-safaris": {
@@ -581,6 +581,6 @@ export const KENYA_SAFARIS_PAGES = {
       },
     ],
     whatsappMsg:
-      "Hello VoyageMara, I want a group or corporate safari quote for approximately [EDIT ME: group size] guests traveling in [EDIT ME: month/dates].",
+      "Hello VoyageMara, I want a group or corporate safari quote for Kenya. Please share group options and rates.",
   },
 };

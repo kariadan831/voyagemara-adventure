@@ -212,7 +212,7 @@ export default function KenyaSafarisSubPage({ pageKey: propKey, onOpenBooking })
               <section className="vm-content-section">
                 <h2 className="vm-section-title">Safari Tier Starting Rates</h2>
                 <p className="vm-section-lead">
-                  Prices below are per person sharing based on 2–6 guests in a private 4x4 Land Cruiser. All prices can be edited directly in <code className="vm-inline-code">kenyaSafarisPagesData.js</code>.
+                  Prices below are starting rates per person sharing based on 2–6 guests in a private 4x4 Land Cruiser. All park entrance fees, daily game drives, and full-board accommodation are included.
                 </p>
 
                 {/* PRICING CARDS COMPONENT */}
