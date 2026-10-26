@@ -61,11 +61,7 @@ function ImageSlot({ src, placeholderFile, alt, className = "", caption }) {
           <span>{alt || "VoyageMara Safaris Photo"}</span>
         </div>
       )}
-      {placeholderFile && (
-        <span className="mm-img-placeholder-tag" title="Target file path">
-          {placeholderFile}
-        </span>
-      )}
+
       {caption && <div className="mm-gallery-caption"><span>{caption}</span></div>}
     </div>
   );

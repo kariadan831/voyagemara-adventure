@@ -185,9 +185,7 @@ export default function KenyaSafarisSubPage({ pageKey: propKey, onOpenBooking })
                       <div key={i} className="vm-photo-card">
                         <img src={img.src} alt={img.alt} loading="lazy" />
                         <span className="vm-photo-caption">{img.caption}</span>
-                        {img.placeholderFile && (
-                          <span className="vm-placeholder-tag">{img.placeholderFile}</span>
-                        )}
+
                       </div>
                     ))}
                   </div>
